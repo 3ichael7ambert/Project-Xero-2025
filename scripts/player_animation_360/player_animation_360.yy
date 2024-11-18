@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"player_animation_360",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"player_animation_360",
+  "parent":{
+    "name":"player",
+    "path":"folders/Scripts/player.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

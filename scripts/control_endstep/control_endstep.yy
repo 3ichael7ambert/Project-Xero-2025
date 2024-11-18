@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"control_endstep",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"control_endstep",
+  "parent":{
+    "name":"control",
+    "path":"folders/Scripts/control.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

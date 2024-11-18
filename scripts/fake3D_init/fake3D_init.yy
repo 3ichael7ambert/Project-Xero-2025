@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"fake3D_init",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"fake3D_init",
+  "parent":{
+    "name":"Fake3D",
+    "path":"folders/Scripts/Fake3D.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

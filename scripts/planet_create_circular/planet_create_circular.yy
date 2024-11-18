@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"planet_create_circular",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"planet_create_circular",
+  "parent":{
+    "name":"types",
+    "path":"folders/Scripts/planets/types.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

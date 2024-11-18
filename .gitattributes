@@ -1,0 +1,7 @@
+# Auto detect text files and perform LF normalization
+*.yy linguist-detectable=true
+*.gml linguist-detectable=true
+*.yyp linguist-detectable=true
+*.yy linguist-language=GML
+*.gml linguist-language=GML
+*.yyp linguist-language=GML

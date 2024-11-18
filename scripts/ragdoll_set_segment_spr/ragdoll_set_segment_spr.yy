@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ragdoll_set_segment_spr",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ragdoll_set_segment_spr",
+  "parent":{
+    "name":"Ragdoll",
+    "path":"folders/Scripts/sbRagdoll/Ragdoll.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

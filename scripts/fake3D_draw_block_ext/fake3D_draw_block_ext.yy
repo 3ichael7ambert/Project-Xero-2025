@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"fake3D_draw_block_ext",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"fake3D_draw_block_ext",
+  "parent":{
+    "name":"Extented",
+    "path":"folders/Scripts/Fake3D/Fake3D_Draw/Block/Optimized/Extented.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

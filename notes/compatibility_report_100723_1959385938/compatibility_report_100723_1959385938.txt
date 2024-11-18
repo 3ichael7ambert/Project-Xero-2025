@@ -1,0 +1,14 @@
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.forevka.platformer_9d3a2001/mvc/conv/1479840360_Planet_Gravitations_Platformer_eb37d773/mvc/objects/objControl/Draw_0.gml
+Converted builtin - line 5: view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 10: view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 5: view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 10: view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 5: view_wview -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 10: view_wview -> __view_get( e__VW.WView, 0 )
+
+Added compatibility script 'instance/instance_create.gml'
+Added compatibility script 'view/__view_get.gml'
+Added compatibility script 'view/__init_view.gml'
+Added compatibility script '__init_global.gml'
+Added compatibility script 'object/object_get_depth.gml'
+Added compatibility script '__global_object_depths.gml'

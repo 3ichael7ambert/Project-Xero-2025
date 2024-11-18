@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"fix_position",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"fix_position",
+  "parent":{
+    "name":"player",
+    "path":"folders/Scripts/player.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

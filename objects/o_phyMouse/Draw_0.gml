@@ -1,0 +1,1 @@
+if global.debugMode physics_draw_debug();

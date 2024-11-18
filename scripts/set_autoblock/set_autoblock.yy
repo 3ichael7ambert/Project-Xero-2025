@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"set_autoblock",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"set_autoblock",
+  "parent":{
+    "name":"Fake3D",
+    "path":"folders/Scripts/Fake3D.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

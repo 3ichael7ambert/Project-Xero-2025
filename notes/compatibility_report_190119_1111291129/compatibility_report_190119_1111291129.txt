@@ -1,0 +1,102 @@
+Font fnt_Debug_s14 has been converted to font family Consolas (Bold) - Font has been regenerated, small inconsistencies may occur
+Converting GML script: ${project_dir}\objects\obj_Controller\Create_0.gml
+Converted builtin - line 20: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 24: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 120: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+
+Converting GML script: ${project_dir}\objects\obj_Controller\Step_0.gml
+Converted builtin - line 7: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+
+Converting GML script: ${project_dir}\objects\obj_CollisionParent\Collision_da03e5cf-f9a3-4575-8549-c04d36cbde63.gml
+Converted description /// @description  Collision with self
+
+Converting GML script: ${project_dir}\objects\obj_Boundary\Create_0.gml
+Converted builtin - line 14: view_hview[view_current] -> __view_get( e__VW.HView, view_current )
+Converted description /// @description  Initialize obj_Boundary
+
+Converting GML script: ${project_dir}\objects\obj_Floor\Create_0.gml
+Converted description /// @description  Initialize obj_Floor
+
+Converting GML script: ${project_dir}\objects\obj_Floor\Destroy_0.gml
+Converted description /// @description  Destroy surface
+
+Converting GML script: ${project_dir}\objects\obj_Floor\Step_0.gml
+Converted builtin - line 2: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+
+Converting GML script: ${project_dir}\objects\obj_Floor\Other_5.gml
+Converted description /// @description  Destroy surface
+
+Converting GML script: ${project_dir}\objects\obj_Floor\Other_3.gml
+Converted description /// @description  Destroy surface
+
+Converting GML script: ${project_dir}\objects\obj_Floor\KeyPress_82.gml
+Converted description /// @description  Destroy surface
+
+Converting GML script: ${project_dir}\objects\obj_Player\Create_0.gml
+Converted builtin - line 15: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 16: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 19: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 19: view_hview[view_current] -> __view_get( e__VW.HView, view_current )
+Converted builtin - line 20: view_hview[view_current] -> __view_get( e__VW.HView, view_current )
+Converted description /// @description  Initialize obj_Player
+
+Converting GML script: ${project_dir}\objects\obj_Player\Step_0.gml
+Converted builtin - line 106: view_xview[view_current] = max(0, ControllerID.FloorLast, x - (view_wview[view_current]) / 4 -> __view_set( e__VW.XView, view_current, max(0, ControllerID.FloorLast, x - (view_wview[view_current]) / 4 )
+Converted builtin - line 107: view_yview[view_current] = y + y_ZoomOffset - (view_hview[view_current] / 2) -> __view_set( e__VW.YView, view_current, y + y_ZoomOffset - (view_hview[view_current] / 2) )
+Converted builtin - line 32: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 68: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 34: view_wview[view_current] = ZoomMax -> __view_set( e__VW.WView, view_current, ZoomMax )
+Converted builtin - line 51: view_wview[view_current] = c -> __view_set( e__VW.WView, view_current, c )
+Converted builtin - line 70: view_wview[view_current] = ZoomMin -> __view_set( e__VW.WView, view_current, ZoomMin )
+Converted builtin - line 89: view_wview[view_current] = c -> __view_set( e__VW.WView, view_current, c )
+Converted builtin - line 35: view_hview[view_current] = ZoomMax / ViewRatio -> __view_set( e__VW.HView, view_current, ZoomMax / ViewRatio )
+Converted builtin - line 52: view_hview[view_current] = c / ViewRatio -> __view_set( e__VW.HView, view_current, c / ViewRatio )
+Converted builtin - line 71: view_hview[view_current] = ZoomMin / ViewRatio -> __view_set( e__VW.HView, view_current, ZoomMin / ViewRatio )
+Converted builtin - line 90: view_hview[view_current] = c / ViewRatio -> __view_set( e__VW.HView, view_current, c / ViewRatio )
+Converted builtin - line 106: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 107: view_hview[view_current] -> __view_get( e__VW.HView, view_current )
+
+Converting GML script: ${project_dir}\objects\obj_Player\KeyPress_32.gml
+Converted description /// @description  Jump
+
+Converting GML script: ${project_dir}\objects\obj_NeonBike\Create_0.gml
+Converted builtin - line 15: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 16: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 19: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 25: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 19: view_hview[view_current] -> __view_get( e__VW.HView, view_current )
+Converted builtin - line 20: view_hview[view_current] -> __view_get( e__VW.HView, view_current )
+Converted builtin - line 25: view_hview[view_current] -> __view_get( e__VW.HView, view_current )
+Converted description /// @description  Initialize obj_NeonBike
+
+Converting GML script: ${project_dir}\objects\obj_NeonBike\Step_0.gml
+Converted builtin - line 144: view_xview[view_current] = max(0, ControllerID.FloorLast, x - (view_wview[view_current]) / 4 -> __view_set( e__VW.XView, view_current, max(0, ControllerID.FloorLast, x - (view_wview[view_current]) / 4 )
+Converted builtin - line 145: view_yview[view_current] = y + y_ZoomOffset - (view_hview[view_current] / 2) -> __view_set( e__VW.YView, view_current, y + y_ZoomOffset - (view_hview[view_current] / 2) )
+Converted builtin - line 70: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 106: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 72: view_wview[view_current] = ZoomMax -> __view_set( e__VW.WView, view_current, ZoomMax )
+Converted builtin - line 89: view_wview[view_current] = c -> __view_set( e__VW.WView, view_current, c )
+Converted builtin - line 108: view_wview[view_current] = ZoomMin -> __view_set( e__VW.WView, view_current, ZoomMin )
+Converted builtin - line 127: view_wview[view_current] = c -> __view_set( e__VW.WView, view_current, c )
+Converted builtin - line 73: view_hview[view_current] = ZoomMax / ViewRatio -> __view_set( e__VW.HView, view_current, ZoomMax / ViewRatio )
+Converted builtin - line 90: view_hview[view_current] = c / ViewRatio -> __view_set( e__VW.HView, view_current, c / ViewRatio )
+Converted builtin - line 109: view_hview[view_current] = ZoomMin / ViewRatio -> __view_set( e__VW.HView, view_current, ZoomMin / ViewRatio )
+Converted builtin - line 128: view_hview[view_current] = c / ViewRatio -> __view_set( e__VW.HView, view_current, c / ViewRatio )
+Converted builtin - line 144: view_wview[view_current] -> __view_get( e__VW.WView, view_current )
+Converted builtin - line 145: view_hview[view_current] -> __view_get( e__VW.HView, view_current )
+
+Converting GML script: ${project_dir}\objects\obj_NeonTire\Create_0.gml
+Converted description /// @description  Initialize obj_NeonTire
+
+macOS icon ${options_dir}\mac\icons\icon512.png written out as 32-bit
+Windows NSIS Installer Script has been set to default due to changes in GameMaker Studio 2
+Game speed set to 60
+Added compatibility script 'draw/draw_set_blend_mode.gml'
+Added compatibility script 'instance/instance_create.gml'
+Added compatibility script 'object/object_get_depth.gml'
+Added compatibility script 'view/__view_get.gml'
+Added compatibility script 'view/__view_set.gml'
+Added compatibility script 'view/__view_set_internal.gml'
+Added compatibility script 'view/__init_view.gml'
+Added compatibility script '__init_global.gml'
+Added compatibility script '__global_object_depths.gml'

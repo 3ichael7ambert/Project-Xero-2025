@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"planet_step_circular",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"planet_step_circular",
+  "parent":{
+    "name":"types",
+    "path":"folders/Scripts/planets/types.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"build_drawing_matrix",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"build_drawing_matrix",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_GenerateFloor_bike",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_GenerateFloor_bike",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

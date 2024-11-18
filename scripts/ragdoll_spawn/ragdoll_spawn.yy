@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ragdoll_spawn",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ragdoll_spawn",
+  "parent":{
+    "name":"Ragdoll",
+    "path":"folders/Scripts/sbRagdoll/Ragdoll.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

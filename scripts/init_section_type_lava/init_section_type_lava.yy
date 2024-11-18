@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"init_section_type_lava",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"init_section_type_lava",
+  "parent":{
+    "name":"Project Xero",
+    "path":"Project Xero.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

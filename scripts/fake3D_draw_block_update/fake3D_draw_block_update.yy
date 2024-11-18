@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"fake3D_draw_block_update",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"fake3D_draw_block_update",
+  "parent":{
+    "name":"Part",
+    "path":"folders/Scripts/Fake3D/Fake3D_Draw/Block/Part.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"fake3D_get_perspective_y",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"fake3D_get_perspective_y",
+  "parent":{
+    "name":"Perspective",
+    "path":"folders/Scripts/Fake3D/Perspective.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

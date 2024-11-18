@@ -1,0 +1,114 @@
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/scripts/fake3D_init/fake3D_init.gml
+Converted builtin - line 6: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/scripts/fake3D_block_init/fake3D_block_init.gml
+Converted description /// @description  fake3D_block_init(width,height)/// @param width
+/// @param height
+
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/scripts/fake3D_draw_block/fake3D_draw_block.gml
+Converted description /// @description  fake3D_draw_block(x,y,top_sprite, top_index, side_sprite, side_index, height, alpha);/// @param x
+/// @param y
+/// @param top_sprite
+/// @param  top_index
+/// @param  side_sprite
+/// @param  side_index
+/// @param  height
+/// @param  alpha
+
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/scripts/fake3D_draw_block_ext/fake3D_draw_block_ext.gml
+Converted description /// @description  fake3D_draw_block(x,y,top_sprite, top_index, sidedown_sprite, sidedown_index, sideleft_sprite, sideleft_index, sideright_sprite,sideright_index, sideup_sprite,sideup_index, height, alpha);/// @param x
+/// @param y
+/// @param top_sprite
+/// @param  top_index
+/// @param  sidedown_sprite
+/// @param  sidedown_index
+/// @param  sideleft_sprite
+/// @param  sideleft_index
+/// @param  sideright_sprite
+/// @param sideright_index
+/// @param  sideup_sprite
+/// @param sideup_index
+/// @param  height
+/// @param  alpha
+
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/scripts/fake3D_draw_block_update/fake3D_draw_block_update.gml
+Converted description /// @description  fake3D_draw_block_update(x,y,top_sprite, top_index, side_sprite, side_index, height, alpha);/// @param x
+/// @param y
+/// @param top_sprite
+/// @param  top_index
+/// @param  side_sprite
+/// @param  side_index
+/// @param  height
+/// @param  alpha
+
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/scripts/fake3D_draw_block_top/fake3D_draw_block_top.gml
+Converted description /// @description  fake3D_draw_block_top();
+
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/scripts/fake3D_draw_block_side/fake3D_draw_block_side.gml
+Converted description /// @description  fake3D_draw_block_side();
+
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/scripts/fake3D_draw_block_top_ext/fake3D_draw_block_top_ext.gml
+Converted description /// @description  fake3D_draw_block_top_ext()
+
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/scripts/fake3D_draw_block_side_ext/fake3D_draw_block_side_ext.gml
+Converted description /// @description  fake3D_draw_block_side_ext()
+
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/scripts/fake3D_draw_block_update_ext/fake3D_draw_block_update_ext.gml
+Converted description /// @description  fake3D_draw_block_update_ext(x,y,top_sprite, top_index, sidedown_sprite, sidedown_index, sideleft_sprite, sideleft_index, sideright_sprite,sideright_index, sideup_sprite,sideup_index, height, alpha);/// @param x
+/// @param y
+/// @param top_sprite
+/// @param  top_index
+/// @param  sidedown_sprite
+/// @param  sidedown_index
+/// @param  sideleft_sprite
+/// @param  sideleft_index
+/// @param  sideright_sprite
+/// @param sideright_index
+/// @param  sideup_sprite
+/// @param sideup_index
+/// @param  height
+/// @param  alpha
+
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/scripts/fake3D_draw_block_not_optimized/fake3D_draw_block_not_optimized.gml
+Converted description /// @description  fake3D_draw_block_not_optimized(x,y,top_sprite, top_index, side_sprite, side_index, height, alpha);/// @param x
+/// @param y
+/// @param top_sprite
+/// @param  top_index
+/// @param  side_sprite
+/// @param  side_index
+/// @param  height
+/// @param  alpha
+
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/scripts/fake3D_draw_block_not_optimized_ext/fake3D_draw_block_not_optimized_ext.gml
+Converted description /// @description  fake3D_draw_block_not_optimized_ext(x,y,top_sprite, top_index, sidedown_sprite, sidedown_index, sideleft_sprite, sideleft_index, sideright_sprite,sideright_index, sideup_sprite,sideup_index, height, alpha);/// @param x
+/// @param y
+/// @param top_sprite
+/// @param  top_index
+/// @param  sidedown_sprite
+/// @param  sidedown_index
+/// @param  sideleft_sprite
+/// @param  sideleft_index
+/// @param  sideright_sprite
+/// @param sideright_index
+/// @param  sideup_sprite
+/// @param sideup_index
+/// @param  height
+/// @param  alpha
+
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/scripts/set_autoblock/set_autoblock.gml
+Converted description /// @description  fake3D_set_autoblock(sprite);/// @param sprite
+
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/objects/obj_fake3Dcontroller/Create_0.gml
+Converted builtin - line 3: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 3: view_hview[0] -> __view_get( e__VW.HView, 0 )
+Converted builtin - line 4: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: /tmp/GameMakerStudio2/GMS2TEMP/com.hulestudios.fake3dtopdown_389961af/mvc/conv/1418903415_Fake3D_top_down_20853035/mvc/objects/obj_fake3Dcontroller/Step_2.gml
+Converted builtin - line 1: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 1: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 1: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 1: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Added compatibility script 'view/__view_get.gml'
+Added compatibility script 'view/__init_view.gml'
+Added compatibility script '__init_global.gml'

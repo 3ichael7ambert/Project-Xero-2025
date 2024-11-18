@@ -1,0 +1,2 @@
+/// @description  Collision with self
+

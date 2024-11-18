@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ragdoll_define_size",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ragdoll_define_size",
+  "parent":{
+    "name":"Ragdoll",
+    "path":"folders/Scripts/sbRagdoll/Ragdoll.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
