@@ -130,6 +130,7 @@
     {"name":"object3","order":10,"path":"objects/object3/object3.yy",},
     {"name":"objEffect","order":1,"path":"objects/objEffect/objEffect.yy",},
     {"name":"objFence","order":4,"path":"objects/objFence/objFence.yy",},
+    {"name":"objHuman","order":166,"path":"objects/objHuman/objHuman.yy",},
     {"name":"objIntersection","order":6,"path":"objects/objIntersection/objIntersection.yy",},
     {"name":"objJetz","order":3,"path":"objects/objJetz/objJetz.yy",},
     {"name":"objLevel","order":1,"path":"objects/objLevel/objLevel.yy",},

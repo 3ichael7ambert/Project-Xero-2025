@@ -185,6 +185,7 @@
     {"id":{"name":"objEntity","path":"objects/objEntity/objEntity.yy",},},
     {"id":{"name":"objFence","path":"objects/objFence/objFence.yy",},},
     {"id":{"name":"objHouse","path":"objects/objHouse/objHouse.yy",},},
+    {"id":{"name":"objHuman","path":"objects/objHuman/objHuman.yy",},},
     {"id":{"name":"objIntersection","path":"objects/objIntersection/objIntersection.yy",},},
     {"id":{"name":"objJetz","path":"objects/objJetz/objJetz.yy",},},
     {"id":{"name":"objLevel","path":"objects/objLevel/objLevel.yy",},},
