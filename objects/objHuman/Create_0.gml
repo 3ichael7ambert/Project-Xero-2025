@@ -10,6 +10,23 @@ is_on_ground = false; // Is the NPC standing on the ground?
 
  dir=choose("left","right");
  
+ hair_color=(make_color_rgb(random(255),random(255),random(255)));
+ shirt_color=(make_color_rgb(random(255),random(255),random(255)));
+ pants_color=(make_color_rgb(random(255),random(255),random(255)));
+ shoes_color=(make_color_rgb(random(255),random(255),random(255)));
+ eye_color=(make_color_rgb(random(255),random(255),random(255)));
+
+ img_idx_body=image_index;
+ img_idx_pants=image_index;
+ img_idx_shirt=image_index;
+ img_idx_shoes=image_index;
+ img_idx_head=0;
+ img_idx_nose=0;
+ img_idx_eyes=0;
+ img_idx_eyelids=0;
+ img_idx_nose=0;
+ img_idx_hair=0;
+ img_idx_hair=0;
  
  // Create Event
 state = "idle"; // Start in the idle state

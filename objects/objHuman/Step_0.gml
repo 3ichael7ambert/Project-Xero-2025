@@ -1,6 +1,16 @@
 /// @description Insert description here
 // You can write your code in this editor
- 
+  img_idx_body=image_index;
+ img_idx_pants=image_index;
+ img_idx_shirt=image_index;
+ img_idx_shoes=image_index;
+ img_idx_head=0;
+ img_idx_nose=0;
+ img_idx_eyes=0;
+ img_idx_eyelids=0;
+ img_idx_nose=0;
+ img_idx_hair=0;
+ img_idx_hair=0;
  
  // Apply gravity
 if !is_on_ground {
