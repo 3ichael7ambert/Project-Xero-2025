@@ -27,7 +27,7 @@ is_on_ground = false; // Is the NPC standing on the ground?
  img_idx_eyebrows=0;
  img_idx_nose=0;
  img_idx_hair=0;
- img_idx_hair=0;
+ img_idx_mouth=0;
  
  // Create Event
 state = "idle"; // Start in the idle state
