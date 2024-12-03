@@ -1,27 +1,29 @@
 {
   "$GMSprite":"",
-  "%Name":"sprHuman_Head",
+  "%Name":"sprHuman_Head_Mouths",
   "bboxMode":0,
-  "bbox_bottom":59,
-  "bbox_left":38,
-  "bbox_right":129,
-  "bbox_top":34,
+  "bbox_bottom":21,
+  "bbox_left":0,
+  "bbox_right":24,
+  "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"0a4c9a6f-8432-4d2f-87bf-b93b6624ff0c","name":"0a4c9a6f-8432-4d2f-87bf-b93b6624ff0c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"50630784-523a-402d-aabc-cfaf45c5e6ed","name":"50630784-523a-402d-aabc-cfaf45c5e6ed","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"cfcc91e2-cdd6-4742-bcec-3f017e98b041","name":"cfcc91e2-cdd6-4742-bcec-3f017e98b041","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"0cc95e27-deac-4013-83ed-b898c33d06c5","name":"0cc95e27-deac-4013-83ed-b898c33d06c5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":137,
+  "height":22,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"2b63f984-3064-499a-8191-cc4d45ec6734","blendMode":0,"displayName":"default","isLocked":false,"name":"2b63f984-3064-499a-8191-cc4d45ec6734","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"sprHuman_Head",
+  "name":"sprHuman_Head_Mouths",
   "nineSlice":null,
   "origin":0,
   "parent":{
@@ -33,7 +35,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"",
-    "%Name":"sprHuman_Head",
+    "%Name":"sprHuman_Head_Mouths",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -49,7 +51,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":1.0,
+    "length":3.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -57,7 +59,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"sprHuman_Head",
+    "name":"sprHuman_Head_Mouths",
     "playback":1,
     "playbackSpeed":30.0,
     "playbackSpeedType":0,
@@ -69,8 +71,14 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"0a4c9a6f-8432-4d2f-87bf-b93b6624ff0c","path":"sprites/sprHuman_Head/sprHuman_Head.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"3d94a65f-e961-4b7a-9281-41395e641fff","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"50630784-523a-402d-aabc-cfaf45c5e6ed","path":"sprites/sprHuman_Head_Mouths/sprHuman_Head_Mouths.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"cdbb061c-cdc3-4288-bf9b-4e09bc1c9ba9","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"cfcc91e2-cdd6-4742-bcec-3f017e98b041","path":"sprites/sprHuman_Head_Mouths/sprHuman_Head_Mouths.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"f1aaf500-04e9-4ac0-960e-35f523024443","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"0cc95e27-deac-4013-83ed-b898c33d06c5","path":"sprites/sprHuman_Head_Mouths/sprHuman_Head_Mouths.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"bebe625c-0a7b-4312-a99b-79ea5db84bb3","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
@@ -86,5 +94,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":130,
+  "width":25,
 }

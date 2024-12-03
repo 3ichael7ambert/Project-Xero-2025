@@ -1,18 +1,18 @@
 {
   "$GMSprite":"",
-  "%Name":"sprHuman_Head",
+  "%Name":"sprHuman_Head_Hair",
   "bboxMode":0,
-  "bbox_bottom":59,
-  "bbox_left":38,
-  "bbox_right":129,
-  "bbox_top":34,
+  "bbox_bottom":98,
+  "bbox_left":0,
+  "bbox_right":121,
+  "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"0a4c9a6f-8432-4d2f-87bf-b93b6624ff0c","name":"0a4c9a6f-8432-4d2f-87bf-b93b6624ff0c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"a739a798-b307-4491-9e0e-b7bca1ba451e","name":"a739a798-b307-4491-9e0e-b7bca1ba451e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -21,7 +21,7 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"2b63f984-3064-499a-8191-cc4d45ec6734","blendMode":0,"displayName":"default","isLocked":false,"name":"2b63f984-3064-499a-8191-cc4d45ec6734","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"sprHuman_Head",
+  "name":"sprHuman_Head_Hair",
   "nineSlice":null,
   "origin":0,
   "parent":{
@@ -33,7 +33,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"",
-    "%Name":"sprHuman_Head",
+    "%Name":"sprHuman_Head_Hair",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -57,7 +57,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"sprHuman_Head",
+    "name":"sprHuman_Head_Hair",
     "playback":1,
     "playbackSpeed":30.0,
     "playbackSpeedType":0,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"0a4c9a6f-8432-4d2f-87bf-b93b6624ff0c","path":"sprites/sprHuman_Head/sprHuman_Head.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"3d94a65f-e961-4b7a-9281-41395e641fff","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a739a798-b307-4491-9e0e-b7bca1ba451e","path":"sprites/sprHuman_Head_Hair/sprHuman_Head_Hair.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"599bbb54-2c26-44fc-b545-54039f5921e9","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
