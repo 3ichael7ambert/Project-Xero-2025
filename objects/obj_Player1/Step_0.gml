@@ -6,7 +6,7 @@ image_yscale=scale;
 // Set the custom collision bounding box
 //sprite_set_bbox(sprite_index, bbox_left, bbox_top, bbox_right, bbox_bottom);
 
-if (keyboard_check_pressed(vk_escape) {
+if (keyboard_check_pressed(vk_escape)) {
 	room_goto(rm_menu);
 }
 
