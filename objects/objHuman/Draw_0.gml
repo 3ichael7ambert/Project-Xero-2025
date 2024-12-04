@@ -19,6 +19,7 @@ switch (state) {
 
 // Draw the sprite with flipping
 		draw_sprite_ext(sprHuman_Body,img_idx_body,x,y,image_xscale,image_yscale,0,c_white,1);
+		
 		draw_sprite_ext(sprHuman_Pants,img_idx_pants,pants_x,pants_y,image_xscale,image_yscale,0,c_white,1);draw_sprite_ext(sprHuman_Body,image_index,x,y,image_xscale,image_yscale,0,c_white,1);
         draw_sprite_ext(sprHuman_Shirt,img_idx_shirt,shirt_x,shirt_y,image_xscale,image_yscale,0,c_white,1);
 		draw_sprite_ext(sprHuman_Shoes,img_idx_shoes,shoes_x,shoes_y,image_xscale,image_yscale,0,c_white,1);

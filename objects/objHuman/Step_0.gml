@@ -91,23 +91,24 @@ if distance_to_object(target) < 100 {
 
 
 
- head_x=x+lengthdir_x(50,75)*scale;
- head_y=y+lengthdir_y(50,75)*scale;
- eyes_x=head_x+lengthdir_x(50,75)*scale;
- eyes_y=head_y+lengthdir_y(50,75)*scale;
- eyelids_x=eyes_x+lengthdir_x(50,75)*scale;
- eyelids_y=eyes_y+lengthdir_y(50,75)*scale;
- mouth_x=head_x+lengthdir_x(50,75)*scale;
- mouth_y=head_y+lengthdir_y(50,75)*scale;
- nose_x=head_x+lengthdir_x(50,75)*scale;
- nose_y=head_y+lengthdir_y(50,75)*scale;
- eyebrows_x=eyes_x+lengthdir_x(50,75)*scale;
- eyebrows_y=eyes_y+lengthdir_y(50,75)*scale;
- shirt_x=x+lengthdir_x(50,75)*scale;
- shirt_y=y+lengthdir_y(50,75)*scale;
- pants_x=x+lengthdir_x(50,75)*scale;
- pants_y=y+lengthdir_y(50,75)*scale;
- shoes_x=x+lengthdir_x(50,75)*scale;
- shoes_y=y+lengthdir_y(50,75)*scale;
- hair_x=head_x+lengthdir_x(50,75)*scale;
- hair_y=head_y+lengthdir_y(50,75)*scale;
+head_x = x + lengthdir_x(120 * scale, 80);
+head_y = y + lengthdir_y(120 * scale, 80);
+
+eyes_x = head_x + lengthdir_x(100 * scale, 75);
+eyes_y = head_y + lengthdir_y(100 * scale, 75);
+eyelids_x = eyes_x + lengthdir_x(50 * scale, 75);
+eyelids_y = eyes_y + lengthdir_y(50 * scale, 75);
+mouth_x = head_x + lengthdir_x(50 * scale, 75);
+mouth_y = head_y + lengthdir_y(50 * scale, 75);
+nose_x = head_x + lengthdir_x(50 * scale, 75);
+nose_y = head_y + lengthdir_y(50 * scale, 75);
+eyebrows_x = eyes_x + lengthdir_x(50 * scale, 75);
+eyebrows_y = eyes_y + lengthdir_y(50 * scale, 75);
+shirt_x = x + lengthdir_x(125 * scale, 85);
+shirt_y = y + lengthdir_y(125 * scale, 85);
+pants_x = x + lengthdir_x(150 * scale, 75);
+pants_y = y + lengthdir_y(150 * scale, 75);
+shoes_x = x + lengthdir_x(10 * scale, 180);
+shoes_y = y + lengthdir_y(10 * scale, 180);
+hair_x = head_x + lengthdir_x(210 * scale, 80);
+hair_y = head_y + lengthdir_y(210 * scale, 80);
