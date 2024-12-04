@@ -7,6 +7,7 @@ grav = 0.5; // Gravity strength
 vsp = 0; // Vertical speed
 is_on_ground = false; // Is the NPC standing on the ground?
 
+scale=1;
 
  dir=choose("left","right");
  
@@ -29,6 +30,29 @@ is_on_ground = false; // Is the NPC standing on the ground?
  img_idx_hair=0;
  img_idx_mouth=0;
  
+ head_x=x+lengthdir_x(50,75)*scale;
+ head_y=y+lengthdir_y(50,75)*scale;
+ eyes_x=head_x+lengthdir_x(50,75)*scale;
+ eyes_y=head_y+lengthdir_y(50,75)*scale;
+ eyelids_x=eyes_x+lengthdir_x(50,75)*scale;
+ eyelids_y=eyes_y+lengthdir_y(50,75)*scale;
+ mouth_x=head_x+lengthdir_x(50,75)*scale;
+ mouth_y=head_y+lengthdir_y(50,75)*scale;
+ nose_x=head_x+lengthdir_x(50,75)*scale;
+ nose_y=head_y+lengthdir_y(50,75)*scale;
+ eyebrows_x=eyes_x+lengthdir_x(50,75)*scale;
+ eyebrows_y=eyes_y+lengthdir_y(50,75)*scale;
+ shirt_x=x+lengthdir_x(50,75)*scale;
+ shirt_y=y+lengthdir_y(50,75)*scale;
+ pants_x=x+lengthdir_x(50,75)*scale;
+ pants_y=y+lengthdir_y(50,75)*scale;
+ shoes_x=x+lengthdir_x(50,75)*scale;
+ shoes_y=y+lengthdir_y(50,75)*scale;
+ hair_x=head_x+lengthdir_x(50,75)*scale;
+ hair_y=head_y+lengthdir_y(50,75)*scale;
+ 
+ 
+ 
  // Create Event
 state = "idle"; // Start in the idle state
 speed = 0; // Start stationary
@@ -38,10 +62,10 @@ spr_dir=1;
 
  if direction == "left" {
     spr_dir=-1;
-	image_xscale = -1; // Flip the sprite horizontally
+	image_xscale = -1*scale; // Flip the sprite horizontally
 } else {
 	spr_dir=1;
-	image_xscale = 1;  // Default orientation
+	image_xscale = 1*scale;  // Default orientation
 }
 
 
