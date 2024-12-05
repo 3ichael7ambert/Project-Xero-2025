@@ -17,6 +17,8 @@ punch=false;
 chainsaw_blade=0;
 taser_img=0;
 
+wpn_cooldown=0;
+
 //sprites
 sprite_body=sprBody;
 sprite_body_offsetX=45;

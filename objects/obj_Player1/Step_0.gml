@@ -311,7 +311,7 @@ if (melee_button) {
 
 // Change weapon button
 if (change_weapon_button) {
-    // Code to handle changing weapons
+    weapon++;
 }
 
 // Pause menu button
@@ -811,7 +811,8 @@ sprite_set_bbox(sprXeroBlank, modified_bbox_left, modified_bbox_top, modified_bb
 
 
 
-
+if (weapon<0) {weapon=12;}
+if (weapon>=13) {weapon=0;}
 //BULLETS
 
 
@@ -825,12 +826,24 @@ if weapon=0 { //FIST
 		target=obj_Player1;
 		direction=target.armF_dir;
 		speed=10;
-		image_xscale=.5*target.scale;
-		image_yscale=.5*target.scale;
+		image_xscale=1*target.scale;
+		image_yscale=1*target.scale;
+		alarm[0]=10;///destroy
+		sprite_index=sprFist;
+		
 	}
 	}
 	if weapon=1 { //GUN
 		//draw_sprite_ext(sprGun, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	
+	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
+	with (bullet) {
+		target=obj_Player1;
+		direction=target.armF_dir;
+		speed=10;
+		image_xscale=.5*target.scale;
+		image_yscale=.5*target.scale;
+	}
 	
 	}
 	if weapon=2 { //GUN2

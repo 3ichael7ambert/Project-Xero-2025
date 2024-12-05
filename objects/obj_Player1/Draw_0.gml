@@ -200,10 +200,61 @@ if (facing_right)
     draw_sprite_ext(sprBody, image_index, body_x, body_y, scale, scale, image_angle, -1, 1);
 	draw_sprite_ext(sprHeadSanta, image_index, nx_head, ny_head, scale, scale, image_angle, -1, 1);
     draw_sprite_ext(sprEyes, image_index, nx_eyes, ny_eyes, scale, scale, head_direction, -1, 1);
-
+if weapon!=0 {
+	draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1);
+}
+	
 	if weapon=1 {
-		draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1);
-		draw_sprite_ext(sprGun, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprGun, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
+	}
+	if weapon=2 { //GUN2
+		draw_sprite_ext(sprGun2, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=3 { //GUN3
+		draw_sprite_ext(sprGun3, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=4 { //SWORD
+		draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=5 { //SHOTGUN
+		
+		draw_sprite_ext(sprShotgun, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=6 { //Raygun
+		
+		draw_sprite_ext(sprRayGun, 0, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprRayGun, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=7 { //Grenade
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprGrenadeLauncher, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=8 { //Rocket
+		draw_sprite_ext(sprRocketLauncher, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=9 { //SNIPER
+		draw_sprite_ext(sprSniper, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=10 { //FLAMETHROWER
+		draw_sprite_ext(sprFlamethrower, 0, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=11 { //TASER
+		draw_sprite_ext(sprTaser, 0, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprTaser, taser_img+1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		
+	}
+	if weapon=12 { //CHAINSAW
+		draw_sprite_ext(sprChainsaw, 0, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprChainsaw, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprChainsaw, chainsaw_blade+2, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		
 	}
 	
 	if walk=false && idle=true {
@@ -236,8 +287,12 @@ else
 	draw_sprite_ext(sprHeadSanta, image_index, nx_head, ny_head, -scale, scale, image_angle, -1, 1);
     draw_sprite_ext(sprEyes, image_index, nx_eyes, ny_eyes, -scale, scale, head_direction, -1, 1);
 	
-	if weapon=1 {
+	if weapon!=0 {
 		draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, -scale, scale, armF_dir+180, -1, 1);
+	}
+	
+	if weapon=1 {
+		//draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, -scale, scale, armF_dir+180, -1, 1);
 		draw_sprite_ext(sprGun, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	}
 	if walk=false && idle=true {
@@ -252,6 +307,66 @@ else
 		}
 		draw_sprite_ext(sprLeg2, walk_legF, nx_legF, ny_legF, -scale, scale, 0, -1, 1);
 	}
+	
+	
+	
+	if weapon=0 { //FIST
+		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=1 { //GUN
+		//draw_sprite_ext(sprGun, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=2 { //GUN2
+		draw_sprite_ext(sprGun2, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=3 { //GUN3
+		draw_sprite_ext(sprGun3, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=4 { //SWORD
+		draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=5 { //SHOTGUN
+		
+		draw_sprite_ext(sprShotgun, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=6 { //Raygun
+		
+		draw_sprite_ext(sprRayGun, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprRayGun, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=7 { //Grenade
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprGrenadeLauncher, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=8 { //Rocket
+		draw_sprite_ext(sprRocketLauncher, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=9 { //SNIPER
+		draw_sprite_ext(sprSniper, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=10 { //FLAMETHROWER
+		draw_sprite_ext(sprFlamethrower, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=11 { //TASER
+		draw_sprite_ext(sprTaser, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprTaser, taser_img+1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		
+	}
+	if weapon=12 { //CHAINSAW
+		draw_sprite_ext(sprChainsaw, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprChainsaw, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprChainsaw, chainsaw_blade+2, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		
+	}
+
+
 	
 }
 
@@ -362,10 +477,10 @@ ny_eyes = ny_head + lengthdir_y(crad_eyes*scale, cnext_eyes);
 nx_armF = cx + lengthdir_x(crad_armF*scale, cnext_armF);
 ny_armF = cy + lengthdir_y(crad_armF*scale, cnext_armF);
 nx_armB = cx + lengthdir_x(crad_armB*scale, cnext_armB);
-ny_armB = cy + lengthdir_y(crad_armB*scale, cnext_armB)
-;if (facing_right=true) {
-nx_fistF = nx_armF + lengthdir_x(crad_fistF*scale, cnext_fistF); ///
-ny_fistF = ny_armF + lengthdir_y(crad_fistF*scale, cnext_fistF); ///
+ny_armB = cy + lengthdir_y(crad_armB*scale, cnext_armB);
+if (facing_right=true) {
+nx_fistF = nx_armF + lengthdir_x(crad_fistF*scale, cnext_fistF); /// ARM2
+ny_fistF = ny_armF + lengthdir_y(crad_fistF*scale, cnext_fistF); /// ARMF2
 nx_fistB = nx_armB + lengthdir_x(crad_fistB*scale, cnext_fistB-65+hsp); ///
 ny_fistB = ny_armB + lengthdir_y(crad_fistB*scale, cnext_fistB-65+hsp); ///
 }
@@ -440,10 +555,59 @@ if (facing_right)
     draw_sprite_ext(sprEyes, image_index, nx_eyes-offsetX, ny_eyes+offsetY, scale, scale, head_direction, -1, 1);
 	draw_sprite_ext(sprArmArms, image_index, nx_armF-offsetX, ny_armF+offsetY, scale, scale, armF_dir, -1, 1);
 	if weapon=0 {
-		draw_sprite_ext(sprFist, image_index, nx_fistF-offsetX, ny_fistF+offsetY, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
 	}
 	if weapon=1 {
-		draw_sprite_ext(sprGun, image_index, nx_fistF-offsetX, ny_fistF+offsetY, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprGun, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
+	}
+	if weapon=2 { //GUN2
+		draw_sprite_ext(sprGun2, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=3 { //GUN3
+		draw_sprite_ext(sprGun3, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=4 { //SWORD
+		draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=5 { //SHOTGUN
+		
+		draw_sprite_ext(sprShotgun, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=6 { //Raygun
+		
+		draw_sprite_ext(sprRayGun, 0, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprRayGun, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=7 { //Grenade
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprGrenadeLauncher, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=8 { //Rocket
+		draw_sprite_ext(sprRocketLauncher, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=9 { //SNIPER
+		draw_sprite_ext(sprSniper, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=10 { //FLAMETHROWER
+		draw_sprite_ext(sprFlamethrower, 0, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=11 { //TASER
+		draw_sprite_ext(sprTaser, 0, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprTaser, taser_img+1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		
+	}
+	if weapon=12 { //CHAINSAW
+		draw_sprite_ext(sprChainsaw, 0, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprChainsaw, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprChainsaw, chainsaw_blade+2, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		
 	}
 	
 	draw_sprite_ext(sprLeg, image_index, nx_legF-offsetX, ny_legF+offsetY, scale, scale, 0, -1, 1);
@@ -459,12 +623,66 @@ else
 	draw_sprite_ext(sprHeadSanta, image_index, nx_head-offsetX, ny_head+offsetY, -scale, scale, image_angle, -1, 1);
     draw_sprite_ext(sprEyes, image_index, nx_eyes-offsetX, ny_eyes+offsetY, -scale, scale, head_direction, -1, 1);
 	draw_sprite_ext(sprArmArms, image_index, nx_armF-offsetX, ny_armF+offsetY, -scale, scale, armF_dir+180, -1, 1);
-	if weapon=0 {
-		draw_sprite_ext(sprFist, image_index, nx_fistF-offsetX, ny_fistF+offsetY, -scale, scale, armF_dir+180, -1, 1); ///
+	if weapon=0 { //FIST
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	}
-	if weapon=1 {
-		draw_sprite_ext(sprGun, image_index, nx_fistF-offsetX, ny_fistF+offsetY, -scale, scale, armF_dir+180, -1, 1); ///
+	if weapon=1 { //GUN
+		draw_sprite_ext(sprGun, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	}
+	if weapon=2 { //GUN2
+		draw_sprite_ext(sprGun2, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=3 { //GUN3
+		draw_sprite_ext(sprGun3, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=4 { //SWORD
+		draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=5 { //SHOTGUN
+		
+		draw_sprite_ext(sprShotgun, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=6 { //Raygun
+		
+		draw_sprite_ext(sprRayGun, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprRayGun, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=7 { //Grenade
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprGrenadeLauncher, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=8 { //Rocket
+		draw_sprite_ext(sprRocketLauncher, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=9 { //SNIPER
+		draw_sprite_ext(sprSniper, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=10 { //FLAMETHROWER
+		draw_sprite_ext(sprFlamethrower, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	}
+	if weapon=11 { //TASER
+		draw_sprite_ext(sprTaser, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprTaser, taser_img+1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		
+	}
+	if weapon=12 { //CHAINSAW
+		draw_sprite_ext(sprChainsaw, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprChainsaw, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		draw_sprite_ext(sprChainsaw, chainsaw_blade+2, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		
+	}
+
+	
+	
+	
+	
 	draw_sprite_ext(sprLeg, image_index, nx_legF-offsetX, ny_legF+offsetY, -scale, scale, 0, -1, 1);
 
 
@@ -648,12 +866,63 @@ if (facing_right)
 	draw_sprite_ext(sprHeadSanta, image_index, nx_head, ny_head, scale, scale, image_angle, -1, 1);
     draw_sprite_ext(sprEyes, image_index, nx_eyes, ny_eyes, scale, scale, head_direction, -1, 1);
 	draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1);
+	
 	if weapon=0 {
 		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
 	}
 	if weapon=1 {
 		draw_sprite_ext(sprGun, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
 	}
+	if weapon=2 { //GUN2
+		draw_sprite_ext(sprGun2, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=3 { //GUN3
+		draw_sprite_ext(sprGun3, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=4 { //SWORD
+		draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=5 { //SHOTGUN
+		
+		draw_sprite_ext(sprShotgun, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=6 { //Raygun
+		
+		draw_sprite_ext(sprRayGun, 0, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprRayGun, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=7 { //Grenade
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprGrenadeLauncher, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=8 { //Rocket
+		draw_sprite_ext(sprRocketLauncher, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=9 { //SNIPER
+		draw_sprite_ext(sprSniper, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=10 { //FLAMETHROWER
+		draw_sprite_ext(sprFlamethrower, 0, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if weapon=11 { //TASER
+		draw_sprite_ext(sprTaser, 0, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprTaser, taser_img+1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		
+	}
+	if weapon=12 { //CHAINSAW
+		draw_sprite_ext(sprChainsaw, 0, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprChainsaw, 1, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		draw_sprite_ext(sprChainsaw, chainsaw_blade+2, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+		
+	}
+	
 	draw_sprite_ext(sprLeg3, image_index, nx_legF, ny_legF, scale, scale, 0, -1, 1);
 }
 else
