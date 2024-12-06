@@ -399,9 +399,9 @@ if (facing_right)
 //cdir = point_direction(cx, cy, x, y);//image_angle+180;
 crad_head = 115; // Adjust the radius value as per your requirements
 crad_eyes = 65; // Adjust the radius value as per your requirements
-crad_armF = 85; // Adjust the radius value as per your requirements
+crad_armF = 95; // Adjust the radius value as per your requirements
 crad_armB = 95; // Adjust the radius value as per your requirements
-crad_fistF = 85; // Adjust the radius value as per your requirements ///
+crad_fistF = 83; // Adjust the radius value as per your requirements ///
 crad_fistB = 80; // Adjust the radius value as per your requirements ///
 crad_legF = 1; // Adjust the radius value as per your requirements
 crad_legB = 25; // Adjust the radius value as per your requirements
@@ -425,7 +425,7 @@ crad_head = 115; // Adjust the radius value as per your requirements
 crad_eyes = 65; // Adjust the radius value as per your requirements
 crad_armF = 85; // Adjust the radius value as per your requirements
 crad_armB = 95; // Adjust the radius value as per your requirements
-crad_fistF = 70; // Adjust the radius value as per your requirements ///
+crad_fistF = 80; // Adjust the radius value as per your requirements ///
 crad_fistB = 70; // Adjust the radius value as per your requirements ///
 crad_legF = 1; // Adjust the radius value as per your requirements
 crad_legB = 25; // Adjust the radius value as per your requirements
@@ -478,15 +478,16 @@ nx_armF = cx + lengthdir_x(crad_armF*scale, cnext_armF);
 ny_armF = cy + lengthdir_y(crad_armF*scale, cnext_armF);
 nx_armB = cx + lengthdir_x(crad_armB*scale, cnext_armB);
 ny_armB = cy + lengthdir_y(crad_armB*scale, cnext_armB);
+
 if (facing_right=true) {
-nx_fistF = nx_armF + lengthdir_x(crad_fistF*scale, cnext_fistF); /// ARM2
-ny_fistF = ny_armF + lengthdir_y(crad_fistF*scale, cnext_fistF); /// ARMF2
+nx_fistF = nx_armF + lengthdir_x((crad_fistF)*scale, cnext_fistF) -(32*scale); /// ARM2
+ny_fistF = ny_armF + lengthdir_y((crad_fistF)*scale, cnext_fistF)+(76*scale); /// ARMF2
 nx_fistB = nx_armB + lengthdir_x(crad_fistB*scale, cnext_fistB-65+hsp); ///
 ny_fistB = ny_armB + lengthdir_y(crad_fistB*scale, cnext_fistB-65+hsp); ///
 }
 if (facing_right==false) {
-nx_fistF = nx_armF + lengthdir_x(crad_fistF*scale, armF_dir); ///
-ny_fistF = ny_armF + lengthdir_y(crad_fistF*scale, armF_dir); ///
+nx_fistF = nx_armF + lengthdir_x((crad_fistF)*scale, armF_dir)+(22*scale); ///
+ny_fistF = ny_armF + lengthdir_y((crad_fistF)*scale, armF_dir)+(77*scale); ///
 nx_fistB = nx_armB + lengthdir_x(crad_fistB*scale, cnext_fistB+65-hsp); ///
 ny_fistB = ny_armB + lengthdir_y(crad_fistB*scale, cnext_fistB+65-hsp); ///
 }

@@ -11,6 +11,7 @@ jumpSpeed = 23; // Jump speed
 jumpHeight = 10;
 isJumping=false;
 scale=.2;
+//scale=1;
 
 weapon=0;
 punch=false;
