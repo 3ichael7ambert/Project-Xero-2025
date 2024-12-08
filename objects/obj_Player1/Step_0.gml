@@ -810,10 +810,20 @@ sprite_set_bbox(sprXeroBlank, modified_bbox_left, modified_bbox_top, modified_bb
 
 
 
-
+//Weapon Limits
 if (weapon<0) {weapon=12;}
 if (weapon>=13) {weapon=0;}
-//BULLETS
+// Weapon Ammo Control
+
+//Weapon Cooldown
+if (wpn_cooldown>0)
+{
+	wpn_cooldown--;
+}
+if (wpn_cooldown<0)
+{
+	wpn_cooldown=0;
+}
 
 
 //BULLETS
@@ -843,14 +853,29 @@ if weapon=0 { //FIST
 		speed=10;
 		image_xscale=.5*target.scale;
 		image_yscale=.5*target.scale;
+		wpn_cooldown=2;
 	}
 	
 	}
 	if weapon=2 { //GUN2
 		//draw_sprite_ext(sprGun2, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		bullet = instance_create(nx_fistF,ny_fistF,objBullet);
+	with (bullet) {
+		target=obj_Player1;
+		direction=target.armF_dir;
+		speed=10;
+		image_xscale=1*target.scale;
+		image_yscale=1*target.scale;
 	}
 	if weapon=3 { //GUN3
 		//draw_sprite_ext(sprGun3, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		bullet = instance_create(nx_fistF,ny_fistF,objBullet);
+	with (bullet) {
+		target=obj_Player1;
+		direction=target.armF_dir;
+		speed=10;
+		image_xscale=1.5*target.scale;
+		image_yscale=1.5*target.scale;
 	}
 	if weapon=4 { //SWORD
 		//draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
