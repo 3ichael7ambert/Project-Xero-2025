@@ -1,13 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"objBullet",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"objHumanParent",
+  "eventList":[],
   "managed":true,
-  "name":"objBullet",
+  "name":"objHumanParent",
   "overriddenProperties":[],
   "parent":{
     "name":"Project Xero",
@@ -31,10 +27,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"sprBullet",
-    "path":"sprites/sprBullet/sprBullet.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

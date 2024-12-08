@@ -1,5 +1,7 @@
 target=undefined;
 homing=false;
+life_limit=false;
+life_countdown=0;
 
 /*
 if target.weapon=0 { //FIST
@@ -11,6 +13,9 @@ if target.weapon=0 { //FIST
 		speed=10;
 		image_xscale=.5*target.scale;
 		image_yscale=.5*target.scale;
+		
+		
+		sprite_index=sprFist;
 	}
 	}
 	if weapon=1 { //GUN
