@@ -2,6 +2,9 @@ target=undefined;
 homing=false;
 life_limit=false;
 life_countdown=0;
+grav=0;
+
+
 
 /*
 if target.weapon=0 { //FIST
@@ -73,3 +76,7 @@ if target.weapon=0 { //FIST
 	}
 
 }*/
+
+if (homing==true) {
+	
+}
