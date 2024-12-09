@@ -27,10 +27,14 @@ if (keyboard_check_pressed(ord(3)))
 }
 
 if (keyboard_check_pressed(ord("X"))) {
+	wpn_btn_dir="down";
 	weapon-=1;
+	
 }
 if (keyboard_check_pressed(ord("C"))) {
+	wpn_btn_dir="up";
 	weapon+=1;
+	
 }
 
 

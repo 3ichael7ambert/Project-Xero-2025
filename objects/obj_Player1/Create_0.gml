@@ -12,6 +12,7 @@ jumpHeight = 10;
 isJumping=false;
 scale=.2;
 //scale=1;
+wpn_btn_dir="up";
 
 weapon=0;
 punch=false;
