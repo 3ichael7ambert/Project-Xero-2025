@@ -1,9 +1,11 @@
 target=undefined;
+parent=undefined;
 homing=false;
 life_limit=false;
 life_countdown=0;
+decay=room_speed*2;
 grav=0;
-
+weapon=0;
 
 
 /*

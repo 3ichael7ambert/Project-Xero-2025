@@ -416,6 +416,7 @@
     {"name":"sprite4","order":4,"path":"sprites/sprite4/sprite4.yy",},
     {"name":"spriteBox","order":13,"path":"sprites/spriteBox/spriteBox.yy",},
     {"name":"sprJetBack","order":16,"path":"sprites/sprJetBack/sprJetBack.yy",},
+    {"name":"sprLaser","order":32,"path":"sprites/sprLaser/sprLaser.yy",},
     {"name":"sprLava","order":148,"path":"sprites/sprLava/sprLava.yy",},
     {"name":"sprLeg","order":17,"path":"sprites/sprLeg/sprLeg.yy",},
     {"name":"sprLeg1","order":18,"path":"sprites/sprLeg1/sprLeg1.yy",},

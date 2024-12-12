@@ -505,6 +505,7 @@
     {"id":{"name":"sprite4","path":"sprites/sprite4/sprite4.yy",},},
     {"id":{"name":"spriteBox","path":"sprites/spriteBox/spriteBox.yy",},},
     {"id":{"name":"sprJetBack","path":"sprites/sprJetBack/sprJetBack.yy",},},
+    {"id":{"name":"sprLaser","path":"sprites/sprLaser/sprLaser.yy",},},
     {"id":{"name":"sprLava","path":"sprites/sprLava/sprLava.yy",},},
     {"id":{"name":"sprLeg","path":"sprites/sprLeg/sprLeg.yy",},},
     {"id":{"name":"sprLeg1","path":"sprites/sprLeg1/sprLeg1.yy",},},
