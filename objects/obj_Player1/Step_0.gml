@@ -940,8 +940,27 @@ if weapon=0 { //FIST
 	check_y=lengthdir_y(2000,dir;)
 	collision_line(origin_x, origin_y, check_x, check_y, target, false, false);
 	
-	
+	//
+	//
+	var x_start = x; // Starting x-coordinate (e.g., laser's current position)
+    var y_start = y; // Starting y-coordinate (e.g., laser's current position)
+    var laser_angle = 45; // Initial angle of the laser in degrees
+    var max_bounces = 5; // Maximum number of bounces
+    var wall_object = objCityParent_Skyline; // The object the laser can collide with
+
+    // Call the bounce_raycast function
+    var laser_path = bounce_raycast(x_start, y_start, laser_angle, max_bounces, wall_object);
+
+    // Draw the laser's path for visualization
+    for (var i = 0; i < array_length(laser_path) - 1; i++) {
+        var start_point = laser_path[i];
+        var end_point = laser_path[i + 1];
+
+        draw_line(start_point[0], start_point[1], end_point[0], end_point[1]);
+	//
+	//
 	}
+	
 	if weapon=7 { //Grenade
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprGrenadeLauncher, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
