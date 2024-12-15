@@ -7,6 +7,7 @@ decay=room_speed*2;
 grav=0;
 weapon=0;
 
+hitbox=false;
 
 /*
 if target.weapon=0 { //FIST
