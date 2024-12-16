@@ -994,6 +994,14 @@ if weapon=0 { //FIST
 		image_yscale=.5*parent.scale;
 		life_countdown=10;
 		life_limit=true;
+		bounce = true;
+		grav = 0;           // Initial vertical speed
+		grav_accel = 0.5;   // Acceleration due to gravity
+		grav_max = 10;      // Maximum falling speed
+		bounce_factor = -0.8; // How much energy is retained after bouncing (-1 = perfect bounce, less than -1 = energy loss)
+		h_speed = 4;         // Horizontal speed
+		h_friction = 0.98;   // Friction applied to horizontal movement	
+		floor_obj = obj_block_64;
 	}
 	
 	}

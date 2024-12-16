@@ -22,3 +22,43 @@ if  instance_exists(target) {
 	image_angle=direction;
 	 instance_create(x, y, objTrail);
 }
+
+
+if (bounce==true) {
+	
+	
+// Apply gravity
+if place_empty(x, y + grav,floor_obj) {
+    grav += grav_accel; // Accelerate the ball downward
+    if (grav > grav_max) grav = grav_max; // Limit falling speed
+    y += grav; // Apply the gravity movement
+} else {
+    // Bounce logic: reverse the velocity and apply bounce factor
+    grav *= bounce_factor; // Reverse direction and reduce speed due to energy loss
+
+    // Adjust position to ensure it doesn't "sink" into the surface
+    while (!place_free(x, y + sign(grav))) {
+        y -= sign(grav);
+    }
+}
+
+// Optional: Stop bouncing if gravity becomes very small
+if abs(grav) < 0.2 {
+    grav = 0;
+}
+
+
+	// Horizontal movement
+if place_free(x + h_speed, y) {
+    x += h_speed; // Move left or right
+} else {
+    h_speed = -h_speed * bounce_factor; // Reverse direction on collision
+}
+
+// Apply friction
+h_speed *= h_friction;
+if abs(h_speed) < 0.1 {
+    h_speed = 0; // Stop rolling if speed is too low
+}
+
+}
