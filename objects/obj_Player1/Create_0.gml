@@ -13,6 +13,7 @@ isJumping=false;
 scale=.2;
 //scale=1;
 wpn_btn_dir="up";
+wpn_charge=0;
 
 weapon=0;
 punch=false;
