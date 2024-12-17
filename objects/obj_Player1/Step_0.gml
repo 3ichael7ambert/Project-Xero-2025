@@ -888,6 +888,7 @@ if weapon=0 { //FIST
 		life_countdown=10;
 		life_limit=true;
 	}
+	}
 	
 	if weapon=3 { //GUN3
 		//draw_sprite_ext(sprGun3, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
@@ -904,6 +905,9 @@ if weapon=0 { //FIST
 		life_countdown=10;
 		life_limit=true;
 	}
+	
+	}
+	
 	
 	if weapon=4 { //SWORD
 		//draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
@@ -952,8 +956,8 @@ if weapon=0 { //FIST
 	dir=parent.armF_dir;
 	origin_x=parent.nx_fistF;
 	origin_y=parent.ny_fistF;
-	check_x=lengthdir_x(2000,dir;)
-	check_y=lengthdir_y(2000,dir;)
+	check_x=lengthdir_x(2000,dir);
+	check_y=lengthdir_y(2000,dir);
 	collision_line(origin_x, origin_y, check_x, check_y, target, false, false);
 	
 	//
@@ -1069,7 +1073,8 @@ if weapon=0 { //FIST
 		//draw_sprite_ext(sprTaser, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprTaser, taser_img+1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
-		
+	taser_img++;
+	
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
 	wpn_cooldown=2;
 	with (bullet) {
@@ -1093,6 +1098,8 @@ if weapon=0 { //FIST
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprChainsaw, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprChainsaw, chainsaw_blade+2, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		chainsaw_blade++;
+		
 		bullet = instance_create(nx_fistF,ny_fistF,objBullet);
 	wpn_cooldown=2;
 	with (bullet) {
@@ -1119,3 +1126,4 @@ if weapon=0 { //FIST
 
 
 
+	

@@ -1,0 +1,25 @@
+{
+  "$GMParticleSystem":"",
+  "%Name":"part_flamethrower",
+  "backdropHeight":768,
+  "backdropImageOpacity":0.5,
+  "backdropImagePath":"",
+  "backdropWidth":1366,
+  "backdropXOffset":0.0,
+  "backdropYOffset":0.0,
+  "drawOrder":0,
+  "emitters":[
+    {"$GMPSEmitter":"","%Name":"GM_FlameIntensity","additiveBlend":true,"directionIncrease":0.0,"directionMax":28.0,"directionMin":356.0,"directionWiggle":0.0,"distribution":1,"editorColour":16777215,"editorDrawShape":true,"emitCount":7,"emitDelayMax":0.0,"emitDelayMin":0.0,"emitDelayUnits":0,"emitIntervalMax":0.0,"emitIntervalMin":0.0,"emitIntervalUnits":0,"enabled":true,"endColour":37119,"GMPresetName":"","gravityDirection":270.0,"gravityForce":0.0,"headPosition":0.0,"lifetimeMax":12.0,"lifetimeMin":8.0,"linkedEmitter":null,"locked":false,"midColour":1160163327,"mode":0,"name":"GM_FlameIntensity","orientationIncrease":0.0,"orientationMax":321.0,"orientationMin":73.0,"orientationRelative":false,"orientationWiggle":0.0,"regionH":1.0,"regionW":26.0,"regionX":0.0,"regionY":6.0,"resourceType":"GMPSEmitter","resourceVersion":"2.0","scaleX":0.5,"scaleY":0.5,"shape":3,"sizeIncrease":0.0,"sizeMax":0.4,"sizeMin":0.2,"sizeWiggle":0.0,"spawnOnDeathCount":0,"spawnOnDeathGMPreset":null,"spawnOnDeathId":null,"spawnOnUpdateCount":0,"spawnOnUpdateGMPreset":null,"spawnOnUpdateId":null,"speedIncrease":0.0,"speedMax":6.0,"speedMin":3.0,"speedWiggle":0.0,"spriteAnimate":false,"spriteId":null,"spriteRandom":false,"spriteStretch":true,"startColour":4290903551,"texture":10,},
+  ],
+  "name":"part_flamethrower",
+  "parent":{
+    "name":"Project Xero",
+    "path":"Project Xero.yyp",
+  },
+  "resourceType":"GMParticleSystem",
+  "resourceVersion":"2.0",
+  "showBackdrop":true,
+  "showBackdropImage":false,
+  "xorigin":0,
+  "yorigin":0,
+}
