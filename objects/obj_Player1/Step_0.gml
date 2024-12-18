@@ -829,12 +829,33 @@ if (wpn_cooldown<0)
 	wpn_cooldown=0;
 }
 
+if (keyboard_check(ord("A")) && wpn_charge<10)
+{
+	wpn_charge+=.2;
+}
+if (!keyboard_check(ord("A"))) {	
+	wpn_charge=0;	
+}
 
-//BULLETS
+
+//BULLETS SYSTEM
+if (punch=true) {
+	punch_img_idx++;	
+}
+if (punch_img_idx>10) {
+	punch=false;
+	punch_img_idx=0;
+}
+
 if (facing_right && keyboard_check(ord("A")) && wpn_cooldown==0) {
 	
 if weapon=0 { //FIST
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	
+	
+		punch=true;
+		wpn_cooldown=10;
+	/*
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
 	wpn_cooldown=2;
 	with (bullet) {
@@ -848,13 +869,16 @@ if weapon=0 { //FIST
 		//alarm[0]=10;///destroy
 		sprite_index=sprFist;
 		life_countdown=parent.bullet_life;
-		life_limit=true;
-
-		
+		life_limit=true;		
 	}
+	*/
+	
+	
 	}
 	if weapon=1 { //GUN
 		//draw_sprite_ext(sprGun, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	
+
 	
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
 	wpn_cooldown=2;
@@ -1042,16 +1066,17 @@ if weapon=0 { //FIST
 	with (bullet) {
 		parent=obj_Player1;
 		weapon=7;
-		depth=parent.depth+1;
+		depth=parent.depth-1;
 		sprite_index=sprGrenade;
 		direction=parent.armF_dir;
 		speed=10;
+		//speed=parent.wpn_charge;
 		image_xscale=.5*parent.scale;
 		image_yscale=.5*parent.scale;
 		life_countdown=parent.bullet_life;
 		life_limit=true;
 		bounce = true;
-		grav = 0;           // Initial vertical speed
+		grav = 10;           // Initial vertical speed
 		grav_accel = 0.5;   // Acceleration due to gravity
 		grav_max = 10;      // Maximum falling speed
 		bounce_factor = -0.8; // How much energy is retained after bouncing (-1 = perfect bounce, less than -1 = energy loss)
@@ -1151,6 +1176,11 @@ if weapon=0 { //FIST
 		//draw_sprite_ext(sprChainsaw, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprChainsaw, chainsaw_blade+2, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		chainsaw_blade++;
+		
+		var partSysSmoke = part_system_create(part_smoke);
+		part_system_position(partSysSmoke,nx_fistF,ny_fistF);
+		part_system_depth(partSysSmoke,depth-10);
+		
 		if !instance_exists(objHitbox)
 		{
 		hitbox = instance_create(nx_fistF,ny_fistF,objBullet);
@@ -1180,7 +1210,9 @@ if weapon=0 { //FIST
 
 
 
-
+if (weapon!=12 || !keyboard_check(ord("A"))) {
+	//part_system_destroy(partSysSmoke);
+}
 
 
 	

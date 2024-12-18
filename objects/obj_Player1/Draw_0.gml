@@ -556,7 +556,12 @@ if (facing_right)
     draw_sprite_ext(sprEyes, image_index, nx_eyes-offsetX, ny_eyes+offsetY, scale, scale, head_direction, -1, 1);
 	draw_sprite_ext(sprArmArms, image_index, nx_armF-offsetX, ny_armF+offsetY, scale, scale, armF_dir, -1, 1);
 	if weapon=0 {
-		draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
+		if (punch=false) {
+			draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
+		}
+		if (punch=true) {
+			draw_sprite_ext(sprArmPunch, punch_img_idx, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
+		}
 	}
 	if weapon=1 {
 		draw_sprite_ext(sprGun, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
