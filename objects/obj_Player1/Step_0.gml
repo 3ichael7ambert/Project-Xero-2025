@@ -847,7 +847,7 @@ if weapon=0 { //FIST
 		image_yscale=1*parent.scale;
 		//alarm[0]=10;///destroy
 		sprite_index=sprFist;
-		life_countdown=10;
+		life_countdown=parent.bullet_life;
 		life_limit=true;
 
 		
@@ -868,7 +868,7 @@ if weapon=0 { //FIST
 		image_yscale=.5*parent.scale;
 		//wpn_cooldown=2;
 		
-		life_countdown=10;
+		life_countdown=parent.bullet_life;
 		life_limit=true;
 	}
 	
@@ -885,7 +885,7 @@ if weapon=0 { //FIST
 		speed=10;
 		image_xscale=1*parent.scale;
 		image_yscale=1*parent.scale;
-		life_countdown=10;
+		life_countdown=parent.bullet_life;
 		life_limit=true;
 	}
 	}
@@ -902,7 +902,7 @@ if weapon=0 { //FIST
 		speed=10;
 		image_xscale=1*parent.scale;
 		image_yscale=1*parent.scale;
-		life_countdown=10;
+		life_countdown=parent.bullet_life;
 		life_limit=true;
 	}
 	
@@ -921,7 +921,7 @@ if weapon=0 { //FIST
 		speed=10;
 		image_xscale=1.5*parent.scale;
 		image_yscale=1.5*parent.scale;
-		life_countdown=10;
+		life_countdown=parent.bullet_life;
 		life_limit=true;
 		hitbox=true;
 	}
@@ -931,19 +931,71 @@ if weapon=0 { //FIST
 		
 		//draw_sprite_ext(sprShotgun, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+		wpn_cooldown=12;
+		
 		bullet = instance_create(nx_fistF,ny_fistF,objBullet);
-		wpn_cooldown=2;
+		bullet2 = instance_create(nx_fistF,ny_fistF,objBullet);
+		bullet3 = instance_create(nx_fistF,ny_fistF,objBullet);
+		bullet4 = instance_create(nx_fistF,ny_fistF,objBullet);
+		bullet5 = instance_create(nx_fistF,ny_fistF,objBullet);
+	
 		with (bullet) {
 		parent=obj_Player1;
 		weapon=6;
 		depth=parent.depth+1;
-		direction=parent.armF_dir;
-		speed=10;
-		image_xscale=1.5*parent.scale;
-		image_yscale=1.5*parent.scale;
-		life_countdown=10;
+		direction=parent.armF_dir-5+random(10);
+		speed=10+random(2);
+		image_xscale=.5*parent.scale;
+		image_yscale=.5*parent.scale;
+		life_countdown=parent.bullet_life;
+		life_limit=true;
+	}	
+		with (bullet2) {
+		parent=obj_Player1;
+		weapon=6;
+		depth=parent.depth+1;
+		direction=parent.armF_dir-5+random(10);
+		speed=10+random(2);
+		image_xscale=.5*parent.scale;
+		image_yscale=.5*parent.scale;
+		life_countdown=parent.bullet_life;
+		life_limit=true;
+	}	
+		with (bullet3) {
+		parent=obj_Player1;
+		weapon=6;
+		depth=parent.depth+1;
+		direction=parent.armF_dir-5+random(10);
+		speed=10+random(2);
+		image_xscale=.5*parent.scale;
+		image_yscale=.5*parent.scale;
+		life_countdown=parent.bullet_life;
+		life_limit=true;
+	}	
+		with (bullet4) {
+		parent=obj_Player1;
+		weapon=6;
+		depth=parent.depth+1;
+		direction=parent.armF_dir-5+random(10);
+		speed=10+random(2);
+		image_xscale=.5*parent.scale;
+		image_yscale=.5*parent.scale;
+		life_countdown=parent.bullet_life;
+		life_limit=true;
+	}	
+		with (bullet5) {
+		parent=obj_Player1;
+		weapon=6;
+		depth=parent.depth+1;
+		direction=parent.armF_dir-5+random(10);
+		speed=10+random(2);
+		image_xscale=.5*parent.scale;
+		image_yscale=.5*parent.scale;
+		life_countdown=parent.bullet_life;
 		life_limit=true;
 	}
+	
+	
 	
 	}
 	if weapon=6 { //Raygun
@@ -996,7 +1048,7 @@ if weapon=0 { //FIST
 		speed=10;
 		image_xscale=.5*parent.scale;
 		image_yscale=.5*parent.scale;
-		life_countdown=10;
+		life_countdown=parent.bullet_life;
 		life_limit=true;
 		bounce = true;
 		grav = 0;           // Initial vertical speed
@@ -1017,7 +1069,7 @@ if weapon=0 { //FIST
 	wpn_cooldown=2;
 	with (bullet) {
 		parent=obj_Player1;
-		weapon=7;
+		weapon=8;
 		homing=true;
 			target = instance_nearest(x, y, objEnemy);
 		depth=parent.depth+1;
@@ -1026,7 +1078,7 @@ if weapon=0 { //FIST
 		speed=10;
 		image_xscale=.5*parent.scale;
 		image_yscale=.5*parent.scale;
-		life_countdown=10;
+		life_countdown=parent.bullet_life;
 		life_limit=true;
 	}
 	
@@ -1038,14 +1090,14 @@ if weapon=0 { //FIST
 	wpn_cooldown=2;
 	with (bullet) {
 		parent=obj_Player1;
-		weapon=7;
+		weapon=9;
 		depth=parent.depth+1;
 		sprite_index=sprGrenade;
 		direction=parent.armF_dir;
 		speed=10;
 		image_xscale=.5*parent.scale;
 		image_yscale=.5*parent.scale;
-		life_countdown=10;
+		life_countdown=parent.bullet_life;
 		life_limit=true;
 	}
 	
@@ -1058,7 +1110,7 @@ if weapon=0 { //FIST
 	wpn_cooldown=2;
 	with (bullet) {
 		parent=obj_Player1;
-		weapon=7;
+		weapon=10;
 		depth=parent.depth+1;
 		sprite_index=sprGrenade;
 		direction=parent.armF_dir;
@@ -1079,7 +1131,7 @@ if weapon=0 { //FIST
 	wpn_cooldown=2;
 	with (bullet) {
 		parent=obj_Player1;
-		weapon=7;
+		weapon=11;
 		depth=parent.depth+1;
 		sprite_index=sprGrenade;
 		direction=parent.armF_dir;
@@ -1087,7 +1139,7 @@ if weapon=0 { //FIST
 		image_xscale=.5*parent.scale;
 		image_yscale=.5*parent.scale;
 		hitbox=true;
-		life_countdown=10;
+		life_countdown=parent.bullet_life;
 		life_limit=true;
 	}
 	
@@ -1099,20 +1151,25 @@ if weapon=0 { //FIST
 		//draw_sprite_ext(sprChainsaw, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprChainsaw, chainsaw_blade+2, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		chainsaw_blade++;
-		
-		bullet = instance_create(nx_fistF,ny_fistF,objBullet);
+		if !instance_exists(objHitbox)
+		{
+		hitbox = instance_create(nx_fistF,ny_fistF,objBullet);
 	wpn_cooldown=2;
-	with (bullet) {
+	with (hitbox) {
 		parent=obj_Player1;
-		weapon=7;
+		weapon=12;
 		hitbox=true;
+		xx=parent.nx_fistF;
+		yy=parent.nx_fistF;
 		depth=parent.depth+1;
-		sprite_index=sprGrenade;
+		sprite_index=sprChainsaw;
 		direction=parent.armF_dir;
-		speed=10;
-		image_xscale=.5*parent.scale;
-		image_yscale=.5*parent.scale;
-	}
+		//speed=0;
+		image_xscale=parent.image_xscale;
+		image_yscale=parent.image_yscale;
+				}
+		
+		}
 		
 	}
 

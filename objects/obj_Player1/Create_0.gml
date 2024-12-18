@@ -14,6 +14,7 @@ scale=.2;
 //scale=1;
 wpn_btn_dir="up";
 wpn_charge=0;
+bullet_life=2000;
 
 weapon=0;
 punch=false;
