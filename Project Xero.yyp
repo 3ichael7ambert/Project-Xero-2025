@@ -221,6 +221,8 @@
     {"id":{"name":"part_electricity","path":"particles/part_electricity/part_electricity.yy",},},
     {"id":{"name":"part_embers","path":"particles/part_embers/part_embers.yy",},},
     {"id":{"name":"part_flamethrower","path":"particles/part_flamethrower/part_flamethrower.yy",},},
+    {"id":{"name":"part_gunBurst","path":"particles/part_gunBurst/part_gunBurst.yy",},},
+    {"id":{"name":"part_jetpack","path":"particles/part_jetpack/part_jetpack.yy",},},
     {"id":{"name":"part_smoke","path":"particles/part_smoke/part_smoke.yy",},},
     {"id":{"name":"part_spark","path":"particles/part_spark/part_spark.yy",},},
     {"id":{"name":"path_0","path":"paths/path_0/path_0.yy",},},

@@ -164,6 +164,8 @@
     {"name":"part_electricity","order":187,"path":"particles/part_electricity/part_electricity.yy",},
     {"name":"part_embers","order":186,"path":"particles/part_embers/part_embers.yy",},
     {"name":"part_flamethrower","order":183,"path":"particles/part_flamethrower/part_flamethrower.yy",},
+    {"name":"part_gunBurst","order":196,"path":"particles/part_gunBurst/part_gunBurst.yy",},
+    {"name":"part_jetpack","order":195,"path":"particles/part_jetpack/part_jetpack.yy",},
     {"name":"part_smoke","order":181,"path":"particles/part_smoke/part_smoke.yy",},
     {"name":"part_spark","order":182,"path":"particles/part_spark/part_spark.yy",},
     {"name":"path_1","order":1,"path":"paths/path_1/path_1.yy",},

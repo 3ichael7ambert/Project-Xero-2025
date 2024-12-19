@@ -143,6 +143,8 @@ else {
     
     var shoot_button = keyboard_check_pressed(ord("Z"));
     var melee_button = keyboard_check_pressed(ord("X"));
+	var wpn_chg_up = keyboard_check_pressed(ord("C"));
+	var wpn_chg_down = keyboard_check_pressed(ord("x"));
     var change_weapon_button = keyboard_check_pressed(ord("C"));
     var pause_button = keyboard_check_pressed(vk_escape);
 }
@@ -160,6 +162,7 @@ if (jetpack_mode==1)
 			walk=true;
 			idle=false;
 			wall_direction = -1;
+			//walk_armF++;
 		}
 	} 
 	else if (move_right) 
@@ -171,6 +174,7 @@ if (jetpack_mode==1)
 			walk=true;
 			idle=false;
 			wall_direction = 1;
+			//walk_armF++;
 		}
 	} 
 	else 
@@ -179,7 +183,9 @@ if (jetpack_mode==1)
 		walk=false;
 		idle=true;
 		wall_direction=0;
+		//walk_armF=0;
 	}
+
 
 //WALK
 	if walk_legF>16 {walk_legF=0;}
