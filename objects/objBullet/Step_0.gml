@@ -1,5 +1,22 @@
 /// @description Insert description here
 // You can write your code in this editor
+
+
+//PUNCH
+if (follow_player==true) {
+		x=parent.nx_armF;
+		y=parent.ny_armF;
+}
+if (weapon==0) {
+		image_angle=parent.armF_dir;
+		if (parent.punch_img_idx==10) {
+			instance_destroy();
+		}
+}
+/////
+
+
+
 if (life_limit==true && life_countdown<=0) 
 {
 	instance_destroy();

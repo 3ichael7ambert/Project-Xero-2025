@@ -861,23 +861,28 @@ if weapon=0 { //FIST
 	
 		punch=true;
 		wpn_cooldown=10;
-	/*
+	
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
 	wpn_cooldown=2;
+	
 	with (bullet) {
 		parent=obj_Player1;
 		weapon=0;
 		depth=parent.depth-10;
 		direction=parent.armF_dir;
-		speed=10;
+		//speed=10;
+		scale=1*parent.scale;
 		image_xscale=1*parent.scale;
 		image_yscale=1*parent.scale;
 		//alarm[0]=10;///destroy
-		sprite_index=sprFist;
-		life_countdown=parent.bullet_life;
-		life_limit=true;		
+		sprite_index=sprArmPunch_fx;
+		follow_player=true;
+		x=parent.nx_armF;
+		y=parent.ny_armF;
+		//life_countdown=parent.bullet_life;
+		//life_limit=true;		
 	}
-	*/
+	
 	
 	
 	}
@@ -920,7 +925,7 @@ if weapon=0 { //FIST
 	}
 	}
 	
-	if weapon=3 { //GUN3
+	if weapon=3 { //GUN3 //CHARGE CANON
 		//draw_sprite_ext(sprGun3, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
 	wpn_cooldown=6;

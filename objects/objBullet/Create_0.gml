@@ -11,6 +11,11 @@ bounce_factor = 0; // How much energy is retained after bouncing (-1 = perfect b
 bounce=false;
 h_speed = 0;         // Horizontal speed
 h_friction = 0;   // Friction applied to horizontal movement
+scale=1;
+
+follow_player = false;
+xx=x;
+yy=y;
 
 floor_obj=undefined;
 

@@ -470,6 +470,7 @@
     {"id":{"name":"sprArmLegWalljump","path":"sprites/sprArmLegWalljump/sprArmLegWalljump.yy",},},
     {"id":{"name":"sprArmMotion","path":"sprites/sprArmMotion/sprArmMotion.yy",},},
     {"id":{"name":"sprArmPart1","path":"sprites/sprArmPart1/sprArmPart1.yy",},},
+    {"id":{"name":"sprArmPunch_fx","path":"sprites/sprArmPunch_fx/sprArmPunch_fx.yy",},},
     {"id":{"name":"sprArmPunch","path":"sprites/sprArmPunch/sprArmPunch.yy",},},
     {"id":{"name":"sprArmWalk","path":"sprites/sprArmWalk/sprArmWalk.yy",},},
     {"id":{"name":"sprArmWallJump","path":"sprites/sprArmWallJump/sprArmWallJump.yy",},},
