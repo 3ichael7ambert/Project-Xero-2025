@@ -18,6 +18,7 @@ bullet_life=2000;
 
 weapon=0;
 punch=false;
+punch_side="front";
 punch_img_idx=0;
 chainsaw_blade=0;
 taser_img=0;

@@ -4,8 +4,13 @@
 
 //PUNCH
 if (follow_player==true) {
+	if (punch_side="front"){
 		x=parent.nx_armF;
 		y=parent.ny_armF;
+	} else {
+		x=parent.nx_armB;
+		y=parent.ny_armB;
+	}
 }
 if (weapon==0) {
 		image_angle=parent.armF_dir;

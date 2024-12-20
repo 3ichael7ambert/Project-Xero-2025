@@ -851,11 +851,15 @@ if (punch=true) {
 if (punch_img_idx>10) {
 	punch=false;
 	punch_img_idx=0;
+	
+	if (punch_side=="front") { punch_side="back";}
+	else if (punch_side=="back") { punch_side="front";}
+	
 }
 
 if (facing_right && keyboard_check(ord("A")) && wpn_cooldown==0) {
 	
-if weapon=0 { //FIST
+if (weapon==0 && punch==false) { //FIST
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	
 	
@@ -865,10 +869,19 @@ if weapon=0 { //FIST
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
 	wpn_cooldown=2;
 	
+	
 	with (bullet) {
 		parent=obj_Player1;
 		weapon=0;
+		if (parent.punch_side="front") {
 		depth=parent.depth-10;
+		}else
+		if (parent.punch_side="back") {
+		depth=parent.depth+10;
+		}else{
+		depth=parent.depth-10;	
+		}
+		
 		direction=parent.armF_dir;
 		//speed=10;
 		scale=1*parent.scale;
@@ -877,15 +890,17 @@ if weapon=0 { //FIST
 		//alarm[0]=10;///destroy
 		sprite_index=sprArmPunch_fx;
 		follow_player=true;
-		x=parent.nx_armF;
-		y=parent.ny_armF;
+		punch_side=parent.punch_side;
 		//life_countdown=parent.bullet_life;
 		//life_limit=true;		
 	}
 	
-	
+		
 	
 	}
+	
+	
+	
 	if weapon=1 { //GUN
 		//draw_sprite_ext(sprGun, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	

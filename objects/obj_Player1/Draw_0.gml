@@ -588,8 +588,23 @@ eye_y = new_eye_y + eye_movement_y+ny_eyes;
 // Draw the sprites
 if (facing_right)
 {
-	draw_sprite_ext(sprArmArms, image_index, nx_armB-offsetX, ny_armB+offsetY, scale, scale, image_angle-65+hsp, -1, 1);
-	draw_sprite_ext(sprFist, image_index, nx_fistB-offsetX, ny_fistB+offsetY, scale, scale, image_angle-65+hsp, -1, 1); ///
+	//draw_sprite_ext(sprArmArms, image_index, nx_armB-offsetX, ny_armB+offsetY, scale, scale, image_angle-65+hsp, -1, 1);
+	//draw_sprite_ext(sprFist, image_index, nx_fistB-offsetX, ny_fistB+offsetY, scale, scale, image_angle-65+hsp, -1, 1); ///
+	
+	if (punch==false || punch_side=="front") {
+			draw_sprite_ext(sprArmArms, image_index, nx_armB-offsetX, ny_armB+offsetY, scale, scale, image_angle-65+hsp, -1, 1);
+		}
+		
+	if weapon=0 {
+		if (punch==false || punch_side=="front") {
+			draw_sprite_ext(sprFist, image_index, nx_fistB-offsetX, ny_fistB+offsetY, scale, scale, image_angle-65+hsp, -1, 1); ///
+	//draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1);
+		}
+		if (punch==true && punch_side=="front") {
+			draw_sprite_ext(sprArmPunch, punch_img_idx, nx_armB-offsetX, ny_armB+offsetY, scale, scale, armF_dir, -1, 1); //
+		}
+	}
+	
 	//draw_sprite_ext(sprLeg3, image_index, nx_legB, ny_legB, scale, scale, 0, -1, 1);
 	draw_sprite_ext(sprLeg, image_index, x+(25*scale)-offsetX, y+offsetY, scale, scale, 0, -1, 1);
     draw_sprite_ext(sprJetBack, image_index, nx_jet-offsetX, ny_jet+offsetY, scale, scale, image_angle-(speed/1), -1, 1);
@@ -600,16 +615,16 @@ if (facing_right)
 	
 	draw_sprite_ext(sprLeg, image_index, nx_legF-offsetX, ny_legF+offsetY, scale, scale, 0, -1, 1);
 	
-	if (punch=false) {
+	if (punch==false || punch_side=="back") {
 			draw_sprite_ext(sprArmArms, image_index, nx_armF-offsetX, ny_armF+offsetY, scale, scale, armF_dir, -1, 1);
 		}
 		
 	if weapon=0 {
-		if (punch=false) {
+		if (punch==false || punch_side=="back") {
 			draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
 			//draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1);
 		}
-		if (punch=true) {
+		if (punch==true && punch_side=="front") {
 			draw_sprite_ext(sprArmPunch, punch_img_idx, nx_armF-offsetX, ny_armF+offsetY, scale, scale, armF_dir, -1, 1); //
 		}
 	}
@@ -936,27 +951,53 @@ eye_y = new_eye_y + eye_movement_y+ny_eyes;
 // Draw the sprites
 if (facing_right)
 {
-	draw_sprite_ext(sprArmArms, image_index, nx_armB, ny_armB, scale, scale, image_angle-65+hsp, -1, 1);
-	draw_sprite_ext(sprFist, image_index, nx_fistB, ny_fistB, scale, scale, image_angle-65+hsp, -1, 1); ///
+	
+	if (weapon!=0) {
+	//draw_sprite_ext(sprArmArms, image_index, nx_armB, ny_armB, scale, scale, image_angle-65+hsp, -1, 1);
+	//draw_sprite_ext(sprFist, image_index, nx_fistB, ny_fistB, scale, scale, image_angle-65+hsp, -1, 1); ///
+	}
+	
+	if (weapon==0) {
+	if (punch_side=="front")  {	
+		draw_sprite_ext(sprArmArms, image_index, nx_armB, ny_armB, scale, scale, image_angle-65+hsp, -1, 1);
+		draw_sprite_ext(sprFist, image_index, nx_fistB, ny_fistB, scale, scale, image_angle-65+hsp, -1, 1); ///
+	} else
+	if (punch==false && punch_side=="back") {	
+		draw_sprite_ext(sprArmArms, image_index, nx_armB, ny_armB, scale, scale, image_angle-65+hsp, -1, 1);
+		draw_sprite_ext(sprFist, image_index, nx_fistB, ny_fistB, scale, scale, image_angle-65+hsp, -1, 1); ///
+	} else
+	if (punch==true && punch_side=="back") {
+		draw_sprite_ext(sprArmPunch, punch_img_idx, nx_armB, ny_armB, scale, scale, armF_dir, -1, 1); //
+		
+	}
+	}
+	
 	draw_sprite_ext(sprLeg3, image_index, nx_legB, ny_legB, scale, scale, 0, -1, 1);
     draw_sprite_ext(sprJetBack, image_index, nx_jet, ny_jet, scale, scale, image_angle-(speed/1), -1, 1);
     draw_sprite_ext(sprBody, image_index, body_x, body_y, scale, scale, image_angle, -1, 1);
 	draw_sprite_ext(sprHeadSanta, image_index, nx_head, ny_head, scale, scale, image_angle, -1, 1);
     draw_sprite_ext(sprEyes, image_index, nx_eyes, ny_eyes, scale, scale, head_direction, -1, 1);
 	//draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1);
-	if (punch=false) {
+	if (weapon!=0) {
+		draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1);
+	}
+	
+	if (weapon==0) {
+	if  (punch_side=="back") {	
 			draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1);
-		}
-		
-	if weapon=0 {
-		if (punch=false) {
 			draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
-			//draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1);
-		}
-		if (punch=true) {
+			
+		}	else
+		if (punch==false && punch_side=="front") {
+			draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1);
+			draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
+		}else
+		if (punch==true && punch_side=="front") {
 			draw_sprite_ext(sprArmPunch, punch_img_idx, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1); //
 		}
 	}
+	
+	
 	
 	if weapon=1 {
 		draw_sprite_ext(sprGun, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
