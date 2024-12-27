@@ -17,9 +17,19 @@ wpn_charge=0;
 bullet_life=2000;
 
 weapon=0;
+
 punch=false;
 punch_side="front";
 punch_img_idx=0;
+
+sword=false;
+sword_num=1;
+sword_img_idx=0;
+
+spr_sword_arm = sprArmSword_1_Arm;
+spr_sword_sword = sprArmSword_1_Sword;
+spr_sword_fx = sprArmSword_1_Fx; 
+
 chainsaw_blade=0;
 taser_img=0;
 

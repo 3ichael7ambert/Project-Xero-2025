@@ -2,7 +2,6 @@
   "FolderOrderSettings":[
     {"name":"DEMO","order":76,"path":"folders/DEMO.yy",},
     {"name":"Objects","order":1,"path":"folders/DEMO/Objects.yy",},
-    {"name":"Sword","order":29,"path":"folders/Sprites/Player/Xero/Sword.yy",},
     {"name":"360","order":31,"path":"folders/Objects/360.yy",},
     {"name":"Control objects","order":12,"path":"folders/Objects/Control objects.yy",},
     {"name":"Entities","order":13,"path":"folders/Objects/Entities.yy",},
@@ -45,6 +44,7 @@
     {"name":"ragdoll creation","order":1,"path":"folders/Scripts/sbRagdoll/Ragdoll/ragdoll creation.yy",},
     {"name":"planets","order":6,"path":"folders/Sprites/planets.yy",},
     {"name":"Xero","order":11,"path":"folders/Sprites/Player/Xero.yy",},
+    {"name":"Sword","order":29,"path":"folders/Sprites/Player/Xero/Sword.yy",},
     {"name":"Weapons","order":26,"path":"folders/Sprites/Player/Xero/Weapons.yy",},
     {"name":"RoomOne","order":16,"path":"folders/Sprites/RoomOne.yy",},
     {"name":"RoomThree","order":17,"path":"folders/Sprites/RoomThree.yy",},

@@ -952,7 +952,7 @@ eye_y = new_eye_y + eye_movement_y+ny_eyes;
 if (facing_right)
 {
 	
-	if (weapon!=0) {
+	if (weapon!=0) || (weapon!=4) {
 	//draw_sprite_ext(sprArmArms, image_index, nx_armB, ny_armB, scale, scale, image_angle-65+hsp, -1, 1);
 	//draw_sprite_ext(sprFist, image_index, nx_fistB, ny_fistB, scale, scale, image_angle-65+hsp, -1, 1); ///
 	}
@@ -978,7 +978,7 @@ if (facing_right)
 	draw_sprite_ext(sprHeadSanta, image_index, nx_head, ny_head, scale, scale, image_angle, -1, 1);
     draw_sprite_ext(sprEyes, image_index, nx_eyes, ny_eyes, scale, scale, head_direction, -1, 1);
 	//draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1);
-	if (weapon!=0) {
+	if (weapon!=0)  && (weapon!=4) {
 		draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1);
 	}
 	
@@ -1009,18 +1009,21 @@ if (facing_right)
 		draw_sprite_ext(sprGun3, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
 	}
 	if weapon=4 { //SWORD
-		draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
 	
-	if (punch=false) {
-			draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
+	if (sword=false) {
 			draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1);
-		}
-		if (punch=true) {
-			draw_sprite_ext(sprArmPunch, punch_img_idx, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1); //
+			draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///
+	}
+	if (sword=true) {
+			draw_sprite_ext(spr_sword_arm, sword_img_idx, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1); //
+			draw_sprite_ext(spr_sword_sword, sword_img_idx, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1); //
 		}
 		
 		
 	}
+	
+	
+	
 	if weapon=5 { //SHOTGUN
 		
 		draw_sprite_ext(sprShotgun, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); ///

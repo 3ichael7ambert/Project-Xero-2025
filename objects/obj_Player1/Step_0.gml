@@ -857,6 +857,53 @@ if (punch_img_idx>10) {
 	
 }
 
+if (sword=true) {
+	sword_img_idx++;	
+}
+
+if (sword_img_idx==13) {
+	sword_num = irandom(6);
+}
+
+if (sword_img_idx>21) {
+	sword=false;
+	sword_img_idx=0;
+	sword_num = irandom(6);
+}
+
+switch (sword_num) {
+	case 1:
+		spr_sword_arm = sprArmSword_1_Arm;
+		spr_sword_sword = sprArmSword_1_Sword;
+		spr_sword_fx = sprArmSword_1_Fx;
+		break;
+	case 2:
+		spr_sword_arm = sprArmSword_2_Arm;
+		spr_sword_sword = sprArmSword_2_Sword;
+		spr_sword_fx = sprArmSword_2_Fx;
+		break;
+	case 3:
+		spr_sword_arm = sprArmSword_3_Arm;
+		spr_sword_sword = sprArmSword_3_Sword;
+		spr_sword_fx = sprArmSword_3_Fx;
+		break;
+	case 4:
+		spr_sword_arm = sprArmSword_1_Arm_rev;
+		spr_sword_sword = sprArmSword_1_Sword_rev;
+		spr_sword_fx = sprArmSword_1_Fx_rev;
+		break;
+	case 5:
+		spr_sword_arm = sprArmSword_2_Arm_rev;
+		spr_sword_sword = sprArmSword_2_Sword_rev;
+		spr_sword_fx = sprArmSword_2_Fx_rev;
+		break;
+	case 6:
+		spr_sword_arm = sprArmSword_3_Arm_rev;
+		spr_sword_sword = sprArmSword_3_Sword_rev;
+		spr_sword_fx = sprArmSword_3_Fx_rev;
+		break;
+}
+
 if (facing_right && keyboard_check(ord("A")) && wpn_cooldown==0) {
 	
 if (weapon==0 && punch==false) { //FIST
@@ -959,24 +1006,39 @@ if (weapon==0 && punch==false) { //FIST
 	}
 	
 	
-	if weapon=4 { //SWORD
-		//draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	
+	if (weapon==4 && sword==false) { //SWORD
+			//draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	
+	
+		sword=true;
+		wpn_cooldown=10;
+	
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
 	wpn_cooldown=2;
+	
+	
 	with (bullet) {
-		target=obj_Player1;
+		parent=obj_Player1;
 		weapon=4;
-		depth=parent.depth+1;
+		depth=parent.depth-10;
+		sprite_index=parent.spr_sword_fx;
 		direction=parent.armF_dir;
-		speed=10;
-		image_xscale=1.5*parent.scale;
-		image_yscale=1.5*parent.scale;
-		life_countdown=parent.bullet_life;
-		life_limit=true;
-		hitbox=true;
+		//speed=10;
+		scale=1*parent.scale;
+		image_xscale=1*parent.scale;
+		image_yscale=1*parent.scale;
+		//alarm[0]=10;///destroy
+		follow_player=true;
+		//punch_side=parent.punch_side;
+		//life_countdown=parent.bullet_life;
+		//life_limit=true;		
 	}
 	
+		
+	
 	}
+	
 	if weapon=5 { //SHOTGUN
 		
 		//draw_sprite_ext(sprShotgun, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///

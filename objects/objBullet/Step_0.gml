@@ -12,9 +12,17 @@ if (follow_player==true) {
 		y=parent.ny_armB;
 	}
 }
+
 if (weapon==0) {
 		image_angle=parent.armF_dir;
 		if (parent.punch_img_idx==10) {
+			instance_destroy();
+		}
+}
+
+if (weapon==4) {
+		image_angle=parent.armF_dir;
+		if (parent.punch_img_idx==21) {
 			instance_destroy();
 		}
 }
