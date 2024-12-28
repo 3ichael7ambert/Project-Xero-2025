@@ -17,11 +17,15 @@ follow_player = false;
 xx=x;
 yy=y;
 
+wpn_charge=0;
+charging=false;
+
 floor_obj=undefined;
 
 weapon=0;
 
 hitbox=false;
+
 
 /*
 if target.weapon=0 { //FIST
@@ -97,3 +101,7 @@ if target.weapon=0 { //FIST
 if (homing==true) {
 	
 }
+
+
+
+partSysBlast = part_system_create(part_blast_wpn);

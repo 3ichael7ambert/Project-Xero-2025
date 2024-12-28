@@ -26,16 +26,7 @@ if (keyboard_check_pressed(ord(3)))
     jetpack_mode = 3;
 }
 
-if (keyboard_check_pressed(ord("X"))) {
-	wpn_btn_dir="down";
-	weapon-=1;
-	
-}
-if (keyboard_check_pressed(ord("C"))) {
-	wpn_btn_dir="up";
-	weapon+=1;
-	
-}
+
 
 
 //mouse_aim
@@ -117,12 +108,12 @@ if gamepad=true {
 if gamepad_is_connected(0) {
     // Gamepad is plugged in, set controls to gamepad
     // Use analog stick axis for movement
-    var axislh_value = gamepad_axis_value(0, gp_axislh);
-    var axislv_value = gamepad_axis_value(0, gp_axislv);
-    var shoot_button = gamepad_button_check_pressed(0, gp_face1);
-    var melee_button = gamepad_button_check_pressed(0, gp_face2);
-    var change_weapon_button = gamepad_button_check_pressed(0, gp_shoulderl);
-    var pause_button = gamepad_button_check_pressed(0, gp_start);
+     axislh_value = gamepad_axis_value(0, gp_axislh);
+     axislv_value = gamepad_axis_value(0, gp_axislv);
+     shoot_button = gamepad_button_check_pressed(0, gp_face1);
+     melee_button = gamepad_button_check_pressed(0, gp_face2);
+     change_weapon_button = gamepad_button_check_pressed(0, gp_shoulderl);
+     pause_button = gamepad_button_check_pressed(0, gp_start);
 
     move_left = axislh_value < -0.5;
     move_right = axislh_value > 0.5;
@@ -141,13 +132,27 @@ else {
     move_up = keyboard_check(vk_up);
     move_down = keyboard_check(vk_down);
     
-    var shoot_button = keyboard_check_pressed(ord("Z"));
-    var melee_button = keyboard_check_pressed(ord("X"));
-	var wpn_chg_up = keyboard_check_pressed(ord("C"));
-	var wpn_chg_down = keyboard_check_pressed(ord("x"));
-    var change_weapon_button = keyboard_check_pressed(ord("C"));
-    var pause_button = keyboard_check_pressed(vk_escape);
+     shoot_button = keyboard_check(ord("A"));
+	 shoot_button_pressed = keyboard_check_pressed(ord("A"));
+	 shoot_button_released = keyboard_check_released(ord("A"));
+     melee_button = keyboard_check_pressed(ord("S"));
+	 wpn_chg_up = keyboard_check_pressed(ord("C"));
+	 wpn_chg_down = keyboard_check_pressed(ord("X"));
+     change_weapon_button = keyboard_check_pressed(ord("V"));
+     pause_button = keyboard_check_pressed(vk_escape);
 }
+
+if (wpn_chg_down) {
+	wpn_btn_dir="down";
+	weapon-=1;
+	
+}
+if (wpn_chg_up) {
+	wpn_btn_dir="up";
+	weapon+=1;
+	
+}
+
 
 if (jetpack_mode==1)
 {
@@ -904,9 +909,9 @@ switch (sword_num) {
 		break;
 }
 
-if (facing_right && keyboard_check(ord("A")) && wpn_cooldown==0) {
+if (facing_right) {
 	
-if (weapon==0 && punch==false) { //FIST
+if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	
 	
@@ -948,7 +953,7 @@ if (weapon==0 && punch==false) { //FIST
 	
 	
 	
-	if weapon=1 { //GUN
+	if (weapon==1 && shoot_button && wpn_cooldown==0) { //GUN
 		//draw_sprite_ext(sprGun, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	
 
@@ -970,7 +975,8 @@ if (weapon==0 && punch==false) { //FIST
 	}
 	
 	}
-	if weapon=2 { //GUN2
+	
+	if (weapon=2 && shoot_button && wpn_cooldown==0) { //GUN2
 		//draw_sprite_ext(sprGun2, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
 	wpn_cooldown=4;
@@ -986,28 +992,48 @@ if (weapon==0 && punch==false) { //FIST
 		life_limit=true;
 	}
 	}
-	
-	if weapon=3 { //GUN3 //CHARGE CANON
+
+
+
+	if (weapon==3 && shoot_button_pressed && wpn_cooldown==0) { //GUN3 //CHARGE CANON
 		//draw_sprite_ext(sprGun3, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
 	wpn_cooldown=6;
+			
 	with (bullet) {
 		parent=obj_Player1;
 		weapon=3;
-		depth=parent.depth+1;
+		depth=parent.depth-1;
 		direction=parent.armF_dir;
 		speed=10;
 		image_xscale=1*parent.scale;
 		image_yscale=1*parent.scale;
 		life_countdown=parent.bullet_life;
 		life_limit=true;
+		charging=true;
 	}
 	
+	
 	}
 	
+	if (weapon==3 && shoot_button&& wpn_cooldown==0) {
+	if !part_system_exists(global.partSysCharge)
+			{
+			    global.partSysCharge = part_system_create(part_smoke);
+			}
+		if part_system_exists(global.partSysCharge) {
+			
+			var xxx=nx_armF+lengthdir_x(100*scale,armF_dir);
+			var yyy=ny_armF+lengthdir_y(100*scale,armF_dir);
+		
+			part_system_position(global.partSysCharge,xxx,yyy);
+			part_system_depth(global.partSysCharge,depth-10);
+		}}
+		
 	
 	
-	if (weapon==4 && sword==false) { //SWORD
+	if (weapon==4 && sword==false && shoot_button) { //SWORD
 			//draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	
 	
@@ -1039,7 +1065,7 @@ if (weapon==0 && punch==false) { //FIST
 	
 	}
 	
-	if weapon=5 { //SHOTGUN
+	if (weapon=5 && shoot_button_pressed && wpn_cooldown==0) { //SHOTGUN
 		
 		//draw_sprite_ext(sprShotgun, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
@@ -1109,8 +1135,9 @@ if (weapon==0 && punch==false) { //FIST
 	
 	
 	
-	}
-	if weapon=6 { //Raygun
+}
+	
+	if (weapon=6 && shoot_button && wpn_cooldown==0) { //Raygun
 		
 		//draw_sprite_ext(sprRayGun, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
@@ -1146,7 +1173,7 @@ if (weapon==0 && punch==false) { //FIST
 	}
 	}
 	
-	if weapon=7 { //Grenade
+	if (weapon==7 && shoot_button && wpn_cooldown==0) { //Grenade
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprGrenadeLauncher, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
@@ -1174,7 +1201,7 @@ if (weapon==0 && punch==false) { //FIST
 	}
 	
 	}
-	if weapon=8 { //Rocket
+	if (weapon==8 && shoot_button && wpn_cooldown==0) { //Rocket
 		//draw_sprite_ext(sprRocketLauncher, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 
@@ -1196,7 +1223,7 @@ if (weapon==0 && punch==false) { //FIST
 	}
 	
 	}
-	if weapon=9 { //SNIPER
+	if (weapon=9 && shoot_button && wpn_cooldown==0) { //SNIPER
 		//draw_sprite_ext(sprSniper, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
@@ -1215,7 +1242,7 @@ if (weapon==0 && punch==false) { //FIST
 	}
 	
 	}
-	if weapon=10 { //FLAMETHROWER
+	if (weapon==10 && shoot_button && wpn_cooldown==0) { //FLAMETHROWER
 		//draw_sprite_ext(sprFlamethrower, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	
@@ -1234,7 +1261,7 @@ if (weapon==0 && punch==false) { //FIST
 	}
 	
 	}
-	if weapon=11 { //TASER
+	if (weapon=11 && shoot_button && wpn_cooldown==0) { //TASER
 		//draw_sprite_ext(sprTaser, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprTaser, taser_img+1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
@@ -1258,16 +1285,21 @@ if (weapon==0 && punch==false) { //FIST
 	
 	
 	}
-	if weapon=12 { //CHAINSAW
+	if (weapon=12 && shoot_button && wpn_cooldown==0) { //CHAINSAW
 		//draw_sprite_ext(sprChainsaw, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprChainsaw, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprChainsaw, chainsaw_blade+2, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		chainsaw_blade++;
+		if !part_system_exists(global.partSysSmoke)
+			{
+			    global.partSysSmoke = part_system_create(part_smoke);
+			}
+		if part_system_exists(global.partSysSmoke) {
+			part_system_position(global.partSysSmoke,nx_fistF,ny_fistF);
+			part_system_depth(global.partSysSmoke,depth-10);
+		}
 		
-		var partSysSmoke = part_system_create(part_smoke);
-		part_system_position(partSysSmoke,nx_fistF,ny_fistF);
-		part_system_depth(partSysSmoke,depth-10);
 		
 		if !instance_exists(objHitbox)
 		{
@@ -1290,6 +1322,17 @@ if (weapon==0 && punch==false) { //FIST
 		}
 		
 	}
+	
+	if (weapon=12 && !shoot_button) {
+			
+		if !part_system_exists(global.partSysSmoke)
+			{
+			    part_system_destroy(global.partSysSmoke);
+			}
+
+
+	}
+	
 
 }
 
@@ -1298,7 +1341,7 @@ if (weapon==0 && punch==false) { //FIST
 
 
 
-if (weapon!=12 || !keyboard_check(ord("A"))) {
+if (weapon!=12 || !(shoot_button)) {
 	//part_system_destroy(partSysSmoke);
 }
 

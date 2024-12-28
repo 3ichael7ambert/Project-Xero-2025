@@ -20,6 +20,70 @@ if (weapon==0) {
 		}
 }
 
+
+
+
+
+
+
+
+if (weapon==3) {
+	if (charging) {
+		wpn_charge++;
+		xx=parent.nx_armF+lengthdir_x(100*parent.scale,parent.armF_dir);
+		yy=parent.ny_armF+lengthdir_y(100*parent.scale,parent.armF_dir);
+		
+		x=xx;
+		y=yy;
+		//CHARGING PARTICLES
+
+			
+
+				
+		
+	}
+	
+	if (charging) && !(parent.shoot_button) {
+		charging=false;
+		direction=parent.armF_dir;
+		speed=wpn_charge;
+		
+		xx=parent.nx_armF+lengthdir_x(100*parent.scale,parent.armF_dir);
+		yy=parent.ny_armF+lengthdir_y(100*parent.scale,parent.armF_dir);
+//PARTICLES
+
+if !part_system_exists(partSysBlast)
+			{
+			    partSysBlast = part_system_create(part_blast_wpn);
+			}
+		if part_system_exists(partSysBlast) {
+			xx=parent.nx_armF+lengthdir_x(100*parent.scale,parent.armF_dir);
+		yy=parent.ny_armF+lengthdir_y(100*parent.scale,parent.armF_dir);
+			part_system_position(partSysBlast,xx,yy);
+			part_system_depth(partSysBlast,depth-10);
+		}
+		
+	
+	
+			
+
+	
+	
+	}
+	
+	scale=(wpn_charge/10);
+	image_xscale=scale/10;
+	image_yscale=scale/10;
+	
+
+}
+
+
+
+
+
+
+
 if (weapon==4) {
 		image_angle=parent.armF_dir;
 		if (parent.punch_img_idx==21) {
