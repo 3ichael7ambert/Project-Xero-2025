@@ -1312,6 +1312,9 @@ if weapon=0 { //FIST
 
 
 
+var part_smoke_count = part_particles_count(global.partSysCharge);
+draw_text_color(x +100,y-100,part_smoke_count,c_red,c_red,c_red,c_red,1);
+
 
 
 

@@ -1032,9 +1032,9 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 
 
 
-			part_particles_create(global.partSysCharge,nx_fistF,ny_fistF,_ptype1,1)
+			part_particles_create(global.partSysCharge,nx_fistF,ny_fistF,_ptype1,1);
 			//part_system_position(global.partSysCharge,xxx,yyy);
-			part_system_depth(global.partSysCharge,depth-10);
+			//part_system_depth(global.partSysCharge,depth-10);
 		}}
 		
 	
@@ -1291,6 +1291,31 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	
 	
 	}
+	if (weapon==12 && shoot_button_pressed && wpn_cooldown==0) {
+		
+		if !instance_exists(objHitbox)
+		{
+		hitbox = instance_create(nx_fistF,ny_fistF,objBullet);
+		wpn_cooldown=2;
+	with (hitbox) {
+		parent=obj_Player1;
+		weapon=12;
+		hitbox=true;
+		xx=parent.nx_fistF;
+		yy=parent.nx_fistF;
+		depth=parent.depth+1;
+		sprite_index=sprChainsaw;
+		direction=parent.armF_dir;
+		//speed=0;
+		image_xscale=parent.image_xscale;
+		image_yscale=parent.image_yscale;
+				}
+		
+		}
+		
+		
+	}
+	
 	if (weapon=12 && shoot_button && wpn_cooldown==0) { //CHAINSAW
 		//draw_sprite_ext(sprChainsaw, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
@@ -1318,25 +1343,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		
 		
 		
-		if !instance_exists(objHitbox)
-		{
-		hitbox = instance_create(nx_fistF,ny_fistF,objBullet);
-	wpn_cooldown=2;
-	with (hitbox) {
-		parent=obj_Player1;
-		weapon=12;
-		hitbox=true;
-		xx=parent.nx_fistF;
-		yy=parent.nx_fistF;
-		depth=parent.depth+1;
-		sprite_index=sprChainsaw;
-		direction=parent.armF_dir;
-		//speed=0;
-		image_xscale=parent.image_xscale;
-		image_yscale=parent.image_yscale;
-				}
 		
-		}
 		
 	}
 	

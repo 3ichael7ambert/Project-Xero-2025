@@ -493,3 +493,8 @@ part_type_colour3(_ptype1, $FFFFFF, $FFE500, $FF7B00);
 part_type_alpha3(_ptype1, 1, 1, 0);
 part_type_blend(_ptype1, false);
 part_type_life(_ptype1, 20, 80);
+
+
+
+///DEBUG
+part_smoke_count = part_particles_count(global.partSysCharge);
