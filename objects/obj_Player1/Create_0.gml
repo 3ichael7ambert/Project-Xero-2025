@@ -464,4 +464,32 @@ ny_legB = cy + lengthdir_y(crad_legB, cnext_legB);
 
 //PARTICLES
 global.partSysSmoke=part_system_create(part_smoke);
+			//GM_Smoke
+ _ptypeSmoke = part_type_create();
+part_type_shape(_ptypeSmoke, pt_shape_smoke);
+part_type_size(_ptypeSmoke, 0.2, 0.2, 0.01, 0);
+part_type_scale(_ptypeSmoke, 1, 1);
+part_type_speed(_ptypeSmoke, 1, 1, 0, 0);
+part_type_direction(_ptypeSmoke, 80, 100, 0, 0);
+part_type_gravity(_ptypeSmoke, 0, 270);
+part_type_orientation(_ptypeSmoke, 0, 0, 0, 0, false);
+part_type_colour3(_ptypeSmoke, $4B4B5E, $000000, $000000);
+part_type_alpha3(_ptypeSmoke, 0.188, 0.161, 0);
+part_type_blend(_ptypeSmoke, false);
+part_type_life(_ptypeSmoke, 80, 180);
+
+
 global.partSysCharge=part_system_create(part_charge_wpn);
+//GM_Warp_Lines
+_ptype1 = part_type_create();
+part_type_shape(_ptype1, pt_shape_line);
+part_type_size(_ptype1, 2, 1, 0, 0);
+part_type_scale(_ptype1, 0.5, 0.1);
+part_type_speed(_ptype1, 3, 5, 0, 0);
+part_type_direction(_ptype1, 0, 360, 0, 0);
+part_type_gravity(_ptype1, 0, 270);
+part_type_orientation(_ptype1, 0, 0, 0, 0, true);
+part_type_colour3(_ptype1, $FFFFFF, $FFE500, $FF7B00);
+part_type_alpha3(_ptype1, 1, 1, 0);
+part_type_blend(_ptype1, false);
+part_type_life(_ptype1, 20, 80);
