@@ -1032,7 +1032,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 
 
 
-			part_particles_create(global.partSysCharge,nx_fistF,ny_fistF,_ptype1,1);
+			part_particles_create(global.partSysCharge,nx_fistF,ny_fistF,_ptypeCharge,1);
 			//part_system_position(global.partSysCharge,xxx,yyy);
 			//part_system_depth(global.partSysCharge,depth-10);
 		}}
@@ -1253,7 +1253,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
-	wpn_cooldown=2;
+	wpn_cooldown=0;
 	with (bullet) {
 		parent=obj_Player1;
 		weapon=10;
@@ -1266,7 +1266,43 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		hitbox=true;
 	}
 	
+	
+	
+	if !part_system_exists(global._psFlamethrower)
+			{
+			    global._psFlamethrower = part_system_create(part_smoke);
+			}
+		if part_system_exists(global._psFlamethrower) {
+			
+
+
+			part_type_direction(_ptypeFlamethrower,armF_dir +10, armF_dir - 10, 0, 0);
+			part_particles_create(global._psFlamethrower,nx_fistF+lengthdir_x(120*scale,armF_dir+10),ny_fistF+lengthdir_y(120*scale,armF_dir+10),_ptypeFlamethrower,7);
+			//part_system_position(global.partSysSmoke,nx_fistF,ny_fistF);
+			part_system_depth(global._psFlamethrower,depth-10);
+			
+			//part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,1);
+			//part_system_depth(global.partSysSmoke,depth-10);
+		}
+	
+		if !part_system_exists(global.partSysSmoke)
+			{
+			    global.partSysSmoke = part_system_create(part_smoke);
+			}
+		if part_system_exists(global.partSysSmoke) {
+			part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,-1);
+			//part_system_position(global.partSysSmoke,nx_fistF,ny_fistF);
+			part_system_depth(global.partSysSmoke,depth-10);
+//part_particles_clear(_ptypeSmoke);
+//part_system_destroy(global.partSysSmoke);
+
+		}
+	
 	}
+	
+	
+	
+	
 	if (weapon=11 && shoot_button && wpn_cooldown==0) { //TASER
 		//draw_sprite_ext(sprTaser, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
@@ -1331,7 +1367,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 
 
 
-			part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,1)
+			part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,1);
 			//part_system_position(global.partSysSmoke,nx_fistF,ny_fistF);
 			part_system_depth(global.partSysSmoke,depth-10);
 			

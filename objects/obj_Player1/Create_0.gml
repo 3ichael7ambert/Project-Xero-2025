@@ -481,18 +481,43 @@ part_type_life(_ptypeSmoke, 80, 180);
 
 global.partSysCharge=part_system_create(part_charge_wpn);
 //GM_Warp_Lines
-_ptype1 = part_type_create();
-part_type_shape(_ptype1, pt_shape_line);
-part_type_size(_ptype1, 2, 1, 0, 0);
-part_type_scale(_ptype1, 0.5, 0.1);
-part_type_speed(_ptype1, 3, 5, 0, 0);
-part_type_direction(_ptype1, 0, 360, 0, 0);
-part_type_gravity(_ptype1, 0, 270);
-part_type_orientation(_ptype1, 0, 0, 0, 0, true);
-part_type_colour3(_ptype1, $FFFFFF, $FFE500, $FF7B00);
-part_type_alpha3(_ptype1, 1, 1, 0);
-part_type_blend(_ptype1, false);
-part_type_life(_ptype1, 20, 80);
+_ptypeCharge = part_type_create();
+part_type_shape(_ptypeCharge, pt_shape_line);
+part_type_size(_ptypeCharge, 2, 1, 0, 0);
+part_type_scale(_ptypeCharge, 0.5, 0.1);
+part_type_speed(_ptypeCharge, 3, 5, 0, 0);
+part_type_direction(_ptypeCharge, 0, 360, 0, 0);
+part_type_gravity(_ptypeCharge, 0, 270);
+part_type_orientation(_ptypeCharge, 0, 0, 0, 0, true);
+part_type_colour3(_ptypeCharge, $FFFFFF, $FFE500, $FF7B00);
+part_type_alpha3(_ptypeCharge, 1, 1, 0);
+part_type_blend(_ptypeCharge, false);
+part_type_life(_ptypeCharge, 20, 80);
+
+
+
+//FLAMETHROWER
+//part_flamethrower
+global._psFlamethrower = part_system_create();
+//part_system_draw_order(global._psFlamethrower, true);
+
+//GM_FlameIntensity
+_ptypeFlamethrower = part_type_create();
+part_type_shape(_ptypeFlamethrower, pt_shape_explosion);
+part_type_size(_ptypeFlamethrower, 0.2, 0.4, 0.1, 0);
+part_type_scale(_ptypeFlamethrower, 0.5, 0.5);
+part_type_speed(_ptypeFlamethrower, 7, 9, -0.2, 0);
+part_type_direction(_ptypeFlamethrower, 356, 28, 0, 0);
+part_type_gravity(_ptypeFlamethrower, -0.4, 270);
+part_type_orientation(_ptypeFlamethrower, 73, 321, 0, 0, false);
+part_type_colour3(_ptypeFlamethrower, $C1FDFF, $26AFFF, $0090FF);
+part_type_alpha3(_ptypeFlamethrower, 1, 0.271, 0);
+part_type_blend(_ptypeFlamethrower, true);
+part_type_life(_ptypeFlamethrower, 8, 16);
+//_pemitFlamethrower = part_emitter_create(global._psFlamethrower);
+//part_emitter_region(_psFlamethrower, _pemitFlamethrower, 0.5, 1.5, -0.5, 0.5, ps_shape_line, ps_distr_gaussian);
+//part_emitter_stream(_psFlamethrower, _pemitFlamethrower, _ptypeFlamethrower, 7);
+//part_system_position(global._psFlamethrower, room_width/2, room_height/2);
 
 
 
