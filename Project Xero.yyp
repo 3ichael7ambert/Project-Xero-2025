@@ -411,6 +411,7 @@
     {"id":{"name":"snd_pause_out","path":"sounds/snd_pause_out/snd_pause_out.yy",},},
     {"id":{"name":"snd_player_damage","path":"sounds/snd_player_damage/snd_player_damage.yy",},},
     {"id":{"name":"snd_player_dead","path":"sounds/snd_player_dead/snd_player_dead.yy",},},
+    {"id":{"name":"snd_player_jetpack","path":"sounds/snd_player_jetpack/snd_player_jetpack.yy",},},
     {"id":{"name":"snd_skill_bomber","path":"sounds/snd_skill_bomber/snd_skill_bomber.yy",},},
     {"id":{"name":"snd_skill_shooter","path":"sounds/snd_skill_shooter/snd_skill_shooter.yy",},},
     {"id":{"name":"snd_skill_shuriken","path":"sounds/snd_skill_shuriken/snd_skill_shuriken.yy",},},

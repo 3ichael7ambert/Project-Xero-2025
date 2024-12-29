@@ -331,6 +331,7 @@
     {"name":"snd_pause_out","order":14,"path":"sounds/snd_pause_out/snd_pause_out.yy",},
     {"name":"snd_player_damage","order":15,"path":"sounds/snd_player_damage/snd_player_damage.yy",},
     {"name":"snd_player_dead","order":16,"path":"sounds/snd_player_dead/snd_player_dead.yy",},
+    {"name":"snd_player_jetpack","order":200,"path":"sounds/snd_player_jetpack/snd_player_jetpack.yy",},
     {"name":"snd_skill_bomber","order":17,"path":"sounds/snd_skill_bomber/snd_skill_bomber.yy",},
     {"name":"snd_skill_shooter","order":18,"path":"sounds/snd_skill_shooter/snd_skill_shooter.yy",},
     {"name":"snd_skill_shuriken","order":19,"path":"sounds/snd_skill_shuriken/snd_skill_shuriken.yy",},

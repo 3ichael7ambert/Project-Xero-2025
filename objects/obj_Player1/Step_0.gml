@@ -1253,7 +1253,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
-	//wpn_cooldown=2;
+	wpn_cooldown=2;
 	with (bullet) {
 		parent=obj_Player1;
 		weapon=10;
@@ -1266,16 +1266,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		hitbox=true;
 	}
 	
-	
-	
-	//part_particles_create(_psFlameThrower,nx_fistF,ny_fistF,_ptypeFlameThrower,1)
-	
-	
 	}
-	
-	
-	
-	
 	if (weapon=11 && shoot_button && wpn_cooldown==0) { //TASER
 		//draw_sprite_ext(sprTaser, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///

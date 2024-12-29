@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"snd_skill_bomber",
+  "%Name":"snd_player_jetpack",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -9,17 +9,17 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.337245,
-  "name":"snd_skill_bomber",
+  "duration":1.994667,
+  "name":"snd_player_jetpack",
   "parent":{
-    "name":"SFX",
-    "path":"folders/Sounds/SFX.yy",
+    "name":"Project Xero",
+    "path":"Project Xero.yyp",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_skill_bomber",
+  "soundFile":"snd_player_jetpack.wav",
   "type":0,
   "volume":1.0,
 }
