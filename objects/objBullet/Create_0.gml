@@ -104,4 +104,28 @@ if (homing==true) {
 
 
 
-partSysBlast = part_system_create(part_blast_wpn);
+
+
+//part_blast_wpn
+global.partSysBlast = part_system_create(part_blast_wpn);
+//part_system_draw_order(global.partSysBlast, true);
+
+//Emitter
+_ptypeBlast = part_type_create();
+part_type_shape(_ptypeBlast, pt_shape_explosion);
+part_type_size(_ptypeBlast, wpn_charge*scale, wpn_charge*scale, 0, 0);
+part_type_scale(_ptypeBlast, 1, 1);
+part_type_speed(_ptypeBlast, 5, 5, 0, 0);
+part_type_direction(_ptypeBlast, 0, 360, 0, 0);
+part_type_gravity(_ptypeBlast, 0, 270);
+part_type_orientation(_ptypeBlast, 0, 0, 0, 0, false);
+part_type_colour3(_ptypeBlast, $F0FFE2, $77CBFF, $1E56FF);
+part_type_alpha3(_ptypeBlast, 1, 1, 0);
+part_type_blend(_ptypeBlast, false);
+part_type_life(_ptypeBlast, 50, 50);
+
+//_pemit1 = part_emitter_create(global.partSysBlast);
+//part_emitter_region(global.partSysBlast, _pemit1, -32, 32, -32, 32, ps_shape_ellipse, ps_distr_invgaussian);
+//part_emitter_stream(global.partSysBlast, _pemit1, _ptypeBlast, 20);
+
+//part_system_position(global.partSysBlast, room_width/2, room_height/2);

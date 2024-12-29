@@ -482,17 +482,17 @@ part_type_life(_ptypeSmoke, 80, 180);
 global.partSysCharge=part_system_create(part_charge_wpn);
 //GM_Warp_Lines
 _ptypeCharge = part_type_create();
-part_type_shape(_ptypeCharge, pt_shape_line);
-part_type_size(_ptypeCharge, 2, 1, 0, 0);
-part_type_scale(_ptypeCharge, 0.5, 0.1);
-part_type_speed(_ptypeCharge, 3, 5, 0, 0);
+part_type_shape(_ptypeCharge, pt_shape_sphere);
+part_type_size(_ptypeCharge, wpn_charge/100, wpn_charge/100, 0, 0);
+part_type_scale(_ptypeCharge, 1, 1);
+part_type_speed(_ptypeCharge, wpn_charge/10, wpn_charge/10, 0, 0);
 part_type_direction(_ptypeCharge, 0, 360, 0, 0);
 part_type_gravity(_ptypeCharge, 0, 270);
 part_type_orientation(_ptypeCharge, 0, 0, 0, 0, true);
 part_type_colour3(_ptypeCharge, $FFFFFF, $FFE500, $FF7B00);
 part_type_alpha3(_ptypeCharge, 1, 1, 0);
 part_type_blend(_ptypeCharge, false);
-part_type_life(_ptypeCharge, 20, 80);
+part_type_life(_ptypeCharge, wpn_charge+10, wpn_charge+20);
 
 
 

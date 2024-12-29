@@ -21,6 +21,12 @@ if (weapon==0) {
 }
 
 
+if (weapon==3) {
+	part_type_size(_ptypeBlast, (wpn_charge/100)*scale, (wpn_charge/100)*scale, 0, 0);
+	part_particles_create(global.partSysBlast,x,y,_ptypeBlast,20);
+			
+}
+
 
 
 
@@ -47,20 +53,19 @@ if (weapon==3) {
 		charging=false;
 		direction=parent.armF_dir;
 		speed=wpn_charge;
-		
 		xx=parent.nx_armF+lengthdir_x(100*parent.scale,parent.armF_dir);
 		yy=parent.ny_armF+lengthdir_y(100*parent.scale,parent.armF_dir);
 //PARTICLES
 
-if !part_system_exists(partSysBlast)
+if !part_system_exists(global.partSysBlast)
 			{
-			    partSysBlast = part_system_create(part_blast_wpn);
+			    global.partSysBlast = part_system_create(part_blast_wpn);
 			}
-		if part_system_exists(partSysBlast) {
+		if part_system_exists(global.partSysBlast) {
 			xx=parent.nx_armF+lengthdir_x(100*parent.scale,parent.armF_dir);
 		yy=parent.ny_armF+lengthdir_y(100*parent.scale,parent.armF_dir);
-			part_system_position(partSysBlast,xx,yy);
-			part_system_depth(partSysBlast,depth-10);
+		//	part_system_position(partSysBlast,xx,yy);
+			//part_system_depth(partSysBlast,depth-10);
 		}
 		
 	
@@ -72,8 +77,8 @@ if !part_system_exists(partSysBlast)
 	}
 	
 	scale=(wpn_charge/10);
-	image_xscale=scale/10;
-	image_yscale=scale/10;
+	image_xscale=scale;
+	image_yscale=scale;
 	
 
 }
@@ -99,7 +104,7 @@ if (life_limit==true && life_countdown<=0)
 	instance_destroy();
 }
 
-if (life_countdown>0)
+if (life_countdown>0) && (charging==false)
 {
 	life_countdown--;
 }
@@ -155,4 +160,9 @@ if abs(h_speed) < 0.1 {
     h_speed = 0; // Stop rolling if speed is too low
 }
 
+}
+
+
+if (wpn_charge>10) {
+	wpn_charge=10;
 }

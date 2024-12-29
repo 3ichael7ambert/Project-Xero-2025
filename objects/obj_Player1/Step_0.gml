@@ -1020,7 +1020,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	if (weapon==3 && shoot_button&& wpn_cooldown==0) {
 	if !part_system_exists(global.partSysCharge)
 			{
-			    global.partSysCharge = part_system_create(part_smoke);
+			    global.partSysCharge = part_system_create(part_charge_wpn);
 			}
 		if part_system_exists(global.partSysCharge) {
 			
