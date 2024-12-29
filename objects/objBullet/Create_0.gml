@@ -18,6 +18,7 @@ xx=x;
 yy=y;
 
 wpn_charge=0;
+wpn_charge_max=10;
 charging=false;
 
 floor_obj=undefined;
@@ -119,7 +120,15 @@ part_type_speed(_ptypeBlast, 5, 5, 0, 0);
 part_type_direction(_ptypeBlast, 0, 360, 0, 0);
 part_type_gravity(_ptypeBlast, 0, 270);
 part_type_orientation(_ptypeBlast, 0, 0, 0, 0, false);
-part_type_colour3(_ptypeBlast, $F0FFE2, $77CBFF, $1E56FF);
+
+// Get the interpolated color
+var charge_color1 = get_interpolated_color(wpn_charge-1, wpn_charge_max);
+var charge_color2 = get_interpolated_color(wpn_charge, wpn_charge_max);
+var charge_color3 = get_interpolated_color(wpn_charge+1, wpn_charge_max);
+//part_type_colour1(_ptypeBlast, charge_color); // Single color for simplicity
+part_type_colour3(_ptypeBlast, charge_color1, charge_color2, charge_color3);
+//part_type_colour3(_ptypeBlast, $F0FFE2, $77CBFF, $1E56FF);
+
 part_type_alpha3(_ptypeBlast, 1, 1, 0);
 part_type_blend(_ptypeBlast, false);
 part_type_life(_ptypeBlast, 50, 50);

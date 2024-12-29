@@ -322,6 +322,7 @@
     {"id":{"name":"fake3D_set_perspective_strength","path":"scripts/fake3D_set_perspective_strength/fake3D_set_perspective_strength.yy",},},
     {"id":{"name":"fake3D_set_perspective","path":"scripts/fake3D_set_perspective/fake3D_set_perspective.yy",},},
     {"id":{"name":"fix_position","path":"scripts/fix_position/fix_position.yy",},},
+    {"id":{"name":"get_interpolated_color","path":"scripts/get_interpolated_color/get_interpolated_color.yy",},},
     {"id":{"name":"get_vxvy","path":"scripts/get_vxvy/get_vxvy.yy",},},
     {"id":{"name":"IK_documentation","path":"scripts/IK_documentation/IK_documentation.yy",},},
     {"id":{"name":"IK_LICENSE","path":"scripts/IK_LICENSE/IK_LICENSE.yy",},},

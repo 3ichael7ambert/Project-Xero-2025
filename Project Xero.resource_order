@@ -251,6 +251,7 @@
     {"name":"fake3D_set_perspective_strength","order":4,"path":"scripts/fake3D_set_perspective_strength/fake3D_set_perspective_strength.yy",},
     {"name":"fake3D_set_perspective","order":3,"path":"scripts/fake3D_set_perspective/fake3D_set_perspective.yy",},
     {"name":"fix_position","order":1,"path":"scripts/fix_position/fix_position.yy",},
+    {"name":"get_interpolated_color","order":201,"path":"scripts/get_interpolated_color/get_interpolated_color.yy",},
     {"name":"get_vxvy","order":1,"path":"scripts/get_vxvy/get_vxvy.yy",},
     {"name":"IK_documentation","order":3,"path":"scripts/IK_documentation/IK_documentation.yy",},
     {"name":"IK_LICENSE","order":4,"path":"scripts/IK_LICENSE/IK_LICENSE.yy",},
