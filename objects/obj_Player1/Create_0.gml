@@ -494,6 +494,30 @@ part_type_alpha3(_ptype1, 1, 1, 0);
 part_type_blend(_ptype1, false);
 part_type_life(_ptype1, 20, 80);
 
+//FLAMETHROWER
+//part_flamethrower
+_psFlameThrower = part_system_create();
+part_system_draw_order(_psFlameThrower, true);
+
+//GM_FlameIntensity
+_ptypeFlameThrower = part_type_create();
+part_type_shape(_ptypeFlameThrower, pt_shape_explosion);
+part_type_size(_ptypeFlameThrower, 0.2, -2.6, 0.1, -0.2);
+part_type_scale(_ptypeFlameThrower, 0.5, 0.5);
+part_type_speed(_ptypeFlameThrower, 5, 9, -0.7, -2);
+part_type_direction(_ptypeFlameThrower, 356, 28, 0, 0);
+part_type_gravity(_ptypeFlameThrower, -0.6, 270);
+part_type_orientation(_ptypeFlameThrower, 73, 321, 0, 0, false);
+part_type_colour3(_ptypeFlameThrower, $C1FDFF, $26AFFF, $0090FF);
+part_type_alpha3(_ptypeFlameThrower, 1, 0.271, 0);
+part_type_blend(_ptypeFlameThrower, true);
+part_type_life(_ptypeFlameThrower, 8, 11);
+
+_pemitFlameThrower = part_emitter_create(_psFlameThrower);
+//part_emitter_region(_psFlameThrower, _pemitFlameThrower, 1.5, 4.5, -0.5, 0.5, ps_shape_line, ps_distr_gaussian);
+//part_emitter_stream(_psFlameThrower, _pemitFlameThrower, _ptypeFlameThrower, 7);
+//part_system_position(_psFlameThrower, room_width/2, room_height/2);
+
 
 
 ///DEBUG

@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.337245,
+  "duration":0.332245,
   "name":"snd_skill_bomber",
   "parent":{
     "name":"SFX",
