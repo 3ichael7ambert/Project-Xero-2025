@@ -211,6 +211,7 @@
     {"id":{"name":"objRobotParent","path":"objects/objRobotParent/objRobotParent.yy",},},
     {"id":{"name":"objSidewalk","path":"objects/objSidewalk/objSidewalk.yy",},},
     {"id":{"name":"objSidewalkBG","path":"objects/objSidewalkBG/objSidewalkBG.yy",},},
+    {"id":{"name":"objSnipe","path":"objects/objSnipe/objSnipe.yy",},},
     {"id":{"name":"objSpike","path":"objects/objSpike/objSpike.yy",},},
     {"id":{"name":"objStressTest","path":"objects/objStressTest/objStressTest.yy",},},
     {"id":{"name":"objTitle","path":"objects/objTitle/objTitle.yy",},},

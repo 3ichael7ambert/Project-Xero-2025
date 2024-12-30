@@ -19,7 +19,7 @@ wpn_charge_max=10;
 
 bullet_life=2000;
 
-
+global.snipe=false;
 weapon=0;
 
 punch=false;
@@ -503,7 +503,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 //part_type_colour3(_ptypeCharge, $FFFFFF, $FFE500, $FF7B00);
 part_type_alpha3(_ptypeCharge, 0, 1, 0);
 part_type_blend(_ptypeCharge, false);
-part_type_life(_ptypeCharge, 10, 20);
+part_type_life(_ptypeCharge, 10*scale, 20*scale);
 ////
 
 
@@ -519,8 +519,9 @@ global._psFlamethrower = part_system_create();
 //GM_FlameIntensity
 _ptypeFlamethrower = part_type_create();
 part_type_shape(_ptypeFlamethrower, pt_shape_explosion);
-part_type_size(_ptypeFlamethrower, 0.2, 0.4, 0.1, 0);
+part_type_size(_ptypeFlamethrower, 1*scale, 1.2*scale, 0.1, 0);
 part_type_scale(_ptypeFlamethrower, 0.5, 0.5);
+part_system_depth(global._psFlamethrower,depth-10);
 part_type_speed(_ptypeFlamethrower, 7, 9, -0.2, 0);
 part_type_direction(_ptypeFlamethrower, 356, 28, 0, 0);
 part_type_gravity(_ptypeFlamethrower, -0.4, 270);
@@ -528,7 +529,7 @@ part_type_orientation(_ptypeFlamethrower, 73, 321, 0, 0, false);
 part_type_colour3(_ptypeFlamethrower, $C1FDFF, $26AFFF, $0090FF);
 part_type_alpha3(_ptypeFlamethrower, 1, 0.271, 0);
 part_type_blend(_ptypeFlamethrower, true);
-part_type_life(_ptypeFlamethrower, 8, 16);
+part_type_life(_ptypeFlamethrower, 58*scale, 66*scale);
 //_pemitFlamethrower = part_emitter_create(global._psFlamethrower);
 //part_emitter_region(_psFlamethrower, _pemitFlamethrower, 0.5, 1.5, -0.5, 0.5, ps_shape_line, ps_distr_gaussian);
 //part_emitter_stream(_psFlamethrower, _pemitFlamethrower, _ptypeFlamethrower, 7);
@@ -552,7 +553,7 @@ part_type_orientation(_ptypeElec, 0, 360, 0, 0, false);
 part_type_colour3(_ptypeElec, $FFC119, $FF6100, $FF0800);
 part_type_alpha3(_ptypeElec, 1, 0.439, 0);
 part_type_blend(_ptypeElec, true);
-part_type_life(_ptypeElec, 50, 80);
+part_type_life(_ptypeElec, 15*scale, 18*scale);
 
 
 

@@ -8,7 +8,8 @@ if (weapon==0) {
 } else if (weapon==4) {
 	sprite_index=parent.spr_sword_fx;
 	draw_sprite_ext(sprite_index,parent.sword_img_idx,parent.nx_armF,parent.ny_armF,scale,scale,image_angle,c_white,1);
-	
+}else if (weapon==10) {
+	exit;
 	
 	
 }else

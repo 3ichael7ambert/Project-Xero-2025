@@ -154,6 +154,7 @@
     {"name":"objRobotParent","order":176,"path":"objects/objRobotParent/objRobotParent.yy",},
     {"name":"objSidewalk","order":2,"path":"objects/objSidewalk/objSidewalk.yy",},
     {"name":"objSidewalkBG","order":97,"path":"objects/objSidewalkBG/objSidewalkBG.yy",},
+    {"name":"objSnipe","order":203,"path":"objects/objSnipe/objSnipe.yy",},
     {"name":"objSpike","order":20,"path":"objects/objSpike/objSpike.yy",},
     {"name":"objStressTest","order":1,"path":"objects/objStressTest/objStressTest.yy",},
     {"name":"objTitle","order":21,"path":"objects/objTitle/objTitle.yy",},

@@ -38,7 +38,11 @@ with(objCityParent_Skyline) {
 
 
 
-
+if object_exists(obj_Player1) {
+	
+	
+	
+}
 
 
 

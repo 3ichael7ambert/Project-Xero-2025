@@ -17,6 +17,7 @@ follow_player = false;
 xx=x;
 yy=y;
 
+
 weapon=0;
 
 if (weapon==3) {

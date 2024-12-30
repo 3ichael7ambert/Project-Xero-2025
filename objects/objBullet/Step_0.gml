@@ -109,6 +109,16 @@ if (weapon==4) {
 			instance_destroy();
 		}
 }
+
+
+//FLAMETHROWER
+if (weapon==10) {
+scale+=.05;
+depth=20;
+y+=grav;
+image_xscale=scale;
+image_yscale=scale;
+}
 /////
 
 
@@ -124,17 +134,20 @@ if (life_countdown>0) && (charging==false)
 }
 
 if (homing==true) {
-	
+	if  instance_exists(target) {
+	   delta = point_direction(x, y, target.x, target.y) - direction;
+	   //find shortest turn to target,turning 4degrees per step
+	   if abs(delta) > 180 { delta = -delta; }
+	   if abs(delta) > 4 { direction += 4*sign(delta); }
+	}
+		image_angle=direction;
+		 instance_create(x, y, objTrail);
+}
 
-if  instance_exists(target) {
-   delta = point_direction(x, y, target.x, target.y) - direction;
-   //find shortest turn to target,turning 4degrees per step
-   if abs(delta) > 180 { delta = -delta; }
-   if abs(delta) > 4 { direction += 4*sign(delta); }
-}
-	image_angle=direction;
-	 instance_create(x, y, objTrail);
-}
+
+
+
+
 
 
 if (bounce==true) {
@@ -180,3 +193,4 @@ if abs(h_speed) < 0.1 {
 if (wpn_charge>wpn_charge_max) {
 	wpn_charge=wpn_charge_max;
 }
+
