@@ -840,11 +840,11 @@ if (wpn_cooldown<0)
 	wpn_cooldown=0;
 }
 
-if (keyboard_check(ord("A")) && wpn_charge<10)
-{
-	wpn_charge+=.2;
-}
-if (!keyboard_check(ord("A"))) {	
+	if (wpn_charge>wpn_charge_max)
+		{wpn_charge=wpn_charge_max;}
+
+
+if (!shoot_button) {	
 	wpn_charge=0;	
 }
 
@@ -1018,6 +1018,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	}
 	
 	if (weapon==3 && shoot_button&& wpn_cooldown==0) {
+			wpn_charge+=1;
 	if !part_system_exists(global.partSysCharge)
 			{
 			    global.partSysCharge = part_system_create(part_charge_wpn);
@@ -1027,12 +1028,14 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 			var xxx=nx_armF+lengthdir_x(100*scale,armF_dir);
 			var yyy=ny_armF+lengthdir_y(100*scale,armF_dir);
 		
-		
+	
+	
+
+			//part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,1);
 
 
-
-
-			part_particles_create(global.partSysCharge,nx_fistF,ny_fistF,_ptypeCharge,1);
+			part_particles_create(global.partSysCharge,xxx,yyy,_ptypeCharge,10);
+			//part_particles_create(global._ps,nx_fistF,ny_fistF,_ptype1,10);
 			//part_system_position(global.partSysCharge,xxx,yyy);
 			//part_system_depth(global.partSysCharge,depth-10);
 		}}
@@ -1303,51 +1306,67 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	
 	
 	
-	if (weapon=11 && shoot_button && wpn_cooldown==0) { //TASER
+	if (weapon==11 && shoot_button_pressed && wpn_cooldown==0) { //TASER
 		//draw_sprite_ext(sprTaser, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprTaser, taser_img+1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	taser_img++;
 	
-	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
-	wpn_cooldown=2;
-	with (bullet) {
-		parent=obj_Player1;
-		weapon=11;
-		depth=parent.depth+1;
-		sprite_index=sprGrenade;
-		direction=parent.armF_dir;
-		speed=10;
-		image_xscale=.5*parent.scale;
-		image_yscale=.5*parent.scale;
-		hitbox=true;
-		life_countdown=parent.bullet_life;
-		life_limit=true;
+	if !instance_exists(objHitbox)
+		{
+		hitbox = instance_create(nx_fistF,ny_fistF,objBullet);
+		wpn_cooldown=2;
+		with (hitbox) {
+			parent=obj_Player1;
+			weapon=12;
+			hitbox=true;
+			xx=parent.nx_fistF;
+			yy=parent.nx_fistF;
+			depth=parent.depth+1;
+			sprite_index=sprChainsaw;
+			direction=parent.armF_dir;
+			//speed=0;
+			image_xscale=parent.image_xscale;
+			image_yscale=parent.image_yscale;
+				}
+		
+		}
+	
 	}
+	if (weapon==11 && shoot_button && wpn_cooldown==0) {
+		
+		var xxx=nx_armF+lengthdir_x(200*scale,armF_dir-3);
+		var yyy=ny_armF+lengthdir_y(200*scale,armF_dir-3);
+		part_system_depth(global._psElec,depth-10);
+		part_particles_create(global._psElec,xxx,yyy,_ptypeElec,10);
 	
 	
 	}
+	
+	
 	if (weapon==12 && shoot_button_pressed && wpn_cooldown==0) {
 		
 		if !instance_exists(objHitbox)
 		{
 		hitbox = instance_create(nx_fistF,ny_fistF,objBullet);
 		wpn_cooldown=2;
-	with (hitbox) {
-		parent=obj_Player1;
-		weapon=12;
-		hitbox=true;
-		xx=parent.nx_fistF;
-		yy=parent.nx_fistF;
-		depth=parent.depth+1;
-		sprite_index=sprChainsaw;
-		direction=parent.armF_dir;
-		//speed=0;
-		image_xscale=parent.image_xscale;
-		image_yscale=parent.image_yscale;
+		with (hitbox) {
+			parent=obj_Player1;
+			weapon=12;
+			hitbox=true;
+			xx=parent.nx_fistF;
+			yy=parent.nx_fistF;
+			depth=parent.depth-1;
+			sprite_index=sprChainsaw;
+			direction=parent.armF_dir;
+			//speed=0;
+			image_xscale=parent.image_xscale;
+			image_yscale=parent.image_yscale;
 				}
 		
 		}
+		
+		
 		
 		
 	}

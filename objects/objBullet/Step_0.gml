@@ -22,14 +22,21 @@ if (weapon==0) {
 
 
 if (weapon==3) {
-	part_type_size(_ptypeBlast, (wpn_charge/100)*scale, (wpn_charge/100)*scale, 0, 0);
+	part_type_size(_ptypeBlast, (wpn_charge/20)*scale, (wpn_charge/20)*scale, 0, 0);
 	// Get the interpolated color
-	var charge_color1 = get_interpolated_color(wpn_charge-1, wpn_charge_max);
+	var charge_color1 = get_interpolated_color(wpn_charge-2, wpn_charge_max);
 	var charge_color2 = get_interpolated_color(wpn_charge, wpn_charge_max);
-	var charge_color3 = get_interpolated_color(wpn_charge+1, wpn_charge_max);
-	//part_type_colour1(_ptypeBlast, charge_color); // Single color for simplicity
+	var charge_color3 = get_interpolated_color(wpn_charge+2, wpn_charge_max);
+	
+	
+	
+	part_type_size(_ptypeBlast, .2+wpn_charge/10*scale, .2+wpn_charge/10*scale, -.1, 0);
+	part_type_gravity(_ptypeBlast, wpn_charge/100, parent.armF_dir);
 	part_type_colour3(_ptypeBlast, charge_color1, charge_color2, charge_color3);
-	//part_type_colour3(_ptypeBlast, $F0FFE2, $77CBFF, $1E56FF);
+	part_type_speed(_ptypeBlast, wpn_charge/10, wpn_charge/10, 0, 0);
+	part_type_life(_ptypeBlast, wpn_charge, wpn_charge);
+	
+	
 	part_particles_create(global.partSysBlast,x,y,_ptypeBlast,20);
 			
 }
@@ -42,7 +49,7 @@ if (weapon==3) {
 
 if (weapon==3) {
 	if (charging) {
-		wpn_charge++;
+		wpn_charge+=.3;
 		xx=parent.nx_armF+lengthdir_x(100*parent.scale,parent.armF_dir);
 		yy=parent.ny_armF+lengthdir_y(100*parent.scale,parent.armF_dir);
 		
@@ -69,7 +76,7 @@ if !part_system_exists(global.partSysBlast)
 			    global.partSysBlast = part_system_create(part_blast_wpn);
 			}
 		if part_system_exists(global.partSysBlast) {
-			xx=parent.nx_armF+lengthdir_x(100*parent.scale,parent.armF_dir);
+		xx=parent.nx_armF+lengthdir_x(100*parent.scale,parent.armF_dir);
 		yy=parent.ny_armF+lengthdir_y(100*parent.scale,parent.armF_dir);
 		//	part_system_position(partSysBlast,xx,yy);
 			//part_system_depth(partSysBlast,depth-10);
@@ -83,7 +90,7 @@ if !part_system_exists(global.partSysBlast)
 	
 	}
 	
-	scale=(wpn_charge/10);
+	scale=(wpn_charge/20);
 	image_xscale=scale;
 	image_yscale=scale;
 	

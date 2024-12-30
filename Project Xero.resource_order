@@ -164,6 +164,7 @@
     {"name":"par_planet","order":8,"path":"objects/par_planet/par_planet.yy",},
     {"name":"part_blast_wpn","order":199,"path":"particles/part_blast_wpn/part_blast_wpn.yy",},
     {"name":"part_charge_wpn","order":197,"path":"particles/part_charge_wpn/part_charge_wpn.yy",},
+    {"name":"part_electric","order":202,"path":"particles/part_electric/part_electric.yy",},
     {"name":"part_electricity","order":187,"path":"particles/part_electricity/part_electricity.yy",},
     {"name":"part_embers","order":186,"path":"particles/part_embers/part_embers.yy",},
     {"name":"part_flamethrower","order":183,"path":"particles/part_flamethrower/part_flamethrower.yy",},

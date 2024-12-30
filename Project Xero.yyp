@@ -221,6 +221,7 @@
     {"id":{"name":"par_planet","path":"objects/par_planet/par_planet.yy",},},
     {"id":{"name":"part_blast_wpn","path":"particles/part_blast_wpn/part_blast_wpn.yy",},},
     {"id":{"name":"part_charge_wpn","path":"particles/part_charge_wpn/part_charge_wpn.yy",},},
+    {"id":{"name":"part_electric","path":"particles/part_electric/part_electric.yy",},},
     {"id":{"name":"part_electricity","path":"particles/part_electricity/part_electricity.yy",},},
     {"id":{"name":"part_embers","path":"particles/part_embers/part_embers.yy",},},
     {"id":{"name":"part_flamethrower","path":"particles/part_flamethrower/part_flamethrower.yy",},},
