@@ -1046,6 +1046,27 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 			//draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	
 	
+		var attack_force=10;
+		hsp += attack_force * cos(degtorad(armF_dir));
+		vsp -= attack_force * sin(degtorad(armF_dir));
+		if place_empty(x+bbox_right,y,floor_obj)  
+		{
+		//hsp = attack_force * cos(degtorad(attack_angle));
+		//vsp = attack_force * sin(degtorad(attack_angle));
+		}
+		if place_empty(x-bbox_left+hsp,y-20,floor_obj) 
+		{
+		
+		}
+	    if place_empty(x,bbox_bottom,floor_obj) 
+	    {
+	        vsp -= 0.4;
+	    }  
+	    if place_empty(x,bbox_top,floor_obj)
+		{
+	        vsp -= 0.4;
+	    } 
+	
 		sword=true;
 		wpn_cooldown=10;
 	

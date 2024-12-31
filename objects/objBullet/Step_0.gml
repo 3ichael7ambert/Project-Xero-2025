@@ -69,6 +69,10 @@ if (weapon==3) {
 		speed=wpn_charge;
 		xx=parent.nx_armF+lengthdir_x(100*parent.scale,parent.armF_dir);
 		yy=parent.ny_armF+lengthdir_y(100*parent.scale,parent.armF_dir);
+	
+	var recoil=wpn_charge;
+		parent.hsp -= recoil * cos(degtorad(parent.armF_dir));
+		parent.vsp += recoil * sin(degtorad(parent.armF_dir));
 //PARTICLES
 
 if !part_system_exists(global.partSysBlast)
