@@ -1216,14 +1216,14 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		direction=parent.armF_dir;
 		speed=10;
 		//speed=parent.wpn_charge;
-		image_xscale=.5*parent.scale;
-		image_yscale=.5*parent.scale;
-		life_countdown=parent.bullet_life;
+		image_xscale=2*parent.scale;
+		image_yscale=2*parent.scale;
+		life_countdown=100;
 		life_limit=true;
 		bounce = true;
-		grav = 10;           // Initial vertical speed
+		grav = 1;           // Initial vertical speed
 		grav_accel = 0.5;   // Acceleration due to gravity
-		grav_max = 10;      // Maximum falling speed
+		grav_max = 0;      // Maximum falling speed
 		bounce_factor = -0.8; // How much energy is retained after bouncing (-1 = perfect bounce, less than -1 = energy loss)
 		h_speed = 4;         // Horizontal speed
 		h_friction = 0.98;   // Friction applied to horizontal movement	
@@ -1241,20 +1241,29 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		parent=obj_Player1;
 		weapon=8;
 		homing=true;
-			target = instance_nearest(x, y, objEnemy);
+		if instance_exists(objEnemyParent) {
+			target = instance_nearest(x, y, objEnemyParent);
+		} else {
+			
+			target = instance_nearest(x, y, objHuman);
+		}
+		sprite_index=sprRocket;
 		depth=parent.depth+1;
 			sprite_index=sprRocket;
 		direction=parent.armF_dir;
 		speed=10;
-		image_xscale=.5*parent.scale;
-		image_yscale=.5*parent.scale;
-		life_countdown=parent.bullet_life;
+		scale=.2;
+		image_xscale=scale;
+		image_yscale=scale;
+		//life_countdown=parent.bullet_life;
+		life_countdown=100;
+		decay=100;
 		life_limit=true;
 	}
 	
 	}
 	
-	if (weapon==9) {
+	if (weapon==9) { //sniper
 		global.snipe=true;
 		
 		if instance_exists(objSnipe) {
@@ -1368,12 +1377,15 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 			image_xscale=parent.image_xscale;
 			image_yscale=parent.image_yscale;
 			image_angle=parent.armF_dir;
+			
+			follow_player=true;
+			
 				}
 		
 		}
 	
 	}
-	if (weapon==11 && shoot_button && wpn_cooldown==0) {
+	if (weapon==11 && shoot_button && wpn_cooldown==0) { //TASER
 		
 		var xxx=nx_armF+lengthdir_x(200*scale,armF_dir-3);
 		var yyy=ny_armF+lengthdir_y(200*scale,armF_dir-3);
@@ -1384,8 +1396,8 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	}
 	
 	
-	if (weapon==12 && shoot_button_pressed && wpn_cooldown==0) {
-		
+	if (weapon==12 && shoot_button_pressed && wpn_cooldown==0) { //CHAINSAW
+		 
 		if !instance_exists(objHitbox)
 		{
 		hitbox = instance_create(nx_fistF,ny_fistF,objBullet);
@@ -1404,6 +1416,8 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 			image_yscale=parent.image_yscale;
 			
 			image_angle=parent.armF_dir;
+			
+			follow_player=true;
 				}
 		
 		}
@@ -1466,5 +1480,11 @@ if (weapon!=12 || !(shoot_button)) {
 	//part_system_destroy(partSysSmoke);
 }
 
+
+
+//Fireworks
+instance_create(x+irandom_range(-500,500),room_height,objFirework);
+//Rain
+effect_create_above(ef_rain, x+irandom_range(-100,100), y+irandom_range(-100,100), 1, c_white);
 
 	

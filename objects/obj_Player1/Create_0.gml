@@ -1,5 +1,7 @@
 image_angle=0;
 facing_right = true;
+depth=-10;
+
 
 // Set initial variables
 hsp = 0; // Horizontal speed

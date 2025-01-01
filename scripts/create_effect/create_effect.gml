@@ -7,14 +7,14 @@
 /// @param  vspeed
 /// @param  colour
 /// @param  alpha
-function create_effect(argument0, argument1, argument2, argument3, argument4, argument5, argument6, argument7) {
-	var a = instance_create(argument0, argument1, objEffect);
-	a.sprite_index = argument2;
-	a.image_speed = argument3;
-	a.hspeed = argument4;
-	a.vspeed = argument5;
-	a.image_blend = argument6;
-	a.image_alpha = argument7;
+function create_effect(xx, yy, spr_idx, img_spd, hsp, vsp, img_blnd, img_alph) {
+	var a = instance_create(xx, yy, objEffect);
+	a.sprite_index = spr_idx;
+	a.image_speed = img_spd;
+	a.hspeed = hsp;
+	a.vspeed = vsp;
+	a.image_blend = img_blnd;
+	a.image_alpha = img_alph;
 	return a;
 
 

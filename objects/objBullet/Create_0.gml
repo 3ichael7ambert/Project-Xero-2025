@@ -147,3 +147,23 @@ part_type_blend(_ptypeBlast, false);
 //part_emitter_stream(global.partSysBlast, _pemit1, _ptypeBlast, 20);
 
 //part_system_position(global.partSysBlast, room_width/2, room_height/2);
+
+
+//part_exhuast
+_psExhaust = part_system_create();
+
+//Emitter
+_ptypeExhaust = part_type_create();
+part_type_shape(_ptypeExhaust, pt_shape_cloud);
+part_type_size(_ptypeExhaust, 0, 0, .01, 0);
+part_type_scale(_ptypeExhaust, 1*scale, 1*scale);
+part_type_speed(_ptypeExhaust, 0, 0, 0, 0);
+part_type_direction(_ptypeExhaust, 0, 360, 0, 0);
+part_type_gravity(_ptypeExhaust, 0, 270);
+part_type_orientation(_ptypeExhaust, 0, 360, 0, 0, true);
+part_type_colour3(_ptypeExhaust, $FFFFFF, $FFFFFF, $FFFFFF);
+part_type_alpha3(_ptypeExhaust, 1, 1, 1);
+part_type_blend(_ptypeExhaust, false);
+part_type_life(_ptypeExhaust, 80, 80);
+
+

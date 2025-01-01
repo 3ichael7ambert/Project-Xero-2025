@@ -3,7 +3,7 @@
 
 
 //PUNCH
-if (follow_player==true) {
+if (follow_player==true) && (weapon==0) {
 	if (punch_side="front"){
 		x=parent.nx_armF;
 		y=parent.ny_armF;
@@ -11,6 +11,12 @@ if (follow_player==true) {
 		x=parent.nx_armB;
 		y=parent.ny_armB;
 	}
+}
+
+if (follow_player==true) && (weapon!=0) {
+		image_angle=parent.armF_dir;
+		x=parent.nx_fistF;
+		y=parent.ny_fistF;
 }
 
 if (weapon==0) {
@@ -115,6 +121,16 @@ if (weapon==4) {
 }
 
 
+
+if (weapon==8) { //Rocket
+	
+	image_xscale=scale;
+	image_yscale=scale;
+	
+	
+}
+
+
 //FLAMETHROWER
 if (weapon==10) {
 scale+=.05;
@@ -145,7 +161,9 @@ if (homing==true) {
 	   if abs(delta) > 4 { direction += 4*sign(delta); }
 	}
 		image_angle=direction;
-		 instance_create(x, y, objTrail);
+		 //instance_create(x, y, objTrail);
+		 
+		 part_particles_create(_psExhaust,x,y,_ptypeExhaust,1);
 }
 
 
