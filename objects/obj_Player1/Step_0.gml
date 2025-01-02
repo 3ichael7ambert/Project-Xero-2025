@@ -909,7 +909,7 @@ switch (sword_num) {
 		break;
 }
 
-if (facing_right) {
+
 	
 if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
@@ -1047,8 +1047,8 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	
 	
 		var attack_force=10;
-		hsp += attack_force * cos(degtorad(armF_dir));
-		vsp -= attack_force * sin(degtorad(armF_dir));
+		//hsp += attack_force * cos(degtorad(armF_dir));
+		//vsp -= attack_force * sin(degtorad(armF_dir));
 		if place_empty(x+bbox_right,y,floor_obj)  
 		{
 		//hsp = attack_force * cos(degtorad(attack_angle));
@@ -1070,7 +1070,8 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		sword=true;
 		wpn_cooldown=10;
 	
-	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
+		bullet = instance_create(nx_fistF,ny_fistF,objBullet);
+		
 	wpn_cooldown=2;
 	
 	
@@ -1079,11 +1080,19 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		weapon=4;
 		depth=parent.depth-10;
 		sprite_index=parent.spr_sword_fx;
-		direction=parent.armF_dir;
+		
 		//speed=10;
 		scale=1*parent.scale;
-		image_xscale=1*parent.scale;
-		image_yscale=1*parent.scale;
+		if (parent.facing_right) {
+			direction=parent.armF_dir;
+			image_xscale=1*parent.scale;
+			image_yscale=1*parent.scale;
+		} else {
+			direction=parent.armF_dir;
+			image_xscale=1*parent.scale;
+			image_yscale=1*parent.scale;
+		}
+	
 		//alarm[0]=10;///destroy
 		follow_player=true;
 		//punch_side=parent.punch_side;
@@ -1269,7 +1278,10 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		if instance_exists(objSnipe) {
 			global.CameraManager.target=objSnipe;
 		} else {
-			instance_create(x,y,objSnipe);
+			obj_snipe = instance_create(x,y,objSnipe);
+			with (obj_snipe) {
+				parent=obj_Player1;
+			}
 		}
 	}else{
 		global.snipe=false;
@@ -1299,8 +1311,12 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	if (weapon==10 && shoot_button && wpn_cooldown==0) { //FLAMETHROWER
 		//draw_sprite_ext(sprFlamethrower, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	if (facing_right) {
+		bullet = instance_create(nx_fistF+lengthdir_x(120*scale,armF_dir+15),ny_fistF+lengthdir_y(120*scale,armF_dir+15),objBullet);
+	} else {
+		bullet = instance_create(nx_fistF+lengthdir_x(120*scale,armF_dir-15),ny_fistF+lengthdir_y(120*scale,armF_dir-15),objBullet);
+	}
 	
-	bullet = instance_create(nx_fistF+lengthdir_x(120*scale,armF_dir+15),ny_fistF+lengthdir_y(120*scale,armF_dir+15),objBullet);
 	wpn_cooldown=0;
 	with (bullet) {
 		parent=obj_Player1;
@@ -1325,15 +1341,16 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 			}
 		if part_system_exists(global._psFlamethrower) {
 			
-
-
-			part_type_direction(_ptypeFlamethrower,armF_dir +10, armF_dir - 10, 0, 0);
-			part_particles_create(global._psFlamethrower,nx_fistF+lengthdir_x(120*scale,armF_dir+10),ny_fistF+lengthdir_y(120*scale,armF_dir+10),_ptypeFlamethrower,10);
+		part_type_direction(_ptypeFlamethrower,armF_dir +10, armF_dir - 10, 0, 0);
+			if (facing_right) {
+				
+				part_particles_create(global._psFlamethrower,nx_fistF+lengthdir_x(120*scale,armF_dir+10),ny_fistF+lengthdir_y(120*scale,armF_dir+10),_ptypeFlamethrower,10);
 			//part_system_position(global.partSysSmoke,nx_fistF,ny_fistF);
-			
-			
 			//part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,1);
 			//part_system_depth(global.partSysSmoke,depth-10);
+			} else {
+				part_particles_create(global._psFlamethrower,nx_fistF+lengthdir_x(120*scale,armF_dir-10),ny_fistF+lengthdir_y(120*scale,armF_dir-10),_ptypeFlamethrower,10);
+			}
 		}
 	
 		if !part_system_exists(global.partSysSmoke)
@@ -1469,7 +1486,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	}
 	
 
-}
+
 
 
 

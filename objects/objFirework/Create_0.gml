@@ -13,7 +13,7 @@ vsp=irandom_range(-15,-25);
 grav=.1;
 depth=100;
 
-life=irandom_range(100,500);
+life=irandom_range(100,200);
 
 
 //part_Firework_trail

@@ -2,7 +2,7 @@
 // You can write your code in this editor
 x+=hsp;
 y+=vsp;
-//vsp-=grav;
+vsp+=grav;
 
 
 //effect_create_depth(depth,ef_spark,x+irandom_range(-5,5),y+irandom_range(-5,5),.1,choose(col1,col2,col3));

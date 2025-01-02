@@ -114,7 +114,11 @@ if !part_system_exists(global.partSysBlast)
 
 
 if (weapon==4) {
-		image_angle=parent.armF_dir;
+		if (parent.facing_right) {
+			image_angle=parent.armF_dir;
+		} else {
+			image_angle=parent.armF_dir;
+		}
 		if (parent.punch_img_idx==21) {
 			instance_destroy();
 		}

@@ -953,8 +953,13 @@ if (facing_right)
 {
 	
 	if (weapon!=0) || (weapon!=4) {
-	//draw_sprite_ext(sprArmArms, image_index, nx_armB, ny_armB, scale, scale, image_angle-65+hsp, -1, 1);
+//draw_sprite_ext(sprArmArms, image_index, nx_armB, ny_armB, scale, scale, image_angle-65+hsp, -1, 1);
 	//draw_sprite_ext(sprFist, image_index, nx_fistB, ny_fistB, scale, scale, image_angle-65+hsp, -1, 1); ///
+	}
+	
+	if (weapon!=0) {
+		draw_sprite_ext(sprArmArms, image_index, nx_armB, ny_armB, scale, scale, image_angle-65+hsp, -1, 1);
+		draw_sprite_ext(sprFist, image_index, nx_fistB, ny_fistB, scale, scale, image_angle-65+hsp, -1, 1); ///
 	}
 	
 	if (weapon==0) {
@@ -1069,7 +1074,28 @@ if (facing_right)
 }
 else
 {
-	draw_sprite_ext(sprArmArms, image_index, nx_armB, ny_armB, -scale, scale, image_angle+65-hsp, -1, 1);
+	if (weapon!=0)  {
+		draw_sprite_ext(sprArmArms, image_index, nx_armB, ny_armB, -scale, scale, image_angle-65+hsp, -1, 1);
+		draw_sprite_ext(sprFist, image_index, nx_fistB, ny_fistB, -scale, scale, image_angle-65+hsp, -1, 1); ///
+	}
+	
+	
+	if (weapon==0) {
+	if (punch_side=="front")  {	
+		draw_sprite_ext(sprArmArms, image_index, nx_armB, ny_armB, -scale, scale, image_angle-65+hsp, -1, 1);
+		draw_sprite_ext(sprFist, image_index, nx_fistB, ny_fistB, -scale, scale, image_angle-65+hsp, -1, 1); ///
+	} else
+	if (punch==false && punch_side=="back") {	
+		draw_sprite_ext(sprArmArms, image_index, nx_armB, ny_armB, -scale, scale, image_angle-65+hsp, -1, 1);
+		draw_sprite_ext(sprFist, image_index, nx_fistB, ny_fistB, -scale, scale, image_angle-65+hsp, -1, 1); ///
+	} else
+	if (punch==true && punch_side=="back") {
+		draw_sprite_ext(sprArmPunch, punch_img_idx, nx_armB, ny_armB, -scale, scale, armF_dir, -1, 1); //
+		
+	}
+	}
+	
+	//draw_sprite_ext(sprArmArms, image_index, nx_armB, ny_armB, -scale, scale, image_angle+65-hsp, -1, 1);
 	draw_sprite_ext(sprFist, image_index, nx_fistB, ny_fistB, -scale, scale, image_angle+65-hsp, -1, 1); ///
 	draw_sprite_ext(sprLeg3, image_index, nx_legB, ny_legB, -scale, scale, 0, -1, 1);
     draw_sprite_ext(sprJetBack, image_index, nx_jet, ny_jet, -scale, scale, image_angle+(speed/1), -1, 1);
@@ -1078,10 +1104,29 @@ else
     draw_sprite_ext(sprEyes, image_index, nx_eyes, ny_eyes, -scale, scale, head_direction, -1, 1);
 	//draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, -scale, scale, armF_dir+180, -1, 1);
 	if (punch=false) {
-			draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, -scale, scale, armF_dir+180, -1, 1);
+			//draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, -scale, scale, armF_dir+180, -1, 1);
 		}
 		
 	
+	if (weapon!=0)  && (weapon!=4) {
+		draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, -scale, armF_dir, -1, 1);
+	}
+	
+	if (weapon==0) {
+	if  (punch_side=="back") {	
+			draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, -scale, armF_dir, -1, 1);
+			draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, -scale, armF_dir, -1, 1); //
+			
+		}	else
+		if (punch==false && punch_side=="front") {
+			draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, -scale, armF_dir, -1, 1);
+			draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, -scale, armF_dir, -1, 1); //
+		}else
+		if (punch==true && punch_side=="front") {
+			draw_sprite_ext(sprArmPunch, punch_img_idx, nx_armF, ny_armF, scale, -scale, armF_dir, -1, 1); //
+		}
+	}
+	/*
 	if weapon=0 {
 		if (punch=false) {
 			draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, scale, scale, armF_dir, -1, 1); //
@@ -1091,7 +1136,7 @@ else
 			draw_sprite_ext(sprArmPunch, punch_img_idx, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1); //
 		}
 	}
-	
+	*/
 	
 	if weapon=1 { //GUN
 		draw_sprite_ext(sprGun, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
@@ -1103,7 +1148,17 @@ else
 		draw_sprite_ext(sprGun3, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	}
 	if weapon=4 { //SWORD
-		draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
+	
+	if (sword=false) {
+			draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, -scale, armF_dir, -1, 1);
+			draw_sprite_ext(sprHandSword, image_index, nx_fistF, ny_fistF, scale, -scale, armF_dir, -1, 1); ///
+	}
+	if (sword=true) {
+			draw_sprite_ext(spr_sword_arm, sword_img_idx, nx_armF, ny_armF, scale, -scale, armF_dir, -1, 1); //
+			draw_sprite_ext(spr_sword_sword, sword_img_idx, nx_armF, ny_armF, scale, -scale, armF_dir, -1, 1); //
+		}
+		
+		
 	}
 	if weapon=5 { //SHOTGUN
 		

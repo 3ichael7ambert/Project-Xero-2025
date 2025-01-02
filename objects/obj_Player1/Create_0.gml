@@ -32,9 +32,7 @@ sword=false;
 sword_num=1;
 sword_img_idx=0;
 
-spr_sword_arm = sprArmSword_1_Arm;
-spr_sword_sword = sprArmSword_1_Sword;
-spr_sword_fx = sprArmSword_1_Fx; 
+
 
 chainsaw_blade=0;
 taser_img=0;
@@ -45,10 +43,17 @@ wpn_cooldown=0;
 sprite_body=sprBody;
 sprite_body_offsetX=45;
 sprite_body_offsetY=79;
-sprite_head=sprHeadSanta;
+if (current_month==12) {
+	sprite_head=sprHeadSanta;
+} else {
+	sprite_head=sprHead;
+}
 sprite_armF=sprArmArms;
 sprite_legF=sprLeg3;
 
+spr_sword_arm = sprArmSword_1_Arm;
+spr_sword_sword = sprArmSword_1_Sword;
+spr_sword_fx = sprArmSword_1_Fx; 
 /*
 offsetX=23;
 offsetY=56;
