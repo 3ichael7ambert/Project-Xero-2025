@@ -65,6 +65,9 @@ if (snow) {
 if (wind) {
 	//effect_create_above(ef_rain, x+irandom_range(-100,100), y+irandom_range(-100,100), 1, c_white);
 	//effect_create_above(ef_rain, irandom(room_width), irandom(room_height), 1, c_white);
+	//_effect_windblown_particles
+	//_effect_gaussian_blur
+	
 }
 
 //Fog
