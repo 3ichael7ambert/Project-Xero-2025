@@ -1499,9 +1499,5 @@ if (weapon!=12 || !(shoot_button)) {
 
 
 
-//Fireworks
-instance_create(x+irandom_range(-500,500),room_height,objFirework);
-//Rain
-effect_create_above(ef_rain, x+irandom_range(-100,100), y+irandom_range(-100,100), 1, c_white);
 
 	
