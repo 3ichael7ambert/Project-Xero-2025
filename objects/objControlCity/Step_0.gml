@@ -44,6 +44,33 @@ if object_exists(obj_Player1) {
 	
 }
 
+
+
+
+
+/* EFFECTS
+var _fx_fog = fx_create("_filter_fractal_noise");
+var _fx_gradient = fx_create("_filter_gradient");
+var _fx_colorbalance = fx_create("_filter_colour_balance");
+var _fx_tint = fx_create("_filter_tintfiltere");
+var _fx_colorise = fx_create("_filter_colourise");
+var _fx_contrast = fx_create("_filter_contrast");
+var _fx_edge = fx_create("_filter_edgedetect");
+var _fx_grey = fx_create("_filter_greyscale");
+var _fx_heat = fx_create("_filter_heathaze");
+var _fx_lut = fx_create("_filter_lut_colour");
+var _fx_hue = fx_create("_filter_hue");
+var _fx_mask = fx_create("_filter_mask");
+var _fx_posterise = fx_create("_filter_posterise");
+var _fx_rgbnoise = fx_create("_filter_rgbnoise");
+var _fx_oldfilm = fx_create("_filter_old_film");
+var _fx_ripples = fx_create("_filter_ripples");
+var _fx_screenshake = fx_create("_filter_screenshake");
+var _fx_underwater = fx_create("_filter_underwater");
+var _fx_vignette = fx_create("_filter_vignette");
+var _fx_zoomblur = fx_create("_filter_zoom_blur");
+*/
+
 //Fireworks
 if (fireworks) {
 	instance_create(x+irandom_range(-500,500),room_height,objFirework);
@@ -71,34 +98,17 @@ if (wind) {
 	
 	//setup_wind_blown_particles(sprite, effect_layer_name)
 	var _fx_wind_blown_particles = fx_create("_effect_windblown_particles");
-	fx_set_parameter(_fx_wind_blown_particles, "param_sprite", sprite);
-	layer_set_fx(effect_layer_name, _fx_wind_blown_particles);
+	fx_set_parameter(_fx_wind_blown_particles, "param_sprite", sprTrashDebris);
+	layer_set_fx("EffectsLayerTop", _fx_wind_blown_particles);
 }
 
 //Fog
 if (fog) {
 	//effect_create_above(ef_rain, x+irandom_range(-100,100), y+irandom_range(-100,100), 1, c_white);
 	//effect_create_above(ef_fog, irandom(room_width), irandom(room_height), 1, c_white);
+
+
 var _fx_fog = fx_create("_filter_fractal_noise");
-var _fx_gradient = fx_create("_filter_gradient");
-var _fx_colorbalance = fx_create("_filter_colour_balance");
-var _fx_tint = fx_create("_filter_tintfiltere");
-var _fx_colorise = fx_create("_filter_colourise");
-var _fx_contrast = fx_create("_filter_contrast");
-var _fx_edge = fx_create("_filter_edgedetect");
-var _fx_grey = fx_create("_filter_greyscale");
-var _fx_heat = fx_create("_filter_heathaze");
-var _fx_lut = fx_create("_filter_lut_colour");
-var _fx_hue = fx_create("_filter_hue");
-var _fx_mask = fx_create("_filter_mask");
-var _fx_posterise = fx_create("_filter_posterise");
-var _fx_rgbnoise = fx_create("_filter_rgbnoise");
-var _fx_oldfilm = fx_create("_filter_old_film");
-var _fx_ripples = fx_create("_filter_ripples");
-var _fx_screenshake = fx_create("_filter_screenshake");
-var _fx_underwater = fx_create("_filter_underwater");
-var _fx_vignette = fx_create("_filter_vignette");
-var _fx_zoomblur = fx_create("_filter_zoom_blur");
 fx_set_parameter(_fx_fog, "g_TintCol", [1, 0, 0, 1]);
 layer_set_fx("EffectLayer", _fx_fog);
 
@@ -125,6 +135,9 @@ if (apocalypse) {
 if (night) {
 	//effect_create_above(ef_rain, x+irandom_range(-100,100), y+irandom_range(-100,100), 1, c_white);
 	effect_create_behind(ef_star, irandom(room_width), irandom(room_height), 1, c_white);
+	var _fx_lut_night = fx_create("_filter_lut_colour");
+	fx_set_parameter(_fx_lut_night, "g_TintCol", [1, 0, 0, 1]);
+	layer_set_fx("EffectLayer", _fx_lut_night);
 }
 
 

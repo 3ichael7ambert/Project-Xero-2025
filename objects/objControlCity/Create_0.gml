@@ -7,14 +7,15 @@
 fpsreal = fps_real;
 alarm[2]=30;
 
-rain=false;
-snow=false;
+rain=false; //WORKS
+snow=false; //WORKS
 fireworks=false;
 night=false;
-fog=false;
+fog=true;
 apocalypse=false;
 cloudy=false;
-wind=false;
+wind=true;
+
 
 /*
 with (instance_create(0, 0, objCamera))
