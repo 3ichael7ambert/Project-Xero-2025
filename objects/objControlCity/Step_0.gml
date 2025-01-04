@@ -68,6 +68,11 @@ if (wind) {
 	//_effect_windblown_particles
 	//_effect_gaussian_blur
 	
+	
+	//setup_wind_blown_particles(sprite, effect_layer_name)
+	var _fx_wind_blown_particles = fx_create("_effect_windblown_particles");
+	fx_set_parameter(_fx_wind_blown_particles, "param_sprite", sprite);
+	layer_set_fx(effect_layer_name, _fx_wind_blown_particles);
 }
 
 //Fog

@@ -391,6 +391,7 @@
     {"id":{"name":"seg_meeting","path":"scripts/seg_meeting/seg_meeting.yy",},},
     {"id":{"name":"seg_set_length","path":"scripts/seg_set_length/seg_set_length.yy",},},
     {"id":{"name":"set_autoblock","path":"scripts/set_autoblock/set_autoblock.yy",},},
+    {"id":{"name":"setup_wind_blown_particles","path":"scripts/setup_wind_blown_particles/setup_wind_blown_particles.yy",},},
     {"id":{"name":"stick_to","path":"scripts/stick_to/stick_to.yy",},},
     {"id":{"name":"texture_set_repeat","path":"scripts/texture_set_repeat/texture_set_repeat.yy",},},
     {"id":{"name":"update_object","path":"scripts/update_object/update_object.yy",},},
