@@ -361,22 +361,22 @@ if jetpack_mode=1
 	image_angle = 0;
 	//gravity=.5;
 	//grav=.5;
-// Calculate the bounding box for each sprite relative to sprBody
-var modified_bbox_left = min(nx_body - sprite_get_bbox_left(sprBody), nx_head - sprite_get_bbox_left(sprHeadSanta), nx_armB - sprite_get_bbox_left(sprArmArms), nx_armF - sprite_get_bbox_left(sprArmArms), nx_legB - sprite_get_bbox_left(sprLeg3), nx_legF - sprite_get_bbox_left(sprLeg3), nx_jet - sprite_get_bbox_left(sprJetBack));
-var modified_bbox_right = max(nx_body + sprite_get_bbox_right(sprBody) - sprite_get_bbox_left(sprBody), nx_head + sprite_get_bbox_right(sprHeadSanta) - sprite_get_bbox_left(sprHeadSanta), nx_armB + sprite_get_bbox_right(sprArmArms) - sprite_get_bbox_left(sprArmArms), nx_armF + sprite_get_bbox_right(sprArmArms) - sprite_get_bbox_left(sprArmArms), nx_legB + sprite_get_bbox_right(sprLeg3) - sprite_get_bbox_left(sprLeg3), nx_legF + sprite_get_bbox_right(sprLeg3) - sprite_get_bbox_left(sprLeg3), nx_jet + sprite_get_bbox_right(sprJetBack) - sprite_get_bbox_left(sprJetBack));
-var modified_bbox_top = min(ny_body - sprite_get_bbox_top(sprBody), ny_head - sprite_get_bbox_top(sprHeadSanta), ny_armB - sprite_get_bbox_top(sprArmArms), ny_armF - sprite_get_bbox_top(sprArmArms), ny_legB - sprite_get_bbox_top(sprLeg3), ny_legF - sprite_get_bbox_top(sprLeg3), ny_jet - sprite_get_bbox_top(sprJetBack));
-var modified_bbox_bottom = max(ny_body + sprite_get_bbox_bottom(sprBody) - sprite_get_bbox_top(sprBody), ny_head + sprite_get_bbox_bottom(sprHeadSanta) - sprite_get_bbox_top(sprHeadSanta), ny_armB + sprite_get_bbox_bottom(sprArmArms) - sprite_get_bbox_top(sprArmArms), ny_armF + sprite_get_bbox_bottom(sprArmArms) - sprite_get_bbox_top(sprArmArms), ny_legB + sprite_get_bbox_bottom(sprLeg3) - sprite_get_bbox_top(sprLeg3), ny_legF + sprite_get_bbox_bottom(sprLeg3) - sprite_get_bbox_top(sprLeg3), ny_jet + sprite_get_bbox_bottom(sprJetBack) - sprite_get_bbox_top(sprJetBack));
+// Calculate the bounding box for each sprite relative to sprite_body
+var modified_bbox_left = min(nx_body - sprite_get_bbox_left(sprite_body), nx_head - sprite_get_bbox_left(sprite_head), nx_armB - sprite_get_bbox_left(sprArmArms), nx_armF - sprite_get_bbox_left(sprArmArms), nx_legB - sprite_get_bbox_left(sprLeg3), nx_legF - sprite_get_bbox_left(sprLeg3), nx_jet - sprite_get_bbox_left(sprJetBack));
+var modified_bbox_right = max(nx_body + sprite_get_bbox_right(sprite_body) - sprite_get_bbox_left(sprite_body), nx_head + sprite_get_bbox_right(sprite_head) - sprite_get_bbox_left(sprite_head), nx_armB + sprite_get_bbox_right(sprArmArms) - sprite_get_bbox_left(sprArmArms), nx_armF + sprite_get_bbox_right(sprArmArms) - sprite_get_bbox_left(sprArmArms), nx_legB + sprite_get_bbox_right(sprLeg3) - sprite_get_bbox_left(sprLeg3), nx_legF + sprite_get_bbox_right(sprLeg3) - sprite_get_bbox_left(sprLeg3), nx_jet + sprite_get_bbox_right(sprJetBack) - sprite_get_bbox_left(sprJetBack));
+var modified_bbox_top = min(ny_body - sprite_get_bbox_top(sprite_body), ny_head - sprite_get_bbox_top(sprite_head), ny_armB - sprite_get_bbox_top(sprArmArms), ny_armF - sprite_get_bbox_top(sprArmArms), ny_legB - sprite_get_bbox_top(sprLeg3), ny_legF - sprite_get_bbox_top(sprLeg3), ny_jet - sprite_get_bbox_top(sprJetBack));
+var modified_bbox_bottom = max(ny_body + sprite_get_bbox_bottom(sprite_body) - sprite_get_bbox_top(sprite_body), ny_head + sprite_get_bbox_bottom(sprite_head) - sprite_get_bbox_top(sprite_head), ny_armB + sprite_get_bbox_bottom(sprArmArms) - sprite_get_bbox_top(sprArmArms), ny_armF + sprite_get_bbox_bottom(sprArmArms) - sprite_get_bbox_top(sprArmArms), ny_legB + sprite_get_bbox_bottom(sprLeg3) - sprite_get_bbox_top(sprLeg3), ny_legF + sprite_get_bbox_bottom(sprLeg3) - sprite_get_bbox_top(sprLeg3), ny_jet + sprite_get_bbox_bottom(sprJetBack) - sprite_get_bbox_top(sprJetBack));
 
-// Calculate the bounding box for each sprite relative to sprBody
-var bbox_body_left = x - sprite_get_bbox_right(sprBody) * image_xscale;
-var bbox_body_right = x + sprite_get_bbox_right(sprBody) * image_xscale;
-var bbox_body_top = y - sprite_get_bbox_top(sprBody) * image_yscale;
-var bbox_body_bottom = y + sprite_get_bbox_bottom(sprBody) * image_yscale;
+// Calculate the bounding box for each sprite relative to sprite_body
+var bbox_body_left = x - sprite_get_bbox_right(sprite_body) * image_xscale;
+var bbox_body_right = x + sprite_get_bbox_right(sprite_body) * image_xscale;
+var bbox_body_top = y - sprite_get_bbox_top(sprite_body) * image_yscale;
+var bbox_body_bottom = y + sprite_get_bbox_bottom(sprite_body) * image_yscale;
 
-var bbox_head_left = nx_head - sprite_get_bbox_right(sprHeadSanta) * image_xscale;
-var bbox_head_right = nx_head + sprite_get_bbox_right(sprHeadSanta) * image_xscale;
-var bbox_head_top = ny_head - sprite_get_bbox_top(sprHeadSanta) * image_yscale;
-var bbox_head_bottom = ny_head + sprite_get_bbox_bottom(sprHeadSanta) * image_yscale;
+var bbox_head_left = nx_head - sprite_get_bbox_right(sprite_head) * image_xscale;
+var bbox_head_right = nx_head + sprite_get_bbox_right(sprite_head) * image_xscale;
+var bbox_head_top = ny_head - sprite_get_bbox_top(sprite_head) * image_yscale;
+var bbox_head_bottom = ny_head + sprite_get_bbox_bottom(sprite_head) * image_yscale;
 
 var bbox_armB_left = nx_armB - sprite_get_bbox_right(sprArmArms) * image_xscale;
 var bbox_armB_right = nx_armB + sprite_get_bbox_right(sprArmArms) * image_xscale;
@@ -397,16 +397,16 @@ var bbox_legF_left = nx_legF - sprite_get_bbox_right(sprLeg3) * image_xscale;
 var bbox_legF_right = nx_legF + sprite_get_bbox_right(sprLeg3) * image_xscale;
 var bbox_legF_top = ny_legF - sprite_get_bbox_top(sprLeg3) * image_yscale;
 var bbox_legF_bottom = ny_legF + sprite_get_bbox_bottom(sprLeg3)  * image_yscale;
-// Calculate the bounding box for each sprite relative to sprBody 
-var bbox_body = [x - sprite_get_bbox_right(sprBody) * image_xscale, y - sprite_get_bbox_top(sprBody) * image_yscale, x + sprite_get_bbox_right(sprBody) * image_xscale, y + sprite_get_bbox_bottom(sprBody) * image_yscale];
-var bbox_head = [nx_head - sprite_get_bbox_right(sprHeadSanta) * image_xscale, ny_head - sprite_get_bbox_top(sprHeadSanta) * image_yscale, nx_head + sprite_get_bbox_right(sprHeadSanta) * image_xscale, ny_head + sprite_get_bbox_bottom(sprHeadSanta) * image_yscale];
+// Calculate the bounding box for each sprite relative to sprite_body 
+var bbox_body = [x - sprite_get_bbox_right(sprite_body) * image_xscale, y - sprite_get_bbox_top(sprite_body) * image_yscale, x + sprite_get_bbox_right(sprite_body) * image_xscale, y + sprite_get_bbox_bottom(sprite_body) * image_yscale];
+var bbox_head = [nx_head - sprite_get_bbox_right(sprite_head) * image_xscale, ny_head - sprite_get_bbox_top(sprite_head) * image_yscale, nx_head + sprite_get_bbox_right(sprite_head) * image_xscale, ny_head + sprite_get_bbox_bottom(sprite_head) * image_yscale];
 var bbox_armB = [nx_armB - sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armB - sprite_get_bbox_top(sprArmArms) * image_yscale, nx_armB + sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armB + sprite_get_bbox_bottom(sprArmArms) * image_yscale];
 var bbox_armF = [nx_armF - sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armF - sprite_get_bbox_top(sprArmArms) * image_yscale, nx_armF + sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armF + sprite_get_bbox_bottom(sprArmArms) * image_yscale];
 var bbox_legB = [nx_legB - sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legB - sprite_get_bbox_top(sprLeg3) * image_yscale, nx_legB + sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legB + sprite_get_bbox_bottom(sprLeg3) * image_yscale];
 var bbox_legF = [nx_legF - sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legF - sprite_get_bbox_top(sprLeg3) * image_yscale, nx_legF + sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legF + sprite_get_bbox_bottom(sprLeg3) * image_yscale];
 var bbox_jet = [nx_jet - sprite_get_bbox_right(sprJetBack) * image_xscale, ny_jet - sprite_get_bbox_top(sprJetBack) * image_yscale, nx_jet + sprite_get_bbox_right(sprJetBack) * image_xscale, ny_jet + sprite_get_bbox_bottom(sprJetBack) * image_yscale];
 
-// Calculate the rotated bounding box coordinates based on sprBody image_angle
+// Calculate the rotated bounding box coordinates based on sprite_body image_angle
 var cos_angle = lengthdir_x(image_angle, 1);
 var sin_angle = lengthdir_y(image_angle, 1);
 
@@ -416,7 +416,7 @@ var rotated_bbox_armB = [nx_armB + bbox_armB[0] * cos_angle - bbox_armB[1] * sin
 var rotated_bbox_armF = [nx_armF + bbox_armF[0] * cos_angle - bbox_armF[1] * sin_angle, ny_armF + bbox_armF[0] * sin_angle + bbox_armF[1] * cos_angle, nx_armF + bbox_armF[2] * cos_angle - bbox_armF[3] * sin_angle, ny_armF + bbox_armF[2] * sin_angle + bbox_armF[3] * cos_angle];
 var rotated_bbox_legB = [nx_legB + bbox_legB[0] * cos_angle - bbox_legB[1] * sin_angle, ny_legB + bbox_legB[0] * sin_angle + bbox_legB[1] * cos_angle, nx_legB+ bbox_legB[2] * cos_angle - bbox_legB[3] * sin_angle, ny_legB + bbox_legB[2] * sin_angle + bbox_legB[3] * cos_angle];
 
-// Calculate the rotated bounding box coordinates based on sprBody image_angle
+// Calculate the rotated bounding box coordinates based on sprite_body image_angle
 var cos_angle_body = cos(degtorad(image_angle));
 var sin_angle_body = sin(degtorad(image_angle));
 var cos_angle_head = cos(degtorad(angle_head));
@@ -491,22 +491,22 @@ if jetpack_mode=2
 	//grav=0.5;
 image_angle = 0 - 2 * hsp;
 
-// Calculate the bounding box for each sprite relative to sprBody
-var modified_bbox_left = min(nx_body - sprite_get_bbox_left(sprBody), nx_head - sprite_get_bbox_left(sprHeadSanta), nx_armB - sprite_get_bbox_left(sprArmArms), nx_armF - sprite_get_bbox_left(sprArmArms), nx_legB - sprite_get_bbox_left(sprLeg3), nx_legF - sprite_get_bbox_left(sprLeg3), nx_jet - sprite_get_bbox_left(sprJetBack));
-var modified_bbox_right = max(nx_body + sprite_get_bbox_right(sprBody) - sprite_get_bbox_left(sprBody), nx_head + sprite_get_bbox_right(sprHeadSanta) - sprite_get_bbox_left(sprHeadSanta), nx_armB + sprite_get_bbox_right(sprArmArms) - sprite_get_bbox_left(sprArmArms), nx_armF + sprite_get_bbox_right(sprArmArms) - sprite_get_bbox_left(sprArmArms), nx_legB + sprite_get_bbox_right(sprLeg3) - sprite_get_bbox_left(sprLeg3), nx_legF + sprite_get_bbox_right(sprLeg3) - sprite_get_bbox_left(sprLeg3), nx_jet + sprite_get_bbox_right(sprJetBack) - sprite_get_bbox_left(sprJetBack));
-var modified_bbox_top = min(ny_body - sprite_get_bbox_top(sprBody), ny_head - sprite_get_bbox_top(sprHeadSanta), ny_armB - sprite_get_bbox_top(sprArmArms), ny_armF - sprite_get_bbox_top(sprArmArms), ny_legB - sprite_get_bbox_top(sprLeg3), ny_legF - sprite_get_bbox_top(sprLeg3), ny_jet - sprite_get_bbox_top(sprJetBack));
-var modified_bbox_bottom = max(ny_body + sprite_get_bbox_bottom(sprBody) - sprite_get_bbox_top(sprBody), ny_head + sprite_get_bbox_bottom(sprHeadSanta) - sprite_get_bbox_top(sprHeadSanta), ny_armB + sprite_get_bbox_bottom(sprArmArms) - sprite_get_bbox_top(sprArmArms), ny_armF + sprite_get_bbox_bottom(sprArmArms) - sprite_get_bbox_top(sprArmArms), ny_legB + sprite_get_bbox_bottom(sprLeg3) - sprite_get_bbox_top(sprLeg3), ny_legF + sprite_get_bbox_bottom(sprLeg3) - sprite_get_bbox_top(sprLeg3), ny_jet + sprite_get_bbox_bottom(sprJetBack) - sprite_get_bbox_top(sprJetBack));
+// Calculate the bounding box for each sprite relative to sprite_body
+var modified_bbox_left = min(nx_body - sprite_get_bbox_left(sprite_body), nx_head - sprite_get_bbox_left(sprite_head), nx_armB - sprite_get_bbox_left(sprArmArms), nx_armF - sprite_get_bbox_left(sprArmArms), nx_legB - sprite_get_bbox_left(sprLeg3), nx_legF - sprite_get_bbox_left(sprLeg3), nx_jet - sprite_get_bbox_left(sprJetBack));
+var modified_bbox_right = max(nx_body + sprite_get_bbox_right(sprite_body) - sprite_get_bbox_left(sprite_body), nx_head + sprite_get_bbox_right(sprite_head) - sprite_get_bbox_left(sprite_head), nx_armB + sprite_get_bbox_right(sprArmArms) - sprite_get_bbox_left(sprArmArms), nx_armF + sprite_get_bbox_right(sprArmArms) - sprite_get_bbox_left(sprArmArms), nx_legB + sprite_get_bbox_right(sprLeg3) - sprite_get_bbox_left(sprLeg3), nx_legF + sprite_get_bbox_right(sprLeg3) - sprite_get_bbox_left(sprLeg3), nx_jet + sprite_get_bbox_right(sprJetBack) - sprite_get_bbox_left(sprJetBack));
+var modified_bbox_top = min(ny_body - sprite_get_bbox_top(sprite_body), ny_head - sprite_get_bbox_top(sprite_head), ny_armB - sprite_get_bbox_top(sprArmArms), ny_armF - sprite_get_bbox_top(sprArmArms), ny_legB - sprite_get_bbox_top(sprLeg3), ny_legF - sprite_get_bbox_top(sprLeg3), ny_jet - sprite_get_bbox_top(sprJetBack));
+var modified_bbox_bottom = max(ny_body + sprite_get_bbox_bottom(sprite_body) - sprite_get_bbox_top(sprite_body), ny_head + sprite_get_bbox_bottom(sprite_head) - sprite_get_bbox_top(sprite_head), ny_armB + sprite_get_bbox_bottom(sprArmArms) - sprite_get_bbox_top(sprArmArms), ny_armF + sprite_get_bbox_bottom(sprArmArms) - sprite_get_bbox_top(sprArmArms), ny_legB + sprite_get_bbox_bottom(sprLeg3) - sprite_get_bbox_top(sprLeg3), ny_legF + sprite_get_bbox_bottom(sprLeg3) - sprite_get_bbox_top(sprLeg3), ny_jet + sprite_get_bbox_bottom(sprJetBack) - sprite_get_bbox_top(sprJetBack));
 
-// Calculate the bounding box for each sprite relative to sprBody
-var bbox_body_left = x - sprite_get_bbox_right(sprBody) * image_xscale;
-var bbox_body_right = x + sprite_get_bbox_right(sprBody) * image_xscale;
-var bbox_body_top = y - sprite_get_bbox_top(sprBody) * image_yscale;
-var bbox_body_bottom = y + sprite_get_bbox_bottom(sprBody) * image_yscale;
+// Calculate the bounding box for each sprite relative to sprite_body
+var bbox_body_left = x - sprite_get_bbox_right(sprite_body) * image_xscale;
+var bbox_body_right = x + sprite_get_bbox_right(sprite_body) * image_xscale;
+var bbox_body_top = y - sprite_get_bbox_top(sprite_body) * image_yscale;
+var bbox_body_bottom = y + sprite_get_bbox_bottom(sprite_body) * image_yscale;
 
-var bbox_head_left = nx_head - sprite_get_bbox_right(sprHeadSanta) * image_xscale;
-var bbox_head_right = nx_head + sprite_get_bbox_right(sprHeadSanta) * image_xscale;
-var bbox_head_top = ny_head - sprite_get_bbox_top(sprHeadSanta) * image_yscale;
-var bbox_head_bottom = ny_head + sprite_get_bbox_bottom(sprHeadSanta) * image_yscale;
+var bbox_head_left = nx_head - sprite_get_bbox_right(sprite_head) * image_xscale;
+var bbox_head_right = nx_head + sprite_get_bbox_right(sprite_head) * image_xscale;
+var bbox_head_top = ny_head - sprite_get_bbox_top(sprite_head) * image_yscale;
+var bbox_head_bottom = ny_head + sprite_get_bbox_bottom(sprite_head) * image_yscale;
 
 var bbox_armB_left = nx_armB - sprite_get_bbox_right(sprArmArms) * image_xscale;
 var bbox_armB_right = nx_armB + sprite_get_bbox_right(sprArmArms) * image_xscale;
@@ -527,16 +527,16 @@ var bbox_legF_left = nx_legF - sprite_get_bbox_right(sprLeg3) * image_xscale;
 var bbox_legF_right = nx_legF + sprite_get_bbox_right(sprLeg3) * image_xscale;
 var bbox_legF_top = ny_legF - sprite_get_bbox_top(sprLeg3) * image_yscale;
 var bbox_legF_bottom = ny_legF + sprite_get_bbox_bottom(sprLeg3)  * image_yscale;
-// Calculate the bounding box for each sprite relative to sprBody 
-var bbox_body = [x - sprite_get_bbox_right(sprBody) * image_xscale, y - sprite_get_bbox_top(sprBody) * image_yscale, x + sprite_get_bbox_right(sprBody) * image_xscale, y + sprite_get_bbox_bottom(sprBody) * image_yscale];
-var bbox_head = [nx_head - sprite_get_bbox_right(sprHeadSanta) * image_xscale, ny_head - sprite_get_bbox_top(sprHeadSanta) * image_yscale, nx_head + sprite_get_bbox_right(sprHeadSanta) * image_xscale, ny_head + sprite_get_bbox_bottom(sprHeadSanta) * image_yscale];
+// Calculate the bounding box for each sprite relative to sprite_body 
+var bbox_body = [x - sprite_get_bbox_right(sprite_body) * image_xscale, y - sprite_get_bbox_top(sprite_body) * image_yscale, x + sprite_get_bbox_right(sprite_body) * image_xscale, y + sprite_get_bbox_bottom(sprite_body) * image_yscale];
+var bbox_head = [nx_head - sprite_get_bbox_right(sprite_head) * image_xscale, ny_head - sprite_get_bbox_top(sprite_head) * image_yscale, nx_head + sprite_get_bbox_right(sprite_head) * image_xscale, ny_head + sprite_get_bbox_bottom(sprite_head) * image_yscale];
 var bbox_armB = [nx_armB - sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armB - sprite_get_bbox_top(sprArmArms) * image_yscale, nx_armB + sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armB + sprite_get_bbox_bottom(sprArmArms) * image_yscale];
 var bbox_armF = [nx_armF - sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armF - sprite_get_bbox_top(sprArmArms) * image_yscale, nx_armF + sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armF + sprite_get_bbox_bottom(sprArmArms) * image_yscale];
 var bbox_legB = [nx_legB - sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legB - sprite_get_bbox_top(sprLeg3) * image_yscale, nx_legB + sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legB + sprite_get_bbox_bottom(sprLeg3) * image_yscale];
 var bbox_legF = [nx_legF - sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legF - sprite_get_bbox_top(sprLeg3) * image_yscale, nx_legF + sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legF + sprite_get_bbox_bottom(sprLeg3) * image_yscale];
 var bbox_jet = [nx_jet - sprite_get_bbox_right(sprJetBack) * image_xscale, ny_jet - sprite_get_bbox_top(sprJetBack) * image_yscale, nx_jet + sprite_get_bbox_right(sprJetBack) * image_xscale, ny_jet + sprite_get_bbox_bottom(sprJetBack) * image_yscale];
 
-// Calculate the rotated bounding box coordinates based on sprBody image_angle
+// Calculate the rotated bounding box coordinates based on sprite_body image_angle
 var cos_angle = lengthdir_x(image_angle, 1);
 var sin_angle = lengthdir_y(image_angle, 1);
 
@@ -546,7 +546,7 @@ var rotated_bbox_armB = [nx_armB + bbox_armB[0] * cos_angle - bbox_armB[1] * sin
 var rotated_bbox_armF = [nx_armF + bbox_armF[0] * cos_angle - bbox_armF[1] * sin_angle, ny_armF + bbox_armF[0] * sin_angle + bbox_armF[1] * cos_angle, nx_armF + bbox_armF[2] * cos_angle - bbox_armF[3] * sin_angle, ny_armF + bbox_armF[2] * sin_angle + bbox_armF[3] * cos_angle];
 var rotated_bbox_legB = [nx_legB + bbox_legB[0] * cos_angle - bbox_legB[1] * sin_angle, ny_legB + bbox_legB[0] * sin_angle + bbox_legB[1] * cos_angle, nx_legB+ bbox_legB[2] * cos_angle - bbox_legB[3] * sin_angle, ny_legB + bbox_legB[2] * sin_angle + bbox_legB[3] * cos_angle];
 
-// Calculate the rotated bounding box coordinates based on sprBody image_angle
+// Calculate the rotated bounding box coordinates based on sprite_body image_angle
 var cos_angle_body = cos(degtorad(image_angle));
 var sin_angle_body = sin(degtorad(image_angle));
 var cos_angle_head = cos(degtorad(angle_head));
@@ -621,22 +621,22 @@ if jetpack_mode=3
 	grav=0;
 image_angle = 0 - 2 * hsp;
 
-// Calculate the bounding box for each sprite relative to sprBody
-var modified_bbox_left = min(nx_body - sprite_get_bbox_left(sprBody), nx_head - sprite_get_bbox_left(sprHeadSanta), nx_armB - sprite_get_bbox_left(sprArmArms), nx_armF - sprite_get_bbox_left(sprArmArms), nx_legB - sprite_get_bbox_left(sprLeg3), nx_legF - sprite_get_bbox_left(sprLeg3), nx_jet - sprite_get_bbox_left(sprJetBack));
-var modified_bbox_right = max(nx_body + sprite_get_bbox_right(sprBody) - sprite_get_bbox_left(sprBody), nx_head + sprite_get_bbox_right(sprHeadSanta) - sprite_get_bbox_left(sprHeadSanta), nx_armB + sprite_get_bbox_right(sprArmArms) - sprite_get_bbox_left(sprArmArms), nx_armF + sprite_get_bbox_right(sprArmArms) - sprite_get_bbox_left(sprArmArms), nx_legB + sprite_get_bbox_right(sprLeg3) - sprite_get_bbox_left(sprLeg3), nx_legF + sprite_get_bbox_right(sprLeg3) - sprite_get_bbox_left(sprLeg3), nx_jet + sprite_get_bbox_right(sprJetBack) - sprite_get_bbox_left(sprJetBack));
-var modified_bbox_top = min(ny_body - sprite_get_bbox_top(sprBody), ny_head - sprite_get_bbox_top(sprHeadSanta), ny_armB - sprite_get_bbox_top(sprArmArms), ny_armF - sprite_get_bbox_top(sprArmArms), ny_legB - sprite_get_bbox_top(sprLeg3), ny_legF - sprite_get_bbox_top(sprLeg3), ny_jet - sprite_get_bbox_top(sprJetBack));
-var modified_bbox_bottom = max(ny_body + sprite_get_bbox_bottom(sprBody) - sprite_get_bbox_top(sprBody), ny_head + sprite_get_bbox_bottom(sprHeadSanta) - sprite_get_bbox_top(sprHeadSanta), ny_armB + sprite_get_bbox_bottom(sprArmArms) - sprite_get_bbox_top(sprArmArms), ny_armF + sprite_get_bbox_bottom(sprArmArms) - sprite_get_bbox_top(sprArmArms), ny_legB + sprite_get_bbox_bottom(sprLeg3) - sprite_get_bbox_top(sprLeg3), ny_legF + sprite_get_bbox_bottom(sprLeg3) - sprite_get_bbox_top(sprLeg3), ny_jet + sprite_get_bbox_bottom(sprJetBack) - sprite_get_bbox_top(sprJetBack));
+// Calculate the bounding box for each sprite relative to sprite_body
+var modified_bbox_left = min(nx_body - sprite_get_bbox_left(sprite_body), nx_head - sprite_get_bbox_left(sprite_head), nx_armB - sprite_get_bbox_left(sprArmArms), nx_armF - sprite_get_bbox_left(sprArmArms), nx_legB - sprite_get_bbox_left(sprLeg3), nx_legF - sprite_get_bbox_left(sprLeg3), nx_jet - sprite_get_bbox_left(sprJetBack));
+var modified_bbox_right = max(nx_body + sprite_get_bbox_right(sprite_body) - sprite_get_bbox_left(sprite_body), nx_head + sprite_get_bbox_right(sprite_head) - sprite_get_bbox_left(sprite_head), nx_armB + sprite_get_bbox_right(sprArmArms) - sprite_get_bbox_left(sprArmArms), nx_armF + sprite_get_bbox_right(sprArmArms) - sprite_get_bbox_left(sprArmArms), nx_legB + sprite_get_bbox_right(sprLeg3) - sprite_get_bbox_left(sprLeg3), nx_legF + sprite_get_bbox_right(sprLeg3) - sprite_get_bbox_left(sprLeg3), nx_jet + sprite_get_bbox_right(sprJetBack) - sprite_get_bbox_left(sprJetBack));
+var modified_bbox_top = min(ny_body - sprite_get_bbox_top(sprite_body), ny_head - sprite_get_bbox_top(sprite_head), ny_armB - sprite_get_bbox_top(sprArmArms), ny_armF - sprite_get_bbox_top(sprArmArms), ny_legB - sprite_get_bbox_top(sprLeg3), ny_legF - sprite_get_bbox_top(sprLeg3), ny_jet - sprite_get_bbox_top(sprJetBack));
+var modified_bbox_bottom = max(ny_body + sprite_get_bbox_bottom(sprite_body) - sprite_get_bbox_top(sprite_body), ny_head + sprite_get_bbox_bottom(sprite_head) - sprite_get_bbox_top(sprite_head), ny_armB + sprite_get_bbox_bottom(sprArmArms) - sprite_get_bbox_top(sprArmArms), ny_armF + sprite_get_bbox_bottom(sprArmArms) - sprite_get_bbox_top(sprArmArms), ny_legB + sprite_get_bbox_bottom(sprLeg3) - sprite_get_bbox_top(sprLeg3), ny_legF + sprite_get_bbox_bottom(sprLeg3) - sprite_get_bbox_top(sprLeg3), ny_jet + sprite_get_bbox_bottom(sprJetBack) - sprite_get_bbox_top(sprJetBack));
 
-// Calculate the bounding box for each sprite relative to sprBody
-var bbox_body_left = x - sprite_get_bbox_right(sprBody) * image_xscale;
-var bbox_body_right = x + sprite_get_bbox_right(sprBody) * image_xscale;
-var bbox_body_top = y - sprite_get_bbox_top(sprBody) * image_yscale;
-var bbox_body_bottom = y + sprite_get_bbox_bottom(sprBody) * image_yscale;
+// Calculate the bounding box for each sprite relative to sprite_body
+var bbox_body_left = x - sprite_get_bbox_right(sprite_body) * image_xscale;
+var bbox_body_right = x + sprite_get_bbox_right(sprite_body) * image_xscale;
+var bbox_body_top = y - sprite_get_bbox_top(sprite_body) * image_yscale;
+var bbox_body_bottom = y + sprite_get_bbox_bottom(sprite_body) * image_yscale;
 
-var bbox_head_left = nx_head - sprite_get_bbox_right(sprHeadSanta) * image_xscale;
-var bbox_head_right = nx_head + sprite_get_bbox_right(sprHeadSanta) * image_xscale;
-var bbox_head_top = ny_head - sprite_get_bbox_top(sprHeadSanta) * image_yscale;
-var bbox_head_bottom = ny_head + sprite_get_bbox_bottom(sprHeadSanta) * image_yscale;
+var bbox_head_left = nx_head - sprite_get_bbox_right(sprite_head) * image_xscale;
+var bbox_head_right = nx_head + sprite_get_bbox_right(sprite_head) * image_xscale;
+var bbox_head_top = ny_head - sprite_get_bbox_top(sprite_head) * image_yscale;
+var bbox_head_bottom = ny_head + sprite_get_bbox_bottom(sprite_head) * image_yscale;
 
 var bbox_armB_left = nx_armB - sprite_get_bbox_right(sprArmArms) * image_xscale;
 var bbox_armB_right = nx_armB + sprite_get_bbox_right(sprArmArms) * image_xscale;
@@ -657,16 +657,16 @@ var bbox_legF_left = nx_legF - sprite_get_bbox_right(sprLeg3) * image_xscale;
 var bbox_legF_right = nx_legF + sprite_get_bbox_right(sprLeg3) * image_xscale;
 var bbox_legF_top = ny_legF - sprite_get_bbox_top(sprLeg3) * image_yscale;
 var bbox_legF_bottom = ny_legF + sprite_get_bbox_bottom(sprLeg3)  * image_yscale;
-// Calculate the bounding box for each sprite relative to sprBody 
-var bbox_body = [x - sprite_get_bbox_right(sprBody) * image_xscale, y - sprite_get_bbox_top(sprBody) * image_yscale, x + sprite_get_bbox_right(sprBody) * image_xscale, y + sprite_get_bbox_bottom(sprBody) * image_yscale];
-var bbox_head = [nx_head - sprite_get_bbox_right(sprHeadSanta) * image_xscale, ny_head - sprite_get_bbox_top(sprHeadSanta) * image_yscale, nx_head + sprite_get_bbox_right(sprHeadSanta) * image_xscale, ny_head + sprite_get_bbox_bottom(sprHeadSanta) * image_yscale];
+// Calculate the bounding box for each sprite relative to sprite_body 
+var bbox_body = [x - sprite_get_bbox_right(sprite_body) * image_xscale, y - sprite_get_bbox_top(sprite_body) * image_yscale, x + sprite_get_bbox_right(sprite_body) * image_xscale, y + sprite_get_bbox_bottom(sprite_body) * image_yscale];
+var bbox_head = [nx_head - sprite_get_bbox_right(sprite_head) * image_xscale, ny_head - sprite_get_bbox_top(sprite_head) * image_yscale, nx_head + sprite_get_bbox_right(sprite_head) * image_xscale, ny_head + sprite_get_bbox_bottom(sprite_head) * image_yscale];
 var bbox_armB = [nx_armB - sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armB - sprite_get_bbox_top(sprArmArms) * image_yscale, nx_armB + sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armB + sprite_get_bbox_bottom(sprArmArms) * image_yscale];
 var bbox_armF = [nx_armF - sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armF - sprite_get_bbox_top(sprArmArms) * image_yscale, nx_armF + sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armF + sprite_get_bbox_bottom(sprArmArms) * image_yscale];
 var bbox_legB = [nx_legB - sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legB - sprite_get_bbox_top(sprLeg3) * image_yscale, nx_legB + sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legB + sprite_get_bbox_bottom(sprLeg3) * image_yscale];
 var bbox_legF = [nx_legF - sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legF - sprite_get_bbox_top(sprLeg3) * image_yscale, nx_legF + sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legF + sprite_get_bbox_bottom(sprLeg3) * image_yscale];
 var bbox_jet = [nx_jet - sprite_get_bbox_right(sprJetBack) * image_xscale, ny_jet - sprite_get_bbox_top(sprJetBack) * image_yscale, nx_jet + sprite_get_bbox_right(sprJetBack) * image_xscale, ny_jet + sprite_get_bbox_bottom(sprJetBack) * image_yscale];
 
-// Calculate the rotated bounding box coordinates based on sprBody image_angle
+// Calculate the rotated bounding box coordinates based on sprite_body image_angle
 var cos_angle = lengthdir_x(image_angle, 1);
 var sin_angle = lengthdir_y(image_angle, 1);
 
@@ -676,7 +676,7 @@ var rotated_bbox_armB = [nx_armB + bbox_armB[0] * cos_angle - bbox_armB[1] * sin
 var rotated_bbox_armF = [nx_armF + bbox_armF[0] * cos_angle - bbox_armF[1] * sin_angle, ny_armF + bbox_armF[0] * sin_angle + bbox_armF[1] * cos_angle, nx_armF + bbox_armF[2] * cos_angle - bbox_armF[3] * sin_angle, ny_armF + bbox_armF[2] * sin_angle + bbox_armF[3] * cos_angle];
 var rotated_bbox_legB = [nx_legB + bbox_legB[0] * cos_angle - bbox_legB[1] * sin_angle, ny_legB + bbox_legB[0] * sin_angle + bbox_legB[1] * cos_angle, nx_legB+ bbox_legB[2] * cos_angle - bbox_legB[3] * sin_angle, ny_legB + bbox_legB[2] * sin_angle + bbox_legB[3] * cos_angle];
 
-// Calculate the rotated bounding box coordinates based on sprBody image_angle
+// Calculate the rotated bounding box coordinates based on sprite_body image_angle
 var cos_angle_body = cos(degtorad(image_angle));
 var sin_angle_body = sin(degtorad(image_angle));
 var cos_angle_head = cos(degtorad(angle_head));
@@ -1027,14 +1027,26 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 			
 			var xxx=nx_armF+lengthdir_x(100*scale,armF_dir);
 			var yyy=ny_armF+lengthdir_y(100*scale,armF_dir);
+			var spwn_rdm = irandom(360);
+			var xxxx = xxx + lengthdir_x(20*wpn_charge*scale,spwn_rdm);
+			var yyyy = yyy + lengthdir_y(20*wpn_charge*scale,spwn_rdm);
+			var dirxy = point_direction(xxxx,yyyy,xxx,yyy);
 		
-	
-	
-
+		
+part_type_shape(_ptypeCharge, pt_shape_sphere);
+part_type_size(_ptypeCharge, .1*wpn_charge, .1*wpn_charge, 0, 0);
+part_type_scale(_ptypeCharge, 0.1, 0.1);
+// Get the interpolated color
+var charge_color1 = get_interpolated_color(wpn_charge-2, wpn_charge_max);
+var charge_color2 = get_interpolated_color(wpn_charge, wpn_charge_max);
+var charge_color3 = get_interpolated_color(wpn_charge+2, wpn_charge_max);
+//part_type_colour1(_ptypeBlast, charge_color); // Single color for simplicity
+part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
+		
+			part_type_direction(_ptypeCharge, dirxy, dirxy, 0, 0);
+			part_type_life(_ptypeCharge, 2*wpn_charge*scale, 2*wpn_charge*scale);
 			//part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,1);
-
-
-			part_particles_create(global.partSysCharge,xxx,yyy,_ptypeCharge,10);
+			part_particles_create(global.partSysCharge,xxxx,yyyy,_ptypeCharge,10);
 			//part_particles_create(global._ps,nx_fistF,ny_fistF,_ptype1,10);
 			//part_system_position(global.partSysCharge,xxx,yyy);
 			//part_system_depth(global.partSysCharge,depth-10);

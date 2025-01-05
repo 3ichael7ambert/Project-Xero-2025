@@ -99,6 +99,14 @@ if (wind) {
 	//setup_wind_blown_particles(sprite, effect_layer_name)
 	var _fx_wind_blown_particles = fx_create("_effect_windblown_particles");
 	fx_set_parameter(_fx_wind_blown_particles, "param_sprite", sprTrashDebris);
+	fx_set_parameter(_fx_wind_blown_particles, "param_num_particles", 10);
+	fx_set_parameter(_fx_wind_blown_particles, "param_blower_force_min", 10);
+	fx_set_parameter(_fx_wind_blown_particles, "param_blower_force_max", 20);
+	fx_set_parameter(_fx_wind_blown_particles, "param_particle_rot_speed_min", 1);
+	fx_set_parameter(_fx_wind_blown_particles, "param_particle_rot_speed_max", 10);
+	fx_set_parameter(_fx_wind_blown_particles, "param_num_particles", sprTrashDebris);
+	fx_set_parameter(_fx_wind_blown_particles, "param_num_particles", sprTrashDebris);
+	fx_set_parameter(_fx_wind_blown_particles, "param_num_particles", sprTrashDebris);
 	layer_set_fx("EffectsLayerTop", _fx_wind_blown_particles);
 }
 

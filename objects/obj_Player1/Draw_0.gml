@@ -199,7 +199,7 @@ if (facing_right)
     
 	draw_sprite_ext(sprJetBack, image_index, nx_jet, ny_jet, scale, scale, image_angle-(speed/1), -1, 1);
     draw_sprite_ext(sprBody, image_index, body_x, body_y, scale, scale, image_angle, -1, 1);
-	draw_sprite_ext(sprHeadSanta, image_index, nx_head, ny_head, scale, scale, image_angle, -1, 1);
+	draw_sprite_ext(sprite_head, image_index, nx_head, ny_head, scale, scale, image_angle, -1, 1);
     draw_sprite_ext(sprEyes, image_index, nx_eyes, ny_eyes, scale, scale, head_direction, -1, 1);
 	
 if weapon!=0 {
@@ -310,7 +310,7 @@ else
 	}
     draw_sprite_ext(sprJetBack, image_index, nx_jet, ny_jet, -scale, scale, image_angle+(speed/1), -1, 1);
     draw_sprite_ext(sprBody, image_index, body_x, body_y, -scale, scale, image_angle, -1, 1);
-	draw_sprite_ext(sprHeadSanta, image_index, nx_head, ny_head, -scale, scale, image_angle, -1, 1);
+	draw_sprite_ext(sprite_head, image_index, nx_head, ny_head, -scale, scale, image_angle, -1, 1);
     draw_sprite_ext(sprEyes, image_index, nx_eyes, ny_eyes, -scale, scale, head_direction, -1, 1);
 	
 	if weapon!=0 {
@@ -609,7 +609,7 @@ if (facing_right)
 	draw_sprite_ext(sprLeg, image_index, x+(25*scale)-offsetX, y+offsetY, scale, scale, 0, -1, 1);
     draw_sprite_ext(sprJetBack, image_index, nx_jet-offsetX, ny_jet+offsetY, scale, scale, image_angle-(speed/1), -1, 1);
     draw_sprite_ext(sprBody, image_index, body_x-offsetX, body_y+offsetY, scale, scale, image_angle, -1, 1);
-	draw_sprite_ext(sprHeadSanta, image_index, nx_head-offsetX, ny_head+offsetY, scale, scale, image_angle, -1, 1);
+	draw_sprite_ext(sprite_head, image_index, nx_head-offsetX, ny_head+offsetY, scale, scale, image_angle, -1, 1);
     draw_sprite_ext(sprEyes, image_index, nx_eyes-offsetX, ny_eyes+offsetY, scale, scale, head_direction, -1, 1);
 //	draw_sprite_ext(sprArmArms, image_index, nx_armF-offsetX, ny_armF+offsetY, scale, scale, armF_dir, -1, 1);
 	
@@ -696,7 +696,7 @@ else
 	draw_sprite_ext(sprLeg, image_index, x-(25*scale)-offsetX, y+offsetY, -scale, scale, 0, -1, 1);
     draw_sprite_ext(sprJetBack, image_index, nx_jet-offsetX, ny_jet+offsetY, -scale, scale, image_angle+(speed/1), -1, 1);
     draw_sprite_ext(sprBody, image_index, body_x-offsetX, body_y+offsetY, -scale, scale, image_angle, -1, 1);
-	draw_sprite_ext(sprHeadSanta, image_index, nx_head-offsetX, ny_head+offsetY, -scale, scale, image_angle, -1, 1);
+	draw_sprite_ext(sprite_head, image_index, nx_head-offsetX, ny_head+offsetY, -scale, scale, image_angle, -1, 1);
     draw_sprite_ext(sprEyes, image_index, nx_eyes-offsetX, ny_eyes+offsetY, -scale, scale, head_direction, -1, 1);
 	//draw_sprite_ext(sprArmArms, image_index, nx_armF-offsetX, ny_armF+offsetY, -scale, scale, armF_dir+180, -1, 1);
 	
@@ -980,7 +980,7 @@ if (facing_right)
 	draw_sprite_ext(sprLeg3, image_index, nx_legB, ny_legB, scale, scale, 0, -1, 1);
     draw_sprite_ext(sprJetBack, image_index, nx_jet, ny_jet, scale, scale, image_angle-(speed/1), -1, 1);
     draw_sprite_ext(sprBody, image_index, body_x, body_y, scale, scale, image_angle, -1, 1);
-	draw_sprite_ext(sprHeadSanta, image_index, nx_head, ny_head, scale, scale, image_angle, -1, 1);
+	draw_sprite_ext(sprite_head, image_index, nx_head, ny_head, scale, scale, image_angle, -1, 1);
     draw_sprite_ext(sprEyes, image_index, nx_eyes, ny_eyes, scale, scale, head_direction, -1, 1);
 	//draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, scale, scale, armF_dir, -1, 1);
 	if (weapon!=0)  && (weapon!=4) {
@@ -1100,7 +1100,7 @@ else
 	draw_sprite_ext(sprLeg3, image_index, nx_legB, ny_legB, -scale, scale, 0, -1, 1);
     draw_sprite_ext(sprJetBack, image_index, nx_jet, ny_jet, -scale, scale, image_angle+(speed/1), -1, 1);
     draw_sprite_ext(sprBody, image_index, body_x, body_y, -scale, scale, image_angle, -1, 1);
-	draw_sprite_ext(sprHeadSanta, image_index, nx_head, ny_head, -scale, scale, image_angle, -1, 1);
+	draw_sprite_ext(sprite_head, image_index, nx_head, ny_head, -scale, scale, image_angle, -1, 1);
     draw_sprite_ext(sprEyes, image_index, nx_eyes, ny_eyes, -scale, scale, head_direction, -1, 1);
 	//draw_sprite_ext(sprArmArms, image_index, nx_armF, ny_armF, -scale, scale, armF_dir+180, -1, 1);
 	if (punch=false) {
