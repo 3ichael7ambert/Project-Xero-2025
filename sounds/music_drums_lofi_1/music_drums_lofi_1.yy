@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"music_drums_lofi_1",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":7.384626,
+  "name":"music_drums_lofi_1",
+  "parent":{
+    "name":"Project Xero",
+    "path":"Project Xero.yyp",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"music_drums_lofi_1.wav",
+  "type":0,
+  "volume":1.0,
+}
