@@ -9,7 +9,7 @@ cam_wrapper = new CamWrap(global.CameraManager.w, global.CameraManager.h);
 	
 camera = view_camera[0];
 camDist = -3000; // Adjust as needed
-camFov = 90;    // Adjust field of view as needed
+camFov = 45;    // Adjust field of view as needed
 camAsp = camera_get_view_width(camera) / camera_get_view_height(camera);
 
 
