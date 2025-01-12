@@ -26,3 +26,6 @@ else {
 
 /* */
 /*  */
+if (dirr > -target.image_angle) {dirr--;} else 
+if (dirr > -target.image_angle) {dirr++;}
+camera_set_view_angle(view_camera[0], dirr);

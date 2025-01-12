@@ -46,8 +46,10 @@ if room=rmCity {floor_obj=objSidewalk;}
 if room=rm_boss{floor_obj=obj_block3D;}
 if room=rm_Infinite{floor_obj=obj_block3D_infinite;}
 if room=rm360{floor_obj=noone;}
+if room=rmMoon{floor_obj=noone;}
 
 if room=rm360 {player_init();} //360
+if room=rmMoon {player_init();} //360
 
 wall_direction = 0;
 wall_jump_force = 12;

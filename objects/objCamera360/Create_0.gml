@@ -10,3 +10,4 @@ if instance_exists(obj_Player1) {
 viewy = 0
 viewy_max = 200
 
+dirr=0;
