@@ -5,9 +5,11 @@ gpu_set_zwriteenable(true);
 
 //backleaves
 
-		draw_sprite_3d_part(sprite, 3, x*scale, y-(y_origin*6*scale), z*scale, -90, 0, 0,0,0,sw,sh,scale,scale,c_white,1);
+		draw_sprite_3d_part(sprite, 3, x*scale, y-(y_origin*6*scale), z-32*scale, -90, 0, 0,0,0,sw,sh,scale,scale,c_white,1);
 		
-		draw_sprite_3d_part(sprite, 3, x*scale, y-32-(y_origin*6*scale)*scale, z+32, -45, 0, 0,0,0,sw,sh,scale,scale,c_white,1); //down back 45
+		draw_sprite_3d_part(sprite, 3, x*scale, y-32-(y_origin*6*scale)*scale, z-32*scale, -45, 0, 0,0,0,sw,sh,scale,scale,c_white,1); //down back 45
+		draw_sprite_3d_part(sprite, 3, x*scale, y+32-(y_origin*6*scale)*scale, z-32*scale, -135, 0, 0,0,0,sw,sh,scale,scale,c_white,1); //up back  45
+		
 //trunk
         draw_sprite_3d_part(sprite, 1, x*scale, y-(y_origin*scale)*scale, z*scale, 0, 0, 0,0,0,sw,sh,scale,scale,c_white,1);
 		draw_sprite_3d_part(sprite, 2, x*scale, y-(y_origin*2*scale)*scale, z*scale, 0, 0, 0,0,0,sw,sh,scale,scale,c_white,1);
@@ -28,6 +30,10 @@ gpu_set_zwriteenable(true);
 		
 		draw_sprite_3d_part(sprite, 3, x*scale, y-32-(y_origin*6*scale)*scale, z+32, 45, 0, 0,0,0,sw,sh,scale,scale,c_white,1); //down 45
 		draw_sprite_3d_part(sprite, 3, x*scale, y+32-(y_origin*6*scale)*scale, z+32, 135, 0, 0,0,0,sw,sh,scale,scale,c_white,1); //up 45
+		
+		
+		
+		
 		
 		//draw_sprite_3d_part(sprite, 3, x*scale, y-32-(y_origin*6*scale)*scale, z+32, 45, 90, 0,0,0,sw,sh,scale,scale,c_white,1); //down 45 90right
 		//draw_sprite_3d_part(sprite, 3, x*scale, y+32-(y_origin*6*scale)*scale, z+32, 135, 90, 0,0,0,sw,sh,scale,scale,c_white,1); //up 45 90right
