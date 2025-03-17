@@ -624,11 +624,11 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"rm_Infinite","path":"rooms/rm_Infinite/rm_Infinite.yy",},},
     {"roomId":{"name":"rmCity","path":"rooms/rmCity/rmCity.yy",},},
     {"roomId":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"children":[
-        {"roomId":{"name":"rm_Infinite","path":"rooms/rm_Infinite/rm_Infinite.yy",},},
         {"roomId":{"name":"rm_lava","path":"rooms/rm_lava/rm_lava.yy",},},
         {"roomId":{"name":"rm_boss","path":"rooms/rm_boss/rm_boss.yy",},},
         {"roomId":{"name":"rm360","path":"rooms/rm360/rm360.yy",},},
