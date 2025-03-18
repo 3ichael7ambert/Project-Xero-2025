@@ -31,13 +31,13 @@ if keyboard_check(vk_enter){
 			room_goto(rmCity); 
 			break;
 		case 1: // Asteroid Belt
-			room_goto(rm_Infinite); 
+			room_goto(rm_Infinite_beach); 
 			break;
 		case 2: // Survival
 			room_goto(rm_space); 
 			break;
 		case 3: // Invasion
-			room_goto(rm_Infinite); 
+			room_goto(rm_Infinite_beach); 
 			break;
 		case 4: // Zero Gravity
 			room_goto(rm360); 
@@ -46,10 +46,10 @@ if keyboard_check(vk_enter){
 			room_goto(rm_Neonx1080_bike); 
 			break;
 		case 6: // Beach
-			room_goto(rm_Infinite); 
+			room_goto(rm_Infinite_beach); 
 			break;
 		case 7: // Forest
-			room_goto(rm_Infinite); 
+			room_goto(rm_Infinite_beach); 
 			break;
 		case 8: // Boss
 			room_goto(rm_boss); 

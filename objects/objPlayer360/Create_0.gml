@@ -44,7 +44,7 @@ offsetY=56;
 //FLOOR and WALL
 if room=rmCity {floor_obj=objSidewalk;}
 if room=rm_boss{floor_obj=obj_block3D;}
-if room=rm_Infinite{floor_obj=obj_block3D_infinite;}
+if room=rm_Infinite_beach{floor_obj=obj_block3D_infinite;}
 if room=rm360{floor_obj=noone;}
 if room=rmMoon{floor_obj=noone;}
 

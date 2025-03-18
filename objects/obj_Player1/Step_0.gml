@@ -47,7 +47,7 @@ zdir += ydiff;         // Vertical movement of the mouse means look up or down
 // Re-center the mouse
 window_mouse_set(ww/2, wh/2);    // Reset the mouse so we can get a new offset from the window center next step/frame
 */
-if (room=rm_boss) || (room=rmCity) || (room=rm_Infinite) {
+if (room=rm_boss) || (room=rmCity) || (room=rm_Infinite_beach) {
 cm_x=global.CameraManager.x;
 cm_y=global.CameraManager.y;
 } else {

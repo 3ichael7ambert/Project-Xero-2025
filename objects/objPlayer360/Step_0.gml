@@ -63,7 +63,7 @@ ym=window_mouse_get_y();
 ww = window_get_width();
 wh = window_get_height();
 
-if (room=rm_boss) || (room=rmCity) || (room=rm_Infinite) {
+if (room=rm_boss) || (room=rmCity) || (room=rm_Infinite_beach) {
 cm_x=global.CameraManager.x;
 cm_y=global.CameraManager.y;
 } else {
