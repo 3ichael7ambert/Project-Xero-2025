@@ -7,9 +7,10 @@
 /// @param  depth
 /// @param  colour
 /// @param  alpha
-function create_parallax_layer(image, x_follow, y_follow, x_speed, y_speed, depthh, col, alpha) {
-	var a = instance_create(0, 0, objParallaxLayer);
+function create_parallax_layer_side(image, sub_image, x_follow, y_follow, x_speed, y_speed, depthh, col, alpha) {
+	var a = instance_create(0, 0, objParallaxLayerSide);
 	a.image = image;
+	a.sub_image = sub_image;
 	a.x_follow = x_follow;
 	a.y_follow = y_follow;
 	a.x_speed = x_speed;

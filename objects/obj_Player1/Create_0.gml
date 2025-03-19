@@ -118,6 +118,8 @@ if room=rm_Infinite_beach{floor_obj=obj_block3D_infinite;}
 if room=rm360{floor_obj=noone;}
 
 if room=rm360 {player_init();} //360
+if room=r_level_infinite {floor_obj=noone;}
+if room=r_levelSide_infinite {floor_obj=noone;}
 
 wall_direction = 0;
 wall_jump_force = 0;

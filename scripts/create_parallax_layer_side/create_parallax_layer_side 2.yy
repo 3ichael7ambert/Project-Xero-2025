@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"create_parallax_layer_side",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"create_parallax_layer_side",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1288,7 +1288,9 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		global.snipe=true;
 		
 		if instance_exists(objSnipe) {
-			global.CameraManager.target=objSnipe;
+			if (room=rm_boss) || (room=rmCity) || (room=rm_Infinite_beach) {
+				global.CameraManager.target=objSnipe;
+			}
 		} else {
 			obj_snipe = instance_create(x,y,objSnipe);
 			with (obj_snipe) {
@@ -1297,7 +1299,9 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		}
 	}else{
 		global.snipe=false;
-		global.CameraManager.target=self;
+		if (room=rm_boss) || (room=rmCity) || (room=rm_Infinite_beach) {
+			global.CameraManager.target=self;
+		}
 	}
 	
 	
