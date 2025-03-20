@@ -1,5 +1,14 @@
 /// @description Create objects
 randomize();
+if !variable_global_exists("levels"){
+	global.levels=1; 
+}
+//0=sky
+//1=space
+//4=stars
+global.ships=0;
+#macro level global.levels
+#macro ship global.ships
 //Player Color
 color1 = make_color_rgb(random(255),random(255),random(255));
 color2 = make_color_rgb(random(255),random(255),random(255));
@@ -8,11 +17,12 @@ color3 = make_color_rgb(random(255),random(255),random(255));
 p1lives=3;
 gui_pad=32;
 ///DEBUG
-globalvar level,ship;
+//globalvar level,ship;
+
 //level=19;
-ship=0;
-////
-level=0;
+//ship=0;
+//////
+//level=0;
 
 target_player=obj_Player1;
 playerScale=.2;

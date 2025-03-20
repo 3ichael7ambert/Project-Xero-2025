@@ -143,7 +143,7 @@
     {"name":"objIntersection","order":6,"path":"objects/objIntersection/objIntersection.yy",},
     {"name":"objJetz","order":3,"path":"objects/objJetz/objJetz.yy",},
     {"name":"objLevel_1","order":2,"path":"objects/objLevel_1/objLevel_1.yy",},
-    {"name":"objLevel","order":3,"path":"objects/objLevel/objLevel.yy",},
+    {"name":"objLevel_infinite","order":3,"path":"objects/objLevel_infinite/objLevel_infinite.yy",},
     {"name":"objLevelSide","order":4,"path":"objects/objLevelSide/objLevelSide.yy",},
     {"name":"objMazePlayer","order":1,"path":"objects/objMazePlayer/objMazePlayer.yy",},
     {"name":"objMenu","order":144,"path":"objects/objMenu/objMenu.yy",},
