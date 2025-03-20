@@ -5,32 +5,44 @@ color1 = make_color_rgb(random(255),random(255),random(255));
 color2 = make_color_rgb(random(255),random(255),random(255));
 color3 = make_color_rgb(random(255),random(255),random(255));
 
-p1lives=3;
-gui_pad=32;
+
+//p1lives=3;
+//gui_pad=32;
 ///DEBUG
 //globalvar level,ship;
 //level=12;
 //ship=0;
 ////
+if !variable_global_exists("levels"){
+	global.levels=12; 
+}
+//9= desert
+//11 = mtn
+//12 = stars
+global.ships=0;
+//#macro level global.levels
+//#macro ship global.ships
 
-playerScale=.2;
+target_player=obj_Player1;
+playerScale=1;
 
 
 with (instance_create(0, 0, objCameraSide))
 {	
+	target_player=obj_Player1;
 	if level!=5{
-    target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, objPlane);
+    target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
 	}
 	
 	if level=5{
-    target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, objPlanePhy);
+    target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
 	}
 	
 }
 
 
-if level!=5 {target=objPlane;}
-if level=5 {target=objPlanePhy;}
+if level!=5 {target=target_player;}
+if level=5 {target=target_player;}
 
 
 //physics_world_create(.1/32);
@@ -68,7 +80,7 @@ LEVELS
 if level=0
 {
 
-create_parallax_layer_side()(backCloudLayer1, 0.2, 0.2, 0.2, 0, 1000, c_white, 0.6);
+create_parallax_layer_side(backCloudLayer1, 0.2, 0.2, 0.2, 0, 1000, c_white, 0.6);
 create_parallax_layer_side(backCloudLayer2, 0.4, 0.4, 0.1, 0, 1010, c_white, 0.3);
 create_parallax_layer_side(backCloudLayer3, 0.6, 0.6, 0.05, 0, 1020, c_white, 0.15);
 

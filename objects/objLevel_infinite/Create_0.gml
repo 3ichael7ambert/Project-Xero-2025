@@ -25,7 +25,7 @@ gui_pad=32;
 //level=0;
 
 target_player=obj_Player1;
-playerScale=.2;
+playerScale=.9;
 
 //--------------------//
 // STEAM

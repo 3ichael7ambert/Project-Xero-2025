@@ -1,4 +1,5 @@
 /// @description Create enemies
+/*
 alarm[0] = room_speed*4;
 if (instance_number(objEnemy) < 5)
 {
@@ -24,4 +25,4 @@ if (instance_number(o_asteroids) < 100) & level=1
     instance_create(xx, yy, o_asteroids);
 }
 
-
+*/
