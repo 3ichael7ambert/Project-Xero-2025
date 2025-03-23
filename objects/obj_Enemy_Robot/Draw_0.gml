@@ -1,13 +1,13 @@
 if mouse_aim=true {
 	//draw_circle(xm+cm_x,ym+cm_y,20,true);
-	draw_circle(mouse_x_3d,mouse_y_3d,20,true);
+	//draw_circle(mouse_x_3d,mouse_y_3d,20,true);
 	
 }
 //draw_arrow(x,y,xm,ym,100);
 
 //draw_arrow(x,y,lengthdir_x(100,armF_dir),lengthdir_y(100,armF_dir),20);
 
-draw_arrow(x,y,mouse_x_3d,mouse_y_3d,20);
+//draw_arrow(x,y,mouse_x_3d,mouse_y_3d,20);
 //draw_sprite_ext(sprite_armF,0,x,y,1,1,armF_dir,c_white,1);
 
 if jetpack_mode=1

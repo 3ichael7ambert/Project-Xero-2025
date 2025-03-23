@@ -2,6 +2,10 @@ image_angle=0;
 facing_right = true;
 depth=-10;
 
+target_player=obj_Player1;
+weapon_locked = true;
+
+
 
 // Set initial variables
 hsp = 0; // Horizontal speed

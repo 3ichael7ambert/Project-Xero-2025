@@ -6,24 +6,45 @@ image_yscale=scale;
 // Set the custom collision bounding box
 //sprite_set_bbox(sprite_index, bbox_left, bbox_top, bbox_right, bbox_bottom);
 
-if (keyboard_check_pressed(vk_escape)) {
-	room_goto(rm_menu);
+
+
+if (instance_exists(target_player)) {
+    var dist = point_distance(x, y, target_player.x, target_player.y);
+    target = target_player;
+
+    switch (ai_state) {
+        case "patrol":
+            hsp = patrol_direction * hsp_walk_max;
+            if (--patrol_timer <= 0) {
+                patrol_direction *= -1;
+                patrol_timer = irandom_range(60, 180);
+            }
+            if (dist < player_detect_range) {
+                ai_state = "follow";
+            }
+            break;
+
+        case "follow":
+            hsp = (x < target.x) ? hsp_walk_max : -hsp_walk_max;
+            if (dist < attack_range) {
+                ai_state = "attack";
+            } else if (dist > player_detect_range * 1.5) {
+                ai_state = "patrol";
+            }
+            break;
+
+        case "attack":
+            hsp = 0;
+            // perform attack logic (sword slash, bullet, etc.)
+            if (dist > attack_range) {
+                ai_state = "follow";
+            }
+            break;
+    }
 }
 
-if (keyboard_check_pressed(ord(1)))
-{
-    // Key 1 is pressed
-    jetpack_mode = 1;
-}
-if (keyboard_check_pressed(ord(2)))
-{
-    // Key 2 is pressed
-    jetpack_mode = 2;
-}
-if (keyboard_check_pressed(ord(3)))
-{
-    // Key 3 is pressed
-    jetpack_mode = 3;
+if (!weapon_locked) {
+    // Allow weapon change
 }
 
 
@@ -57,9 +78,16 @@ cm_y=mouse_y;
 
 mouse_x_3d=xm+cm_x;
 mouse_y_3d=ym+cm_y;
-poi = point_direction(x,y,mouse_x_3d,mouse_y_3d);
 
-
+if (ai_state="patrol"){
+	poi = point_direction(x,y,mouse_x_3d,mouse_y_3d);
+}
+if (ai_state="follow"){
+	poi = point_direction(x,y,target_player.x,target_player.y);
+}
+if (ai_state="attack"){
+	poi = point_direction(x,y,target_player.x,target_player.y);
+}
 
 if keyboard_check_pressed(ord("Q")) {
 	if mouse_aim=false {mouse_aim=true;}
