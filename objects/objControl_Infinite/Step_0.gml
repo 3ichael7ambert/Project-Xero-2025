@@ -16,3 +16,11 @@ with (obj_Player1) {
 
 }
 infinitydog_wrap_room();
+
+
+
+if instance_exists(obj_Enemy_Robot){
+		a=instance_create(x,y,obj_Enemy_Robot);
+		a.jetpack_mode=choose(1,2,3);
+		a.weapon=irandom_range(0,12);
+}
