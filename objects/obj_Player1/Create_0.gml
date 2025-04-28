@@ -547,7 +547,7 @@ part_type_life(_ptypeFlamethrower, 58*scale, 66*scale);
 
 
 //part_electric
-var global._psElec = part_system_create();
+global._psElec = part_system_create();
 part_system_draw_order(global._psElec, true);
 
 //GM_Electricity

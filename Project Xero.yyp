@@ -208,6 +208,8 @@
     {"id":{"name":"objMazePlayer","path":"objects/objMazePlayer/objMazePlayer.yy",},},
     {"id":{"name":"objMenu","path":"objects/objMenu/objMenu.yy",},},
     {"id":{"name":"objMission","path":"objects/objMission/objMission.yy",},},
+    {"id":{"name":"objMissionEnemy","path":"objects/objMissionEnemy/objMissionEnemy.yy",},},
+    {"id":{"name":"objMissionItem","path":"objects/objMissionItem/objMissionItem.yy",},},
     {"id":{"name":"objMissionNPC","path":"objects/objMissionNPC/objMissionNPC.yy",},},
     {"id":{"name":"objMoon360","path":"objects/objMoon360/objMoon360.yy",},},
     {"id":{"name":"objMusicController","path":"objects/objMusicController/objMusicController.yy",},},

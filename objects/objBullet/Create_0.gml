@@ -13,7 +13,7 @@ h_speed = 0;         // Horizontal speed
 h_friction = 0;   // Friction applied to horizontal movement
 scale=1;
 punch_side="front";
-follow_player = false;
+following_player = false;
 xx=x;
 yy=y;
 

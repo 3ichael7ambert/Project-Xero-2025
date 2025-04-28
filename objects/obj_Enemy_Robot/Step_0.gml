@@ -969,7 +969,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		image_yscale=1*parent.scale;
 		//alarm[0]=10;///destroy
 		sprite_index=sprArmPunch_fx;
-		follow_player=true;
+		following_player=true;
 		punch_side=parent.punch_side;
 		//life_countdown=parent.bullet_life;
 		//life_limit=true;		
@@ -1134,7 +1134,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		}
 	
 		//alarm[0]=10;///destroy
-		follow_player=true;
+		following_player=true;
 		//punch_side=parent.punch_side;
 		//life_countdown=parent.bullet_life;
 		//life_limit=true;		
@@ -1439,7 +1439,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 			image_yscale=parent.image_yscale;
 			image_angle=parent.armF_dir;
 			
-			follow_player=true;
+			following_player=true;
 			
 				}
 		
@@ -1478,7 +1478,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 			
 			image_angle=parent.armF_dir;
 			
-			follow_player=true;
+			following_player=true;
 				}
 		
 		}

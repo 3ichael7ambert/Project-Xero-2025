@@ -1,6 +1,6 @@
 function scr_GenerateFloor_bike(argument0) {
 	// scr_GenerateFloor(ControllerID);
-
+/*
 	var ControllerID = argument0;
 
 	with (ControllerID)
@@ -47,20 +47,15 @@ function scr_GenerateFloor_bike(argument0) {
 	            b = FloorHeight,
 	            c = lerp(a, b, P),
             
-	        physics_fixture_add_point(Fixture, i * FloorStep, c - FloorHeightOld);                                          // Add point to physics fixture
+//	        physics_fixture_add_point(Fixture, i * FloorStep, c - FloorHeightOld);                                          // Add point to physics fixture
         
-	        draw_line_width(x_Previous, y_Previous, x_Previous + FloorStep, y_Start + c - FloorHeightOld, LineWidth);       // Draw line if you wanted to make a line rider game
-        
+//	        draw_line_width(x_Previous, y_Previous, x_Previous + FloorStep, y_Start + c - FloorHeightOld, LineWidth);       // Draw line if you wanted to make a line rider game
+        /*
 	        if (Fill)
 	        {
 	            draw_set_colour(c_white);
             
-	            /*draw_primitive_begin_texture(pr_trianglestrip, SkyTexture);                                                 // Sky texture used for Neon Rider demo
-	            draw_vertex_texture(x_Previous, y_Previous - SkyTextureHeight, 0, 1);
-	            draw_vertex_texture(x_Previous + FloorStep, y_Start + c - FloorHeightOld - SkyTextureHeight, 1, 1);
-	            draw_vertex_texture(x_Previous, y_Previous, 0, 0);
-	            draw_vertex_texture(x_Previous + FloorStep, y_Start + c - FloorHeightOld, 1, 0);
-	            draw_primitive_end();*/
+	           
             
 	            draw_primitive_begin_texture(pr_trianglestrip, VoidTexture);                                                // Texture to draw under floor texture
 	            draw_vertex_texture(x_Previous, surface_get_height(FloorID.SurfaceID), 0, 1);
@@ -98,6 +93,7 @@ function scr_GenerateFloor_bike(argument0) {
 	    FloorStart += (i - 1) * FloorStep;                              // Update controller's FloorStart for next segment
 	}
 
-
+*/
 
 }
+	
