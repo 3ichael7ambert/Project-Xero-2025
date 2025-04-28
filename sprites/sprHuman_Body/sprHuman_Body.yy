@@ -39,7 +39,7 @@
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
-    "$GMSequence":"",
+    "$GMSequence":"v1",
     "%Name":"sprHuman_Body",
     "autoRecord":true,
     "backdropHeight":768,
@@ -70,6 +70,8 @@
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
+    "seqHeight":265.0,
+    "seqWidth":236.0,
     "showBackdrop":true,
     "showBackdropImage":false,
     "timeUnits":1,

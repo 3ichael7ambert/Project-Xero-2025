@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":1.994667,
+  "duration":1.9946712,
   "name":"snd_player_jetpack",
   "parent":{
     "name":"Project Xero",
