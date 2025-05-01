@@ -2,6 +2,9 @@ image_angle=0;
 facing_right = true;
 depth=-10;
 
+
+hp=100;
+
 target_player=obj_Player1;
 weapon_locked = true;
 

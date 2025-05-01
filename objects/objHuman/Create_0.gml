@@ -2,6 +2,10 @@
 // You can write your code in this editor
  randomize();
  
+ 
+ hp=100;
+ weapon="none";
+ 
  // Create Event
 grav = 0.5; // Gravity strength
 vsp = 0; // Vertical speed

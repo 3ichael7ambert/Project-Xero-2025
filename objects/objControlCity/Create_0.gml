@@ -4,6 +4,24 @@
 
 /// @description Create objects
 
+
+//
+//init
+// Game Stats
+global.aggression = 0;           // 0 to 100, or scale you choose
+global.coins = 0;
+global.credits = 0;
+///
+global.health = 100;             // 0 to 100
+global.burnout = 0;              // 0 to 100
+global.lives = 3;
+// HUD Settings
+global.max_health = 100;
+global.max_burnout = 100;
+///
+///
+
+
 fpsreal = fps_real;
 alarm[2]=30;
 
