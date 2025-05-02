@@ -419,6 +419,7 @@
     {"id":{"name":"seg_set_length","path":"scripts/seg_set_length/seg_set_length.yy",},},
     {"id":{"name":"set_autoblock","path":"scripts/set_autoblock/set_autoblock.yy",},},
     {"id":{"name":"setup_wind_blown_particles","path":"scripts/setup_wind_blown_particles/setup_wind_blown_particles.yy",},},
+    {"id":{"name":"spawn_wave","path":"scripts/spawn_wave/spawn_wave.yy",},},
     {"id":{"name":"stick_to","path":"scripts/stick_to/stick_to.yy",},},
     {"id":{"name":"texture_set_repeat","path":"scripts/texture_set_repeat/texture_set_repeat.yy",},},
     {"id":{"name":"update_object","path":"scripts/update_object/update_object.yy",},},
@@ -666,10 +667,10 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rmCity","path":"rooms/rmCity/rmCity.yy",},},
-    {"roomId":{"name":"r_levelSide_infinite","path":"rooms/r_levelSide_infinite/r_levelSide_infinite.yy",},},
-    {"roomId":{"name":"r_level_infinite","path":"rooms/r_level_infinite/r_level_infinite.yy",},},
     {"roomId":{"name":"rm_Infinite_beach","path":"rooms/rm_Infinite_beach/rm_Infinite_beach.yy",},},
+    {"roomId":{"name":"r_levelSide_infinite","path":"rooms/r_levelSide_infinite/r_levelSide_infinite.yy",},},
+    {"roomId":{"name":"rmCity","path":"rooms/rmCity/rmCity.yy",},},
+    {"roomId":{"name":"r_level_infinite","path":"rooms/r_level_infinite/r_level_infinite.yy",},},
     {"roomId":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"children":[

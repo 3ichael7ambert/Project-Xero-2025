@@ -342,6 +342,7 @@
     {"name":"seg_set_length","order":11,"path":"scripts/seg_set_length/seg_set_length.yy",},
     {"name":"set_autoblock","order":4,"path":"scripts/set_autoblock/set_autoblock.yy",},
     {"name":"setup_wind_blown_particles","order":209,"path":"scripts/setup_wind_blown_particles/setup_wind_blown_particles.yy",},
+    {"name":"spawn_wave","order":233,"path":"scripts/spawn_wave/spawn_wave.yy",},
     {"name":"stick_to","order":4,"path":"scripts/stick_to/stick_to.yy",},
     {"name":"update_object","order":1,"path":"scripts/update_object/update_object.yy",},
     {"name":"Vector2","order":6,"path":"scripts/Vector2/Vector2.yy",},

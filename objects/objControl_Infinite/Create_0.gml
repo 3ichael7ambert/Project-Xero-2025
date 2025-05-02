@@ -7,6 +7,14 @@
 fpsreal = fps_real;
 alarm[2]=30;
 
+global.wave = 1;
+global.kill_count = 0;
+global.difficulty = 1;
+
+wave_timer = 120; // delay between waves
+enemies_remaining = 0;
+
+
 
 /*
 with (instance_create(0, 0, objCamera))

@@ -4,6 +4,7 @@ depth=-10;
 
 
 hp=100;
+attack_power=1;
 
 target_player=obj_Player1;
 weapon_locked = true;
@@ -65,6 +66,7 @@ player_detect_range = 600; // Distance to start following the player
 attack_range = 150; // Distance to start attacking
 target = noone;
 
+armF_dir=0;
 
 //BUTTONS
 /*
