@@ -10,11 +10,13 @@ alarm[2]=30;
 global.wave = 1;
 global.kill_count = 0;
 global.difficulty = 1;
+global.high_score = 0;
 
-wave_timer = 120; // delay between waves
-enemies_remaining = 0;
+wave_timer = 90;
+enemies_remaining = 0; // this is key
+enemy_object=obj_Enemy_Robot;
 
-
+ enemy_spawned = true;
 
 /*
 with (instance_create(0, 0, objCamera))

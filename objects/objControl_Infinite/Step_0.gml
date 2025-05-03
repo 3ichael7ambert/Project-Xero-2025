@@ -6,19 +6,22 @@
 
 
 // Check if all enemies are dead
-if (enemies_remaining <= 0) {
-    wave_timer--;
-    
-    if (wave_timer <= 0) {
-        global.wave += 1;
-        wave_timer = 120; // reset timer
-        spawn_wave(global.wave,obj_Enemy_Robot);
-    }
-}
+//if (enemies_remaining <= 0)  {	
+// Wait for all enemies to be defeated
+if !instance_exists(enemy_object) {
+  wave_timer--;
+}  
 
-// Optional: Display UI
-draw_text(32, 32, "Wave: " + string(global.wave));
-draw_text(32, 64, "Kills: " + string(global.kill_count));
+
+
+if  (wave_timer==0) && (instance_number(enemy_object)<=0) {
+      global.wave += 1;
+        wave_timer = 90;
+       spawn_wave(global.wave, enemy_object);
+	//instance_create(x,y,enemy_object);
+
+    }
+
 
 
 
@@ -39,9 +42,9 @@ with (obj_Player1) {
 infinitydog_wrap_room();
 
 
-
+/*
 if instance_exists(obj_Enemy_Robot){
 		a=instance_create(x,y,obj_Enemy_Robot);
 		a.jetpack_mode=choose(1,2,3);
 		a.weapon=irandom_range(0,12);
-}
+}*/

@@ -11,3 +11,11 @@ draw_text(32,32,string_hash_to_newline("#FPS: "+string(fps)+
 +"##ARROW KEYS TO MOVE PLAYER#ENTER TO GO TO NEXT ROOM"+"##HOUR: "+string(current_hour)+"#Min:"+string(current_minute)));
 
 
+draw_text(32, 128, "Next wave in: " + string(wave_timer div room_speed));
+
+draw_text(32, 313, "Enemy Count: "+ string(instance_number(enemy_object)));
+
+// Optional: Display UI
+draw_text(32, 32, "Wave: " + string(global.wave));
+draw_text(32, 64, "Kills: " + string(global.kill_count));
+
