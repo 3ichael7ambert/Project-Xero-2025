@@ -9,7 +9,9 @@ attack_power=1;
 target_player=obj_Player1;
 weapon_locked = true;
 
-
+//errors beach
+cdir_fistF=0;
+armB_dir=0;
 
 // Set initial variables
 hsp = 0; // Horizontal speed
