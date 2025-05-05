@@ -12,6 +12,72 @@ var dist = point_distance(x, y, target_player.x, target_player.y);
 var dir = point_direction(x, y, target_player.x, target_player.y);
 
 // Movement logic
+var dist_to_player = point_distance(x, y, target_player.x, target_player.y);
+
+if (ai_state == "follow" || ai_state == "attack") {
+    if (instance_exists(target_player)) {
+        if (x < target_player.x) {
+            facing_right = true;
+			armF_dir=dir;
+            image_xscale = abs(image_xscale); // make sure sprite faces right
+        } else {
+            facing_right = false;
+            image_xscale = -abs(image_xscale); // flip sprite to face left
+        }
+    }
+}
+
+if (ai_state == "patrol") {
+    hsp = patrol_direction * hsp_walk_max;
+
+    if (--patrol_timer <= 0) {
+        patrol_direction *= -1;
+        patrol_timer = irandom_range(60, 180);
+    }
+
+    // Face patrol direction
+    if (patrol_direction > 0) {
+        facing_right = true;
+        image_xscale = abs(image_xscale);
+    } else {
+        facing_right = false;
+        image_xscale = -abs(image_xscale);
+    }
+
+    // Transition to follow if player is near
+    if (instance_exists(target_player)) {
+        if (point_distance(x, y, target_player.x, target_player.y) < player_detect_range) {
+            ai_state = "follow";
+        }
+    }
+}
+
+
+switch (movement_type) {
+    case "retreat":
+        hsp = (x < target_player.x) ? -move_speed : move_speed;
+        break;
+
+    case "normal":
+        if (dist_to_player > preferred_range_max) {
+            hsp = (x < target_player.x) ? move_speed : -move_speed;
+        } else if (dist_to_player < preferred_range_min) {
+            hsp = (x < target_player.x) ? -move_speed : move_speed;
+        } else {
+            hsp = 0;
+        }
+        break;
+
+    case "rush":
+        hsp = (x < target_player.x) ? move_speed : -move_speed;
+        break;
+
+    case "strafe":
+        hsp = lengthdir_x(move_speed, image_angle + irandom_range(-15,15));
+        break;
+}
+
+
 if (dist < preferred_range_min) {
     // Too close — retreat
     if (movement_type == "retreat" || movement_type == "normal") {
@@ -136,11 +202,6 @@ if (ai_state="attack"){
 	poi = point_direction(x,y,target_player.x,target_player.y);
 }
 
-
-	
-
-	armF_dir=0;
-	armB_dir=0;
 
 
 
