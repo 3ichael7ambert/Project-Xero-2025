@@ -1,3 +1,3 @@
 /// @description Insert description here
 // You can write your code in this editor
-// objMissionNPC - Collision/Interaction Event
+hp-=other.attack;

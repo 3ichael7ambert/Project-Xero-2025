@@ -17,6 +17,7 @@ following_player = false;
 xx=x;
 yy=y;
 
+attack=1;
 
 weapon=0;
 
