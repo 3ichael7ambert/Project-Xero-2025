@@ -885,7 +885,7 @@ if (weapon==0 && punch==false && shooting && wpn_cooldown==0) { //FIST
 		punch=true;
 		wpn_cooldown=10;
 	
-	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
+	bullet = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
 	wpn_cooldown=2;
 	
 	
@@ -925,7 +925,7 @@ if (weapon==0 && punch==false && shooting && wpn_cooldown==0) { //FIST
 	
 
 	
-	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
+	bullet = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
 	wpn_cooldown=2;
 	with (bullet) {
 		parent=obj_Player1;
@@ -945,7 +945,7 @@ if (weapon==0 && punch==false && shooting && wpn_cooldown==0) { //FIST
 	
 	if (weapon=2 && shooting && wpn_cooldown==0) { //GUN2
 		//draw_sprite_ext(sprGun2, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
-	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
+	bullet = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
 	wpn_cooldown=4;
 	with (bullet) {
 		parent=obj_Player1;
@@ -965,7 +965,7 @@ if (weapon==0 && punch==false && shooting && wpn_cooldown==0) { //FIST
 	if (weapon==3 && shooting && wpn_cooldown==0) { //GUN3 //CHARGE CANON
 		//draw_sprite_ext(sprGun3, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	
-	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
+	bullet = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
 	wpn_cooldown=6;
 			
 	with (bullet) {
@@ -1049,7 +1049,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		sword=true;
 		wpn_cooldown=10;
 	
-		bullet = instance_create(nx_fistF,ny_fistF,objBullet);
+		bullet = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
 		
 	wpn_cooldown=2;
 	
@@ -1089,11 +1089,11 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		wpn_cooldown=12;
 		
-		bullet = instance_create(nx_fistF,ny_fistF,objBullet);
-		bullet2 = instance_create(nx_fistF,ny_fistF,objBullet);
-		bullet3 = instance_create(nx_fistF,ny_fistF,objBullet);
-		bullet4 = instance_create(nx_fistF,ny_fistF,objBullet);
-		bullet5 = instance_create(nx_fistF,ny_fistF,objBullet);
+		bullet = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
+		bullet2 = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
+		bullet3 = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
+		bullet4 = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
+		bullet5 = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
 	
 		with (bullet) {
 		parent=obj_Player1;
@@ -1194,7 +1194,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 	if (weapon==7 && shooting && wpn_cooldown==0) { //Grenade
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprGrenadeLauncher, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
-	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
+	bullet = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
 	wpn_cooldown=2;
 	with (bullet) {
 		parent=obj_Player1;
@@ -1223,7 +1223,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		//draw_sprite_ext(sprRocketLauncher, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 
-	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
+	bullet = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
 	wpn_cooldown=2;
 	with (bullet) {
 		parent=obj_Player1;
@@ -1275,7 +1275,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 	if (weapon=9 && shooting && wpn_cooldown==0) { //SNIPER
 		//draw_sprite_ext(sprSniper, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
-	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
+	bullet = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
 	wpn_cooldown=2;
 	with (bullet) {
 		parent=obj_Player1;
@@ -1295,9 +1295,9 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		//draw_sprite_ext(sprFlamethrower, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 	if (facing_right) {
-		bullet = instance_create(nx_fistF+lengthdir_x(120*scale,armF_dir+15),ny_fistF+lengthdir_y(120*scale,armF_dir+15),objBullet);
+		bullet = instance_create(nx_fistF+lengthdir_x(120*scale,armF_dir+15),ny_fistF+lengthdir_y(120*scale,armF_dir+15),objBullet_Enemy);
 	} else {
-		bullet = instance_create(nx_fistF+lengthdir_x(120*scale,armF_dir-15),ny_fistF+lengthdir_y(120*scale,armF_dir-15),objBullet);
+		bullet = instance_create(nx_fistF+lengthdir_x(120*scale,armF_dir-15),ny_fistF+lengthdir_y(120*scale,armF_dir-15),objBullet_Enemy);
 	}
 	
 	wpn_cooldown=0;
@@ -1362,7 +1362,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 	
 	if !instance_exists(objHitbox)
 		{
-		hitbox = instance_create(nx_fistF,ny_fistF,objBullet);
+		hitbox = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
 		wpn_cooldown=2;
 		with (hitbox) {
 			parent=obj_Player1;
@@ -1400,7 +1400,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		 
 		if !instance_exists(objHitbox)
 		{
-		hitbox = instance_create(nx_fistF,ny_fistF,objBullet);
+		hitbox = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
 		wpn_cooldown=2;
 		with (hitbox) {
 			parent=obj_Player1;
