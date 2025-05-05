@@ -334,6 +334,7 @@
     {"id":{"name":"draw_sprite_3d_pos","path":"scripts/draw_sprite_3d_pos/draw_sprite_3d_pos.yy",},},
     {"id":{"name":"draw_sprite_3d","path":"scripts/draw_sprite_3d/draw_sprite_3d.yy",},},
     {"id":{"name":"draw_text_outlined","path":"scripts/draw_text_outlined/draw_text_outlined.yy",},},
+    {"id":{"name":"enemy_scripts","path":"scripts/enemy_scripts/enemy_scripts.yy",},},
     {"id":{"name":"fake3D_block_init","path":"scripts/fake3D_block_init/fake3D_block_init.yy",},},
     {"id":{"name":"fake3D_draw_block_ext","path":"scripts/fake3D_draw_block_ext/fake3D_draw_block_ext.yy",},},
     {"id":{"name":"fake3D_draw_block_not_optimized_ext","path":"scripts/fake3D_draw_block_not_optimized_ext/fake3D_draw_block_not_optimized_ext.yy",},},

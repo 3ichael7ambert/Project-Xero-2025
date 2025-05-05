@@ -42,6 +42,20 @@ chainsaw_blade=0;
 taser_img=0;
 wpn_cooldown=0;
 
+attack_cooldown=0;
+aggression=0;
+
+my_weapon = weapon;//irandom_range(1, 12); // or passed from controller
+class_data = scr_weapon_class_data(my_weapon);
+
+// example: set up combat preferences
+preferred_range_min = class_data.preferred_range_min;
+preferred_range_max = class_data.preferred_range_max;
+aggression_level = class_data.aggression;
+attack_cooldown_max = class_data.cooldown;
+movement_type = class_data.move_style;
+
+
 
 //sprites
 sprite_body=sprBody;

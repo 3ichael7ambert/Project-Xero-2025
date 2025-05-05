@@ -45,3 +45,19 @@ function attack_player() {
             break;
     }
 }
+
+////////////////////////////////////////////
+
+function can_see_target(obj_wall) {
+    if (!instance_exists(target)) return false;
+
+    var _x1 = x;
+    var _y1 = y;
+    var _x2 = target.x;
+    var _y2 = target.y;
+
+    // Replace obj_wall with whatever blocks sight
+   var _hit = collision_line(_x1, _y1, _x2, _y2, obj_wall, false, true);
+    
+    return (_hit == noone);
+}

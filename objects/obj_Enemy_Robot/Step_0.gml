@@ -8,6 +8,54 @@ image_yscale=scale;
 
 
 
+var dist = point_distance(x, y, target_player.x, target_player.y);
+var dir = point_direction(x, y, target_player.x, target_player.y);
+
+// Movement logic
+if (dist < preferred_range_min) {
+    // Too close — retreat
+    if (movement_type == "retreat" || movement_type == "normal") {
+        hsp = -lengthdir_x(hsp_walk_max, dir); // move away
+        vsp = -lengthdir_y(hsp_walk_max, dir);
+    } else if (movement_type == "dash") {
+        // quick dodge or dash away (can be randomized or triggered on cooldown)
+    }
+}
+else if (dist > preferred_range_max) {
+    // Too far — approach
+    if (movement_type != "static") {
+        hsp = lengthdir_x(hsp_walk_max, dir); // move toward
+        vsp = lengthdir_y(hsp_walk_max, dir);
+    }
+}
+else {
+    // In ideal range — position tactically or stop
+    hsp = 0;
+    vsp = 0;
+
+    // Line of sight check (optional)
+    if (can_see_target(obj_block_64)) {
+        attack_cooldown--;
+        if (attack_cooldown <= 0) {
+            shooting=true;
+            attack_cooldown = attack_cooldown_max;
+        } else {
+			shooting=false;
+		}
+    }
+}
+
+if (dist >= preferred_range_min && dist <= preferred_range_max) {
+    if (movement_type == "rush") {
+        var strafe_dir = choose(-90, 90);
+        var move_angle = dir + strafe_dir;
+        hsp = lengthdir_x(hsp_walk_max, move_angle);
+        vsp = lengthdir_y(hsp_walk_max, move_angle);
+    }
+}
+
+
+
 if (instance_exists(target_player)) {
     var dist = point_distance(x, y, target_player.x, target_player.y);
     target = target_player;
