@@ -28,6 +28,9 @@ punch=false;
 punch_side="front";
 punch_img_idx=0;
 
+hp=100;
+hp_max=100;
+
 sword=false;
 sword_num=1;
 sword_img_idx=0;

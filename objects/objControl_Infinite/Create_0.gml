@@ -12,6 +12,16 @@ global.kill_count = 0;
 global.difficulty = 1;
 global.high_score = 0;
 
+global.aggression = 0;           // 0 to 100, or scale you choose
+///
+global.health = 100;             // 0 to 100
+global.burnout = 0;              // 0 to 100
+global.lives = 3;
+
+// HUD Settings
+global.max_health = 100;
+global.max_burnout = 100;
+
 wave_timer = 90;
 enemies_remaining = 0; // this is key
 enemy_object=obj_Enemy_Robot;
