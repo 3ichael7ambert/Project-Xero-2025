@@ -925,6 +925,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	with (bullet) {
 		parent=obj_Player1;
 		weapon=0;
+		attack=5;
 		if (parent.punch_side="front") {
 		depth=parent.depth-10;
 		}else
@@ -963,6 +964,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	with (bullet) {
 		parent=obj_Player1;
 		weapon=1;
+		attack=10;
 		depth=parent.depth+1;
 		direction=parent.armF_dir;
 		speed=10;
@@ -983,6 +985,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	with (bullet) {
 		parent=obj_Player1;
 		weapon=2;
+		attack=15;
 		depth=parent.depth+1;
 		direction=parent.armF_dir;
 		speed=10;
@@ -1019,6 +1022,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	
 	if (weapon==3 && shoot_button&& wpn_cooldown==0) {
 			wpn_charge+=1;
+			attack+=1;
 	if !part_system_exists(global.partSysCharge)
 			{
 			    global.partSysCharge = part_system_create(part_charge_wpn);
@@ -1090,6 +1094,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 	with (bullet) {
 		parent=obj_Player1;
 		weapon=4;
+		attack=25;
 		depth=parent.depth-10;
 		sprite_index=parent.spr_sword_fx;
 		
@@ -1131,6 +1136,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		with (bullet) {
 		parent=obj_Player1;
 		weapon=6;
+		attack=5;
 		depth=parent.depth+1;
 		direction=parent.armF_dir-5+random(10);
 		speed=10+random(2);
@@ -1142,6 +1148,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		with (bullet2) {
 		parent=obj_Player1;
 		weapon=6;
+		attack=5;
 		depth=parent.depth+1;
 		direction=parent.armF_dir-5+random(10);
 		speed=10+random(2);
@@ -1153,6 +1160,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		with (bullet3) {
 		parent=obj_Player1;
 		weapon=6;
+		attack=5;
 		depth=parent.depth+1;
 		direction=parent.armF_dir-5+random(10);
 		speed=10+random(2);
@@ -1164,6 +1172,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		with (bullet4) {
 		parent=obj_Player1;
 		weapon=6;
+		attack=5;
 		depth=parent.depth+1;
 		direction=parent.armF_dir-5+random(10);
 		speed=10+random(2);
@@ -1175,6 +1184,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		with (bullet5) {
 		parent=obj_Player1;
 		weapon=6;
+		attack=5;
 		depth=parent.depth+1;
 		direction=parent.armF_dir-5+random(10);
 		speed=10+random(2);
@@ -1232,6 +1242,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 	with (bullet) {
 		parent=obj_Player1;
 		weapon=7;
+		attack=50;
 		depth=parent.depth-1;
 		sprite_index=sprGrenade;
 		direction=parent.armF_dir;
@@ -1261,6 +1272,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 	with (bullet) {
 		parent=obj_Player1;
 		weapon=8;
+		attack=50;
 		homing=true;
 		if instance_exists(objEnemyParent) {
 			target = instance_nearest(x, y, objEnemyParent);
@@ -1313,6 +1325,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 	with (bullet) {
 		parent=obj_Player1;
 		weapon=9;
+		attack=75;
 		depth=parent.depth+1;
 		sprite_index=sprBullet;
 		direction=parent.armF_dir;
@@ -1338,6 +1351,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		parent=obj_Player1;
 		weapon=10;
 		scale=.05;
+		attack=10;
 		depth=parent.depth+1;
 		sprite_index=sprBullet;
 		direction=parent.armF_dir;
@@ -1400,6 +1414,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		with (hitbox) {
 			parent=obj_Player1;
 			weapon=12;
+			attack=15;
 			hitbox=true;
 			xx=parent.nx_fistF;
 			yy=parent.nx_fistF;
@@ -1438,6 +1453,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		with (hitbox) {
 			parent=obj_Player1;
 			weapon=12;
+			attack=15;
 			hitbox=true;
 			xx=parent.nx_fistF;
 			yy=parent.nx_fistF;
