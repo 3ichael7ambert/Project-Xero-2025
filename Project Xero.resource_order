@@ -347,6 +347,7 @@
     {"name":"stick_to","order":4,"path":"scripts/stick_to/stick_to.yy",},
     {"name":"update_object","order":1,"path":"scripts/update_object/update_object.yy",},
     {"name":"Vector2","order":6,"path":"scripts/Vector2/Vector2.yy",},
+    {"name":"world_to_screen","order":235,"path":"scripts/world_to_screen/world_to_screen.yy",},
     {"name":"sh_transition","order":1,"path":"shaders/sh_transition/sh_transition.yy",},
     {"name":"sh_water","order":2,"path":"shaders/sh_water/sh_water.yy",},
     {"name":"music_drums_lofi_1","order":212,"path":"sounds/music_drums_lofi_1/music_drums_lofi_1.yy",},
