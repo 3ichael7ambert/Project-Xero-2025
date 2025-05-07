@@ -8,6 +8,10 @@ var vw = camera_get_view_width(view_camera[0]);
 var vh = camera_get_view_height(view_camera[0]);
 */
 
+
+
+/*
+////OLD FLAT
 var vx = camera_get_view_x(view_camera[0]);
 var vy = camera_get_view_y(view_camera[0]);
 var vw = camera_get_view_width(view_camera[0]);
@@ -86,3 +90,89 @@ if (px < vx || px > vx + vw || py < vy || py > vy + vh) {
     draw_set_color(c_white);
   //  draw_text(gx, gy, "ENEMY");
 }
+*/
+
+
+
+var vx = camera_get_view_x(view_camera[0]);
+var vy = camera_get_view_y(view_camera[0]);
+var vw = camera_get_view_width(view_camera[0]);
+var vh = camera_get_view_height(view_camera[0]);
+
+var px = x;
+var py = y;
+
+var is_offscreen = (px < vx || px > vx + vw || py < vy || py > vy + vh);
+
+// Screen center
+var cx = vx + vw * 0.5;
+var cy = vy + vh * 0.5;
+
+// Direction from center to player
+var angle = point_direction(cx, cy, px, py);
+var dx = lengthdir_x(1, angle);
+var dy = lengthdir_y(1, angle);
+
+// Compute edge intersection
+var t_x = -1, t_y = -1;
+if (dx > 0) t_x = (vx + vw - cx) / dx;
+else if (dx < 0) t_x = (vx - cx) / dx;
+if (dy > 0) t_y = (vy + vh - cy) / dy;
+else if (dy < 0) t_y = (vy - cy) / dy;
+
+var t = (t_x > 0 && t_y > 0) ? min(t_x, t_y) : max(t_x, t_y);
+t = max(t - 8, 0); // margin from screen edge
+
+// Final world position
+var bx = cx + dx * t;
+var by = cy + dy * t;
+
+// GUI-space
+var gx = bx - vx;
+var gy = by - vy;
+
+// === VISUAL EFFECTS ===
+
+// Fade in/out alpha
+if (is_offscreen) {
+    bubble_visible = true;
+    bubble_alpha = clamp(bubble_alpha + 0.1, 0, 1);
+    bubble_scale = lerp(bubble_scale, bubble_target_scale, 0.1);
+} else {
+    bubble_alpha = clamp(bubble_alpha - 0.1, 0, 1);
+    bubble_scale = lerp(bubble_scale, 0, 0.1);
+    if (bubble_alpha <= 0.01) bubble_visible = false;
+}
+
+// Skip drawing if not visible
+if (!bubble_visible) exit;
+
+// Pulse size based on distance from center
+var dist = point_distance(cx, cy, px, py);
+var pulse = 0.05 * sin(current_time * 0.005 + bubble_pulse_offset);
+var final_scale = bubble_scale + pulse * (dist / 300); // pulse strength by distance
+
+// === DRAW INDICATOR ===
+
+// Transparent glowing inner circle
+draw_set_alpha(bubble_alpha * 0.4);
+draw_circle_colour(gx, gy, (sprite_get_width(sprite_head) * final_scale) * 0.5, c_white, c_white, false);
+
+// Draw bubble sprite
+draw_set_alpha(bubble_alpha);
+draw_sprite_ext(sprite_head, image_index, gx, gy, final_scale, final_scale, angle, c_white, 1);
+
+// Outline ring
+draw_set_alpha(bubble_alpha);
+draw_set_color(c_white);
+draw_circle(gx, gy, (sprite_get_width(sprite_head) * final_scale) * 0.5, true);
+
+// Label (optional)
+draw_set_alpha(bubble_alpha);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_set_color(c_white);
+// draw_text(gx, gy, "ENEMY");
+
+// Reset alpha
+draw_set_alpha(1);
