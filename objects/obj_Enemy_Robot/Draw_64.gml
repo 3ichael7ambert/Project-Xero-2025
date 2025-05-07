@@ -94,6 +94,13 @@ if (px < vx || px > vx + vw || py < vy || py > vy + vh) {
 
 
 
+
+
+
+
+
+/*
+
 var vx = camera_get_view_x(view_camera[0]);
 var vy = camera_get_view_y(view_camera[0]);
 var vw = camera_get_view_width(view_camera[0]);
@@ -176,3 +183,90 @@ draw_set_color(c_white);
 
 // Reset alpha
 draw_set_alpha(1);
+*/
+
+// === CAMERA AND PLAYER POSITION ===
+var vx = camera_get_view_x(view_camera[0]);
+var vy = camera_get_view_y(view_camera[0]);
+var vw = camera_get_view_width(view_camera[0]);
+var vh = camera_get_view_height(view_camera[0]);
+
+var px = x;
+var py = y;
+
+var is_offscreen = (px < vx || px > vx + vw || py < vy || py > vy + vh);
+
+var cx = vx + vw * 0.5;
+var cy = vy + vh * 0.5;
+
+var angle = point_direction(cx, cy, px, py);
+var dx = lengthdir_x(1, angle);
+var dy = lengthdir_y(1, angle);
+
+// === SCREEN EDGE INTERSECTION ===
+var t_x = -1, t_y = -1;
+if (dx != 0) t_x = (dx > 0) ? (vx + vw - cx) / dx : (vx - cx) / dx;
+if (dy != 0) t_y = (dy > 0) ? (vy + vh - cy) / dy : (vy - cy) / dy;
+
+var t = (t_x > 0 && t_y > 0) ? min(t_x, t_y) : max(t_x, t_y);
+t = max(t - 16, 0); // buffer from screen edge
+
+var bx = cx + dx * t;
+var by = cy + dy * t;
+
+var gx = bx - vx;
+var gy = by - vy;
+
+// === FADE AND SCALE ===
+if (is_offscreen) {
+    bubble_visible = true;
+    bubble_alpha = clamp(bubble_alpha + 0.05, 0, 1);
+    bubble_scale = lerp(bubble_scale, bubble_target_scale, 0.1);
+} else {
+    bubble_alpha = clamp(bubble_alpha - 0.05, 0, 1);
+    bubble_scale = lerp(bubble_scale, 0, 0.1);
+    if (bubble_alpha <= 0.01) bubble_visible = false;
+}
+
+if (!bubble_visible) exit;
+
+// === BUBBLE ANIMATION ===
+var dist = point_distance(cx, cy, px, py);
+var pulse = 0.1 * sin(current_time * 0.008 + bubble_pulse_offset); // faster sine
+var dist_mod = clamp(dist / 500, 0.5, 1.5);
+var final_scale = bubble_scale + pulse * dist_mod;
+
+// === DRAWING ===
+var base_radius = sprite_get_width(sprite_head) * 0.5 * final_scale;
+
+// Glowing pulsing aura
+draw_set_alpha(bubble_alpha * 0.3);
+draw_circle_colour(gx, gy, base_radius + 2, c_white, c_white, false);
+
+// Bubble image
+draw_set_alpha(bubble_alpha);
+
+// Offset to center the head (if origin is neck/bottom-center)
+var head_offset_y = sprite_get_height(sprite_head) * 0.5 * final_scale;
+var eyes_offset_x = sprite_get_height(sprite_head) * 0.5 * final_scale;
+var eyes_offset_y = sprite_get_width(sprite_head) * 0.5 * final_scale;
+
+// Draw centered head
+draw_sprite_ext(sprite_head, image_index, gx, gy + head_offset_y, final_scale, final_scale, 0, c_white, 1);
+// Draw eyes aligned with head
+draw_sprite_ext(sprite_eyes, image_index, gx + eyes_offset_x, gy + eyes_offset_y, final_scale, final_scale, 0, c_white, 1);
+
+
+// Outer ring
+draw_set_alpha(bubble_alpha);
+draw_set_color(c_white);
+draw_circle(gx, gy, base_radius, true);
+
+// Label (if needed)
+// draw_text(gx, gy - base_radius - 8, "ENEMY");
+
+// Reset alpha
+draw_set_alpha(1);
+
+
+
