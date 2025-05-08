@@ -248,8 +248,8 @@ draw_set_alpha(bubble_alpha);
 
 // Offset to center the head (if origin is neck/bottom-center)
 var head_offset_y = sprite_get_height(sprite_head) * 0.5 * final_scale;
-var eyes_offset_x = sprite_get_height(sprite_head) * 0.5 * final_scale;
-var eyes_offset_y = sprite_get_width(sprite_head) * 0.5 * final_scale;
+var eyes_offset_x = (sprite_get_height(sprite_head)-80) * 0.5 * final_scale;
+var eyes_offset_y = (sprite_get_width(sprite_head)-85) * 0.5 * final_scale;
 
 // Draw centered head
 draw_sprite_ext(sprite_head, image_index, gx, gy + head_offset_y, final_scale, final_scale, 0, c_white, 1);
