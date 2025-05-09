@@ -11,6 +11,7 @@ image_yscale=scale;
 var dist = point_distance(x, y, target_player.x, target_player.y);
 var dir = point_direction(x, y, target_player.x, target_player.y);
 
+
 // Movement logic
 var dist_to_player = point_distance(x, y, target_player.x, target_player.y);
 
@@ -19,9 +20,12 @@ if (ai_state == "follow" || ai_state == "attack") {
         if (x < target_player.x) {
             facing_right = true;
 			armF_dir=dir;
+			image_angle=dir;
             image_xscale = abs(image_xscale); // make sure sprite faces right
         } else {
             facing_right = false;
+			armF_dir=dir;
+			image_angle=dir;
             image_xscale = -abs(image_xscale); // flip sprite to face left
         }
     }
@@ -38,9 +42,13 @@ if (ai_state == "patrol") {
     // Face patrol direction
     if (patrol_direction > 0) {
         facing_right = true;
+		armF_dir=0;
+		image_angle=dir;
         image_xscale = abs(image_xscale);
     } else {
         facing_right = false;
+		armF_dir=180;
+		image_angle=dir;
         image_xscale = -abs(image_xscale);
     }
 
