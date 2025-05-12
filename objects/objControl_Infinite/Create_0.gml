@@ -7,6 +7,8 @@
 fpsreal = fps_real;
 alarm[2]=30;
 
+scale=1;
+
 global.wave = 1;
 global.kill_count = 0;
 global.difficulty = 1;

@@ -13,11 +13,15 @@ if !instance_exists(enemy_object) {
 }  
 
 
+if (instance_exists(obj_Player1)) {
+	scale=obj_Player1.scale;
+}
 
 if  (wave_timer==0) && (instance_number(enemy_object)<=0) {
       global.wave += 1;
         wave_timer = 90;
-       spawn_wave(global.wave, enemy_object);
+       //spawn_wave(global.wave, enemy_object);
+       spawn_wave(global.wave, enemy_object,1,,,scale);
 	//instance_create(x,y,enemy_object);
 
     }
