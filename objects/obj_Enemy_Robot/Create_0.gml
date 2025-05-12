@@ -73,6 +73,7 @@ enemy_classes = [
 enemy_class = choose(enemy_classes);
 enemy_class=enemy_classes[weapon];
 jetpack_mode = choose(1, 2, 3);
+
 // AI Classification Setup
 switch (enemy_class) {
     case "streetfighter":
@@ -173,17 +174,17 @@ switch (enemy_class) {
 switch (jetpack_mode) {
     case 1:
         move_speed = 1.2;
-       // gravity = 0.4;
+       grav = 0.4;
         break;
 
     case 2:
         move_speed = 2.2;
-       // gravity = 0.15;
+        grav = 0.15;
         break;
 
     case 3:
         move_speed = 2.8;
-       // gravity = 0.05;
+       grav = 0.05;
         break;
 }
 

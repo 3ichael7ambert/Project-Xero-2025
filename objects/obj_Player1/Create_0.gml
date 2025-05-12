@@ -16,6 +16,9 @@ scale=.2;
 //scale=1;
 wpn_btn_dir="up";
 
+can_switch_weapons=true;
+can_switch_jetpack=true;
+
 wpn_charge=0;
 wpn_charge_max=10;
 

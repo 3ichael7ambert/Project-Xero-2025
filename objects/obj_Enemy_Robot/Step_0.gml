@@ -11,6 +11,21 @@ image_yscale=scale;
 var dist = point_distance(x, y, target_player.x, target_player.y);
 var dir = point_direction(x, y, target_player.x, target_player.y);
 
+var on_ground = !place_empty(x, y + 1, floor_obj);
+
+if (on_ground) {
+    vsp = 0;
+    isJumping = false;
+    jumpSpeed = 0;
+} else {
+    // Restore gravity if not on ground
+    switch (jetpack_mode) {
+        case 1: grav = 0.4; break;
+        case 2: grav = 0.15; break;
+        case 3: grav = 0.05; break;
+    }
+}
+
 
 // Movement logic
 var dist_to_player = point_distance(x, y, target_player.x, target_player.y);
