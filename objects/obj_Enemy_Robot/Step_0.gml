@@ -139,6 +139,39 @@ else {
 }
 */
 
+if (dist < preferred_range_min) {
+    // Too close — retreat
+    if (movement_type == "retreat" || movement_type == "normal") {
+        hsp = (x < target_player.x) ? -move_speed : move_speed;
+        if (jetpack_mode == 3) vsp = -abs(move_speed); // allow floating back only for mode 3
+    }
+}
+else if (dist > preferred_range_max) {
+    // Too far — approach
+    if (movement_type != "static") {
+        hsp = (x < target_player.x) ? move_speed : -move_speed;
+        if (jetpack_mode == 3) vsp = abs(move_speed); // float forward for mode 3
+    }
+}
+else {
+    // In ideal range — tactically stop horizontal motion only
+    if (movement_type != "rush" && movement_type != "strafe") {
+        hsp = 0;
+    }
+
+    // Optional attack logic
+    if (can_see_target(obj_block_64)) {
+        attack_cooldown--;
+        shooting = (attack_cooldown <= 0);
+        if (shooting) attack_cooldown = attack_cooldown_max;
+    } else {
+        shooting = false;
+    }
+}
+
+
+///////////////
+
 if (dist >= preferred_range_min && dist <= preferred_range_max) {
     if (movement_type == "rush") {
         var strafe_dir = choose(-90, 90);
