@@ -3,3 +3,4 @@ if (chainsaw_blade>=2) {
 }
 
 if (hp<=0) { instance_destroy(); }
+

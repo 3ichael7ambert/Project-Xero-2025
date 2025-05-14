@@ -15,10 +15,13 @@ var on_ground = !place_empty(x, y + 1, floor_obj);
 
 if (on_ground) {
     vsp = 0;
+	grav=0;
     isJumping = false;
     jumpSpeed = 0;
 } else {
     // Restore gravity if not on ground
+	vsp += grav;
+
     switch (jetpack_mode) {
         case 1: grav = 0.4; break;
         case 2: grav = 0.15; break;
@@ -101,6 +104,7 @@ switch (movement_type) {
 }
 
 
+/*
 if (dist < preferred_range_min) {
     // Too close — retreat
     if (movement_type == "retreat" || movement_type == "normal") {
@@ -133,6 +137,7 @@ else {
 		}
     }
 }
+*/
 
 if (dist >= preferred_range_min && dist <= preferred_range_max) {
     if (movement_type == "rush") {
