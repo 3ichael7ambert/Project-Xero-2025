@@ -8,7 +8,6 @@ image_yscale=scale;
 
 
 
-var dist = point_distance(x, y, target_player.x, target_player.y);
 var dir = point_direction(x, y, target_player.x, target_player.y);
 
 var on_ground = !place_empty(x, y + 1, floor_obj);
@@ -105,7 +104,7 @@ switch (movement_type) {
 
 
 /*
-if (dist < preferred_range_min) {
+if (dist_to_player< preferred_range_min) {
     // Too close — retreat
     if (movement_type == "retreat" || movement_type == "normal") {
         hsp = -lengthdir_x(hsp_walk_max, dir); // move away
@@ -114,7 +113,7 @@ if (dist < preferred_range_min) {
         // quick dodge or dash away (can be randomized or triggered on cooldown)
     }
 }
-else if (dist > preferred_range_max) {
+else if (dist_to_player> preferred_range_max) {
     // Too far — approach
     if (movement_type != "static") {
         hsp = lengthdir_x(hsp_walk_max, dir); // move toward
@@ -139,14 +138,14 @@ else {
 }
 */
 
-if (dist < preferred_range_min) {
+if (dist_to_player< preferred_range_min) {
     // Too close — retreat
     if (movement_type == "retreat" || movement_type == "normal") {
         hsp = (x < target_player.x) ? -move_speed : move_speed;
         if (jetpack_mode == 3) vsp = -abs(move_speed); // allow floating back only for mode 3
     }
 }
-else if (dist > preferred_range_max) {
+else if (dist_to_player> preferred_range_max) {
     // Too far — approach
     if (movement_type != "static") {
         hsp = (x < target_player.x) ? move_speed : -move_speed;
@@ -172,7 +171,7 @@ else {
 
 ///////////////
 
-if (dist >= preferred_range_min && dist <= preferred_range_max) {
+if (dist_to_player>= preferred_range_min && dist_to_player<= preferred_range_max) {
     if (movement_type == "rush") {
         var strafe_dir = choose(-90, 90);
         var move_angle = dir + strafe_dir;
@@ -184,7 +183,7 @@ if (dist >= preferred_range_min && dist <= preferred_range_max) {
 
 
 if (instance_exists(target_player)) {
-    var dist = point_distance(x, y, target_player.x, target_player.y);
+    var dist_to_player= point_distance(x, y, target_player.x, target_player.y);
     target = target_player;
 
     switch (ai_state) {
@@ -194,16 +193,16 @@ if (instance_exists(target_player)) {
                 patrol_direction *= -1;
                 patrol_timer = irandom_range(60, 180);
             }
-            if (dist < player_detect_range) {
+            if (dist_to_player< player_detect_range) {
                 ai_state = "follow";
             }
             break;
 
         case "follow":
             hsp = (x < target.x) ? hsp_walk_max : -hsp_walk_max;
-            if (dist < attack_range) {
+            if (dist_to_player< attack_range) {
                 ai_state = "attack";
-            } else if (dist > player_detect_range * 1.5) {
+            } else if (dist_to_player> player_detect_range * 1.5) {
                 ai_state = "patrol";
             }
             break;
@@ -211,7 +210,7 @@ if (instance_exists(target_player)) {
         case "attack":
             hsp = 0;
             // perform attack logic (sword slash, bullet, etc.)
-            if (dist > attack_range) {
+            if (dist_to_player> attack_range) {
                 ai_state = "follow";
             }
             break;
@@ -225,13 +224,7 @@ if (!weapon_locked) {
 
 
 
-//mouse_aim
-xm=window_mouse_get_x();
-ym=window_mouse_get_y();
 
-// Get window dimensions
-ww = window_get_width();
-wh = window_get_height();
 // Mouse input
 /*
 mouse_xdiff = xm - ww/2;
@@ -1049,8 +1042,9 @@ if (weapon==0 && punch==false && shooting && wpn_cooldown==0) { //FIST
 	
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet_Enemy);
 	wpn_cooldown=2;
+	bullet.parent=self;
 	with (bullet) {
-		parent=obj_Player1;
+	
 		weapon=1;
 		depth=parent.depth+1;
 		direction=parent.armF_dir;
