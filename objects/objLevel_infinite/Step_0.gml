@@ -21,6 +21,26 @@ else
 }
 */
 
+if !instance_exists(enemy_object) {
+  wave_timer--;
+}  
+
+
+if (instance_exists(obj_Player1)) {
+	scale=obj_Player1.scale;
+}
+
+if  (wave_timer==0) && (instance_number(enemy_object)<=0) {
+      global.wave += 1;
+        wave_timer = 90;
+
+       spawn_wave(global.wave, enemy_object,1,,3,scale);
+
+
+    }
+	
+	
+	
 if level=8
 {
 

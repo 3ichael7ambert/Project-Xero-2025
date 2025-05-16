@@ -481,7 +481,8 @@ ny_legB = cy + lengthdir_y(crad_legB, cnext_legB);
 
 
 //PARTICLES
-global.partSysSmoke=part_system_create(part_smoke);
+
+//global.partSysSmoke=part_system_create(part_smoke);
 			//GM_Smoke
  _ptypeSmoke = part_type_create();
 part_type_shape(_ptypeSmoke, pt_shape_smoke);
@@ -497,7 +498,7 @@ part_type_blend(_ptypeSmoke, false);
 part_type_life(_ptypeSmoke, 80, 180);
 
 
-global.partSysCharge=part_system_create(part_charge_wpn);
+//global.partSysCharge=part_system_create(part_charge_wpn);
 //GM_Warp_Lines
 _ptypeCharge = part_type_create();
 part_type_shape(_ptypeCharge, pt_shape_line);
@@ -574,4 +575,4 @@ part_type_life(_ptypeElec, 15*scale, 18*scale);
 
 
 ///DEBUG
-part_smoke_count = part_particles_count(global.partSysCharge);
+//part_smoke_count = part_particles_count(global.partSysCharge);

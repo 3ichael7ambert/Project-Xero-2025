@@ -16,6 +16,34 @@ color3 = make_color_rgb(random(255),random(255),random(255));
 
 p1lives=3;
 gui_pad=32;
+
+
+
+scale=1;
+
+global.wave = 1;
+global.kill_count = 0;
+global.difficulty = 1;
+global.high_score = 0;
+
+global.aggression = 0;           // 0 to 100, or scale you choose
+///
+global.health = 100;             // 0 to 100
+global.burnout = 0;              // 0 to 100
+global.lives = 3;
+
+// HUD Settings
+global.max_health = 100;
+global.max_burnout = 100;
+
+wave_timer = 90;
+enemies_remaining = 0; // this is key
+enemy_object=obj_Enemy_Robot;
+
+ enemy_spawned = true;
+ 
+ 
+ 
 ///DEBUG
 //globalvar level,ship;
 
@@ -23,6 +51,9 @@ gui_pad=32;
 //ship=0;
 //////
 //level=0;
+
+spawn_x=x;
+spawn_y=y;
 
 target_player=obj_Player1;
 playerScale=.9;
@@ -36,11 +67,11 @@ with (instance_create(0, 0, objCamera))
 {	
 	target_player=obj_Player1;
 	if level!=5{
-    target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+   target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
 	}
 	
 	if level=5{
-    target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+  target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
 	}
 	
 }
