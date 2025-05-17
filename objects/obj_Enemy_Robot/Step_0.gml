@@ -1128,7 +1128,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		
 			part_type_direction(_ptypeCharge, dirxy, dirxy, 0, 0);
 			part_type_life(_ptypeCharge, 2*wpn_charge*scale, 2*wpn_charge*scale);
-			//part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,1);
+			part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,1);
 			part_particles_create(global.partSysCharge,xxxx,yyyy,_ptypeCharge,10);
 			//part_particles_create(global._ps,nx_fistF,ny_fistF,_ptype1,10);
 			//part_system_position(global.partSysCharge,xxx,yyy);

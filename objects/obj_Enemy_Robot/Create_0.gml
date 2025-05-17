@@ -659,14 +659,14 @@ part_type_life(_ptypeCharge, 10*scale, 20*scale);
 //FLAMETHROWER
 //part_flamethrower
 global._psFlamethrower = part_system_create();
-//part_system_draw_order(global._psFlamethrower, true);
+part_system_draw_order(global._psFlamethrower, true);
 
 //GM_FlameIntensity
 _ptypeFlamethrower = part_type_create();
 part_type_shape(_ptypeFlamethrower, pt_shape_explosion);
 part_type_size(_ptypeFlamethrower, 1*scale, 1.2*scale, 0.1, 0);
 part_type_scale(_ptypeFlamethrower, 0.5, 0.5);
-part_system_depth(global._psFlamethrower,depth-10);
+//part_system_depth(global._psFlamethrower,depth-10);
 part_type_speed(_ptypeFlamethrower, 7, 9, -0.2, 0);
 part_type_direction(_ptypeFlamethrower, 356, 28, 0, 0);
 part_type_gravity(_ptypeFlamethrower, -0.4, 270);
@@ -704,4 +704,4 @@ part_type_life(_ptypeElec, 15*scale, 18*scale);
 
 
 ///DEBUG
-part_smoke_count = part_particles_count(global.partSysCharge);
+//part_smoke_count = part_particles_count(global.partSysCharge);

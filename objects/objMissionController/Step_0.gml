@@ -23,3 +23,12 @@ for (var i = 0; i < array_length(global.missions); i++) {
         }
     }
 }
+
+
+
+if (global.mission_kill_count >= global.mission_target_kills) {
+    global.mission_active = false;
+    global.current_mission.mission_active = false;
+    global.current_mission.mission_completed = true;
+    instance_destroy(); // Ends mission controller
+}

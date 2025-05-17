@@ -151,7 +151,7 @@
     {"name":"objLevelSide","order":4,"path":"objects/objLevelSide/objLevelSide.yy",},
     {"name":"objMazePlayer","order":1,"path":"objects/objMazePlayer/objMazePlayer.yy",},
     {"name":"objMenu","order":144,"path":"objects/objMenu/objMenu.yy",},
-    {"name":"objMission","order":214,"path":"objects/objMission/objMission.yy",},
+    {"name":"objMissionController","order":214,"path":"objects/objMissionController/objMissionController.yy",},
     {"name":"objMissionEnemy","order":232,"path":"objects/objMissionEnemy/objMissionEnemy.yy",},
     {"name":"objMissionItem","order":231,"path":"objects/objMissionItem/objMissionItem.yy",},
     {"name":"objMissionNPC","order":215,"path":"objects/objMissionNPC/objMissionNPC.yy",},
