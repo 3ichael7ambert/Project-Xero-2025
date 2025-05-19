@@ -2,6 +2,9 @@ image_angle=0;
 facing_right = true;
 depth=-10;
 
+color1=c_white;
+color2=c_white;
+color3=c_white;
 
 hp=100;
 attack_power=1;
