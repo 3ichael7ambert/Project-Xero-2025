@@ -7,7 +7,7 @@ var maxhp=100;
 var spr_head=sprHead;
 ///
 
-
+var scale_gui=.2;
 var cx = display_get_gui_width() * 0.5;
 var cy = display_get_gui_height() - 100;
 
@@ -19,8 +19,6 @@ var segments = 100;       // Smoothness of arc
 var angle_range = 270;    // Arc coverage
 var start_angle = -135;   // Arc begins left side, wraps clockwise
 
-// Draw head sprite at center
-draw_sprite_ext(spr_head, 0, cx, cy,.8,.8,0,c_white,1);
 
 // Decide color based on HP ratio
 var col;
@@ -52,3 +50,7 @@ for (var i = 0; i < segments; i++) {
 
     draw_triangle(cx, cy, x0, y0, x1, y1, false);
 }
+
+
+// Draw head sprite at center
+draw_sprite_ext(spr_head, 0, cx, cy+(sprite_get_height(spr_head)/2*scale_gui),scale_gui,scale_gui,0,c_white,1);
