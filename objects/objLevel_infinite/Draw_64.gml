@@ -4,7 +4,7 @@
 ///
 var hp=50;
 var maxhp=100;
-var spr_head=sprHead;
+var spr_head=sprHead_old;
 ///
 
 var scale_gui=.2;

@@ -196,11 +196,20 @@ switch (jetpack_mode) {
 sprite_body=sprBody;
 sprite_body_offsetX=45;
 sprite_body_offsetY=79;
+sprite_eyes_style=choose("dark","light");
+if (sprite_eyes_style=="dark") {
+	sprite_eyes_idx = irandom_range(0,19);
+} else if (sprite_eyes_style=="light") {
+	sprite_eyes_idx = irandom_range(0,9);
+} else {
+	sprite_eyes_idx = 0;
+}
 sprite_eyes=sprEyes;
 if (current_month==12) {
 	sprite_head=sprHeadSanta;
 } else {
 	sprite_head=sprHead;
+	sprite_head_idx=irandom_range(0,5);
 }
 sprite_armF=sprArmArms;
 sprite_legF=sprLeg3;

@@ -52,7 +52,7 @@ sprite_body_offsetY=79;
 if (current_month==12) {
 	sprite_head=sprHeadSanta;
 } else {
-	sprite_head=sprHead;
+	sprite_head=sprHead_old;
 }
 sprite_armF=sprArmArms;
 sprite_legF=sprLeg3;

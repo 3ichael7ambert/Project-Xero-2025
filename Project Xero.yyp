@@ -94,7 +94,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.13.1.193",
+    "IDEVersion":"2024.13.0.190",
   },
   "name":"Project Xero",
   "resources":[
@@ -578,6 +578,11 @@
     {"id":{"name":"sprGun2","path":"sprites/sprGun2/sprGun2.yy",},},
     {"id":{"name":"sprGun3","path":"sprites/sprGun3/sprGun3.yy",},},
     {"id":{"name":"sprHandSword","path":"sprites/sprHandSword/sprHandSword.yy",},},
+    {"id":{"name":"sprHead_Eyes_Accent","path":"sprites/sprHead_Eyes_Accent/sprHead_Eyes_Accent.yy",},},
+    {"id":{"name":"sprHead_Eyes_Dark","path":"sprites/sprHead_Eyes_Dark/sprHead_Eyes_Dark.yy",},},
+    {"id":{"name":"sprHead_Eyes_Light","path":"sprites/sprHead_Eyes_Light/sprHead_Eyes_Light.yy",},},
+    {"id":{"name":"sprHead_Eyes","path":"sprites/sprHead_Eyes/sprHead_Eyes.yy",},},
+    {"id":{"name":"sprHead_old","path":"sprites/sprHead_old/sprHead_old.yy",},},
     {"id":{"name":"sprHead","path":"sprites/sprHead/sprHead.yy",},},
     {"id":{"name":"sprHeadSanta","path":"sprites/sprHeadSanta/sprHeadSanta.yy",},},
     {"id":{"name":"sprHealthBar","path":"sprites/sprHealthBar/sprHealthBar.yy",},},

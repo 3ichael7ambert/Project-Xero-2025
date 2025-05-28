@@ -77,7 +77,7 @@ draw_sprite_ext(sprLeg2,0,legF_x,legF_y,scale,scale,-phy_rotation-35,c_white,1);
 if (facing_right==true) {
 
 //HEAD
-draw_sprite_ext(sprHead,0,head_x,head_y,scale,scale,-phy_rotation,c_white,1);
+draw_sprite_ext(sprHead_old,0,head_x,head_y,scale,scale,-phy_rotation,c_white,1);
 draw_sprite_ext(sprEyes,0,eyes_x,eyes_y,scale,scale,-phy_rotation,c_white,1);
 
 //FRONT ARM
@@ -89,7 +89,7 @@ draw_sprite_ext(sprGun2,0,handF_x,handF_y,scale,scale,armF_dir,c_white,1);
 if (facing_right==false) {
 
 //HEAD
-draw_sprite_ext(sprHead,0,head_x,head_y,-scale,scale,-phy_rotation,c_white,1);
+draw_sprite_ext(sprHead_old,0,head_x,head_y,-scale,scale,-phy_rotation,c_white,1);
 draw_sprite_ext(sprEyes,0,eyes_x,eyes_y,-scale,scale,-phy_rotation,c_white,1);
 
 //FRONT ARM
