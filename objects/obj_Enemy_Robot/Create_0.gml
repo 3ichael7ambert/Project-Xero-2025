@@ -198,10 +198,13 @@ sprite_body_offsetX=45;
 sprite_body_offsetY=79;
 sprite_eyes_style=choose("dark","light");
 if (sprite_eyes_style=="dark") {
+	sprite_eyes_img=sprHead_Eyes_Dark;
 	sprite_eyes_idx = irandom_range(0,19);
 } else if (sprite_eyes_style=="light") {
+	sprite_eyes_img=sprHead_Eyes_Light;
 	sprite_eyes_idx = irandom_range(0,9);
 } else {
+	sprite_eyes_img=sprHead_Eyes_Light;
 	sprite_eyes_idx = 0;
 }
 sprite_eyes=sprEyes;
