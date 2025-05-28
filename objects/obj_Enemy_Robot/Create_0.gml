@@ -1,8 +1,12 @@
 image_angle=0;
 facing_right = true;
 depth=-10;
+/*
+colors=[c_white,c_gray,c_green,c_purple,c_blue,c_red,c_orange,c_yellow,c_aqua,c_dkgray,c_fuchsia,c_ltgray,c_maroon,c_lime,c_navy,c_olive,c_silver,c_teal];
+color1=choose(colors);
+*/
 
-color1=c_white;
+color1=choose(c_white,c_gray,c_green,c_purple,c_blue,c_red,c_orange,c_yellow,c_aqua,c_dkgray,c_fuchsia,c_ltgray,c_maroon,c_lime,c_navy,c_olive,c_silver,c_teal);
 color2=c_white;
 color3=c_white;
 
@@ -194,18 +198,22 @@ switch (jetpack_mode) {
 
 //sprites
 sprite_body=sprBody;
+sprite_body_idx=irandom_range(0,3);
 sprite_body_offsetX=45;
 sprite_body_offsetY=79;
 sprite_eyes_style=choose("dark","light");
 if (sprite_eyes_style=="dark") {
 	sprite_eyes_img=sprHead_Eyes_Dark;
 	sprite_eyes_idx = irandom_range(0,19);
+	sprite_eyes_pupil_idx=3;
 } else if (sprite_eyes_style=="light") {
 	sprite_eyes_img=sprHead_Eyes_Light;
 	sprite_eyes_idx = irandom_range(0,9);
+	sprite_eyes_pupil_idx=0;
 } else {
 	sprite_eyes_img=sprHead_Eyes_Light;
 	sprite_eyes_idx = 0;
+	sprite_eyes_pupil_idx=0;
 }
 sprite_eyes=sprEyes;
 if (current_month==12) {
@@ -214,6 +222,8 @@ if (current_month==12) {
 	sprite_head=sprHead;
 	sprite_head_idx=irandom_range(0,5);
 }
+sprite_armB=sprArmArms;
+sprite_legB=sprLeg3;
 sprite_armF=sprArmArms;
 sprite_legF=sprLeg3;
 spr_sword_arm = sprArmSword_1_Arm;
