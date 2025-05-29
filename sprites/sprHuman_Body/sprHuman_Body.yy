@@ -32,8 +32,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"Human sprites",
+    "path":"folders/Sprites/Human sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

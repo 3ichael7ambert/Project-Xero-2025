@@ -6,8 +6,8 @@
   "name":"objHumanParent",
   "overriddenProperties":[],
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"Human",
+    "path":"folders/Human.yy",
   },
   "parentObjectId":null,
   "persistent":false,

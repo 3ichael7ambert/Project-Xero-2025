@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"raycast_laser",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"raycast",
+    "path":"folders/Scripts/raycast.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
