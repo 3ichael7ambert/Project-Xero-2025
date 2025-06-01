@@ -4,8 +4,13 @@ scr_player_1_init_controls();
 
 
 
-
-
+color1=c_white;
+sprite_body_idx=0;
+sprite_head_idx=0;
+sprite_eyes_idx=0;
+sprite_eyes_img=sprHead_Eyes;
+sprite_eyes_pupil_idx=0;
+sprite_eyes=sprHead_Eyes;
 
 if (facing_right) {
 offsetX=25*scale;
