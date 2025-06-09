@@ -335,14 +335,14 @@ if (pause_button) {
 }
 
 
-if hsp > 20
-    hsp = 20;
-if hsp < -20
-    hsp = -20;
-if vsp > 20
-    vsp = 20;
-if vsp < -20
-    vsp = -20;
+if hsp > max_speed
+    hsp = max_speed;
+if hsp < -max_speed
+    hsp = -max_speed;
+if vsp > max_speed
+    vsp = max_speed;
+if vsp < -max_speed
+    vsp = -max_speed;
 	
 
 
@@ -967,7 +967,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		attack=10;
 		depth=parent.depth+1;
 		direction=parent.armF_dir;
-		speed=10;
+		speed=parent.bullet_speed;
 		image_xscale=.5*parent.scale;
 		image_yscale=.5*parent.scale;
 		//wpn_cooldown=2;
@@ -988,7 +988,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		attack=15;
 		depth=parent.depth+1;
 		direction=parent.armF_dir;
-		speed=10;
+		speed=parent.bullet_speed;
 		image_xscale=1*parent.scale;
 		image_yscale=1*parent.scale;
 		life_countdown=parent.bullet_life;
@@ -1009,7 +1009,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 		weapon=3;
 		depth=parent.depth-1;
 		direction=parent.armF_dir;
-		speed=10;
+		speed=parent.bullet_speed;
 		image_xscale=1*parent.scale;
 		image_yscale=1*parent.scale;
 		life_countdown=parent.bullet_life;
@@ -1139,7 +1139,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		attack=5;
 		depth=parent.depth+1;
 		direction=parent.armF_dir-5+random(10);
-		speed=10+random(2);
+		speed=parent.bullet_speed+random(2);
 		image_xscale=.5*parent.scale;
 		image_yscale=.5*parent.scale;
 		life_countdown=parent.bullet_life;
@@ -1151,7 +1151,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		attack=5;
 		depth=parent.depth+1;
 		direction=parent.armF_dir-5+random(10);
-		speed=10+random(2);
+		speed=parent.bullet_speed+random(2);
 		image_xscale=.5*parent.scale;
 		image_yscale=.5*parent.scale;
 		life_countdown=parent.bullet_life;
@@ -1163,7 +1163,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		attack=5;
 		depth=parent.depth+1;
 		direction=parent.armF_dir-5+random(10);
-		speed=10+random(2);
+		speed=parent.bullet_speed+random(2);
 		image_xscale=.5*parent.scale;
 		image_yscale=.5*parent.scale;
 		life_countdown=parent.bullet_life;
@@ -1175,7 +1175,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		attack=5;
 		depth=parent.depth+1;
 		direction=parent.armF_dir-5+random(10);
-		speed=10+random(2);
+		speed=parent.bullet_speed+random(2);
 		image_xscale=.5*parent.scale;
 		image_yscale=.5*parent.scale;
 		life_countdown=parent.bullet_life;
@@ -1187,7 +1187,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		attack=5;
 		depth=parent.depth+1;
 		direction=parent.armF_dir-5+random(10);
-		speed=10+random(2);
+		speed=parent.bullet_speed+random(2);
 		image_xscale=.5*parent.scale;
 		image_yscale=.5*parent.scale;
 		life_countdown=parent.bullet_life;
@@ -1246,7 +1246,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		depth=parent.depth-1;
 		sprite_index=sprGrenade;
 		direction=parent.armF_dir;
-		speed=10;
+		speed=parent.bullet_speed;
 		//speed=parent.wpn_charge;
 		image_xscale=2*parent.scale;
 		image_yscale=2*parent.scale;
@@ -1284,7 +1284,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		depth=parent.depth+1;
 			sprite_index=sprRocket;
 		direction=parent.armF_dir;
-		speed=10;
+		speed=parent.bullet_speed;
 		scale=.2;
 		image_xscale=scale;
 		image_yscale=scale;
@@ -1329,7 +1329,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		depth=parent.depth+1;
 		sprite_index=sprBullet;
 		direction=parent.armF_dir;
-		speed=10;
+		speed=parent.bullet_speed;
 		image_xscale=.5*parent.scale;
 		image_yscale=.5*parent.scale;
 		life_countdown=parent.bullet_life;
@@ -1355,7 +1355,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		depth=parent.depth+1;
 		sprite_index=sprBullet;
 		direction=parent.armF_dir;
-		speed=10;
+		speed=parent.bullet_speed;
 		image_xscale=.5*parent.scale;
 		image_yscale=.5*parent.scale;
 		hitbox=true;

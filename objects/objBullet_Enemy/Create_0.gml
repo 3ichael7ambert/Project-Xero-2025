@@ -18,6 +18,7 @@ xx=x;
 yy=y;
 
 attack=1;
+bullet_speed=1;
 
 
 weapon=0;
