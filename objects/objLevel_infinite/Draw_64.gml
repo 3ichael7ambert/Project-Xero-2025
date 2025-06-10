@@ -20,6 +20,11 @@ var angle_range = 270;    // Arc coverage
 var start_angle = -135;   // Arc begins left side, wraps clockwise
 
 
+
+
+
+
+
 // Decide color based on HP ratio
 var col;
 if (hp_ratio > 0.5) {
@@ -49,6 +54,36 @@ for (var i = 0; i < segments; i++) {
     var y1 = cy + lengthdir_y(radius, a1);
 
     draw_triangle(cx, cy, x0, y0, x1, y1, false);
+}
+
+
+
+// Gradient ring settings
+var inner_radius = radius - 10;
+var outer_radius = radius + 10;
+var gradient_segments = 100;
+
+for (var i = 0; i < gradient_segments; i++) {
+    var a0 = start_angle + (angle_range / gradient_segments) * i;
+    var a1 = start_angle + (angle_range / gradient_segments) * (i + 1);
+
+    var x0_inner = cx + lengthdir_x(inner_radius, a0);
+    var y0_inner = cy + lengthdir_y(inner_radius, a0);
+    var x0_outer = cx + lengthdir_x(outer_radius, a0);
+    var y0_outer = cy + lengthdir_y(outer_radius, a0);
+
+    var x1_inner = cx + lengthdir_x(inner_radius, a1);
+    var y1_inner = cy + lengthdir_y(inner_radius, a1);
+    var x1_outer = cx + lengthdir_x(outer_radius, a1);
+    var y1_outer = cy + lengthdir_y(outer_radius, a1);
+
+    // Fading gradient from outer (alpha 0) to inner (alpha 1)
+    draw_primitive_begin(pr_trianglestrip);
+    draw_vertex_color(x0_outer, y0_outer, col, 0);
+    draw_vertex_color(x0_inner, y0_inner, col, 1);
+    draw_vertex_color(x1_outer, y1_outer, col, 0);
+    draw_vertex_color(x1_inner, y1_inner, col, 1);
+    draw_primitive_end();
 }
 
 
