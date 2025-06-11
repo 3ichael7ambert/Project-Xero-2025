@@ -1,5 +1,5 @@
 //draw_text_outlined(x, y, outline color, string color, string)  
-function draw_text_outlined(_xx,_yy,_words,_colored,_outline)
+function draw_text_outlined(_xx,_yy,_words,_colored)
 {
 var xx,yy,outline,words, colored;  
 xx = _xx;  

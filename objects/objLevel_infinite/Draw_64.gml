@@ -4,7 +4,10 @@
 ///
 var hp=50;
 var maxhp=100;
-var spr_head=sprHead_old;
+if instance_exists(target) {
+	spr_head=target.sprite_head;
+	color1=target.color1;
+}
 ///
 
 var scale_gui=.2;
@@ -87,5 +90,7 @@ for (var i = 0; i < gradient_segments; i++) {
 }
 
 
+
 // Draw head sprite at center
-draw_sprite_ext(spr_head, 0, cx, cy+(sprite_get_height(spr_head)/2*scale_gui),scale_gui,scale_gui,0,c_white,1);
+draw_sprite_ext(spr_head, 0, cx, cy+(sprite_get_height(spr_head)/2*scale_gui),scale_gui,scale_gui,0,color1,1);
+draw_text_outlined(cx,cy,"Kills: " + string(global.kill_count),color1,1);

@@ -21,6 +21,14 @@ else
 }
 */
 
+if (instance_exists(obj_Player1)) {
+	target=obj_Player1;
+} else {
+	target = noone;
+}
+
+
+
 if !instance_exists(enemy_object) {
   wave_timer--;
 }  

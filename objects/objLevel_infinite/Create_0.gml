@@ -17,7 +17,13 @@ color3 = make_color_rgb(random(255),random(255),random(255));
 p1lives=3;
 gui_pad=32;
 
+spr_head=sprHead_old;
 
+if (instance_exists(obj_Player1)) {
+	target=obj_Player1;
+} else {
+	target = noone;
+}
 
 scale=1;
 
