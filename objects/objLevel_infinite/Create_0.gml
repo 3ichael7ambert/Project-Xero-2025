@@ -15,9 +15,7 @@ color2 = make_color_rgb(random(255),random(255),random(255));
 color3 = make_color_rgb(random(255),random(255),random(255));
 
 p1lives=3;
-gui_pad=32;
 
-spr_head=sprHead_old;
 
 if (instance_exists(obj_Player1)) {
 	target=obj_Player1;
@@ -27,20 +25,7 @@ if (instance_exists(obj_Player1)) {
 
 scale=1;
 
-global.wave = 1;
-global.kill_count = 0;
-global.difficulty = 1;
-global.high_score = 0;
-
-global.aggression = 0;           // 0 to 100, or scale you choose
-///
-global.health = 100;             // 0 to 100
-global.burnout = 0;              // 0 to 100
-global.lives = 3;
-
-// HUD Settings
-global.max_health = 100;
-global.max_burnout = 100;
+scr_infinite_hud_init();
 
 wave_timer = 90;
 enemies_remaining = 0; // this is key

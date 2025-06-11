@@ -12,22 +12,5 @@ draw_text(32,32,string_hash_to_newline("#FPS: "+string(fps)+
 */
 ////
 
-// Draw Health Bar
-draw_text(32, 32, "Health:");
-draw_rectangle_color(120, 30, 220, 50, c_red, c_red, c_red, c_red, false);
-draw_rectangle_color(120, 30, 120 + (global.health / global.max_health) * 100, 50, c_lime, c_lime, c_lime, c_lime, false);
 
-// Draw Burnout Bar
-draw_text(32, 60, "Burnout:");
-draw_rectangle_color(120, 58, 220, 78, c_gray, c_gray, c_gray, c_gray, false);
-draw_rectangle_color(120, 58, 120 + (global.burnout / global.max_burnout) * 100, 78, c_orange, c_orange, c_orange, c_orange, false);
-
-// Draw Aggression
-draw_text(32, 100, "Aggression: " + string(global.aggression));
-
-// Draw Coins and Credits
-draw_text(32, 130, "Coins: " + string(global.coins));
-draw_text(32, 160, "Credits: " + string(global.credits));
-
-// Draw Lives
-draw_text(32, 190, "Lives: " + string(global.lives));
+scr_hud_bubble_draw_gui();
