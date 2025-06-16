@@ -10,11 +10,56 @@ function scr_infinite_hud_init(){
 	global.burnout = 0;              // 0 to 100
 	global.lives = 3;
 
+	
+
 	// HUD Settings
 	global.max_health = 100;
 	global.max_burnout = 100;
 	gui_pad=32;
 	spr_head=sprHead_old;
+	global.spr_head = sprHead_old;
+	global.spr_eyes = sprHead_old;
+	global.spr_pupil = sprHead_old;
+	global.color1=c_white;
+	
+	//2-4 players
+	global.p2_health = 100;
+	global.p2_burnout = 0;         
+	global.p2_lives = 3;
+	global.p2_max_health = 100;
+	global.p2_max_burnout = 100;
+	global.p2_kill_count = 0;
+	global.p2_spr_head = sprHead_old;
+	global.p2_spr_eyes = sprHead_old;
+	global.p2_spr_pupil = sprHead_old;
+	global.p2_color1=c_white;
+	
+	
+	
+	global.p3_health = 100;
+	global.p3_burnout = 0;         
+	global.p3_lives = 3;
+	global.p3_max_health = 100;
+	global.p3_max_burnout = 100;
+	global.p3_kill_count = 0;
+	global.p3_spr_head = sprHead_old;
+	global.p3_spr_eyes = sprHead_old;
+	global.p3_spr_pupil = sprHead_old;
+	global.p3_color1=c_white;
+	
+	
+	global.p4_health = 100;
+	global.p4_burnout = 0;         
+	global.p4_lives = 3;
+	global.p4_max_health = 100;
+	global.p4_max_burnout = 100;
+	global.p4_kill_count = 0;
+	global.p4_spr_head = sprHead_old;
+	global.p4_spr_eyes = sprHead_old;
+	global.p4_spr_pupil = sprHead_old;
+	global.p4_color1=c_white;
+	
+	
 	
 	//CITY
           // 0 to 100, or scale you choose
@@ -44,11 +89,47 @@ var space_between = total_width / (total_players + 1);
 for (var i = 0; i < total_players; i++) {
     var player_index = i + 1;
 
-    // Example stat placeholders — replace with per-player data if needed
-    var hp = 50; // player.hp;
-    var maxhp = 100;
-    var spr_head = sprHead_old;
-    var color1 = c_white;
+        var hp, maxhp, spr_head, color1, kills;
+
+    switch (player_index) {
+        case 1:
+            hp = global.health;
+            maxhp = global.max_health;
+            spr_head = global.spr_head;
+            color1 = global.color1;
+            kills = global.kill_count;
+            break;
+        case 2:
+            hp = global.p2_health;
+            maxhp = global.p2_max_health;
+            spr_head = global.p2_spr_head;
+            color1 = global.p2_color1;
+            kills = global.p2_kill_count;
+            break;
+        case 3:
+            hp = global.p3_health;
+            maxhp = global.p3_max_health;
+            spr_head = global.p3_spr_head;
+            color1 = global.p3_color1;
+            kills = global.p3_kill_count;
+            break;
+        case 4:
+            hp = global.p4_health;
+            maxhp = global.p4_max_health;
+            spr_head = global.p4_spr_head;
+            color1 = global.p4_color1;
+            kills = global.p4_kill_count;
+            break;
+        default:
+            // Fallback for undefined players
+            hp = 0;
+            maxhp = 100;
+            spr_head = sprHead_old;
+            color1 = c_gray;
+            kills = 0;
+            break;
+    }
+
 
     // Center of this HUD
     var cx = space_between * player_index;
@@ -124,6 +205,8 @@ for (var i = 0; i < total_players; i++) {
     draw_text_outlined(cx, cy, "P" + string(player_index) + " Kills: " + string(global.kill_count), color1, 1);
 }
 
+
+//city
 // Draw extra UI for rmCity
 if (room == rmCity) {
     draw_text(32, 32, "Health:");

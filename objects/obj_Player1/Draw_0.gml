@@ -1,3 +1,5 @@
+scr_draw_player_indicator(player);
+
 if mouse_aim=true {
 	//draw_circle(xm+cm_x,ym+cm_y,20,true);
 	draw_circle(mouse_x_3d,mouse_y_3d,20,true);

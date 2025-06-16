@@ -9,7 +9,22 @@ if !variable_global_exists("levels"){
 global.ships=0;
 #macro level global.levels
 #macro ship global.ships
-global.players=1;
+
+
+ global.players=1;
+
+for (var i = 0; i < 3; i++;)
+{
+    if (true)
+    {
+        global.players++;
+    }
+    else
+    {
+     // global.players=1;
+    }
+}
+
 
 //Player Color
 color1 = make_color_rgb(random(255),random(255),random(255));

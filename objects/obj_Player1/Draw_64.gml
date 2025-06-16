@@ -1,1 +1,1 @@
-scr_draw_player_indicator(player);
+//scr_draw_player_indicator(player);
