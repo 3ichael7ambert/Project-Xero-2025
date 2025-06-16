@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"draw_player_indicator",
+  "%Name":"scr_draw_player_indicator",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"draw_player_indicator",
+  "name":"scr_draw_player_indicator",
   "parent":{
     "name":"Project Xero",
     "path":"Project Xero.yyp",

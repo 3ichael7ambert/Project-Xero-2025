@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_hud_bubble_init_1",
+  "%Name":"scr_hud_bubble_draw_gui",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_hud_bubble_init_1",
+  "name":"scr_hud_bubble_draw_gui",
   "parent":{
     "name":"Project Xero",
     "path":"Project Xero.yyp",

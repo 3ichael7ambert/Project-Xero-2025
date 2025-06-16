@@ -1,0 +1,1 @@
+scr_draw_player_indicator(player);

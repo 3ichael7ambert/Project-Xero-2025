@@ -2,16 +2,19 @@
 /// @desc Draws player label above their head if multiplayer
 /// Call this in the Draw GUI event of each player object
 
-function draw_player_indicator(){
+function scr_draw_player_indicator(_player){
 
-if (global.players > 1) {
+var player_num = _player 
+if (global.players > 1) ||   (global.players == 1) {
     
     // Position above player's head
-    var screen_x = camera_get_view_x(view_camera[0]) + x;
-    var screen_y = camera_get_view_y(view_camera[0]) + y;
+    //var screen_x = camera_get_view_x(view_camera[0]) + x;
+    //var screen_y = camera_get_view_y(view_camera[0]) + y;
+	var screen_x = x;
+    var screen_y = y;
 
     var text = "P" + string(player_num);
-    var offset_y = -48;
+    var offset_y = -64;
 
     // Draw the player number
     draw_set_color(c_white);
