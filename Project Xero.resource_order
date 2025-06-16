@@ -263,6 +263,7 @@
     {"name":"create_parallax_layer","order":20,"path":"scripts/create_parallax_layer/create_parallax_layer.yy",},
     {"name":"draw_background_tiled_ext_side","order":223,"path":"scripts/draw_background_tiled_ext_side/draw_background_tiled_ext_side.yy",},
     {"name":"draw_background_tiled_ext","order":4,"path":"scripts/draw_background_tiled_ext/draw_background_tiled_ext.yy",},
+    {"name":"draw_player_indicator","order":259,"path":"scripts/draw_player_indicator/draw_player_indicator.yy",},
     {"name":"draw_sprite_3d_general","order":16,"path":"scripts/draw_sprite_3d_general/draw_sprite_3d_general.yy",},
     {"name":"draw_sprite_3d_part","order":17,"path":"scripts/draw_sprite_3d_part/draw_sprite_3d_part.yy",},
     {"name":"draw_sprite_3d_pos","order":18,"path":"scripts/draw_sprite_3d_pos/draw_sprite_3d_pos.yy",},

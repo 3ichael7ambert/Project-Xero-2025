@@ -9,12 +9,15 @@ if !variable_global_exists("levels"){
 global.ships=0;
 #macro level global.levels
 #macro ship global.ships
+global.players=1;
+
 //Player Color
 color1 = make_color_rgb(random(255),random(255),random(255));
 color2 = make_color_rgb(random(255),random(255),random(255));
 color3 = make_color_rgb(random(255),random(255),random(255));
 
 p1lives=3;
+
 
 
 if (instance_exists(obj_Player1)) {
@@ -59,13 +62,28 @@ with (instance_create(0, 0, objCamera))
 	target_player=obj_Player1;
 	if level!=5{
    target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+	target.player=1;
 	}
 	
 	if level=5{
   target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+	target.player=1;
 	}
 	
 }
+
+	if (global.players==2) {
+		var a = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+		a.player=2;
+	}
+	if (global.players==3) {
+		var a = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+	a.player=3;
+	}
+	if (global.players==4) {
+		var a = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+	a.player=4;
+	}
 
 
 if level!=5 {target=obj_Player1;}

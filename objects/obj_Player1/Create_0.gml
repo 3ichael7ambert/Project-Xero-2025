@@ -1,13 +1,12 @@
 scr_player_1_init();
 scr_player_1_init_sprites();
-scr_player_1_init_controls();
 
 
 bullet_speed=30;
 max_speed=20;
 
-
-
+player=1;
+scr_player_1_init_controls(1);
 
 if (facing_right) {
 offsetX=25*scale;
