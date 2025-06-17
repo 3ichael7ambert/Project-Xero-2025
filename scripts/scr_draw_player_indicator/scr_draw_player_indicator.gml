@@ -4,6 +4,21 @@
 
 function scr_draw_player_indicator(_player){
 
+switch (_player) {
+	case 1:
+		draw_col = c_red;
+		break;
+	case 2:
+		draw_col = c_blue;
+		break;
+	case 3:
+		draw_col = c_green;
+		break;
+	case 4:
+		draw_col = c_yellow;
+		break;
+}
+	
 var player_num = _player 
 if (global.players > 1) ||   (global.players == 1) {
     
@@ -17,9 +32,9 @@ if (global.players > 1) ||   (global.players == 1) {
     var offset_y = -64;
 
     // Draw the player number
-    draw_set_color(c_white);
+    draw_set_color(draw_col);
     draw_set_halign(fa_center);
-    draw_text(screen_x, screen_y + offset_y, text);
+    draw_text(screen_x, screen_y + offset_y-5, text);
     
     // Draw a small downward triangle
     var tri_w = 8;

@@ -1,5 +1,7 @@
 /// @description Create objects
 randomize();
+
+
 if !variable_global_exists("levels"){
 	global.levels=1; 
 }
@@ -11,8 +13,9 @@ global.ships=0;
 #macro ship global.ships
 
 
- global.players=1;
+global.players=1;
 
+//controller check
 for (var i = 0; i < 3; i++;)
 {
     if (true)
@@ -75,31 +78,38 @@ playerScale=.9;
 with (instance_create(0, 0, objCamera))
 {	
 	target_player=obj_Player1;
-	if level!=5{
-   target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
-	target.player=1;
+	if (global.players==1) {
+		target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+			target.player=1;
 	}
 	
-	if level=5{
-  target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
-	target.player=1;
-	}
-	
-}
-
 	if (global.players==2) {
-		var a = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
-		a.player=2;
+		target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+			target.player=1;
+		var a = instance_create(__view_get( e__VW.WView, 0 )*.6 , __view_get( e__VW.HView, 0 )/2, target_player);
+			a.player=2;
 	}
+
 	if (global.players==3) {
-		var a = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
-	a.player=3;
+		target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+			target.player=1;
+		var a = instance_create(__view_get( e__VW.WView, 0 )/4 , __view_get( e__VW.HView, 0 )/2, target_player);
+			a.player=2;
+		var b = instance_create(__view_get( e__VW.WView, 0 )*.75, __view_get( e__VW.HView, 0 )/2, target_player);
+			b.player=3;
 	}
 	if (global.players==4) {
-		var a = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
-	a.player=4;
+		target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+			target.player=1;
+		var a = instance_create(__view_get( e__VW.WView, 0 )*.4 , __view_get( e__VW.HView, 0 )/2, target_player);
+			a.player=2;
+		var b = instance_create(__view_get( e__VW.WView, 0 )*.6, __view_get( e__VW.HView, 0 )/2, target_player);
+			b.player=3;
+		var c = instance_create(__view_get( e__VW.WView, 0 )*.7, __view_get( e__VW.HView, 0 )/2, target_player);
+		c.player=4;
 	}
 
+}
 
 if level!=5 {target=obj_Player1;}
 if level=5 {target=obj_Player1;}
