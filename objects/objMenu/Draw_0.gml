@@ -5,8 +5,17 @@
 
 
 
-
 draw_set_font(fnt_menu);
+
+switch(current_menu) {
+    case "main": draw_main_menu(); break;
+    case "survival_player_select": draw_survival_submenu(); break;
+    case "survival_level_select": draw_survival_level_select(); break;
+    case "cityscape_player_select": draw_cityscape_submenu(); break;
+    case "options_menu": draw_options_menu(); break;
+}
+
+
 //TEXT
 for (var i = 0; i < array_number; i++) {
     var item_rot = 360 * i / array_number;

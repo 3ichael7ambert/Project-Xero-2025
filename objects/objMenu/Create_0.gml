@@ -2,6 +2,8 @@
 // You can write your code in this editor
 randomize();
 
+menu_dir_level=0;
+
 x=0;//room_width/2;
 y=0;//room_width/2;
 
@@ -27,13 +29,29 @@ application_surface_draw_enable(true);
 
 
 
-menu_items = ["Cityscape", "Asteroid Belt", "Survival", "Invasion", "Zero Gravity", "Streetbike Fury", "Beach", "Forest", "Boss", "Lava Run", "Options", "Exit"];
-selected_item=0;
+//menu_items = ["Cityscape", "Asteroid Belt", "Survival", "Invasion", "Zero Gravity", "Streetbike Fury", "Beach", "Forest", "Boss", "Lava Run", "Options", "Exit"];
+// Top-level menu item definitions (filtered by unlocked state)
+menu_items_all = ["Cityscape", "Asteroid Belt", "Survival", "Invasion", "Zero Gravity", "Streetbike Fury", "Boss", "Lava Run", "Options", "Exit"];
+unlocked_menu_items = ["Cityscape", "Asteroid Belt", "Survival", "Boss", "Lava Run", "Options", "Exit"];
+
+// Level definitions for specific modes
+survival_levels = ["beach", "outer space", "forest"];
+battle_levels = ["outerspace", "final destination"];
+
+// Device availability and player control setup
+player_controls = array_create(4, -1); // -1: Unset, 0: Keyboard+Mouse, 1+: Gamepad ID
+assign_player_controls();
+
+// Create submenu state tracking
+menu_stack = [];
+current_menu = "main";
+selected_item = 0;
+
 menu_x=room_width/2 -300;
 menu_y=room_height-(room_height/5);
 menu_width =  room_width;// Set your desired menu width;
 menu_height =  300;// Set your desired menu height;
-array_number = array_length_1d(menu_items); // Get the number of items in the array
+array_number = array_length_1d(unlocked_menu_items); // Get the number of items in the array
 
 rot=0;
 target_rot = 0; 

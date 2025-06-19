@@ -24,6 +24,7 @@ armB_dir=-75-body_angle;
 armF_dir=-75+body_angle;
 
 body_angle=0+rot;
+/*
 
 if keyboard_check(vk_enter){
 	switch (selected_item) {
@@ -62,4 +63,22 @@ if keyboard_check(vk_enter){
 			break;
 		
 	}
+}
+*/
+
+if keyboard_check_pressed(vk_enter){
+    var selection = unlocked_menu_items[selected_item];
+    switch (selection) {
+        case "Cityscape": open_submenu("cityscape_player_select"); break;
+        case "Asteroid Belt": open_submenu("asteroid_player_select"); break;
+        case "Survival": open_submenu("survival_player_select"); break;
+        case "Boss": room_goto(rm_boss); break;
+        case "Lava Run": room_goto(rm_lava); break;
+        case "Options": open_submenu("options_menu"); break;
+        case "Exit": game_end(); break;
+    }
+}
+
+if (keyboard_check_pressed(vk_backspace)) {
+    return_to_previous_menu();
 }
