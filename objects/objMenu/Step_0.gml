@@ -1,20 +1,14 @@
 var rotation_speed = 5; // Adjust the rotation speed as needed
-var easing_factor = 0.1; // Adjust the easing factor for smoother transitions
+var easing_factor = 1; // Adjust the easing factor for smoother transitions
 
-if (keyboard_check_pressed(vk_left)) {
-    selected_item = (selected_item - 1 + array_number) % array_number;
-    target_rot = 360 * selected_item / array_number;
-}
+menu_buttons();
 
-if (keyboard_check_pressed(vk_right)) {
-    selected_item = (selected_item + 1) % array_number;
-    target_rot = 360 * selected_item / array_number;
-}
+
 
 // Smoothly interpolate the rotation towards the target rotation
-rot = lerp(rot, target_rot, easing_factor);
+rot = rotate_smooth(rot, target_rot, easing_factor);
 
-menu_x = (room_width/2) -  (string_width(menu_items[selected_item])/2);
+menu_x = (room_width/2) -  (string_width(unlocked_menu_items[selected_item])/2);
 menu_y=room_height-(room_height/5);
 
 menu2_x = (room_width/2);
@@ -65,20 +59,3 @@ if keyboard_check(vk_enter){
 	}
 }
 */
-
-if keyboard_check_pressed(vk_enter){
-    var selection = unlocked_menu_items[selected_item];
-    switch (selection) {
-        case "Cityscape": open_submenu("cityscape_player_select"); break;
-        case "Asteroid Belt": open_submenu("asteroid_player_select"); break;
-        case "Survival": open_submenu("survival_player_select"); break;
-        case "Boss": room_goto(rm_boss); break;
-        case "Lava Run": room_goto(rm_lava); break;
-        case "Options": open_submenu("options_menu"); break;
-        case "Exit": game_end(); break;
-    }
-}
-
-if (keyboard_check_pressed(vk_backspace)) {
-    return_to_previous_menu();
-}

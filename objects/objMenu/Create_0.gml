@@ -38,6 +38,7 @@ unlocked_menu_items = ["Cityscape", "Asteroid Belt", "Survival", "Boss", "Lava R
 survival_levels = ["beach", "outer space", "forest"];
 battle_levels = ["outerspace", "final destination"];
 
+
 // Device availability and player control setup
 player_controls = array_create(4, -1); // -1: Unset, 0: Keyboard+Mouse, 1+: Gamepad ID
 assign_player_controls();
@@ -47,7 +48,7 @@ menu_stack = [];
 current_menu = "main";
 selected_item = 0;
 
-menu_x=room_width/2 -300;
+menu_x = display_get_gui_width() / 2 -300;
 menu_y=room_height-(room_height/5);
 menu_width =  room_width;// Set your desired menu width;
 menu_height =  300;// Set your desired menu height;
