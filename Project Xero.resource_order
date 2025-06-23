@@ -203,6 +203,8 @@
     {"name":"r_level_infinite","order":20,"path":"rooms/r_level_infinite/r_level_infinite.yy",},
     {"name":"r_levelSide_infinite","order":21,"path":"rooms/r_levelSide_infinite/r_levelSide_infinite.yy",},
     {"name":"r_Test","order":7,"path":"rooms/r_Test/r_Test.yy",},
+    {"name":"rm_battle_findes","order":263,"path":"rooms/rm_battle_findes/rm_battle_findes.yy",},
+    {"name":"rm_battle_skyline","order":264,"path":"rooms/rm_battle_skyline/rm_battle_skyline.yy",},
     {"name":"rm_boss","order":88,"path":"rooms/rm_boss/rm_boss.yy",},
     {"name":"rm_demo","order":2,"path":"rooms/rm_demo/rm_demo.yy",},
     {"name":"rm_Infinite_beach","order":107,"path":"rooms/rm_Infinite_beach/rm_Infinite_beach.yy",},

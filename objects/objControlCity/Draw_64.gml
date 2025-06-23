@@ -13,4 +13,5 @@ draw_text(32,32,string_hash_to_newline("#FPS: "+string(fps)+
 ////
 
 
-scr_hud_bubble_draw_gui();
+//scr_hud_bubble_draw_gui();
+scr_infinite_hud_draw();

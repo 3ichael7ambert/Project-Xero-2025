@@ -1,8 +1,8 @@
 var rotation_speed = 5; // Adjust the rotation speed as needed
-var easing_factor = 1; // Adjust the easing factor for smoother transitions
+var easing_factor = 5; // Adjust the easing factor for smoother transitions
 
 menu_buttons();
-
+menu_confirmed = keyboard_check_pressed(vk_enter) || (gamepad_is_connected(0) && gamepad_button_check_pressed(0, gp_face1));
 
 
 // Smoothly interpolate the rotation towards the target rotation

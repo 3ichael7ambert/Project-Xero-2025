@@ -9,7 +9,8 @@
 //init
 // Game Stats
 scr_hud_bubble_init();
-
+scr_infinite_hud_init();
+global.players=1;
 ///
 ///
 

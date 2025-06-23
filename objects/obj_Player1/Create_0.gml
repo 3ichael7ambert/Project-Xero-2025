@@ -1,6 +1,9 @@
+
+
+
+
 scr_player_1_init();
 scr_player_1_init_sprites();
-
 
 bullet_speed=30;
 max_speed=20;

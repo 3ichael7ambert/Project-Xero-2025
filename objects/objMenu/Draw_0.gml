@@ -16,6 +16,89 @@ switch(current_menu) {
 }
 
 
+switch (current_menu) {
+    case "main":
+        if (menu_confirmed) {
+            var item = unlocked_menu_items[selected_item];
+            if (item == "Cityscape") open_submenu("cityscape_player_select");
+            else if (item == "Asteroid Belt") open_submenu("asteroid_player_select");
+            else if (item == "Survival") open_submenu("survival_player_select");
+            else if (item == "Boss") open_submenu("boss_player_select");
+            else if (item == "Lava Run") open_submenu("lava_player_select");
+            else if (item == "Invasion") open_submenu("battle_player_select");
+            else if (item == "Options") open_submenu("options_menu");
+            else if (item == "Exit") game_end();
+        }
+        break;
+
+    case "cityscape_player_select":
+        if (menu_confirmed) {
+            player_count = selected_item + 1;
+            start_game("cityscape");
+        }
+        break;
+
+    case "asteroid_player_select":
+        if (menu_confirmed) {
+            player_count = selected_item + 1;
+            start_game("asteroid");
+        }
+        break;
+
+    case "lava_player_select":
+        if (menu_confirmed) {
+            player_count = selected_item + 1;
+            start_game("lava");
+        }
+        break;
+
+    case "survival_player_select":
+        if (menu_confirmed) {
+            player_count = selected_item + 1;
+            open_submenu("survival_level_select");
+        }
+        break;
+
+    case "survival_level_select":
+        if (menu_confirmed) {
+            selected_level = survival_levels[selected_item];
+            start_game("survival");
+        }
+        break;
+
+    case "boss_player_select":
+        if (menu_confirmed) {
+            player_count = selected_item + 1;
+            open_submenu("boss_select");
+        }
+        break;
+
+    case "boss_select":
+        if (menu_confirmed) {
+            selected_level = boss_names[selected_item];
+            start_game("boss");
+        }
+        break;
+
+    case "battle_player_select":
+        if (menu_confirmed) {
+            player_count = selected_item + 2;
+            open_submenu("battle_level_select");
+        }
+        break;
+
+    case "battle_level_select":
+        if (menu_confirmed) {
+            selected_level = battle_levels[selected_item];
+            start_game("battle");
+        }
+        break;
+}
+
+
+
+
+
 
 
 

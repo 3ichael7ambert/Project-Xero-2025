@@ -2,6 +2,9 @@
 // You can write your code in this editor
 randomize();
 
+// Step Event
+menu_confirmed = keyboard_check_pressed(vk_enter); // or use mouse input
+
 menu_dir_level=0;
 
 x=0;//room_width/2;
@@ -33,10 +36,14 @@ application_surface_draw_enable(true);
 // Top-level menu item definitions (filtered by unlocked state)
 menu_items_all = ["Cityscape", "Asteroid Belt", "Survival", "Invasion", "Zero Gravity", "Streetbike Fury", "Boss", "Lava Run", "Options", "Exit"];
 unlocked_menu_items = ["Cityscape", "Asteroid Belt", "Survival", "Boss", "Lava Run", "Options", "Exit"];
+menu_items = unlocked_menu_items;
 
 // Level definitions for specific modes
-survival_levels = ["beach", "outer space", "forest"];
-battle_levels = ["outerspace", "final destination"];
+survival_levels = ["space", "sky", "forest", "jungle", "beach"];
+boss_names = ["firestarter", "icequeen"];
+battle_levels = ["skyline", "finaldestination"];
+
+
 
 
 // Device availability and player control setup

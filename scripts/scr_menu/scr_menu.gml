@@ -151,25 +151,60 @@ function start_game(mode) {
     global.mode = mode;
 
     switch (mode) {
+        case "cityscape":
+            global.player_count = player_count;
+           // room_goto(rmCity);
+            break;
+
+        case "asteroid":
+            global.player_count = player_count;
+            room_goto(r_level_infinite);
+            break;
+
         case "survival":
             global.player_count = player_count;
             global.selected_level = selected_level;
-            room_goto(rm_Survival);
+
+            switch (selected_level) {
+                case "space":
+                case "sky":
+                    room_goto(r_level_infinite);
+                    break;
+                case "forest":
+                case "jungle":
+                    room_goto(r_levelSide_infinite);
+                    break;
+                case "beach":
+                    room_goto(rm_Infinite_beach);
+                    break;
+            }
             break;
 
-        case "cityscape":
+        case "boss":
             global.player_count = player_count;
-            room_goto(rm_Cityscape);
+            global.selected_boss = selected_level;
+
+            room_goto(rm_boss);  // use selected_boss in rm_boss logic
             break;
 
-        case "battle_arena":
+        case "lava":
+            global.player_count = player_count;
+            room_goto(rm_lava);
+            break;
+
+        case "battle":
             global.player_count = player_count;
             global.selected_level = selected_level;
-            room_goto(rm_Battle);
+
+            if (selected_level == "skyline") {
+                room_goto(rm_battle_skyline);
+            } else if (selected_level == "finaldestination") {
+                room_goto(rm_battle_findes);
+            }
             break;
     }
-
 }
+
 
 
 
@@ -228,11 +263,11 @@ if keyboard_check_pressed(vk_enter){
 			selected_item = (0) % array_number;
 			break;
         case "Boss":
-			room_goto(rm_boss);
+			//room_goto(rm_boss);
 			selected_item = (0) % array_number;
 			break;
         case "Lava Run":
-			room_goto(rm_lava);
+			//room_goto(rm_lava);
 			selected_item = (0) % array_number;
 			break;
         case "Options": 
