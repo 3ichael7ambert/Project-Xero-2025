@@ -97,7 +97,7 @@ var settings_menu = new Menu();
 
 // Create the Main Menu
 // --- Top-Level Menu ---
-var main_menu = new Menu();
+var main_menu = new Menu(,,"Choose Game Mode");
 
 for (var i = 0; i < array_length(unlocked_menu_items); i++) {
     var item = unlocked_menu_items[i];

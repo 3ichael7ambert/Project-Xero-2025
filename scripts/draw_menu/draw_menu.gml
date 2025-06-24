@@ -6,6 +6,8 @@ function draw_menu(this, _x, _y){
         
     var _line_height = string_height("M");
         
+		
+		
     for (var i = 0; i < array_length(this.options); i++) {
         var _option = this.options[i];
         var _color = c_white;

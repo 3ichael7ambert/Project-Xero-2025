@@ -7,6 +7,17 @@ function draw_circular_menu(_menu, _x, _y) {
     var _option_count = array_length(_menu.options);
     if (_option_count == 0) return;
 
+if (_menu.title != "") {
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
+        draw_set_color(c_white);
+		//TITLE
+		var col1 = c_white;
+		var col2 = c_black;
+        draw_text_outlined(room_width/2, room_height/2 /*_y - _menu.radius - 40*/, _menu.title,col1,col2); // Draw title above the menu
+    }
+	
+
     // --- Smoothly rotate the menu ---
     // We use angle_difference to handle wrapping from 360 to 0 degrees smoothly
     var _angle_diff = angle_difference(_menu.target_angle, _menu.current_angle);
@@ -95,8 +106,35 @@ function draw_circular_menu(_menu, _x, _y) {
         var _item_y_img = -480 + lengthdir_y(_menu.radius, _item_angle_img);
 		
 		show_debug_message("DEBUG" + string(_menu));
-		
+
 	if (_option.name=="Cityscape") {
+		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+	}
+	if (_option.name=="Asteroid Belt") {
+		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+	}
+	if (_option.name=="Survival") {
+		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+	}
+	if (_option.name=="Invasion") {
+		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+	}
+	if (_option.name=="Zero Gravity") {
+		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+	}
+	if (_option.name=="Streetbike Fury") {
+		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+	}
+	if (_option.name=="Boss") {
+		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+	}
+	if (_option.name=="Lava Run") {
+		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+	}
+	if (_option.name=="Options") {
+		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+	}
+	if (_option.name=="Exit") {
 		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
 	}
 	

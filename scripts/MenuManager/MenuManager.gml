@@ -2,7 +2,7 @@
 /// @description Constructor for a single menu instance. Manages its own options and state.
 /// @param {Function} _draw_handler The function that will be responsible for drawing this menu.
 /// @param {Real} [_radius] The radius for circular menus.
-function Menu(_draw_handler = draw_circular_menu, _radius = 600) constructor {
+function Menu(_draw_handler = draw_circular_menu, _radius = 600,_title = "") constructor {
     //================================================================================
     // Properties
     //================================================================================
@@ -18,6 +18,7 @@ function Menu(_draw_handler = draw_circular_menu, _radius = 600) constructor {
     /// @description The function used to draw the menu. Allows for custom appearances.
     draw_handler = _draw_handler;
     
+	title = _title;
     /// @description The radius of the circle on which options are placed.
     radius = _radius;
     
