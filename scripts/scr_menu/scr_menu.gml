@@ -1,5 +1,5 @@
 function scr_menu(){
-
+//
 }
 
 function assign_player_controls() {
@@ -378,4 +378,49 @@ if (keyboard_check_pressed(vk_enter)) {
 		    }
 		}
 	}
+}
+
+
+
+// --- Gameplay Starter ---
+function start_cityscape_game(player_count) {
+    global.player_count = player_count;
+    room_goto(rmCity);
+}
+
+function start_survival_game(player_count, _level) {
+    global.player_count = player_count;
+    global.selected_level = _level;
+
+    switch (_level) {
+        case "space":
+        case "sky": room_goto(r_level_infinite); break;
+        case "forest":
+        case "jungle": room_goto(r_levelSide_infinite); break;
+        case "beach": room_goto(rm_Infinite_beach); break;
+    }
+}
+
+function quit_game() { game_end(); }
+
+
+function create_player_count_menu(callback_func) {
+    var menu = new Menu();
+    menu.add_option("1 Player", function() { callback_func(1); });
+    menu.add_option("2 Players", function() { callback_func(2); });
+    menu.add_option("3 Players", function() { callback_func(3); });
+    menu.add_option("4 Players", function() { callback_func(4); });
+    return menu;
+}
+
+function create_survival_level_menu(player_count) {
+    var levels = ["space", "sky", "forest", "jungle", "beach"];
+    var level_menu = new Menu();
+    for (var i = 0; i < array_length(levels); i++) {
+        var lvl = levels[i];
+        level_menu.add_option(string_upper(lvl), function() {
+            start_survival_game(player_count, lvl);
+        });
+    }
+    return level_menu;
 }

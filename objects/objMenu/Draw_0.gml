@@ -6,7 +6,7 @@
 
 
 draw_set_font(fnt_menu);
-
+/*
 switch(current_menu) {
     case "main": draw_main_menu(); break;
     case "survival_player_select": draw_survival_submenu(); break;
@@ -96,8 +96,10 @@ switch (current_menu) {
 }
 
 
+*/
 
-
+global.MenuManager.handle_input();
+global.MenuManager.draw(display_get_gui_width() / 2, display_get_gui_height()+420);
 
 
 
@@ -127,6 +129,9 @@ draw_background_tiled_ext(sprXeroBG, 0, x, y, 0.25, 0.25, c_white, 1);
 
 
 
+
+
+
 /// clear hole for planet / moon
 gpu_set_blendmode(bm_subtract);
 draw_sprite(sprMenuScreen, 3, x, y);
@@ -145,4 +150,10 @@ gpu_set_blendmode(bm_normal);
 
 
 //draw_sprite(sprMenuScreen, 2, x, y);
-draw_sprite_ext(sprMenuScreen, 1, x, y,1,1,0,1,.25);
+//draw_sprite_ext(sprMenuScreen, 1, x, y,1,1,0,1,.25);
+
+
+///---///
+//draw_shelled_circle(x,y,100,200,36,c_red,c_lime,1,0.25,5);
+//draw_text(room_width/2, 32, "Controls: Navigation W/S or UP/DOWN\nENTER to select\nBACKSPACE to go back");
+
