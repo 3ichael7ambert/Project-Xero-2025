@@ -1,4 +1,6 @@
-scr_draw_player_indicator(player);
+if ( global.players>1){
+	scr_draw_player_indicator(player);
+}
 
 if mouse_aim=true {
 	//draw_circle(xm+cm_x,ym+cm_y,20,true);

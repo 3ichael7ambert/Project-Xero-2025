@@ -146,7 +146,7 @@ function draw_options_menu() {
 	
 	
 }
-
+/*
 function start_game(mode) {
     global.mode = mode;
 
@@ -184,7 +184,7 @@ function start_game(mode) {
             global.player_count = player_count;
             global.selected_boss = selected_level;
 
-            room_goto(rm_boss);  // use selected_boss in rm_boss logic
+            room_goto(rm_boss);  
             break;
 
         case "lava":
@@ -207,7 +207,7 @@ function start_game(mode) {
 
 
 
-
+*/
 
 
 
@@ -245,8 +245,8 @@ function menu_buttons() {
 	
 	}
 		
-		
-
+}	
+/*
 if keyboard_check_pressed(vk_enter){
     var selection = unlocked_menu_items[selected_item];
     switch (selection) {
@@ -279,6 +279,7 @@ if keyboard_check_pressed(vk_enter){
 			break;
     }
 }
+
 
 if (gamepad_is_connected(0)) {
 	if (gamepad_button_check_pressed(0,gp_face1)) {
@@ -380,6 +381,7 @@ if (keyboard_check_pressed(vk_enter)) {
 	}
 }
 
+*/
 
 
 // --- Gameplay Starter ---
@@ -404,14 +406,19 @@ function start_survival_game(player_count, _level) {
 function quit_game() { game_end(); }
 
 
-function create_player_count_menu(callback_func) {
+function create_player_count_menu() {
     var menu = new Menu();
-    menu.add_option("1 Player", function() { callback_func(1); });
-    menu.add_option("2 Players", function() { callback_func(2); });
-    menu.add_option("3 Players", function() { callback_func(3); });
-    menu.add_option("4 Players", function() { callback_func(4); });
+
+//show_debug_message("room_target " + string(room_target));
+
+    menu.add_option("1 Player", function() { global.players = 1; room_goto(global._next_room); });
+    menu.add_option("2 Players", function() { global.players = 2; room_goto(global._next_room);  });
+    menu.add_option("3 Players", function() { global.players = 3; room_goto(global._next_room);  });
+    menu.add_option("4 Players", function() { global.players = 4; room_goto(global._next_room);  });
+
     return menu;
 }
+
 
 function create_survival_level_menu(player_count) {
     var levels = ["space", "sky", "forest", "jungle", "beach"];

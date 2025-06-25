@@ -64,6 +64,8 @@
     {"name":"Basic_Fake_3D","order":3,"path":"extensions/Basic_Fake_3D/Basic_Fake_3D.yy",},
     {"name":"Fake3D_top_down","order":2,"path":"extensions/Fake3D_top_down/Fake3D_top_down.yy",},
     {"name":"Planet_Gravitations_Platformer","order":1,"path":"extensions/Planet_Gravitations_Platformer/Planet_Gravitations_Platformer.yy",},
+    {"name":"fnt_menu_hud","order":270,"path":"fonts/fnt_menu_hud/fnt_menu_hud.yy",},
+    {"name":"fnt_menu_player_pointer","order":271,"path":"fonts/fnt_menu_player_pointer/fnt_menu_player_pointer.yy",},
     {"name":"fnt_menu","order":147,"path":"fonts/fnt_menu/fnt_menu.yy",},
     {"name":"compatibility_report_040622_1531273127","order":3,"path":"notes/compatibility_report_040622_1531273127/compatibility_report_040622_1531273127.yy",},
     {"name":"compatibility_report_100723_1959385938","order":9,"path":"notes/compatibility_report_100723_1959385938/compatibility_report_100723_1959385938.yy",},

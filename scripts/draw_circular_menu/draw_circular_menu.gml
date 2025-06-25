@@ -83,11 +83,11 @@ if (_menu.title != "") {
 
 		// Smoothly fade alpha toward 1 if selected, or toward 0 otherwise
 		if (i == _menu.selection_index) {
-		    _alpha = lerp(_alpha, 1, 0.1); // Fade in
+		  //  _alpha = lerp(_alpha, 1, 0.1); // Fade in
 		    _color = c_yellow;
 		    _scale = 1.5;
 		} else {
-		    _alpha = lerp(_alpha, 0, 0.1); // Fade out
+		   // _alpha = lerp(_alpha, 0, 0.1); // Fade out
 		    _scale = 1;
 		}
 
@@ -137,6 +137,32 @@ if (_menu.title != "") {
 	if (_option.name=="Exit") {
 		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
 	}
+	
+	if (_option.name=="1 Player") {
+		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+	}
+	
+	if (_option.name=="2 Players") {
+		draw_menu_robot_char(sprHead,c_white,_item_x_img+15,_item_y_img-15,45,-45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		draw_menu_robot_char(sprHead,c_white,_item_x_img-15,_item_y_img+15,-45,45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		
+	}
+	
+	if (_option.name=="3 Players") {
+		draw_menu_robot_char(sprHead,c_white,_item_x_img+25,_item_y_img-25,-45,-45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,45,45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		draw_menu_robot_char(sprHead,c_white,_item_x_img-25,_item_y_img+25,-45,45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		
+	}
+	if (_option.name=="4 Players") {
+		draw_menu_robot_char(sprHead,c_white,_item_x_img+35,_item_y_img-35,45,-45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		draw_menu_robot_char(sprHead,c_white,_item_x_img+35,_item_y_img+35,-45,45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		draw_menu_robot_char(sprHead,c_white,_item_x_img-35,_item_y_img-35,45,45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		draw_menu_robot_char(sprHead,c_white,_item_x_img-35,_item_y_img+35,-45,-45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		
+	}
+	
+	
 	
 	}
 	

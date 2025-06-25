@@ -1,6 +1,6 @@
 {
   "$GMFont":"",
-  "%Name":"fnt_menu",
+  "%Name":"fnt_menu_hud",
   "AntiAlias":1,
   "applyKerning":0,
   "ascender":54,
@@ -118,7 +118,7 @@
   "last":0,
   "lineHeight":78,
   "maintainGms1Font":false,
-  "name":"fnt_menu",
+  "name":"fnt_menu_hud",
   "parent":{
     "name":"Project Xero",
     "path":"Project Xero.yyp",

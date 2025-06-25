@@ -77,6 +77,7 @@ function scr_infinite_hud_init(){
 
 
 function scr_infinite_hud_draw() {
+	draw_set_font(fnt_menu_hud);
 /// @description Kingdom Hearts-style circular health bar with spr_head in center (no ternary)
 
 /// @description Draw HUD for up to 4 players, spaced left to right

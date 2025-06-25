@@ -2,6 +2,8 @@
 // You can write your code in this editor
 randomize();
 
+global._next_room = rm_menu;
+
 // Step Event
 menu_confirmed = keyboard_check_pressed(vk_enter)
 
@@ -105,13 +107,16 @@ for (var i = 0; i < array_length(unlocked_menu_items); i++) {
     switch (item) {
         case "Cityscape":
             main_menu.add_option("Cityscape", function() {
-                var player_menu = create_player_count_menu(start_cityscape_game);
-                global.MenuManager.go_to_submenu(player_menu);
-            });
+				global._next_room=rmCity;
+			    var player_menu = create_player_count_menu();
+			    player_menu.title = "Select Player Count";
+			    global.MenuManager.go_to_submenu(player_menu);
+		});
             break;
 
         case "Survival":
             main_menu.add_option("Survival", function() {
+				global._next_room=r_level_infinite;
                 var player_menu = create_player_count_menu(function(pcount) {
                     var level_menu = create_survival_level_menu(pcount);
                     global.MenuManager.go_to_submenu(level_menu);

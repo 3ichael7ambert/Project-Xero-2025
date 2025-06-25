@@ -107,6 +107,8 @@
     {"id":{"name":"Fake3D_top_down","path":"extensions/Fake3D_top_down/Fake3D_top_down.yy",},},
     {"id":{"name":"Planet_Gravitations_Platformer","path":"extensions/Planet_Gravitations_Platformer/Planet_Gravitations_Platformer.yy",},},
     {"id":{"name":"fnt_Debug_s14_bike","path":"fonts/fnt_Debug_s14_bike/fnt_Debug_s14_bike.yy",},},
+    {"id":{"name":"fnt_menu_hud","path":"fonts/fnt_menu_hud/fnt_menu_hud.yy",},},
+    {"id":{"name":"fnt_menu_player_pointer","path":"fonts/fnt_menu_player_pointer/fnt_menu_player_pointer.yy",},},
     {"id":{"name":"fnt_menu","path":"fonts/fnt_menu/fnt_menu.yy",},},
     {"id":{"name":"compatibility_report_040622_1531273127","path":"notes/compatibility_report_040622_1531273127/compatibility_report_040622_1531273127.yy",},},
     {"id":{"name":"compatibility_report_100723_1959385938","path":"notes/compatibility_report_100723_1959385938/compatibility_report_100723_1959385938.yy",},},

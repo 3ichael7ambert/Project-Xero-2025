@@ -10,7 +10,17 @@
 // Game Stats
 scr_hud_bubble_init();
 scr_infinite_hud_init();
-global.players=1;
+
+for (i=1;i<=global.players;i++) {
+	var a = instance_create(__view_get( e__VW.WView, 0 )/2+(i*50),  room_height-1000, obj_Player1);
+	a.player=i;
+}
+
+/*
+if !variable_global_exists(players) {
+	global.players=1;
+}
+*/
 ///
 ///
 
@@ -31,8 +41,9 @@ wind=true;
 /*
 with (instance_create(0, 0, objCamera))
 {
-    target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, objMazePlayer);
+    target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, obj_Player1);
 }
+
 create_parallax_layer(backCloudLayer1, 0.2, 0.2, 0.2, 0, 1000, c_white, 0.6);
 create_parallax_layer(backCloudLayer2, 0.4, 0.4, 0.1, 0, 1010, c_white, 0.3);
 create_parallax_layer(backCloudLayer3, 0.6, 0.6, 0.05, 0, 1020, c_white, 0.15);
