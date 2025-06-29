@@ -1,6 +1,7 @@
 /// @description Create objects
 randomize();
 
+show_debug_message(" LEVEL NAME + " + string(global.level_name));
 
 if !variable_global_exists("levels"){
 	global.levels=1; 
@@ -12,30 +13,35 @@ global.ships=0;
 #macro level global.levels
 #macro ship global.ships
 
-
-global.players=1;
+/*
+//global.players=1;
 
 //controller check
 for (var i = 0; i < 3; i++;)
 {
     if (true)
     {
-        global.players++;
+     //   global.players++;
     }
     else
     {
      // global.players=1;
     }
 }
-
+*/
 
 //Player Color
 color1 = make_color_rgb(random(255),random(255),random(255));
 color2 = make_color_rgb(random(255),random(255),random(255));
 color3 = make_color_rgb(random(255),random(255),random(255));
 
-p1lives=3;
+global.p1lives=3;
 
+global.p2lives=3;
+
+global.p3lives=3;
+
+global.p4lives=3;
 
 
 if (instance_exists(obj_Player1)) {
@@ -147,7 +153,8 @@ LEVELS
 */
 
 //SKY SIDE
-if level=0
+//if level=0
+if (global.level_name == "Sky")
 {
 
 create_parallax_layer(backCloudLayer1, 0.2, 0.2, 0.2, 0, 1000, c_white, 0.6);
@@ -169,9 +176,9 @@ __background_set_colour( choose(
 
 
 //SPACE Vacant
-if level=1
-{
 
+if (global.level_name == "Outerspace")
+{
 create_parallax_layer(backStarsLayer1, 0.2, 0.2, 0.2, 0, 1000, c_white, 1);
 create_parallax_layer(backStarsLayer2, 0.4, 0.4, 0.1, 0, 1010, c_white, 1);
 create_parallax_layer(backStarsLayer3, 0.6, 0.6, 0.05, 0, 1020, c_white, 1);
@@ -182,13 +189,7 @@ alarm[2] = room_speed;
 
 
 ///Set random background colour
-__background_set_colour( choose(
-                    make_colour_rgb(24, 22, 16),
-                    make_colour_rgb(20, 23, 24),
-                    make_colour_rgb(20, 24, 20),
-                    make_colour_rgb(24, 18, 18),
-                    ) );
-					
+__background_set_colour( c_black);
 }
 
 

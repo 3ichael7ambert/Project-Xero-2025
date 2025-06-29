@@ -14,7 +14,7 @@ if (_menu.title != "") {
 		//TITLE
 		var col1 = c_white;
 		var col2 = c_black;
-        draw_text_outlined(room_width/2, room_height/2 /*_y - _menu.radius - 40*/, _menu.title,col1,col2); // Draw title above the menu
+        draw_text_outlined(room_width/2, room_height/2 + 270 /*_y - _menu.radius - 40*/, _menu.title,col1,col2); // Draw title above the menu
     }
 	
 
@@ -149,21 +149,58 @@ if (_menu.title != "") {
 	}
 	
 	if (_option.name=="3 Players") {
-		draw_menu_robot_char(sprHead,c_white,_item_x_img+25,_item_y_img-25,-45,-45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img-25,-45,-45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
 		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,45,45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
 		draw_menu_robot_char(sprHead,c_white,_item_x_img-25,_item_y_img+25,-45,45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
 		
 	}
 	if (_option.name=="4 Players") {
-		draw_menu_robot_char(sprHead,c_white,_item_x_img+35,_item_y_img-35,45,-45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
-		draw_menu_robot_char(sprHead,c_white,_item_x_img+35,_item_y_img+35,-45,45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
-		draw_menu_robot_char(sprHead,c_white,_item_x_img-35,_item_y_img-35,45,45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
-		draw_menu_robot_char(sprHead,c_white,_item_x_img-35,_item_y_img+35,-45,-45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img-105,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		draw_menu_robot_char(sprHead,c_white,_item_x_img+105,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		draw_menu_robot_char(sprHead,c_white,_item_x_img-105,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img+105,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
+		
+	}
+	// Levels
+	if (_option.name=="Outerspace") {
+		
+	}
+	if (_option.name=="Sky") {
+		
+	}
+	if (_option.name=="Jungle") {
+		
+	}
+	if (_option.name=="Forest") {
+		
+	}
+	if (_option.name=="Beach") {
+		
+	}
+	// Bosses
+	if (_option.name=="Fire Starter") {
+		
+	}
+	if (_option.name=="Fire Starter") {
+		
+	}
+	// Battlefields
+	if (_option.name=="Forest") {
+		
+	}
+	if (_option.name=="Skyline") {
+		
+	}
+	if (_option.name=="Train") {
+		
+	}
+	if (_option.name=="Final Destination") {
 		
 	}
 	
 	
-	
+
+
 	}
 	
 	

@@ -213,15 +213,16 @@ function start_game(mode) {
 
 // Key transitions
 function menu_buttons() {
+	/*
 	if (keyboard_check_pressed(vk_backspace)) {
 	    return_to_previous_menu();
 	}
-	if (keyboard_check_pressed(vk_left)) {
-	    selected_item = (selected_item - 1 + array_number) % array_number;
+	if (keyboard_check_pressed(vk_right)) {
+	    selected_item = (selected_item -1 + array_number) % array_number;
 	    target_rot = 360 * selected_item / array_number;
 		audio_play_sound(snd_arrow_l,10,false);
 	}
-	if (keyboard_check_pressed(vk_right)) {
+	if (keyboard_check_pressed(vk_left)) {
 	    selected_item = (selected_item + 1) % array_number;
 	    target_rot = 360 * selected_item / array_number;
 		audio_play_sound(snd_arrow_r,10,false);
@@ -244,7 +245,7 @@ function menu_buttons() {
 		}
 	
 	}
-		
+		*/
 }	
 /*
 if keyboard_check_pressed(vk_enter){
@@ -394,19 +395,22 @@ function start_survival_game(player_count, _level) {
     global.player_count = player_count;
     global.selected_level = _level;
 
+if global.gameReady=true {
     switch (_level) {
-        case "space":
-        case "sky": room_goto(r_level_infinite); break;
-        case "forest":
-        case "jungle": room_goto(r_levelSide_infinite); break;
-        case "beach": room_goto(rm_Infinite_beach); break;
+        case "Outerspace": room_goto(r_level_infinite); break;
+        case "Sky": room_goto(r_level_infinite); break;
+        case "Forest": room_goto(r_levelSide_infinite); break;
+        case "Jungle": room_goto(r_levelSide_infinite); break;
+        case "Beach": room_goto(rm_Infinite_beach); break;
     }
+}
+
 }
 
 function quit_game() { game_end(); }
 
 
-function create_player_count_menu() {
+function create_player_count_menu_cityscape() {
     var menu = new Menu();
 
 //show_debug_message("room_target " + string(room_target));
@@ -419,15 +423,104 @@ function create_player_count_menu() {
     return menu;
 }
 
+function create_player_count_menu_survival() {
+    var menu = new Menu();
 
+//show_debug_message("room_target " + string(room_target));
+
+    menu.add_option("1 Player", function() { 
+		global.players = 1; 
+		var level_menu = create_survival_level_menu(1);
+		level_menu.title = "Select Level";
+		global.MenuManager.go_to_submenu(level_menu);
+		});
+    menu.add_option("2 Players", function() { global.players = 2; create_survival_level_menu(2);  });
+    menu.add_option("3 Players", function() { global.players = 3; create_survival_level_menu(3);  });
+    menu.add_option("4 Players", function() { global.players = 4; create_survival_level_menu(4);  });
+
+    return menu;
+}
+
+
+function create_player_count_menu_boss() {
+	var menu = new Menu();
+	
+	return menu;
+}
+function create_player_count_menu_lava() {
+	var menu = new Menu();
+	
+	return menu;
+}
+
+/*
 function create_survival_level_menu(player_count) {
-    var levels = ["space", "sky", "forest", "jungle", "beach"];
+    var levels = ["Outerspace", "Sky", "Forest", "Jungle", "Beach","Train"];
     var level_menu = new Menu();
     for (var i = 0; i < array_length(levels); i++) {
         var lvl = levels[i];
-        level_menu.add_option(string_upper(lvl), function() {
-            start_survival_game(player_count, lvl);
-        });
+		show_debug_message("LVL is " + string(lvl));
+        level_menu.add_option(lvl, function(player_count,lvl) {
+				global.gameReady=true; 
+				start_survival_game(player_count, "Outerspacee")});
+    
+    }
+    return level_menu;
+}
+*/
+function create_survival_level_menu(player_count) {
+    var levels = ["Outerspace", "Sky", "Forest", "Jungle", "Beach","Train"];
+    var level_menu = new Menu();
+			level_menu.add_option("Outerspace", function(player_count) {
+				global.gameReady=true; 
+				global.level_name = "Outerspace";
+				start_survival_game(player_count, "Outerspace")}
+				);
+			level_menu.add_option("Sky", function(player_count) {
+				global.gameReady=true; 
+				global.level_name = "Sky";
+				start_survival_game(player_count, "Sky")}
+				);
+			level_menu.add_option("Forest", function(player_count) {
+				global.gameReady=true; 
+				global.level_name = "Forest";
+				start_survival_game(player_count, "Forest")}
+				);
+			level_menu.add_option("Jungle", function(player_count) {
+				global.gameReady=true; 
+				global.level_name = "Jungle";
+				start_survival_game(player_count, "Jungle")}
+				);
+			level_menu.add_option("Beach", function(player_count) {
+				global.gameReady=true; 
+				global.level_name = "Beach";
+				start_survival_game(player_count, "Beach")}
+				);
+			level_menu.add_option("Train", function(player_count) {
+				global.gameReady=true; 
+				global.level_name = "Train";
+				start_survival_game(player_count, "Train")}
+				);
+    return level_menu;
+}
+
+
+function create_boss_level_menu(player_count) {
+    var levels = ["Fire Starter", "Ice Queen"];
+    var level_menu = new Menu();
+    for (var i = 0; i < array_length(levels); i++) {
+        var lvl = levels[i];
+        level_menu.add_option(lvl, start_survival_game(player_count, lvl));
+    }
+    return level_menu;
+}
+
+function create_battle_level_menu(player_count) {
+    var levels = ["Skyline", "Final Destination", "Train"];
+    var level_menu = new Menu();
+    for (var i = 0; i < array_length(levels); i++) {
+        var lvl = levels[i];
+        level_menu.add_option(lvl, start_survival_game(player_count, lvl));
     }
     return level_menu;
 }

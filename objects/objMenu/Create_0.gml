@@ -3,7 +3,8 @@
 randomize();
 
 global._next_room = rm_menu;
-
+global.gameReady=false;
+global.level_name="Menu";
 // Step Event
 menu_confirmed = keyboard_check_pressed(vk_enter)
 
@@ -35,9 +36,9 @@ unlocked_menu_items = ["Cityscape", "Asteroid Belt", "Survival", "Boss", "Lava R
 menu_items = unlocked_menu_items;
 
 // Level definitions for specific modes
-survival_levels = ["space", "sky", "forest", "jungle", "beach"];
-boss_names = ["firestarter", "icequeen"];
-battle_levels = ["skyline", "finaldestination"];
+survival_levels = ["Outerspace", "Sky", "Forest", "Jungle", "Beach", "Train"];
+boss_names = ["Fire Starter", "Ice Queen"];
+battle_levels = ["Skyline", "Final Destination","Train"];
 
 
 
@@ -74,7 +75,8 @@ body_angle=0;
 ///---///
 
 // --- Create the Menu Manager ---
-global.MenuManager = new MenuManager();
+	//global.MenuManager = new MenuManager();
+
 
 // --- Define functions that can be called by menu options ---
 function start_game() {
@@ -83,7 +85,7 @@ function start_game() {
 }
 
 function show_credits() {
-    show_debug_message("Game made by A. Coder");
+    show_debug_message("Game made 3ichael 7ambert");
 }
 
 function quit_game() {
@@ -108,33 +110,51 @@ for (var i = 0; i < array_length(unlocked_menu_items); i++) {
         case "Cityscape":
             main_menu.add_option("Cityscape", function() {
 				global._next_room=rmCity;
-			    var player_menu = create_player_count_menu();
+			    var player_menu = create_player_count_menu_cityscape();
 			    player_menu.title = "Select Player Count";
 			    global.MenuManager.go_to_submenu(player_menu);
 		});
             break;
-
-        case "Survival":
+ case "Survival":
+            main_menu.add_option("Survival", function() {
+				//global._next_room=r_level_infinite;
+                var player_menu = create_player_count_menu_survival();
+				player_menu.title = "Select Player Count";
+                global.MenuManager.go_to_submenu(player_menu);
+				
+            });
+            break;
+			/*
+       
+	   case "Survival":
             main_menu.add_option("Survival", function() {
 				global._next_room=r_level_infinite;
-                var player_menu = create_player_count_menu(function(pcount) {
+                var player_menu = create_player_count_menu_survival(function(pcount) {
                     var level_menu = create_survival_level_menu(pcount);
                     global.MenuManager.go_to_submenu(level_menu);
                 });
                 global.MenuManager.go_to_submenu(player_menu);
             });
             break;
-
+*/
         case "Boss":
             main_menu.add_option("Boss", function() {
-                show_debug_message("Boss menu coming soon...");
+                global._next_room=rm_boss;
+                var player_menu = create_player_count_menu_boss(function(pcount) {
+                    var level_menu = create_survival_level_menu(pcount);
+                    global.MenuManager.go_to_submenu(level_menu);
+                });
+                global.MenuManager.go_to_submenu(player_menu);
             });
             break;
+            
 
         case "Lava Run":
-            main_menu.add_option("Lava Run", function() {
-                start_game_mode("lava", 1); // Or prompt for player count
-            });
+            global._next_room=rm_lava;
+            var player_menu = create_player_count_menu_lava();
+			    player_menu.title = "Select Player Count";
+			    global.MenuManager.go_to_submenu(player_menu);
+           
             break;
 
         case "Options":

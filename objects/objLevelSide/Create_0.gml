@@ -77,7 +77,7 @@ LEVELS
 */
 
 //SKY SIDE
-if level=0
+if global.level_name = "Sky"
 {
 
 create_parallax_layer_side(backCloudLayer1, 0.2, 0.2, 0.2, 0, 1000, c_white, 0.6);
@@ -99,7 +99,8 @@ __background_set_colour( choose(
 
 
 //SPACE Vacant
-if level=1
+
+if global.level_name = "Outerspace"
 {
 
 create_parallax_layer_side(backStarsLayer1, 0.2, 0.2, 0.2, 0, 1000, c_white, 1);
@@ -238,7 +239,8 @@ __background_set_colour( choose(
 }
 
 //forest
-if level=7
+
+if global.level_name = ""
 {
 
 create_parallax_layer_side(backStars1, 0.2, 0.2, 0.2, 0, 1000, c_white, 1);
@@ -334,7 +336,8 @@ __background_set_colour( choose(
 					
 }
 //forest  side
-if level=11
+
+if global.level_name = "Forest"
 {
 
 create_parallax_layer_side(sprForestLevel, 0, 0.8, y, 0, 100, 1040, c_white, 1);
@@ -358,7 +361,8 @@ __background_set_colour( choose(
 					
 }
 //jungle side
-if level=12
+
+if global.level_name = "Jungle"
 {
 
 create_parallax_layer_side(sprJungleLevel, 0, 0.8, 0, 0, 100, 1080, c_white, 1);

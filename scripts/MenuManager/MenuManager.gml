@@ -121,8 +121,8 @@ function MenuManager() constructor {
 				var kLeft = keyboard_check_pressed(vk_left);
 			}
 
-        var _up = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W")) || kUp || kRight;
-        var _down = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S")) || kDown || kLeft;
+        var _up = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W")) || kUp || kLeft;
+        var _down = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S")) || kDown || kRight;
         
         if (_up) active_menu.navigate(-1);
         if (_down) active_menu.navigate(1);

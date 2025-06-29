@@ -2,6 +2,7 @@
 // You can write your code in this editor
 
 
+scr_infinite_hud_init();
 /// @description Create objects
 
 fpsreal = fps_real;
@@ -33,11 +34,17 @@ __background_set_colour( choose(
 
 
 */
-
+scr_infinite_hud();
 scr_timeofday_backgroun_init();
 
+wave_timer = 90;
+enemies_remaining = 0; // this is key
+enemy_object=obj_Enemy_Robot;
 
-
+ enemy_spawned = true;
+ 
+ 
+ 
 //Deactivate
 alarm[1]=1;
 vx = camera_get_view_x(view_camera[0]);

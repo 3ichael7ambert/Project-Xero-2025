@@ -6,7 +6,6 @@
   "inheritCreationOrder":false,
   "inheritLayers":false,
   "instanceCreationOrder":[
-    {"name":"inst_4522C3D2","path":"rooms/rm_Infinite_beach/rm_Infinite_beach.yy",},
     {"name":"inst_221C01F4","path":"rooms/rm_Infinite_beach/rm_Infinite_beach.yy",},
     {"name":"inst_9F29E39","path":"rooms/rm_Infinite_beach/rm_Infinite_beach.yy",},
     {"name":"inst_2C97A946","path":"rooms/rm_Infinite_beach/rm_Infinite_beach.yy",},
@@ -75,6 +74,7 @@
     {"name":"inst_6605ABC0","path":"rooms/rm_Infinite_beach/rm_Infinite_beach.yy",},
     {"name":"inst_4F915C0F","path":"rooms/rm_Infinite_beach/rm_Infinite_beach.yy",},
     {"name":"inst_424C52CF","path":"rooms/rm_Infinite_beach/rm_Infinite_beach.yy",},
+    {"name":"inst_4522C3D2","path":"rooms/rm_Infinite_beach/rm_Infinite_beach.yy",},
   ],
   "isDnd":false,
   "layers":[

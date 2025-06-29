@@ -1,5 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
+scr_infinite_hud_draw();
+
+
+
 
 draw_set_color(c_white);
 draw_set_alpha(0.6);
