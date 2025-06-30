@@ -10,7 +10,7 @@ function scr_infinite_hud_init(){
 	global.burnout = 0;              // 0 to 100
 	global.lives = 3;
 
-	
+	global.pulse_timer = 0;
 
 	// HUD Settings
 	global.max_health = 100;
@@ -199,11 +199,21 @@ for (var i = 0; i < total_players; i++) {
     }
 
     // Draw head
-    var scale_gui = 0.2;
+    var scale_gui = 0.55;
     draw_sprite_ext(spr_head, 0, cx, cy + (sprite_get_height(spr_head) / 2 * scale_gui), scale_gui, scale_gui, 0, color1, 1);
 
     // Draw kill count (placeholder)
-    draw_text_outlined(cx, cy, "P" + string(player_index) + " Kills: " + string(global.kill_count), color1, 1);
+	global.pulse_timer += 0.1;
+
+// Pulse based on kill count
+var pulse_strength = clamp(global.kill_count * 0.02, 0.05, 0.5); // increase pulsing with kills
+
+// Wiggle/pulse effect
+var x_scale = 1 + pulse_strength * sin(global.pulse_timer);
+var y_scale = 1 + pulse_strength * cos(global.pulse_timer * 0.5);
+var _angle  = 2 * sin(global.pulse_timer * 0.5); // optional angle wiggle
+
+draw_text_transformed_outlined(cx, cy+40, "P" + string(player_index) + " Kills: " + string(global.kill_count), color1, c_black, x_scale, y_scale, _angle);
 }
 
 
