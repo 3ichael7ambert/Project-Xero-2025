@@ -4,17 +4,23 @@ function scr_menu(){
 
 function assign_player_controls() {
     var gp_count = 0;
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 3; i++) {
         if (i == 0) {
             // First player option (choose manually)
             player_controls[i] = (gamepad_is_connected(0)) ? 0 : -1; // default to keyboard if available
-        } else {
+			
+	show_debug_message("Player " + string(i) + "found");
+		} else {
             // Assign next available gamepads for P2-P4
             var found = false;
             for (var g = 1; g < 8; g++) {
                 if (gamepad_is_connected(g)) {
                     player_controls[i] = g;
                     found = true;
+					//
+					show_debug_message("Player " + string(i) + " found");
+					//
+					global.max_players++;
                     break;
                 }
             }
@@ -47,8 +53,19 @@ function return_to_previous_menu() {
 function draw_cityscape_submenu() {
 	//draw_text(menu_x, menu_y, "Cityscape: Select Player Count");
 	 //TEXT
+		if (global.max_players == 1) {
+			var options = ["1 Player"];
+		}
+		if (global.max_players == 2) {
+			var options = ["1 Player", "2 Player"];
+		}
+		if (global.max_players == 3) {
+			var options = ["1 Player", "2 Player", "3 Player"];
+		}
+		if (global.max_players == 4) {
+			var options = ["1 Player", "2 Player", "3 Player", "4 Player"];
+		}
 		
-		var options = ["1 Player", "2 Player", "3 Player", "4 Player"];
 	    for (var i = 0; i < array_length(options); i++) {
 	        var col = (i == selected_item) ? c_yellow : c_white;
 			var item_rot = 360 * i / array_number;
@@ -114,7 +131,18 @@ function draw_cityscape_submenu() {
 }
 
 function draw_survival_submenu() {
-    var options = ["1 Player", "2 Player", "3 Player", "4 Player"];
+		 if (global.max_players == 1) {
+			var options = ["1 Player"];
+		}
+		if (global.max_players == 2) {
+			var options = ["1 Player", "2 Player"];
+		}
+		if (global.max_players == 3) {
+			var options = ["1 Player", "2 Player", "3 Player"];
+		}
+		if (global.max_players == 4) {
+			var options = ["1 Player", "2 Player", "3 Player", "4 Player"];
+		}
 	    for (var i = 0; i < array_length(options); i++) {
 	        var col = (i == selected_item) ? c_yellow : c_white;
 			var item_rot = 360 * i / array_number;
@@ -434,9 +462,24 @@ function create_player_count_menu_survival() {
 		level_menu.title = "Select Level";
 		global.MenuManager.go_to_submenu(level_menu);
 		});
-    menu.add_option("2 Players", function() { global.players = 2; create_survival_level_menu(2);  });
-    menu.add_option("3 Players", function() { global.players = 3; create_survival_level_menu(3);  });
-    menu.add_option("4 Players", function() { global.players = 4; create_survival_level_menu(4);  });
+    menu.add_option("2 Players", function() { 
+		global.players = 1; 
+		var level_menu = create_survival_level_menu(1);
+		level_menu.title = "Select Level";
+		global.MenuManager.go_to_submenu(level_menu);
+		});
+    menu.add_option("3 Players", function() { 
+		global.players = 1; 
+		var level_menu = create_survival_level_menu(1);
+		level_menu.title = "Select Level";
+		global.MenuManager.go_to_submenu(level_menu);
+		});
+    menu.add_option("4 Players", function() { 
+		global.players = 1; 
+		var level_menu = create_survival_level_menu(1);
+		level_menu.title = "Select Level";
+		global.MenuManager.go_to_submenu(level_menu);
+		});
 
     return menu;
 }

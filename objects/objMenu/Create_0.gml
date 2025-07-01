@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 randomize();
-
+global.max_players = 0;
 global._next_room = rm_menu;
 global.gameReady=false;
 global.level_name="Menu";
