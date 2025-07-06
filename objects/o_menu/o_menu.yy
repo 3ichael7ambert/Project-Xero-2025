@@ -11,8 +11,8 @@
   "name":"o_menu",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"_trash",
+    "path":"folders/_trash.yy",
   },
   "parentObjectId":null,
   "persistent":false,

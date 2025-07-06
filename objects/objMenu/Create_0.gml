@@ -32,11 +32,13 @@ application_surface_draw_enable(true);
 //menu_items = ["Cityscape", "Asteroid Belt", "Survival", "Invasion", "Zero Gravity", "Streetbike Fury", "Beach", "Forest", "Boss", "Lava Run", "Options", "Exit"];
 // Top-level menu item definitions (filtered by unlocked state)
 menu_items_all = ["Cityscape", "Asteroid Belt", "Survival", "Invasion", "Zero Gravity", "Streetbike Fury", "Boss", "Lava Run", "Options", "Exit"];
-unlocked_menu_items = ["Cityscape", "Asteroid Belt", "Survival", "Boss", "Lava Run", "Options", "Exit"];
+unlocked_menu_items = [ "Survival","Exit"];
 menu_items = unlocked_menu_items;
 
 // Level definitions for specific modes
-survival_levels = ["Outerspace", "Sky", "Forest", "Jungle", "Beach", "Train"];
+survival_levels = ["Outerspace", "Sky"];
+//survival_levels = ["Outerspace", "Sky", "Forest", "Jungle", "Beach", "Train"];
+
 boss_names = ["Fire Starter", "Ice Queen"];
 battle_levels = ["Skyline", "Final Destination","Train"];
 
@@ -167,7 +169,7 @@ for (var i = 0; i < array_length(unlocked_menu_items); i++) {
             break;
 
         case "Exit":
-            main_menu.add_option("Quit", quit_game);
+            main_menu.add_option("Quit", function() {game_end();});
             break;
     }
 }

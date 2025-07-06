@@ -85,6 +85,7 @@
     {"name":"o_crate","order":1,"path":"objects/o_crate/o_crate.yy",},
     {"name":"o_floor","order":2,"path":"objects/o_floor/o_floor.yy",},
     {"name":"o_floor2","order":3,"path":"objects/o_floor2/o_floor2.yy",},
+    {"name":"o_menu","order":2,"path":"objects/o_menu/o_menu.yy",},
     {"name":"o_phyMouse","order":4,"path":"objects/o_phyMouse/o_phyMouse.yy",},
     {"name":"o_playerGPT","order":11,"path":"objects/o_playerGPT/o_playerGPT.yy",},
     {"name":"o_ragBody","order":1,"path":"objects/o_ragBody/o_ragBody.yy",},

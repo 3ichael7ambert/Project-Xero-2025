@@ -1,30 +1,69 @@
 /// @description Create objects
 randomize();
+
+show_debug_message(" LEVEL NAME + " + string(global.level_name));
+
+if !variable_global_exists("levels"){
+	global.levels=1; 
+}
+//0=sky
+//1=space
+//4=stars
+global.ships=0;
+//#macro level global.levels
+//#macro ship global.ships
+
+
 //Player Color
 color1 = make_color_rgb(random(255),random(255),random(255));
 color2 = make_color_rgb(random(255),random(255),random(255));
 color3 = make_color_rgb(random(255),random(255),random(255));
 
+global.p1lives=3;
 
-//p1lives=3;
-//gui_pad=32;
+global.p2lives=3;
+
+global.p3lives=3;
+
+global.p4lives=3;
+
+
+if (instance_exists(obj_Player1)) {
+	target=obj_Player1;
+} else {
+	target = noone;
+}
+
+scale=1;
+
+scr_infinite_hud_init();
+
+wave_timer = 90;
+enemies_remaining = 0; // this is key
+enemy_object=obj_Enemy_Robot;
+
+ enemy_spawned = true;
+ 
+ 
+ 
 ///DEBUG
 //globalvar level,ship;
-//level=12;
+
+//level=19;
 //ship=0;
-////
-if !variable_global_exists("levels"){
-	global.levels=12; 
-}
-//9= desert
-//11 = mtn
-//12 = stars
-global.ships=0;
-//#macro level global.levels
-//#macro ship global.ships
+//////
+//level=0;
+
+spawn_x=x;
+spawn_y=y;
 
 target_player=obj_Player1;
-playerScale=1;
+playerScale=.9;
+
+//--------------------//
+// STEAM
+//steam_set_stat_int("match_count", steam_get_stat_int("match_count") + 1);
+//--------------------//
 
 
 with (instance_create(0, 0, objCameraSide))
@@ -38,6 +77,43 @@ with (instance_create(0, 0, objCameraSide))
     target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
 	}
 	
+}
+
+
+with (instance_create(0, 0, objCamera))
+{	
+	target_player=obj_Player1;
+	if (global.players==1) {
+		target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+			target.player=1;
+	}
+	
+	if (global.players==2) {
+		target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+			target.player=1;
+		var a = instance_create(__view_get( e__VW.WView, 0 )*.6 , __view_get( e__VW.HView, 0 )/2, target_player);
+			a.player=2;
+	}
+
+	if (global.players==3) {
+		target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+			target.player=1;
+		var a = instance_create(__view_get( e__VW.WView, 0 )/4 , __view_get( e__VW.HView, 0 )/2, target_player);
+			a.player=2;
+		var b = instance_create(__view_get( e__VW.WView, 0 )*.75, __view_get( e__VW.HView, 0 )/2, target_player);
+			b.player=3;
+	}
+	if (global.players==4) {
+		target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
+			target.player=1;
+		var a = instance_create(__view_get( e__VW.WView, 0 )*.4 , __view_get( e__VW.HView, 0 )/2, target_player);
+			a.player=2;
+		var b = instance_create(__view_get( e__VW.WView, 0 )*.6, __view_get( e__VW.HView, 0 )/2, target_player);
+			b.player=3;
+		var c = instance_create(__view_get( e__VW.WView, 0 )*.7, __view_get( e__VW.HView, 0 )/2, target_player);
+		c.player=4;
+	}
+
 }
 
 
