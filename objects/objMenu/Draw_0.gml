@@ -98,8 +98,8 @@ switch (current_menu) {
 
 */
 
-global.MenuManager.handle_input();
-global.MenuManager.draw(display_get_gui_width() / 2, display_get_gui_height()+420);
+_MenuManager.handle_input();
+_MenuManager.draw(display_get_gui_width() / 2, display_get_gui_height()+420);
 
 
 

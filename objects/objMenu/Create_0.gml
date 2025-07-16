@@ -77,7 +77,7 @@ body_angle=0;
 ///---///
 
 // --- Create the Menu Manager ---
-	//global.MenuManager = new MenuManager();
+	_MenuManager = new MenuManager();
 
 
 // --- Define functions that can be called by menu options ---
@@ -114,7 +114,7 @@ for (var i = 0; i < array_length(unlocked_menu_items); i++) {
 				global._next_room=rmCity;
 			    var player_menu = create_player_count_menu_cityscape();
 			    player_menu.title = "Select Player Count";
-			    global.MenuManager.go_to_submenu(player_menu);
+			    _MenuManager.go_to_submenu(player_menu);
 		});
             break;
  case "Survival":
@@ -122,7 +122,7 @@ for (var i = 0; i < array_length(unlocked_menu_items); i++) {
 				//global._next_room=r_level_infinite;
                 var player_menu = create_player_count_menu_survival();
 				player_menu.title = "Select Player Count";
-                global.MenuManager.go_to_submenu(player_menu);
+                _MenuManager.go_to_submenu(player_menu);
 				
             });
             break;
@@ -133,9 +133,9 @@ for (var i = 0; i < array_length(unlocked_menu_items); i++) {
 				global._next_room=r_level_infinite;
                 var player_menu = create_player_count_menu_survival(function(pcount) {
                     var level_menu = create_survival_level_menu(pcount);
-                    global.MenuManager.go_to_submenu(level_menu);
+                    _MenuManager.go_to_submenu(level_menu);
                 });
-                global.MenuManager.go_to_submenu(player_menu);
+                _MenuManager.go_to_submenu(player_menu);
             });
             break;
 */
@@ -144,9 +144,9 @@ for (var i = 0; i < array_length(unlocked_menu_items); i++) {
                 global._next_room=rm_boss;
                 var player_menu = create_player_count_menu_boss(function(pcount) {
                     var level_menu = create_survival_level_menu(pcount);
-                    global.MenuManager.go_to_submenu(level_menu);
+                    _MenuManager.go_to_submenu(level_menu);
                 });
-                global.MenuManager.go_to_submenu(player_menu);
+                _MenuManager.go_to_submenu(player_menu);
             });
             break;
             
@@ -155,7 +155,7 @@ for (var i = 0; i < array_length(unlocked_menu_items); i++) {
             global._next_room=rm_lava;
             var player_menu = create_player_count_menu_lava();
 			    player_menu.title = "Select Player Count";
-			    global.MenuManager.go_to_submenu(player_menu);
+			    _MenuManager.go_to_submenu(player_menu);
            
             break;
 
@@ -163,7 +163,7 @@ for (var i = 0; i < array_length(unlocked_menu_items); i++) {
             var settings_menu = new Menu();
             settings_menu.add_option("Graphics", function() { show_debug_message("Graphics Settings"); });
             settings_menu.add_option("Audio", function() { show_debug_message("Audio Settings"); });
-            settings_menu.add_option("Back", function() { global.MenuManager.go_back(); });
+            settings_menu.add_option("Back", function() { _MenuManager.go_back(); });
 
             main_menu.add_option("Options", settings_menu);
             break;
@@ -175,6 +175,6 @@ for (var i = 0; i < array_length(unlocked_menu_items); i++) {
 }
 
 // Set active menu
-global.MenuManager.set_initial_menu(main_menu);
+_MenuManager.set_initial_menu(main_menu);
 
 ///---///

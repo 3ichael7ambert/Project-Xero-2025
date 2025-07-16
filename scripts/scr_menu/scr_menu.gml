@@ -460,25 +460,25 @@ function create_player_count_menu_survival() {
 		global.players = 1; 
 		var level_menu = create_survival_level_menu(1);
 		level_menu.title = "Select Level";
-		global.MenuManager.go_to_submenu(level_menu);
+		_MenuManager.go_to_submenu(level_menu);
 		});
     menu.add_option("2 Players", function() { 
 		global.players = 1; 
 		var level_menu = create_survival_level_menu(1);
 		level_menu.title = "Select Level";
-		global.MenuManager.go_to_submenu(level_menu);
+		_MenuManager.go_to_submenu(level_menu);
 		});
     menu.add_option("3 Players", function() { 
 		global.players = 1; 
 		var level_menu = create_survival_level_menu(1);
 		level_menu.title = "Select Level";
-		global.MenuManager.go_to_submenu(level_menu);
+		_MenuManager.go_to_submenu(level_menu);
 		});
     menu.add_option("4 Players", function() { 
 		global.players = 1; 
 		var level_menu = create_survival_level_menu(1);
 		level_menu.title = "Select Level";
-		global.MenuManager.go_to_submenu(level_menu);
+		_MenuManager.go_to_submenu(level_menu);
 		});
 
     return menu;
