@@ -13,11 +13,15 @@ gamepad=false;
 
 
 if (gamepad==true) {
-	gamepad_num = input_mapper.controller.device_index;
+	//gamepad_num = input_mapper.controller.device_index;
 } else {
-	gamepad_num = -1;
+	//gamepad_num = -1;
 	
 }
+
+gamepad_num = -1;
+
+scr_player_1_init_controls(gamepad_num);
 
 
 //debug
@@ -27,13 +31,13 @@ armF_dir=direction;
 wpn_chg_down=1;
 wpn_chg_up=1;
 shoot_button_pressed=1;
+shoot_button=0;
 ///
 
 bullet_speed=30;
 max_speed=20;
 
 player=1;
-scr_player_1_init_controls(1);
 
 if (facing_right) {
 offsetX=25*scale;

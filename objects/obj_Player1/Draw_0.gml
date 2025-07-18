@@ -218,4 +218,6 @@ draw_text(x+10,y-20, "Gamepad: " +string(gamepad));
 
 draw_text(x+10,y-30, "Controller: " +string(input_mapper.controller.device_index));
 
+draw_text(x+10,y-40, "Controller: " +string(gamepad_num));
+
 	

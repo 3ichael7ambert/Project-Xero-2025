@@ -26,7 +26,7 @@ if (new_mapper != undefined) {
     // D. --- DEFINE THIS PLAYER'S CONTROLS based on device type ---
     var _controller = new_mapper.controller;
     
-	
+	_player_instance.player = new_mapper.player_index + 1;
 	/*
     if (_controller.is_gamepad) {
         // --- GAMEPAD BINDINGS ---
@@ -60,10 +60,12 @@ if (new_mapper != undefined) {
     }
 	
 	*/
+	_player_instance.gamepad_num=_controller.device_index;
 	 
 	 if (_controller.is_gamepad) {
         // --- GAMEPAD BINDINGS ---
         _player_instance.gamepad=true;
+		
 		 //_player_instance.mouse_aim=false;
 		//player_num=array_length(global.players)+1;
         
