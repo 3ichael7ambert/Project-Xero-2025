@@ -1,6 +1,14 @@
 /// @description Create objects
 randomize();
 
+global.gameReady=false;
+
+
+instance_create(x,y,oGameSystem);
+
+
+
+
 show_debug_message(" LEVEL NAME + " + string(global.level_name));
 
 if !variable_global_exists("levels"){
@@ -81,8 +89,11 @@ playerScale=.9;
 //steam_set_stat_int("match_count", steam_get_stat_int("match_count") + 1);
 //--------------------//
 
+
 with (instance_create(0, 0, objCamera))
 {	
+	target_player=objLevel_infinite;
+	/*
 	target_player=obj_Player1;
 	if (global.players==1) {
 		target = instance_create(__view_get( e__VW.WView, 0 )/2, __view_get( e__VW.HView, 0 )/2, target_player);
@@ -114,7 +125,7 @@ with (instance_create(0, 0, objCamera))
 		var c = instance_create(__view_get( e__VW.WView, 0 )*.7, __view_get( e__VW.HView, 0 )/2, target_player);
 		c.player=4;
 	}
-
+*/
 }
 
 if level!=5 {target=obj_Player1;}

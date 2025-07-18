@@ -9,6 +9,10 @@ if mouse_aim=true {
 	draw_arrow(x,y,mouse_x_3d,mouse_y_3d,20);
 	
 }
+
+if gamepad=true {
+	mouse_aim=false;} else {
+		mouse_aim=true;}
 //draw_arrow(x,y,xm,ym,100);
 
 //draw_arrow(x,y,lengthdir_x(100,armF_dir),lengthdir_y(100,armF_dir),20);
@@ -205,5 +209,13 @@ draw_text_color(x +100,y-100,part_smoke_count,c_red,c_red,c_red,c_red,1);
 
 
 
+
+///CONTROL DEBUG
+
+draw_text(x+10,y-10, "Player: " + string(self_id));
+
+draw_text(x+10,y-20, "Gamepad: " +string(gamepad));
+
+draw_text(x+10,y-30, "Controller: " +string(input_mapper.controller.device_index));
 
 	

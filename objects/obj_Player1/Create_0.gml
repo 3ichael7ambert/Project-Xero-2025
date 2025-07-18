@@ -5,6 +5,30 @@
 scr_player_1_init();
 scr_player_1_init_sprites();
 
+// A unique ID (0, 1, 2, or 3) assigned by the system.
+self_id = -1; //Player Num
+input_mapper = undefined;
+player_num=0;
+gamepad=false;
+
+
+if (gamepad==true) {
+	gamepad_num = input_mapper.controller.device_index;
+} else {
+	gamepad_num = -1;
+	
+}
+
+
+//debug
+mouse_x_3d=  mouse_x;//mouse_x_world;
+mouse_y_3d= mouse_y;//mouse_y_world;
+armF_dir=direction;
+wpn_chg_down=1;
+wpn_chg_up=1;
+shoot_button_pressed=1;
+///
+
 bullet_speed=30;
 max_speed=20;
 
@@ -73,7 +97,7 @@ move_down = 0;
 mouse_aim=true;
 zdir = 0;    // Add an angle for up-down movement of the camera
 zm = 1200;
-gamepad=false;
+
 
 //WALK
 walk=false;

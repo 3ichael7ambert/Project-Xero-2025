@@ -95,11 +95,13 @@ if mouse_aim=true {
 	//armB_dir=0;
 }
 //if gamepad_is_connected(0) {gamepad=true;} else {gamepad=false;}
-if gamepad_is_connected(0) && mouse_aim=false {
-	gamepad=true;
-	armF_dir=point_direction(0, 0, gamepad_axis_value(0,gp_axisrh), -gamepad_axis_value(0,gp_axisrv));
-	armB_dir=point_direction(0, 0, gamepad_axis_value(0,gp_axisrh), -gamepad_axis_value(0,gp_axisrv));
-} else {gamepad=false;}
+if gamepad_is_connected(gamepad_num) && mouse_aim=false {
+	//gamepad=true;
+	armF_dir=point_direction(0, 0, gamepad_axis_value(gamepad_num,gp_axisrh), -gamepad_axis_value(gamepad_num,gp_axisrv));
+	armB_dir=point_direction(0, 0, gamepad_axis_value(gamepad_num,gp_axisrh), -gamepad_axis_value(gamepad_num,gp_axisrv));
+} else {
+	//gamepad=false;
+	}
 /*
 if gamepad=true {
 	if gamepad_axis_value(0,gp_axisrh) > .25 {
@@ -112,15 +114,21 @@ if gamepad=true {
 */
 
 // Check if gamepad is connected
-if gamepad_is_connected(0) {
+if (gamepad_is_connected(gamepad_num) && (gamepad==true)) {
     // Gamepad is plugged in, set controls to gamepad
     // Use analog stick axis for movement
-     axislh_value = gamepad_axis_value(0, gp_axislh);
-     axislv_value = gamepad_axis_value(0, gp_axislv);
-     shoot_button = gamepad_button_check_pressed(0, gp_face1);
-     melee_button = gamepad_button_check_pressed(0, gp_face2);
-     change_weapon_button = gamepad_button_check_pressed(0, gp_shoulderl);
-     pause_button = gamepad_button_check_pressed(0, gp_start);
+     axislh_value = gamepad_axis_value(gamepad_num, gp_axislh);
+     axislv_value = gamepad_axis_value(gamepad_num, gp_axislv);
+     shoot_button = gamepad_button_check(gamepad_num, gp_face1);
+     melee_button = gamepad_button_check_pressed(gamepad_num, gp_face2);
+     change_weapon_button = gamepad_button_check_pressed(gamepad_num, gp_shoulderlb);
+     pause_button = gamepad_button_check_pressed(gamepad_num, gp_start);
+	 
+	 shoot_button_pressed = gamepad_button_check_pressed(gamepad_num, gp_face1);
+	 shoot_button_released = gamepad_button_check_pressed(gamepad_num, gp_face1);
+	 wpn_chg_up = gamepad_button_check_pressed(gamepad_num, gp_face3);
+	 wpn_chg_down = gamepad_button_check_pressed(gamepad_num, gp_face4);
+     pause_button = keyboard_check_pressed(vk_escape);
 
     move_left = axislh_value < -0.5;
     move_right = axislh_value > 0.5;
@@ -131,7 +139,7 @@ if gamepad_is_connected(0) {
         direction = point_direction(0, 0, axislh_value, -axislv_value);
     }
 }
-else {
+else if (gamepad==false) {
     // Gamepad is not plugged in, set controls to keyboard
     // Use arrow keys for movement
     move_left = keyboard_check(vk_left);
@@ -147,7 +155,13 @@ else {
 	 wpn_chg_down = keyboard_check_pressed(ord("X"));
      change_weapon_button = keyboard_check_pressed(ord("V"));
      pause_button = keyboard_check_pressed(vk_escape);
+} else {
+	
+	//global.players_array = array_delete(global.players_array, self_id, 1);
+	//instance_destroy();
 }
+
+
 
 if (wpn_chg_down) {
 	wpn_btn_dir="down";

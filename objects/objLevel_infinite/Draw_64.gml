@@ -1,1 +1,3 @@
-scr_infinite_hud_draw();
+if (global.gameReady==true) {
+	scr_infinite_hud_draw();
+}

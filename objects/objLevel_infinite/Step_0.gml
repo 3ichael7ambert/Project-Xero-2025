@@ -20,6 +20,9 @@ else
 	physics_pause_enable(true);
 }
 */
+if variable_global_exists("players_array") {
+	global.players=array_length(global.players_array);
+}
 
 if (instance_exists(obj_Player1)) {
 	target=obj_Player1;
@@ -38,7 +41,7 @@ if (instance_exists(obj_Player1)) {
 	scale=obj_Player1.scale;
 }
 
-if  (wave_timer==0) && (instance_number(enemy_object)<=0) {
+if  (wave_timer==0) && (instance_number(enemy_object)<=0) && global.gameReady==true {
       global.wave += 1;
         wave_timer = 90;
 
