@@ -6,6 +6,8 @@ if ( global.players>1){
 if (mouse_aim=true) {
 	//draw_circle(xm+cm_x,ym+cm_y,20,true);
 	draw_circle(mouse_x_3d,mouse_y_3d,20,true);
+	
+	draw_sprite_ext(sprCrosshair_Mouse,0, mouse_x_3d,mouse_y_3d,.5,.5,0,color1,1);
 	//draw_arrow(x,y,mouse_x_3d,mouse_y_3d,20);
 	
 }

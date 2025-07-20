@@ -593,6 +593,7 @@
     {"id":{"name":"sprCityBarrier","path":"sprites/sprCityBarrier/sprCityBarrier.yy",},},
     {"id":{"name":"sprCitySafety","path":"sprites/sprCitySafety/sprCitySafety.yy",},},
     {"id":{"name":"sprCityTree","path":"sprites/sprCityTree/sprCityTree.yy",},},
+    {"id":{"name":"sprCrosshair_Mouse","path":"sprites/sprCrosshair_Mouse/sprCrosshair_Mouse.yy",},},
     {"id":{"name":"sprCrosshair","path":"sprites/sprCrosshair/sprCrosshair.yy",},},
     {"id":{"name":"sprCyberBlock","path":"sprites/sprCyberBlock/sprCyberBlock.yy",},},
     {"id":{"name":"sprDesert","path":"sprites/sprDesert/sprDesert.yy",},},

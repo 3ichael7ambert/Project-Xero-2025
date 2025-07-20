@@ -503,6 +503,7 @@
     {"name":"sprCityBarrier","order":122,"path":"sprites/sprCityBarrier/sprCityBarrier.yy",},
     {"name":"sprCitySafety","order":121,"path":"sprites/sprCitySafety/sprCitySafety.yy",},
     {"name":"sprCityTree","order":102,"path":"sprites/sprCityTree/sprCityTree.yy",},
+    {"name":"sprCrosshair_Mouse","order":274,"path":"sprites/sprCrosshair_Mouse/sprCrosshair_Mouse.yy",},
     {"name":"sprCrosshair","order":208,"path":"sprites/sprCrosshair/sprCrosshair.yy",},
     {"name":"sprCyberBlock","order":103,"path":"sprites/sprCyberBlock/sprCyberBlock.yy",},
     {"name":"sprDesert","order":18,"path":"sprites/sprDesert/sprDesert.yy",},
