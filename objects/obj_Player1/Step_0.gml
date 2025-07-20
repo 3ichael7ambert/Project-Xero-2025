@@ -10,25 +10,29 @@ if (keyboard_check_pressed(vk_escape)) {
 	room_goto(rm_menu);
 }
 
-if (keyboard_check_pressed(ord(1)))
-{
-    // Key 1 is pressed
-    jetpack_mode = 1;
+if (can_switch_jetpack) {
+	if (keyboard_check_pressed(ord(1)))
+	{
+	    // Key 1 is pressed
+	    jetpack_mode = 1;
+	}
+	if (keyboard_check_pressed(ord(2)))
+	{
+	    // Key 2 is pressed
+	    jetpack_mode = 2;
+	}
+	if (keyboard_check_pressed(ord(3)))
+	{
+	    // Key 3 is pressed
+	    jetpack_mode = 3;
+	}
+
+	if (change_jetpack) { 
+		//jetpack_mode++; 
+		}
+	if (jetpack_mode>3) {jetpack=1;}
+
 }
-if (keyboard_check_pressed(ord(2)))
-{
-    // Key 2 is pressed
-    jetpack_mode = 2;
-}
-if (keyboard_check_pressed(ord(3)))
-{
-    // Key 3 is pressed
-    jetpack_mode = 3;
-}
-
-
-
-
 //mouse_aim
 xm=window_mouse_get_x();
 ym=window_mouse_get_y();
@@ -72,8 +76,10 @@ if keyboard_check_pressed(ord("Q")) {
 	if mouse_aim=false {mouse_aim=true;}
 	else if mouse_aim=true {mouse_aim=false;}
 	}
-if mouse_aim=true {
+	
+if (mouse_aim==true) && (gamepad==false) {
 	draw_circle(xm,ym,20,true);
+	
 	if mouse_x_3d<x {
 		facing_right=false;
 	} else {
@@ -81,11 +87,16 @@ if mouse_aim=true {
 	}
 }
 
-if mouse_aim=false {
-	armF_dir=0;
-	armB_dir=0;
+if (mouse_aim=false) && (gamepad==false) {
+	if (facing_right) {
+		armF_dir=0;
+		armB_dir=0;
+	} else {
+		armF_dir=180;
+		armB_dir=180;
+	}
 }
-if mouse_aim=true {
+if (mouse_aim==true) {
 	//armF_dir=point_direction(x,y,xm,ym);
 	//armB_dir=point_direction(x,y,xm,ym);
 	//armF_dir=point_direction(ww/2, wh/2, xm, ym);
@@ -95,10 +106,26 @@ if mouse_aim=true {
 	//armB_dir=0;
 }
 //if gamepad_is_connected(0) {gamepad=true;} else {gamepad=false;}
-if gamepad_is_connected(gamepad_num) && mouse_aim=false {
+if (gamepad==true) {
 	//gamepad=true;
-	armF_dir=point_direction(0, 0, gamepad_axis_value(gamepad_num,gp_axisrh), -gamepad_axis_value(gamepad_num,gp_axisrv));
-	armB_dir=point_direction(0, 0, gamepad_axis_value(gamepad_num,gp_axisrh), -gamepad_axis_value(gamepad_num,gp_axisrv));
+	
+     var axisrh_value = gamepad_axis_value(gamepad_num, gp_axisrh);
+	 if  (axisrh_value>=.5) {facing_right=true;}
+	 if  (axisrh_value<=-.5) {facing_right=false;}
+	 
+	if (facing_right) {
+		armF_dir=point_direction(0, 0, gamepad_axis_value(gamepad_num,gp_axisrh), -gamepad_axis_value(gamepad_num,gp_axisrv));
+		armB_dir=point_direction(0, 0, gamepad_axis_value(gamepad_num,gp_axisrh), -gamepad_axis_value(gamepad_num,gp_axisrv));
+	} else {
+		if (axislh_value<=.5) && (axislh_value>=-.5)  {
+			armF_dir=point_direction(0, 0, gamepad_axis_value(gamepad_num,gp_axisrh)+180, -gamepad_axis_value(gamepad_num,gp_axisrv));
+			armB_dir=point_direction(0, 0, gamepad_axis_value(gamepad_num,gp_axisrh)+180, -gamepad_axis_value(gamepad_num,gp_axisrv));
+		} else {
+			armF_dir=point_direction(0, 0, gamepad_axis_value(gamepad_num,gp_axisrh), -gamepad_axis_value(gamepad_num,gp_axisrv));
+			armB_dir=point_direction(0, 0, gamepad_axis_value(gamepad_num,gp_axisrh), -gamepad_axis_value(gamepad_num,gp_axisrv));
+		}
+			
+	}
 } else {
 	//gamepad=false;
 	}
@@ -136,7 +163,7 @@ if (jetpack_mode==1)
 
 	if (move_left) 
 	{
-		facing_right = false;
+		if (gamepad==false) {facing_right = false;}
 		if !place_meeting(bbox_left,y-30,floor_obj) 
 		{
 			hsp_walk -= 1.4;
@@ -148,7 +175,7 @@ if (jetpack_mode==1)
 	} 
 	else if (move_right) 
 	{
-		facing_right = true;
+		if (gamepad==false) {facing_right = true;}
 		if !place_meeting(bbox_right,y-20,floor_obj) 
 		{
 			hsp_walk += 1.4;
@@ -188,8 +215,8 @@ if jetpack_mode=2 || jetpack_mode==3
 		} else {
 		hsp = 0;
 		}
-		if mouse_aim=false {
-        facing_right = false;
+		if ((mouse_aim==false) && (gamepad==false)) {
+			facing_right = false;
 		}
     }
     if (move_right) 
@@ -203,8 +230,8 @@ if jetpack_mode=2 || jetpack_mode==3
 		}  else {
 		hsp = 0;
 		}
-		if mouse_aim=false {
-        facing_right = true;
+		if ((mouse_aim==false) && (gamepad==false)) {
+			facing_right = true;
 		}
 		if place_meeting(bbox_left-10+hsp,y-20,floor_obj) || place_meeting(bbox_right+10+hsp,y-20,floor_obj) {
 		hsp = 0; // Stop horizontal movement when no key is pressed

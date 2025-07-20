@@ -110,19 +110,26 @@ function MenuManager() constructor {
         if (!is_struct(active_menu)) return;
 		
 				if gamepad_is_connected(0){
-				var kUp = gamepad_button_check_pressed(0,gp_padu);
-				var kRight = gamepad_button_check_pressed(0,gp_padr);
-				var kDown = gamepad_button_check_pressed(0,gp_padd);
-				var kLeft = gamepad_button_check_pressed(0,gp_padl);
+				var kUpGP = gamepad_button_check_pressed(0,gp_padu);
+				var kRightGP = gamepad_button_check_pressed(0,gp_padr);
+				var kDownGP = gamepad_button_check_pressed(0,gp_padd);
+				var kLeftGP = gamepad_button_check_pressed(0,gp_padl);
+				var enterGP = gamepad_button_check_pressed(0,gp_face1);
+				var backGP = gamepad_button_check_pressed(0,gp_face2);
 			} else {
+				
+				var enterGP = undefined;
+				var backGP = undefined;
+			}
+		//else {
 				var kUp = keyboard_check_pressed(vk_up);
 				var kRight = keyboard_check_pressed(vk_right);
 				var kDown = keyboard_check_pressed(vk_down);
 				var kLeft = keyboard_check_pressed(vk_left);
-			}
+			//}
 
-        var _up = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W")) || kUp || kLeft;
-        var _down = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S")) || kDown || kRight;
+        var _up = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W")) || kUp || kLeft || kUpGP || kLeftGP;
+        var _down = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S")) || kDown || kRight || kDownGP || kRightGP
         
         if (_up) active_menu.navigate(-1);
         if (_down) active_menu.navigate(1);
@@ -131,7 +138,7 @@ function MenuManager() constructor {
 			audio_play_sound(sound_click,10,false,_gain,);
 		}
 		
-        var _select = keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space);
+        var _select = keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space) || enterGP;
         if (_select) {
             var _option = active_menu.get_current_option();
             if (_option != undefined) {
@@ -143,7 +150,7 @@ function MenuManager() constructor {
             }
         }
         
-        var _back = keyboard_check_pressed(vk_escape) || keyboard_check_pressed(vk_backspace);
+        var _back = keyboard_check_pressed(vk_escape) || keyboard_check_pressed(vk_backspace) || backGP;
         if (_back) go_back();
     };
 

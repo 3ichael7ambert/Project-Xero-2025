@@ -6,7 +6,7 @@ global._next_room = rm_menu;
 global.gameReady=false;
 global.level_name="Menu";
 // Step Event
-menu_confirmed = keyboard_check_pressed(vk_enter)
+menu_confirmed = keyboard_check_pressed(vk_enter);
 
 menu_dir_level=0;
 
@@ -47,7 +47,7 @@ battle_levels = ["Skyline", "Final Destination","Train"];
 
 // Device availability and player control setup
 player_controls = array_create(4, -1); // -1: Unset, 0: Keyboard+Mouse, 1+: Gamepad ID
-assign_player_controls();
+//assign_player_controls();
 
 // Create submenu state tracking
 menu_stack = [];

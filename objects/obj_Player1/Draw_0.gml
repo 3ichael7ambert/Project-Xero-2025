@@ -3,10 +3,10 @@ if ( global.players>1){
 }
 
 
-if mouse_aim=true {
+if (mouse_aim=true) {
 	//draw_circle(xm+cm_x,ym+cm_y,20,true);
 	draw_circle(mouse_x_3d,mouse_y_3d,20,true);
-	draw_arrow(x,y,mouse_x_3d,mouse_y_3d,20);
+	//draw_arrow(x,y,mouse_x_3d,mouse_y_3d,20);
 	
 }
 
@@ -211,7 +211,7 @@ draw_text_color(x +100,y-100,part_smoke_count,c_red,c_red,c_red,c_red,1);
 
 
 ///CONTROL DEBUG
-
+/**
 draw_text(x+10,y-10, "Player: " + string(self_id));
 
 draw_text(x+10,y-20, "Gamepad: " +string(gamepad));
@@ -219,5 +219,6 @@ draw_text(x+10,y-20, "Gamepad: " +string(gamepad));
 draw_text(x+10,y-30, "Controller: " +string(input_mapper.controller.device_index));
 
 draw_text(x+10,y-40, "Controller: " +string(gamepad_num));
+*/
 
 	
