@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"enemy_scripts",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"NPC AI",
+    "path":"folders/Scripts/NPC AI.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

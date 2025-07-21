@@ -9,8 +9,8 @@
   "name":"obj_block3D_infinite",
   "overriddenProperties":[],
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"Objects",
+    "path":"folders/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"create_parallax_layer_ext",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"draw",
+    "path":"folders/Scripts/draw.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

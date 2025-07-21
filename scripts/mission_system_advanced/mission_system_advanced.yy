@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"infinitydog_wrap_room_CM",
+  "%Name":"mission_system_advanced",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"infinitydog_wrap_room_CM",
+  "name":"mission_system_advanced",
   "parent":{
     "name":"control",
     "path":"folders/Scripts/control.yy",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_hud_bubble_draw_gui",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"player",
+    "path":"folders/Scripts/player.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -12,8 +12,8 @@
   "duration":7.384626,
   "name":"music_drums_lofi_1",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

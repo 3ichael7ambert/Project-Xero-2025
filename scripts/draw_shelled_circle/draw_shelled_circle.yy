@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"draw_shelled_circle",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"draw",
+    "path":"folders/Scripts/draw.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

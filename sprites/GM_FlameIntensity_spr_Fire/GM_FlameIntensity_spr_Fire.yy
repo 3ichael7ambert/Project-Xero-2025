@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"Particles",
+    "path":"folders/Particles.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

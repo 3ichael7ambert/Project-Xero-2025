@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"init_section_type_lava",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"lava",
+    "path":"folders/Scripts/control/lava.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

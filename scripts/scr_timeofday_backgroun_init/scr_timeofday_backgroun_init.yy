@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_timeofday_backgroun_init",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"draw",
+    "path":"folders/Scripts/draw.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"rotate_smooth",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"math stuff",
+    "path":"folders/Scripts/math stuff.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

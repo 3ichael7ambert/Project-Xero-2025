@@ -13,8 +13,8 @@
   ],
   "name":"part_smoke",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"Particles",
+    "path":"folders/Particles.yy",
   },
   "resourceType":"GMParticleSystem",
   "resourceVersion":"2.0",

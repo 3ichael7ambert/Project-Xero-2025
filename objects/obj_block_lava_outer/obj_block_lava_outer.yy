@@ -6,8 +6,8 @@
   "name":"obj_block_lava_outer",
   "overriddenProperties":[],
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"Objects",
+    "path":"folders/Objects.yy",
   },
   "parentObjectId":{
     "name":"obj_block_lava",

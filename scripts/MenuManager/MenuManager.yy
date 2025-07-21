@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"MenuManager",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"control",
+    "path":"folders/Scripts/control.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

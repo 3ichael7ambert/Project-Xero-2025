@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"CamWrap",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"control",
+    "path":"folders/Scripts/control.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

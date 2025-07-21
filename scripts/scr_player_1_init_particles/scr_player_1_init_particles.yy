@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_player_1_init_particles",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"player",
+    "path":"folders/Scripts/player.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

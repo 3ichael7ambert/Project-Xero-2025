@@ -12,8 +12,8 @@
   "duration":1.9946712,
   "name":"snd_player_jetpack",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

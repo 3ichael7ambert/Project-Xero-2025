@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_draw_player_indicator",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"player",
+    "path":"folders/Scripts/player.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
