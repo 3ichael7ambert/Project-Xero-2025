@@ -79,7 +79,7 @@ if state == "idle" {
 
 
 // If the player is close, panic
-if (instance_exists(obj_Player1))
+if (instance_exists(target))
 {
 if distance_to_object(target) < 100 {
     state = "panic";

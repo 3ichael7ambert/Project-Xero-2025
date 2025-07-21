@@ -1,4 +1,5 @@
 /// @description Enum for the status of a mission
+/*
 enum MISSION_STATUS {
     NotStarted,
     Active,
@@ -777,3 +778,4 @@ event_bus_post(MISSION_EVENT.ENTER_AREA, {
 
 // Optional: destroy this trigger so it only fires once.
 // instance_destroy();
+*/

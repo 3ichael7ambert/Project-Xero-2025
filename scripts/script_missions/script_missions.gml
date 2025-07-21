@@ -1,5 +1,6 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+
 function scrMission(){
 
 }
@@ -71,6 +72,7 @@ function report_kill(mission_id, objective_id) {
 
 
 /////////////////////
+
 
 function activate_mission(mission_id) {
     var mission = global.missions[mission_id];

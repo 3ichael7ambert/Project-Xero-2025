@@ -34,12 +34,42 @@ if (can_switch_jetpack) {
 
 }
 //mouse_aim
+if (room=rm_boss) || (room=rmCity) || (room=rm_Infinite_beach)  {
+
+xm=device_mouse_x_to_gui(0);
+ym=device_mouse_y_to_gui(0)
+
+// Get window dimensions
+ww = display_get_gui_width();
+wh = display_get_gui_height();
+
+
+
+cm_x=global.CameraManager.x;
+cm_y=global.CameraManager.y;
+mouse_x_3d=xm;//+cm_x;
+mouse_y_3d=ym;//+cm_y;
+//var mouse_x_world = global.CameraManager.x + (device_mouse_x(0));
+//var mouse_y_world = global.CameraManager.y + (device_mouse_y(0));
+//mouse_x_3d= mouse_x_world;
+//mouse_y_3d= mouse_y_world;
+}
+
+else {
 xm=window_mouse_get_x();
 ym=window_mouse_get_y();
 
 // Get window dimensions
 ww = window_get_width();
 wh = window_get_height();
+cm_x=mouse_x;
+cm_y=mouse_y;
+
+mouse_x_3d=  mouse_x;//mouse_x_world;
+mouse_y_3d= mouse_y;//mouse_y_world;
+}
+
+
 // Mouse input
 /*
 mouse_xdiff = xm - ww/2;
@@ -51,13 +81,7 @@ zdir += ydiff;         // Vertical movement of the mouse means look up or down
 // Re-center the mouse
 window_mouse_set(ww/2, wh/2);    // Reset the mouse so we can get a new offset from the window center next step/frame
 */
-if (room=rm_boss) || (room=rmCity) || (room=rm_Infinite_beach) {
-cm_x=global.CameraManager.x;
-cm_y=global.CameraManager.y;
-} else {
-cm_x=mouse_x;
-cm_y=mouse_y;
-}
+
 
 //mouse_x_3d=xm+cm_x;
 //mouse_y_3d=ym+cm_y;
@@ -65,8 +89,6 @@ cm_y=mouse_y;
 //var mouse_y_world = global.CameraManager.y + (device_mouse_y(0));
 
 
-mouse_x_3d=  mouse_x;//mouse_x_world;
-mouse_y_3d= mouse_y;//mouse_y_world;
 
 poi = point_direction(x,y,mouse_x_3d,mouse_y_3d);
 

@@ -1,6 +1,16 @@
 function scr_Enemy_Robot_step_ai(){
 
-var dir = point_direction(x, y, target_player.x, target_player.y);
+if instance_exists(target_player) {
+	var dir = point_direction(x, y, target_player.x, target_player.y);
+} else {
+	if (facing_right) {
+		
+	var dir = point_direction(x, y, x+10,y);
+	} else { 
+		
+	var dir = point_direction(x, y, x-10, y);
+		}
+}
 
 var on_ground = !place_empty(x, y + 1, floor_obj);
 
@@ -22,7 +32,11 @@ if (on_ground) {
 
 
 // Movement logic
-var dist_to_player = point_distance(x, y, target_player.x, target_player.y);
+if instance_exists(target_player) {
+	var dist_to_player = point_distance(x, y, target_player.x, target_player.y);
+} else {
+	var dist_to_player = 1000;
+}
 
 if (ai_state == "follow" || ai_state == "attack") {
     if (instance_exists(target_player)) {
@@ -72,21 +86,27 @@ if (ai_state == "patrol") {
 
 switch (movement_type) {
     case "retreat":
-        hsp = (x < target_player.x) ? -move_speed : move_speed;
+		if instance_exists(target_player) {
+			hsp = (x < target_player.x) ? -move_speed : move_speed;
+		}
         break;
 
     case "normal":
-        if (dist_to_player > preferred_range_max) {
-            hsp = (x < target_player.x) ? move_speed : -move_speed;
-        } else if (dist_to_player < preferred_range_min) {
-            hsp = (x < target_player.x) ? -move_speed : move_speed;
-        } else {
-            hsp = 0;
-        }
+		if instance_exists(target_player) {
+	        if (dist_to_player > preferred_range_max) {
+	            hsp = (x < target_player.x) ? move_speed : -move_speed;
+	        } else if (dist_to_player < preferred_range_min) {
+	            hsp = (x < target_player.x) ? -move_speed : move_speed;
+	        } else {
+	            hsp = 0;
+	        }
+		}
         break;
 
     case "rush":
-        hsp = (x < target_player.x) ? move_speed : -move_speed;
+		if instance_exists(target_player){
+	        hsp = (x < target_player.x) ? move_speed : -move_speed;
+		}
         break;
 
     case "strafe":
@@ -137,7 +157,7 @@ if (dist_to_player< preferred_range_min) {
         if (jetpack_mode == 3) vsp = -abs(move_speed); // allow floating back only for mode 3
     }
 }
-else if (dist_to_player> preferred_range_max) {
+else if (dist_to_player> preferred_range_max) && instance_exists(target_player) {
     // Too far — approach
     if (movement_type != "static") {
         hsp = (x < target_player.x) ? move_speed : -move_speed;

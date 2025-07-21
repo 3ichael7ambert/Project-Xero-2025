@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"script_missions",
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"control",
+    "path":"folders/Scripts/control.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

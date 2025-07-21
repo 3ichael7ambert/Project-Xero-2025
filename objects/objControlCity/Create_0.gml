@@ -8,12 +8,21 @@
 //
 //init
 // Game Stats
+randomize();
+
+global.gameReady=false;
+
+
 scr_hud_bubble_init();
 scr_infinite_hud_init();
 
+instance_create(x,y,oGameSystem);
+
+if (!variable_global_exists("players")) {global.players=1;}
+
 for (i=1;i<=global.players;i++) {
-	var a = instance_create(__view_get( e__VW.WView, 0 )/2+(i*50),  room_height-1000, obj_Player1);
-	a.player=i;
+	//var a = instance_create(__view_get( e__VW.WView, 0 )/2+(i*50),  room_height-1000, obj_Player1);
+	//a.player=i;
 }
 
 /*
@@ -64,7 +73,7 @@ __background_set_colour( choose(
 scr_timeofday_backgroun_init();
 
 
-
+//instance_create(x,y,oMissionManager);
 //Deactivate
 alarm[1]=1;
 vx = camera_get_view_x(view_camera[0]);
