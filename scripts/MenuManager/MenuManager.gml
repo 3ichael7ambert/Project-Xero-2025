@@ -117,7 +117,10 @@ function MenuManager() constructor {
 				var enterGP = gamepad_button_check_pressed(0,gp_face1);
 				var backGP = gamepad_button_check_pressed(0,gp_face2);
 			} else {
-				
+				var kUpGP = gamepad_button_check_pressed(0,gp_padu);
+				var kRightGP = gamepad_button_check_pressed(0,gp_padr);
+				var kDownGP = gamepad_button_check_pressed(0,gp_padd);
+				var kLeftGP = gamepad_button_check_pressed(0,gp_padl);
 				var enterGP = undefined;
 				var backGP = undefined;
 			}
