@@ -32,7 +32,7 @@ application_surface_draw_enable(true);
 //menu_items = ["Cityscape", "Asteroid Belt", "Survival", "Invasion", "Zero Gravity", "Streetbike Fury", "Beach", "Forest", "Boss", "Lava Run", "Options", "Exit"];
 // Top-level menu item definitions (filtered by unlocked state)
 menu_items_all = ["Cityscape", "Asteroid Belt", "Survival", "Invasion", "Zero Gravity", "Streetbike Fury", "Boss", "Lava Run", "Options", "Exit"];
-unlocked_menu_items = [ "Survival","Cityscape","Exit"];
+unlocked_menu_items = [ "Survival","Cityscape","Streetbike Fury", "Lava Run", "Boss", "Exit"];
 menu_items = unlocked_menu_items;
 
 // Level definitions for specific modes
@@ -149,7 +149,7 @@ for (var i = 0; i < array_length(unlocked_menu_items); i++) {
             main_menu.add_option("Boss", function() {
                 global._next_room=rm_boss;
                 var player_menu = create_player_count_menu_boss(function(pcount) {
-                    var level_menu = create_survival_level_menu(pcount);
+                    var level_menu = create_boss_level_menu(pcount);
                     _MenuManager.go_to_submenu(level_menu);
                 });
                 _MenuManager.go_to_submenu(player_menu);
@@ -158,12 +158,32 @@ for (var i = 0; i < array_length(unlocked_menu_items); i++) {
             
 
         case "Lava Run":
-            global._next_room=rm_lava;
-            var player_menu = create_player_count_menu_lava();
-			    player_menu.title = "Select Player Count";
-			    _MenuManager.go_to_submenu(player_menu);
-           
+          //  global._next_room=rm_lava;
+        //    var player_menu = create_player_count_menu_lava();
+			   // player_menu.title = "Select Player Count";
+			  //  _MenuManager.go_to_submenu(player_menu);
+           main_menu.add_option("Lava Run", function() {
+				//global._next_room=rmCity;
+			   // var player_menu = create_player_count_menu_cityscape();
+			   // player_menu.title = "Select Level Count";
+			 room_goto(rm_lava);
+			 //   _MenuManager.go_to_submenu(aaa);
+		});
             break;
+			
+		case "Streetbike Fury":
+          //  global._next_room=rm_lava;
+        //    var player_menu = create_player_count_menu_lava();
+			   // player_menu.title = "Select Player Count";
+			  //  _MenuManager.go_to_submenu(player_menu);
+           main_menu.add_option("Streetbike Fury", function() {
+				//global._next_room=rmCity;
+			   // var player_menu = create_player_count_menu_cityscape();
+			   // player_menu.title = "Select Level Count";
+			 room_goto(rm_Neonx1080_bike);
+			 //   _MenuManager.go_to_submenu(aaa);
+		});
+        break;
 
         case "Options":
             var settings_menu = new Menu();

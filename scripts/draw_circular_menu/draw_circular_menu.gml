@@ -138,21 +138,18 @@ if (_menu.title != "") {
 		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
 	}
 	
+	//Players
 	if (_option.name=="1 Player") {
 		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
 	}
-	
 	if (_option.name=="2 Players") {
 		draw_menu_robot_char(sprHead,c_white,_item_x_img+15,_item_y_img-15,45,-45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
-		draw_menu_robot_char(sprHead,c_white,_item_x_img-15,_item_y_img+15,-45,45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
-		
+		draw_menu_robot_char(sprHead,c_white,_item_x_img-15,_item_y_img+15,-45,45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);	
 	}
-	
 	if (_option.name=="3 Players") {
 		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img-25,-45,-45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
 		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img,45,45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
-		draw_menu_robot_char(sprHead,c_white,_item_x_img-25,_item_y_img+25,-45,45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
-		
+		draw_menu_robot_char(sprHead,c_white,_item_x_img-25,_item_y_img+25,-45,45,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);	
 	}
 	if (_option.name=="4 Players") {
 		draw_menu_robot_char(sprHead,c_white,_item_x_img,_item_y_img-105,0,0,600,1,_item_angle+90,_item_angle_img,_item_angle_img,_alpha);
@@ -163,9 +160,16 @@ if (_menu.title != "") {
 	}
 	// Levels
 	if (_option.name=="Outerspace") {
-		
+		draw_sprite_tiled(backStarsLayer3,0,0,0);
+		draw_sprite_tiled(backStarsLayer2,0,0,0);
+		draw_sprite_tiled(backStarsLayer1,0,0,0);
+		exit;
 	}
 	if (_option.name=="Sky") {
+		draw_background_tiled_ext(backCloudLayer3,0,0,0,1,1,c_white,1);
+		draw_background_tiled_ext(backCloudLayer2,0,0,0,1,1,c_white,1);
+		draw_background_tiled_ext(backCloudLayer1,0,0,0,1,1,c_white,1);
+		exit;
 		
 	}
 	if (_option.name=="Jungle") {

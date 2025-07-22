@@ -547,7 +547,7 @@ function create_survival_level_menu(player_count) {
     return level_menu;
 }
 
-
+/*
 function create_boss_level_menu(player_count) {
     var levels = ["Fire Starter", "Ice Queen"];
     var level_menu = new Menu();
@@ -555,6 +555,22 @@ function create_boss_level_menu(player_count) {
         var lvl = levels[i];
         level_menu.add_option(lvl, start_survival_game(player_count, lvl));
     }
+    return level_menu;
+}*/
+
+function create_boss_level_menu(player_count) {
+     var levels = ["Fire Starter", "Ice Queen"];
+    var level_menu = new Menu();
+			level_menu.add_option("Fire Starter", function(player_count) {
+				global.gameReady=true; 
+				global.level_name = "Fire Starter";
+				start_survival_game(player_count, "Fire Starter")}
+				);
+			level_menu.add_option("Ice Queen", function(player_count) {
+				global.gameReady=true; 
+				global.level_name = "Ice Queen";
+				start_survival_game(player_count, "Ice Queen")}
+				);
     return level_menu;
 }
 
