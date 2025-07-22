@@ -32,11 +32,11 @@ application_surface_draw_enable(true);
 //menu_items = ["Cityscape", "Asteroid Belt", "Survival", "Invasion", "Zero Gravity", "Streetbike Fury", "Beach", "Forest", "Boss", "Lava Run", "Options", "Exit"];
 // Top-level menu item definitions (filtered by unlocked state)
 menu_items_all = ["Cityscape", "Asteroid Belt", "Survival", "Invasion", "Zero Gravity", "Streetbike Fury", "Boss", "Lava Run", "Options", "Exit"];
-unlocked_menu_items = [ "Survival","Exit"];
+unlocked_menu_items = [ "Survival","Cityscape","Exit"];
 menu_items = unlocked_menu_items;
 
 // Level definitions for specific modes
-survival_levels = ["Outerspace", "Sky"];
+survival_levels = ["Outerspace", "Sky","Forest", "Jungle", "Beach"];
 //survival_levels = ["Outerspace", "Sky", "Forest", "Jungle", "Beach", "Train"];
 
 boss_names = ["Fire Starter", "Ice Queen"];
@@ -110,21 +110,27 @@ for (var i = 0; i < array_length(unlocked_menu_items); i++) {
 
     switch (item) {
         case "Cityscape":
+		
+		
             main_menu.add_option("Cityscape", function() {
-				global._next_room=rmCity;
-			    var player_menu = create_player_count_menu_cityscape();
-			    player_menu.title = "Select Player Count";
-			    _MenuManager.go_to_submenu(player_menu);
+				//global._next_room=rmCity;
+			   // var player_menu = create_player_count_menu_cityscape();
+			   // player_menu.title = "Select Level Count";
+			 start_cityscape_game();
+			 //   _MenuManager.go_to_submenu(aaa);
 		});
             break;
  case "Survival":
+			
             main_menu.add_option("Survival", function() {
 				//global._next_room=r_level_infinite;
-                var player_menu = create_player_count_menu_survival();
-				player_menu.title = "Select Player Count";
-                _MenuManager.go_to_submenu(player_menu);
+              //  var player_menu = create_player_count_menu_survival();
+			//	player_menu.title = "Select Player Count";
+			var aaa = create_survival_level_menu();
+                _MenuManager.go_to_submenu(aaa);
 				
             });
+			
             break;
 			/*
        

@@ -414,8 +414,8 @@ if (keyboard_check_pressed(vk_enter)) {
 
 
 // --- Gameplay Starter ---
-function start_cityscape_game(player_count) {
-    global.player_count = player_count;
+function start_cityscape_game() {
+   // global.player_count = player_count;
     room_goto(rmCity);
 }
 

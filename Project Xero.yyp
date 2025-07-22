@@ -710,9 +710,9 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rmCity","path":"rooms/rmCity/rmCity.yy",},},
     {"roomId":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
+    {"roomId":{"name":"rmCity","path":"rooms/rmCity/rmCity.yy",},},
     {"roomId":{"name":"r_level_infinite","path":"rooms/r_level_infinite/r_level_infinite.yy",},},
     {"roomId":{"name":"rm_Infinite_beach","path":"rooms/rm_Infinite_beach/rm_Infinite_beach.yy",},},
     {"roomId":{"name":"r_levelSide_infinite","path":"rooms/r_levelSide_infinite/r_levelSide_infinite.yy",},},
