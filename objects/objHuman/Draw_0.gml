@@ -28,6 +28,6 @@ switch (state) {
         draw_sprite_ext(sprHuman_Head_Eyelids,img_idx_eyelids,eyelids_x,eyelids_y,image_xscale,image_yscale,0,c_white,1);
        draw_sprite_ext(sprHuman_Head_Nose,img_idx_nose,nose_x,nose_y,image_xscale,image_yscale,0,c_white,1);
         draw_sprite_ext(sprHuman_Head_Eyebrows,img_idx_eyebrows,eyebrows_x,eyebrows_y,image_xscale,image_yscale,0,c_white,1);
-       draw_sprite_ext(sprHuman_Head_Hair,img_idx_hair,hair_x,hair_y,image_xscale,image_yscale,0,c_white,1);
+       draw_sprite_ext(sprHuman_Head_Hair_Back,img_idx_hair,hair_x,hair_y,image_xscale,image_yscale,0,c_white,1);
        draw_sprite_ext(sprHuman_Head_Mouths,img_idx_mouth,mouth_x,mouth_y,image_xscale,image_yscale,0,c_white,1);
        

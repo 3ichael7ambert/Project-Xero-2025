@@ -32,8 +32,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Human sprites",
-    "path":"folders/Sprites/Human sprites.yy",
+    "name":"Idle",
+    "path":"folders/Sprites/Human sprites/Idle.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
