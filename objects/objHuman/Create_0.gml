@@ -11,7 +11,9 @@ grav = 0.5; // Gravity strength
 vsp = 0; // Vertical speed
 is_on_ground = false; // Is the NPC standing on the ground?
 
-scale=1;
+scale=.2;
+image_xscale=scale;
+image_yscale=scale;
 
  dir=choose("left","right");
  
@@ -20,6 +22,10 @@ scale=1;
  pants_color=(make_color_rgb(random(255),random(255),random(255)));
  shoes_color=(make_color_rgb(random(255),random(255),random(255)));
  eye_color=(make_color_rgb(random(255),random(255),random(255)));
+	skin_color=c_white;
+gender=choose("male","female");
+shirt_style=choose("long","short","none");
+pants_style=choose("long","short","none");
 
  img_idx_body=image_index;
  img_idx_pants=image_index;
