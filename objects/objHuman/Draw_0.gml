@@ -20,7 +20,7 @@ switch (state) {
 // Draw the sprite with flipping
 		//back arm
 		draw_sprite_ext(sprHuman_Arm_Idle,img_idx_body,x,y,image_xscale,image_yscale,0,skin_color,1);
-		 draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt,shirt_x,shirt_y,image_xscale,image_yscale,0, shirt_color,1);
+		 draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,shirt_x,shirt_y,image_xscale,image_yscale,0, shirt_color,1);
 		//backleg
 		draw_sprite_ext(sprHuman_Leg_Idle,img_idx_body,x,y,image_xscale,image_yscale,0,skin_color,1);
 		draw_sprite_ext(sprHuman_Pants_Walk_Pants,img_idx_pants,pants_x,pants_y,image_xscale,image_yscale,0,pants_color,1);
@@ -29,26 +29,42 @@ switch (state) {
 		//body
 		draw_sprite_ext(sprHuman_Body,0,x,y,image_xscale,image_yscale,0,skin_color,1);
 		//UNDERWEAR//
-		draw_sprite_ext(sprHuman_Body,1,x,y,image_xscale,image_yscale,0,skin_color,1);
-		draw_sprite_ext(sprHuman_Shirt,img_idx_shirt,shirt_x,shirt_y,image_xscale,image_yscale,0, shirt_color,1);
+		if (gender="female"){
+			draw_sprite_ext(sprHuman_Body,3,pants_x,pants_y,image_xscale,image_yscale,0, shirt_color,1);
+		}
+		//draw_sprite_ext(sprHuman_Shirt,0,x,y,image_xscale,image_yscale,0,skin_color,1);
+		//pants
+		if (pants_style!="none"){
+			draw_sprite_ext(sprHuman_Body,3,pants_x,pants_y,image_xscale,image_yscale,0, shirt_color,1);
+		}
 		//pantsbttm
-		//draw_sprite_ext(sprHuman_Shirt,img_idx_shirt,shirt_x,shirt_y,image_xscale,image_yscale,0, shirt_color,1);
+		if (pants_style!="none"){
+			draw_sprite_ext(sprHuman_Shirt,img_idx_shirt,shirt_x,shirt_y,image_xscale,image_yscale,0, shirt_color,1);
+		}
 		//front leg
 		if (state == "idle") {
+			/*
 			draw_sprite_ext(sprHuman_Leg_Idle,0,x,y,image_xscale,image_yscale,0,skin_color,1);
 			draw_sprite_ext(sprHuman_Pants_Idle_Pants,0,pants_x,pants_y,image_xscale,image_yscale,0,pants_color,1);
 			draw_sprite_ext(sprHuman_Pants_Idle_Shoes,0,shoes_x,shoes_y,image_xscale,image_yscale,0,shoes_color,1);
+			//front arm
+			draw_sprite_ext(sprHuman_Arm_Idle,img_idx_body,x,y,image_xscale,image_yscale,0,skin_color,1); 
+			draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt,shirt_x,shirt_y,image_xscale,image_yscale,0, shirt_color,1);
+		*/
 		}
 		//front leg
 		if (state == "walk") {
-			draw_sprite_ext(sprHuman_Leg_,img_idx_body,x,y,image_xscale,image_yscale,0,skin_color,1);
+			/*
+			draw_sprite_ext(sprHuman_Leg_Walk,img_idx_body,x,y,image_xscale,image_yscale,0,skin_color,1);
 			draw_sprite_ext(sprHuman_Pants_Walk_Pants,img_idx_pants,pants_x,pants_y,image_xscale,image_yscale,0,pants_color,1);
 			draw_sprite_ext(sprHuman_Pants_Walk_Shoes,img_idx_shoes,shoes_x,shoes_y,image_xscale,image_yscale,0,shoes_color,1);
-		}
-		//front arm
-		draw_sprite_ext(sprHuman_Arm_Idle,img_idx_body,x,y,image_xscale,image_yscale,0,skin_color,1); 
-		 draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt,shirt_x,shirt_y,image_xscale,image_yscale,0, shirt_color,1);
+			//front arm
+			draw_sprite_ext(sprHuman_Arm_Walk_Arms,img_idx_body,x,y,image_xscale,image_yscale,0,skin_color,1); 
+			draw_sprite_ext(sprHuman_Arm_Shirt_Walk,img_idx_shirt_sleeves,shirt_x,shirt_y,image_xscale,image_yscale,0, shirt_color,1);
 		
+	*/
+	}
+	
 		if (dir="right") {
 			var cx=x;
 			var cy=y;
@@ -62,9 +78,10 @@ switch (state) {
 		}
 		draw_sprite_ext(sprHuman_Head,img_idx_head,head_x,head_y,image_xscale,image_yscale,0,skin_color,1);
         draw_sprite_ext(sprHuman_Head_Eyes,img_idx_eyes,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
-        draw_sprite_ext(sprHuman_Head_Eyes_Pupils,img_idx_eyes,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
+        draw_sprite_ext(sprHuman_Head_Eyes_Pupils,img_idx_eyes,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,c_white,1);
         draw_sprite_ext(sprHuman_Head_Eyelids,img_idx_eyelids,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
 		 draw_sprite_ext(sprHuman_Head_Mouths,img_idx_mouth,mouth_x,mouth_y,image_xscale,image_yscale,0,hair_color,1);
 		draw_sprite_ext(sprHuman_Head_Eyebrows,img_idx_eyebrows,eyebrows_x,eyebrows_y,image_xscale,image_yscale,0,hair_color,1);
        draw_sprite_ext(sprHuman_Head_Hair_Back,img_idx_hair,hair_x,hair_y,image_xscale,image_yscale,0,hair_color,1);
+       draw_sprite_ext(sprHuman_Head_Hair_Front,img_idx_hair,hair_x,hair_y,image_xscale,image_yscale,0,hair_color_2,1);
        

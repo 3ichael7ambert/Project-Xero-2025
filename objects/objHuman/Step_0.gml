@@ -2,7 +2,7 @@
 // You can write your code in this editor
   img_idx_body=image_index;
  img_idx_pants=image_index;
- img_idx_shirt=image_index;
+ img_idx_shirt_sleeves=image_index;
  img_idx_shoes=image_index;
  img_idx_head=0;
  img_idx_nose=0;
@@ -91,28 +91,33 @@ if distance_to_object(target) < 100 {
 
 
 
-head_x = x + lengthdir_x(78 * scale, 90);
-head_y = y + lengthdir_y(78 * scale, 90);
+head_x = x + lengthdir_x(75 * scale, 90);
+head_y = y + lengthdir_y(75 * scale, 90);
 
-eyes_x = head_x + lengthdir_x(100 * scale, 75);
-eyes_y = head_y + lengthdir_y(100 * scale, 75);
+eyes_x = head_x + lengthdir_x(60 * scale, 58);
+eyes_y = head_y + lengthdir_y(60 * scale, 58);
 
-eyes_pupils_x = eyes_x + lengthdir_x(50 * scale, 75);
-eyes_pupils_y = eyes_y + lengthdir_y(50 * scale, 75);
+eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, -20);
+eyes_pupils_y = eyes_y + lengthdir_y(15 * scale, -20);
 
-eyelids_x = eyes_x + lengthdir_x(50 * scale, 75);
-eyelids_y = eyes_y + lengthdir_y(50 * scale, 75);
-mouth_x = head_x + lengthdir_x(50 * scale, 75);
-mouth_y = head_y + lengthdir_y(50 * scale, 75);
+eyelids_x = eyes_x + lengthdir_x(0 * scale, 75);
+eyelids_y = eyes_y + lengthdir_y(0 * scale, 75);
+mouth_x = head_x + lengthdir_x(30 * scale, 15);
+mouth_y = head_y + lengthdir_y(30 * scale, 15);
 nose_x = head_x + lengthdir_x(50 * scale, 75);
 nose_y = head_y + lengthdir_y(50 * scale, 75);
-eyebrows_x = eyes_x + lengthdir_x(50 * scale, 75);
-eyebrows_y = eyes_y + lengthdir_y(50 * scale, 75);
-shirt_x = x + lengthdir_x(125 * scale, 85);
-shirt_y = y + lengthdir_y(125 * scale, 85);
-pants_x = x + lengthdir_x(150 * scale, 75);
-pants_y = y + lengthdir_y(150 * scale, 75);
+
+eyebrows_x = eyes_x + lengthdir_x(30 * scale, 90);
+eyebrows_y = eyes_y + lengthdir_y(30 * scale, 90);
+
+
+hair_x = head_x + lengthdir_x(53 * scale, 80);
+hair_y = head_y + lengthdir_y(53 * scale, 80);
+
+shirt_x = x + lengthdir_x(10 * scale, 40);
+shirt_y = y + lengthdir_y(10 * scale, 40);
+
+pants_x = x + lengthdir_x(0 * scale, -55);
+pants_y = y + lengthdir_y(0 * scale, -55);
 shoes_x = x + lengthdir_x(40 * scale, 270);
 shoes_y = y + lengthdir_y(40 * scale, 270);
-hair_x = head_x + lengthdir_x(210 * scale, 80);
-hair_y = head_y + lengthdir_y(210 * scale, 80);

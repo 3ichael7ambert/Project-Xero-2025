@@ -11,14 +11,16 @@ grav = 0.5; // Gravity strength
 vsp = 0; // Vertical speed
 is_on_ground = false; // Is the NPC standing on the ground?
 
-scale=.2;
+scale=.8;
 image_xscale=scale;
 image_yscale=scale;
 
  dir=choose("left","right");
  
  hair_color=(make_color_rgb(random(255),random(255),random(255)));
+ hair_color_2=(make_color_rgb(random(255),random(255),random(255)));
  shirt_color=(make_color_rgb(random(255),random(255),random(255)));
+ shirt_color_2=(make_color_rgb(random(255),random(255),random(255)));
  pants_color=(make_color_rgb(random(255),random(255),random(255)));
  shoes_color=(make_color_rgb(random(255),random(255),random(255)));
  eye_color=(make_color_rgb(random(255),random(255),random(255)));
@@ -29,7 +31,16 @@ pants_style=choose("long","short","none");
 
  img_idx_body=image_index;
  img_idx_pants=image_index;
- img_idx_shirt=image_index;
+ switch (gender) {
+	 case "male":
+		img_idx_shirt=0;
+	 case "female":
+		img_idx_shirt=1;
+	 default:
+		img_idx_shirt=0;
+ }
+ 
+img_idx_shirt_sleeves=image_index;
  img_idx_shoes=image_index;
  img_idx_head=0;
  img_idx_nose=0;

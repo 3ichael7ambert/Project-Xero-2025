@@ -23,7 +23,7 @@
   ],
   "name":"sprHuman_Head_Eyes_Pupils",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Head",
     "path":"folders/Sprites/Human sprites/Head.yy",
@@ -77,7 +77,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":19,
+    "xorigin":22,
     "yorigin":6,
   },
   "swatchColours":null,
