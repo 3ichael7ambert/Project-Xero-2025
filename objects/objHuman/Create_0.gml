@@ -51,6 +51,8 @@ img_idx_shirt_sleeves=image_index;
  img_idx_hair=0;
  img_idx_mouth=0;
  
+  arm_dir=0;
+ 
  head_x=x+lengthdir_x(100,85)*scale;
  head_y=y+lengthdir_y(100,85)*scale;
  eyes_x=head_x+lengthdir_x(100,75)*scale;
@@ -73,6 +75,18 @@ img_idx_shirt_sleeves=image_index;
  hair_y=head_y+lengthdir_y(50,75)*scale;
  
  
+ 
+arm_back_x = x + lengthdir_x(20 * scale, 75);
+arm_back_y = y + lengthdir_y(20 * scale, 75);
+arm_front_x = x + lengthdir_x(20 * scale, 105);
+arm_front_y = y + lengthdir_y(20 * scale, 105);
+fist_back_x = arm_back_x + lengthdir_x(70,arm_dir);
+fist_back_y = arm_back_y + lengthdir_y(70,arm_dir);
+fist_front_x = arm_front_x + lengthdir_x(70,arm_dir);
+fist_front_y = arm_front_y + lengthdir_y(70,arm_dir);
+
+
+
  
  // Create Event
 state = "idle"; // Start in the idle state

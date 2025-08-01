@@ -107,8 +107,8 @@ mouth_y = head_y + lengthdir_y(30 * scale, 15);
 nose_x = head_x + lengthdir_x(50 * scale, 75);
 nose_y = head_y + lengthdir_y(50 * scale, 75);
 
-eyebrows_x = eyes_x + lengthdir_x(30 * scale, 90);
-eyebrows_y = eyes_y + lengthdir_y(30 * scale, 90);
+eyebrows_x = eyes_x + lengthdir_x(20 * scale, 100);
+eyebrows_y = eyes_y + lengthdir_y(20 * scale, 100);
 
 
 hair_x = head_x + lengthdir_x(53 * scale, 80);
@@ -121,3 +121,12 @@ pants_x = x + lengthdir_x(0 * scale, -55);
 pants_y = y + lengthdir_y(0 * scale, -55);
 shoes_x = x + lengthdir_x(40 * scale, 270);
 shoes_y = y + lengthdir_y(40 * scale, 270);
+
+arm_back_x = x + lengthdir_x(20 * scale, 75);
+arm_back_y = y + lengthdir_y(20 * scale, 75);
+arm_front_x = x + lengthdir_x(20 * scale, 105);
+arm_front_y = y + lengthdir_y(20 * scale, 105);
+fist_back_x = arm_back_x + lengthdir_x(65,arm_dir-12);
+fist_back_y = arm_back_y + lengthdir_y(65,arm_dir-12);
+fist_front_x = arm_front_x + lengthdir_x(70,arm_dir);
+fist_front_y = arm_front_y + lengthdir_y(70,arm_dir);

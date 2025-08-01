@@ -19,8 +19,27 @@ switch (state) {
 
 // Draw the sprite with flipping
 		//back arm
-		draw_sprite_ext(sprHuman_Arm_Idle,img_idx_body,x,y,image_xscale,image_yscale,0,skin_color,1);
-		 draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,shirt_x,shirt_y,image_xscale,image_yscale,0, shirt_color,1);
+		if (state=="walk") {
+			draw_sprite_ext(sprHuman_Arm_Walk_Arms,img_idx_body,arm_back_x,arm_back_y,image_xscale,image_yscale,0,skin_color,1);
+			if (shirt_style=="short") {
+				draw_sprite_ext(sprHuman_Arm_Shirt_Short_Walk,img_idx_shirt_sleeves,arm_back_x,arm_back_y,image_xscale,image_yscale,0, shirt_color,1);
+			}
+			if (shirt_style=="long") {
+				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Walk,img_idx_shirt_sleeves,arm_back_x,arm_back_y,image_xscale,image_yscale,0, shirt_color,1);
+			}
+			draw_sprite_ext(sprHuman_Arm_Walk_Hand,img_idx_body,arm_back_x,arm_back_y,image_xscale,image_yscale,0,skin_color,1);
+		}
+		if (state=="idle") {
+			draw_sprite_ext(sprHuman_Arm_Walk_Arms,img_idx_body,arm_back_x,arm_back_y,image_xscale,image_yscale,arm_dir,skin_color,1);
+			if (shirt_style=="short") {
+				draw_sprite_ext(sprHuman_Arm_Shirt_Short_Idle,img_idx_shirt_sleeves,arm_back_x,arm_back_y,image_xscale,image_yscale,arm_dir, shirt_color,1);
+			}
+			if (shirt_style=="long") {
+				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,arm_back_x,arm_back_y,image_xscale,image_yscale,arm_dir, shirt_color,1);
+			}
+			draw_sprite_ext(sprHuman_Arm_Hand,img_idx_body,fist_back_x,fist_back_y,image_xscale,image_yscale,arm_dir,skin_color,1);
+		}
+		
 		//backleg
 		draw_sprite_ext(sprHuman_Leg_Idle,img_idx_body,x,y,image_xscale,image_yscale,0,skin_color,1);
 		draw_sprite_ext(sprHuman_Pants_Walk_Pants,img_idx_pants,pants_x,pants_y,image_xscale,image_yscale,0,pants_color,1);
