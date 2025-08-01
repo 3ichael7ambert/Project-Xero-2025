@@ -27,10 +27,21 @@ image_yscale=scale;
 	skin_color=c_white;
 gender=choose("male","female");
 shirt_style=choose("long","short","none");
-pants_style=choose("long","short","none");
+hat_style=choose("none","backwards","beanie","forwards","bandana");
+shoes_style=choose("none","sneakers");
+
+if (gender=="male") {
+	pants_style=choose("long","short","none");
+	hair_style=choose("long","shorts","bald","braids","long2","short");
+}
+if (gender=="female") {
+	pants_style=choose("long","short","skirt","none");
+	hair_style=choose("long","shorts","braids","long2","short");
+}
 
  img_idx_body=image_index;
  img_idx_pants=image_index;
+ 
  switch (gender) {
 	 case "male":
 		img_idx_shirt=0;
@@ -51,7 +62,8 @@ img_idx_shirt_sleeves=image_index;
  img_idx_hair=0;
  img_idx_mouth=0;
  
-  arm_dir=0;
+  arm_dir=270;
+  armB_dir=270;
  
  head_x=x+lengthdir_x(100,85)*scale;
  head_y=y+lengthdir_y(100,85)*scale;
@@ -86,7 +98,14 @@ fist_front_x = arm_front_x + lengthdir_x(70,arm_dir);
 fist_front_y = arm_front_y + lengthdir_y(70,arm_dir);
 
 
-
+leg_back_x = x + lengthdir_x(50 * scale, 280);
+leg_back_y = y + lengthdir_y(50 * scale, 280);
+leg_front_x = x + lengthdir_x(50 * scale, 220);
+leg_front_y = y + lengthdir_y(50 * scale, 220);
+foot_back_x = leg_back_x + lengthdir_x(65,270);
+foot_back_y = leg_back_y + lengthdir_y(65,270);
+foot_front_x = leg_front_x + lengthdir_x(65,270);
+foot_front_y = leg_front_y + lengthdir_y(65,270);
  
  // Create Event
 state = "idle"; // Start in the idle state

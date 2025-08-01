@@ -119,14 +119,27 @@ shirt_y = y + lengthdir_y(10 * scale, 40);
 
 pants_x = x + lengthdir_x(0 * scale, -55);
 pants_y = y + lengthdir_y(0 * scale, -55);
-shoes_x = x + lengthdir_x(40 * scale, 270);
-shoes_y = y + lengthdir_y(40 * scale, 270);
+skirt_x = x + lengthdir_x(50 * scale, 270);
+skirt_y = y + lengthdir_y(50 * scale, 270);
 
-arm_back_x = x + lengthdir_x(20 * scale, 75);
-arm_back_y = y + lengthdir_y(20 * scale, 75);
-arm_front_x = x + lengthdir_x(20 * scale, 105);
-arm_front_y = y + lengthdir_y(20 * scale, 105);
-fist_back_x = arm_back_x + lengthdir_x(65,arm_dir-12);
-fist_back_y = arm_back_y + lengthdir_y(65,arm_dir-12);
-fist_front_x = arm_front_x + lengthdir_x(70,arm_dir);
-fist_front_y = arm_front_y + lengthdir_y(70,arm_dir);
+arm_back_x = x + lengthdir_x(50 * scale, 65);
+arm_back_y = y + lengthdir_y(50 * scale, 65);
+arm_front_x = x + lengthdir_x(50 * scale, 143);
+arm_front_y = y + lengthdir_y(50 * scale, 143);
+fist_back_x = arm_back_x + lengthdir_x(65,armB_dir-12);
+fist_back_y = arm_back_y + lengthdir_y(65,armB_dir-12);
+fist_front_x = arm_front_x + lengthdir_x(65,arm_dir-12);
+fist_front_y = arm_front_y + lengthdir_y(65,arm_dir-12);
+
+leg_back_x = x + lengthdir_x(50 * scale, 285);
+leg_back_y = y + lengthdir_y(50 * scale, 285);
+leg_front_x = x + lengthdir_x(60 * scale, 235);
+leg_front_y = y + lengthdir_y(60 * scale, 235);
+foot_back_x = leg_back_x + lengthdir_x(8 * scale,270);
+foot_back_y = leg_back_y + lengthdir_y(8 * scale,270);
+foot_front_x = leg_front_x + lengthdir_x(8 * scale,270);
+foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
+
+//shoes_x = x + lengthdir_x(40 * scale, 270);
+//shoes_y = y + lengthdir_y(40 * scale, 270);
+
