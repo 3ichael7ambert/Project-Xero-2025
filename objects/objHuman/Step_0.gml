@@ -90,7 +90,88 @@ if distance_to_object(target) < 100 {
 
 
 
+if (dir=="left") {
+	
+	arm_img_angle=90;
+	armB_dir=270;
+	if (attacking==false) {
+	arm_dir=270;
+	wpn_dir=90;
+	}
+	if  (attacking==true) && instance_exists(target) {
+		arm_dir = point_direction(arm_front_x,arm_front_y,target.x,target.y);
+		} else { 
+			arm_dir=270;
+			wpn_dir=90;
+	}
+	
+head_x = x + lengthdir_x(75 * scale, 90);
+head_y = y + lengthdir_y(75 * scale, 90);
 
+eyes_x = head_x + lengthdir_x(60 * scale, 122);
+eyes_y = head_y + lengthdir_y(60 * scale, 122);
+
+eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, 200);
+eyes_pupils_y = eyes_y + lengthdir_y(15 * scale, 200);
+
+eyelids_x = eyes_x + lengthdir_x(0 * scale, 105);
+eyelids_y = eyes_y + lengthdir_y(0 * scale, 105);
+mouth_x = head_x + lengthdir_x(30 * scale, 165);
+mouth_y = head_y + lengthdir_y(30 * scale, 165);
+nose_x = head_x + lengthdir_x(50 * scale, 105);
+nose_y = head_y + lengthdir_y(50 * scale, 105);
+
+eyebrows_x = eyes_x + lengthdir_x(20 * scale, 80);
+eyebrows_y = eyes_y + lengthdir_y(20 * scale, 80);
+
+
+hair_x = head_x + lengthdir_x(53 * scale, 100);
+hair_y = head_y + lengthdir_y(53 * scale, 100);
+
+shirt_x = x + lengthdir_x(10 * scale, 120);
+shirt_y = y + lengthdir_y(10 * scale, 120);
+
+pants_x = x + lengthdir_x(0 * scale, 235);
+pants_y = y + lengthdir_y(0 * scale, 235);
+skirt_x = x + lengthdir_x(50 * scale, 270);
+skirt_y = y + lengthdir_y(50 * scale, 270);
+
+arm_back_x = x + lengthdir_x(50 * scale, 120);
+arm_back_y = y + lengthdir_y(50 * scale, 120);
+arm_front_x = x + lengthdir_x(50 * scale, 37);
+arm_front_y = y + lengthdir_y(50 * scale, 37);
+fist_back_x = arm_back_x + lengthdir_x(65,armB_dir+12);
+fist_back_y = arm_back_y + lengthdir_y(65,armB_dir+12);
+fist_front_x = arm_front_x + lengthdir_x(65,arm_dir+12);
+fist_front_y = arm_front_y + lengthdir_y(65,arm_dir+12);
+
+leg_back_x = x + lengthdir_x(50 * scale, 255);
+leg_back_y = y + lengthdir_y(50 * scale, 255);
+leg_front_x = x + lengthdir_x(60 * scale, 305);
+leg_front_y = y + lengthdir_y(60 * scale, 305);
+foot_back_x = leg_back_x + lengthdir_x(8 * scale,270);
+foot_back_y = leg_back_y + lengthdir_y(8 * scale,270);
+foot_front_x = leg_front_x + lengthdir_x(8 * scale,270);
+foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
+
+//shoes_x = x + lengthdir_x(40 * scale, 270);
+//shoes_y = y + lengthdir_y(40 * scale, 270);
+
+
+			
+}
+
+if (dir=="right") {
+	
+	arm_img_angle=270;
+	armB_dir=270;
+	if (attacking==false) {arm_dir=270;}
+	if  (attacking==true) && instance_exists(target) {
+		arm_dir = point_direction(arm_front_x,arm_front_y,target.x,target.y);
+	} else { 
+			arm_dir=270;
+			}
+		
 head_x = x + lengthdir_x(75 * scale, 90);
 head_y = y + lengthdir_y(75 * scale, 90);
 
@@ -122,8 +203,8 @@ pants_y = y + lengthdir_y(0 * scale, -55);
 skirt_x = x + lengthdir_x(50 * scale, 270);
 skirt_y = y + lengthdir_y(50 * scale, 270);
 
-arm_back_x = x + lengthdir_x(50 * scale, 65);
-arm_back_y = y + lengthdir_y(50 * scale, 65);
+arm_back_x = x + lengthdir_x(50 * scale, 60);
+arm_back_y = y + lengthdir_y(50 * scale, 60);
 arm_front_x = x + lengthdir_x(50 * scale, 143);
 arm_front_y = y + lengthdir_y(50 * scale, 143);
 fist_back_x = arm_back_x + lengthdir_x(65,armB_dir-12);
@@ -143,3 +224,6 @@ foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
 //shoes_x = x + lengthdir_x(40 * scale, 270);
 //shoes_y = y + lengthdir_y(40 * scale, 270);
 
+
+			
+}

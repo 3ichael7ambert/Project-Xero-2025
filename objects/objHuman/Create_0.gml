@@ -11,6 +11,12 @@ grav = 0.5; // Gravity strength
 vsp = 0; // Vertical speed
 is_on_ground = false; // Is the NPC standing on the ground?
 
+target=obj_Player1;
+
+mood="calm";
+eyes_mood="calm";
+mouth_mood="calm";
+
 scale=.8;
 image_xscale=scale;
 image_yscale=scale;
@@ -24,19 +30,48 @@ image_yscale=scale;
  pants_color=(make_color_rgb(random(255),random(255),random(255)));
  shoes_color=(make_color_rgb(random(255),random(255),random(255)));
  eye_color=(make_color_rgb(random(255),random(255),random(255)));
+ hat_color=(make_color_rgb(random(255),random(255),random(255)));
+ 
 	skin_color=c_white;
+	
+	has_weapon=false;
+	weapon = choose("gun","raygun","shotgun");
+	attacking=false;
+	wpn_dir=270;
+	arm_img_angle=270;
+	
+	switch (weapon) {
+		case "gun":
+			sprite_gun=sprGrenadeLauncher;
+			gun_idx=0;
+			break;
+		case "raygun":
+			sprite_gun=sprRayGun;
+			gun_idx=2;
+			break;
+		case "shotgun":
+			sprite_gun=sprShotgun;
+			gun_idx=0;
+			break;
+		case default:
+			sprite_gun=sprGrenadeLauncher;
+			gun_idx=0;
+			break;
+	}
+	
 gender=choose("male","female");
+
 shirt_style=choose("long","short","none");
 hat_style=choose("none","backwards","beanie","forwards","bandana");
 shoes_style=choose("none","sneakers");
 
 if (gender=="male") {
-	pants_style=choose("long","short","none");
-	hair_style=choose("long","shorts","bald","braids","long2","short");
+	pants_style=choose("long","shortw","none");
+	hair_style=choose("long","short","bald","braids","long2","short2");
 }
 if (gender=="female") {
-	pants_style=choose("long","short","skirt","none");
-	hair_style=choose("long","shorts","braids","long2","short");
+	pants_style=choose("long","shorts","skirt","none");
+	hair_style=choose("long","short","braids","long2","short2");
 }
 
  img_idx_body=image_index;
