@@ -70,30 +70,19 @@ switch (state) {
 		
 		
 		//body
-		draw_sprite_ext(sprHuman_Body,0,x,y,image_xscale,image_yscale,0,skin_color,1);
+		draw_sprite_ext(sprHuman_Body,0,x,y,image_xscale,image_yscale,angle,skin_color,1);
 		//UNDERWEAR//
 		if (gender="female"){
-			draw_sprite_ext(sprHuman_Body,2,pants_x,pants_y,image_xscale,image_yscale,0, shirt_color,1);
+			draw_sprite_ext(sprHuman_Body,2,pants_x,pants_y,image_xscale,image_yscale,angle, shirt_color,1);
 		}
-		draw_sprite_ext(sprHuman_Body,1,x,y,image_xscale,image_yscale,0,skin_color,1);
+		draw_sprite_ext(sprHuman_Body,1,x,y,image_xscale,image_yscale,angle,skin_color,1);
 		//pants
 		if (pants_style!="none"){
-			draw_sprite_ext(sprHuman_Body,3,pants_x,pants_y,image_xscale,image_yscale,0, shirt_color,1);
+			draw_sprite_ext(sprHuman_Body,3,pants_x,pants_y,image_xscale,image_yscale,angle, shirt_color,1);
 		}
 		//pantsbttm
 		if (shirt_style!="none"){
-			draw_sprite_ext(sprHuman_Shirt,img_idx_shirt,shirt_x,shirt_y,image_xscale,image_yscale,0, shirt_color,1);
-		}
-		//front leg
-		if (state == "idle") {
-			/*
-			draw_sprite_ext(sprHuman_Leg_Idle,0,x,y,image_xscale,image_yscale,0,skin_color,1);
-			draw_sprite_ext(sprHuman_Pants_Idle_Pants,0,pants_x,pants_y,image_xscale,image_yscale,0,pants_color,1);
-			draw_sprite_ext(sprHuman_Pants_Idle_Shoes,0,shoes_x,shoes_y,image_xscale,image_yscale,0,shoes_color,1);
-			//front arm
-			draw_sprite_ext(sprHuman_Arm_Idle,img_idx_body,x,y,image_xscale,image_yscale,0,skin_color,1); 
-			draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt,shirt_x,shirt_y,image_xscale,image_yscale,0, shirt_color,1);
-		*/
+			draw_sprite_ext(sprHuman_Shirt,img_idx_shirt,shirt_x,shirt_y,image_xscale,image_yscale,angle, shirt_color,1);
 		}
 		//front limbs
 		if (state=="walk") {

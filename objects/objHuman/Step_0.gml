@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-  img_idx_body=image_index;
+ img_idx_body=image_index;
  img_idx_pants=image_index;
  img_idx_shirt_sleeves=image_index;
  img_idx_shoes=image_index;
@@ -11,6 +11,13 @@
  img_idx_nose=0;
  img_idx_hair=0;
  img_idx_hair=0;
+ 
+ if (dir=="left") {
+	 angle=hsp;
+ } 
+ if (dir=="right") {
+	 angle=-hsp;
+ }
  
  // Apply gravity
 if !is_on_ground {
@@ -47,31 +54,31 @@ if state == "idle" {
     }
 } else if state == "walk" {
     // Move in the chosen direction
-    speed = 2; // Slow speed
+    hsp = 2; // Slow speed
     if dir == "left" {
-        x -= speed;
+        x -= hsp;
     } else if dir == "right" {
-        x += speed;
+        x += hsp;
     }
 
     // Randomly decide to stop walking
     if irandom_range(0, 100) < 2 {
         state = "idle";
-        speed = 0;
+        hsp = 0;
     }
 } else if state == "panic" {
     // Panic behavior: Fast, erratic movement
-    speed = 4;
+    hsp = 4;
     if dir == "left" {
-        x -= speed;
+        x -= hsp;
     } else {
-        x += speed;
+        x += hsp;
     }
 
     // Add logic to exit the panic state
     if panic_cooldown <= 0 {
         state = "idle";
-        speed = 0;
+        hsp = 0;
     } else {
         panic_cooldown -= 1;
     }
@@ -105,8 +112,8 @@ if (dir=="left") {
 			wpn_dir=90;
 	}
 	
-head_x = x + lengthdir_x(75 * scale, 90);
-head_y = y + lengthdir_y(75 * scale, 90);
+head_x = x + lengthdir_x(75 * scale, 90+angle);
+head_y = y + lengthdir_y(75 * scale, 90+angle);
 
 eyes_x = head_x + lengthdir_x(60 * scale, 122);
 eyes_y = head_y + lengthdir_y(60 * scale, 122);
@@ -136,19 +143,19 @@ pants_y = y + lengthdir_y(0 * scale, 235);
 skirt_x = x + lengthdir_x(50 * scale, 270);
 skirt_y = y + lengthdir_y(50 * scale, 270);
 
-arm_back_x = x + lengthdir_x(50 * scale, 120);
-arm_back_y = y + lengthdir_y(50 * scale, 120);
-arm_front_x = x + lengthdir_x(50 * scale, 37);
-arm_front_y = y + lengthdir_y(50 * scale, 37);
+arm_back_x = x + lengthdir_x(50 * scale, 120+angle);
+arm_back_y = y + lengthdir_y(50 * scale, 120+angle);
+arm_front_x = x + lengthdir_x(50 * scale, 37+angle);
+arm_front_y = y + lengthdir_y(50 * scale, 37+angle);
 fist_back_x = arm_back_x + lengthdir_x(65,armB_dir+12);
 fist_back_y = arm_back_y + lengthdir_y(65,armB_dir+12);
 fist_front_x = arm_front_x + lengthdir_x(65,arm_dir+12);
 fist_front_y = arm_front_y + lengthdir_y(65,arm_dir+12);
 
-leg_back_x = x + lengthdir_x(50 * scale, 255);
-leg_back_y = y + lengthdir_y(50 * scale, 255);
-leg_front_x = x + lengthdir_x(60 * scale, 305);
-leg_front_y = y + lengthdir_y(60 * scale, 305);
+leg_back_x = x + lengthdir_x(50 * scale, 255+angle);
+leg_back_y = y + lengthdir_y(50 * scale, 255+angle);
+leg_front_x = x + lengthdir_x(60 * scale, 305+angle);
+leg_front_y = y + lengthdir_y(60 * scale, 305+angle);
 foot_back_x = leg_back_x + lengthdir_x(8 * scale,270);
 foot_back_y = leg_back_y + lengthdir_y(8 * scale,270);
 foot_front_x = leg_front_x + lengthdir_x(8 * scale,270);
@@ -200,17 +207,17 @@ shirt_y = y + lengthdir_y(10 * scale, 40);
 
 pants_x = x + lengthdir_x(0 * scale, -55);
 pants_y = y + lengthdir_y(0 * scale, -55);
-skirt_x = x + lengthdir_x(50 * scale, 270);
-skirt_y = y + lengthdir_y(50 * scale, 270);
+skirt_x = x + lengthdir_x(50 * scale, 270+angle);
+skirt_y = y + lengthdir_y(50 * scale, 270+angle);
 
 arm_back_x = x + lengthdir_x(50 * scale, 60);
 arm_back_y = y + lengthdir_y(50 * scale, 60);
 arm_front_x = x + lengthdir_x(50 * scale, 143);
 arm_front_y = y + lengthdir_y(50 * scale, 143);
-fist_back_x = arm_back_x + lengthdir_x(65,armB_dir-12);
-fist_back_y = arm_back_y + lengthdir_y(65,armB_dir-12);
-fist_front_x = arm_front_x + lengthdir_x(65,arm_dir-12);
-fist_front_y = arm_front_y + lengthdir_y(65,arm_dir-12);
+fist_back_x = arm_back_x + lengthdir_x(65 * scale,armB_dir-12);
+fist_back_y = arm_back_y + lengthdir_y(65 * scale,armB_dir-12);
+fist_front_x = arm_front_x + lengthdir_x(65 * scale,arm_dir-12);
+fist_front_y = arm_front_y + lengthdir_y(65 * scale,arm_dir-12);
 
 leg_back_x = x + lengthdir_x(50 * scale, 285);
 leg_back_y = y + lengthdir_y(50 * scale, 285);

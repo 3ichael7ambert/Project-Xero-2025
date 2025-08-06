@@ -13,11 +13,19 @@ is_on_ground = false; // Is the NPC standing on the ground?
 
 target=obj_Player1;
 
+if room==rmCity {
+	scale=.2;
+} else {
+	scale=1;
+}
+
 mood="calm";
 eyes_mood="calm";
 mouth_mood="calm";
+angle=0;
 
-scale=.8;
+hsp=0;
+
 image_xscale=scale;
 image_yscale=scale;
 
@@ -59,19 +67,44 @@ image_yscale=scale;
 			break;
 	}
 	
+	shirtless = random(100);
+	pantsless = random(100);
+	hat_chance = random(100);
+	
 gender=choose("male","female");
 
-shirt_style=choose("long","short","none");
-hat_style=choose("none","backwards","beanie","forwards","bandana");
+if (shirtless>15) {
+	shirt_style=choose("long","short");
+} else {	
+	shirt_style=choose("long","short","none");
+}
+
+
+	
+
 shoes_style=choose("none","sneakers");
 
 if (gender=="male") {
-	pants_style=choose("long","shortw","none");
+	if (shirt_style="none" && pantsless<15) {
+		pants_style=choose("long","shorts","none");
+	} else {
+		pants_style=choose("long","shorts");
+	}
 	hair_style=choose("long","short","bald","braids","long2","short2");
 }
 if (gender=="female") {
-	pants_style=choose("long","shorts","skirt","none");
+	if (shirt_style="none" && pantsless<15) {
+		pants_style=choose("long","shorts","skirt","none");
+	} else {
+		pants_style=choose("long","shorts","skirt","none");
+		}	
 	hair_style=choose("long","short","braids","long2","short2");
+}
+
+if ((hair_style=="short") || (hair_style=="long")) && (hat_chance<15) {
+	hat_style=choose("none","backwards","beanie","forwards","bandana");
+} else {
+	hat_style="none";
 }
 
  img_idx_body=image_index;

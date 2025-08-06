@@ -1,9 +1,13 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-
+randomize();
+depth=-10000;
 /// @description Create objects
-
+for (i=0;i<50;i++) {
+	var a=instance_create(random(room_width),3533,objHuman);
+	a.depth=-10000;
+}
 
 //
 //init
