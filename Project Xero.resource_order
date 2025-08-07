@@ -308,6 +308,8 @@
     {"name":"init_sys_camera","order":6,"path":"scripts/init_sys_camera/init_sys_camera.yy",},
     {"name":"InputManager","order":8,"path":"scripts/InputManager/InputManager.yy",},
     {"name":"MenuManager","order":9,"path":"scripts/MenuManager/MenuManager.yy",},
+    {"name":"MiissonManager","order":237,"path":"scripts/MiissonManager/MiissonManager.yy",},
+    {"name":"mission_sq001_complete_callback","order":238,"path":"scripts/mission_sq001_complete_callback/mission_sq001_complete_callback.yy",},
     {"name":"mission_system_advanced","order":10,"path":"scripts/mission_system_advanced/mission_system_advanced.yy",},
     {"name":"move_jet","order":13,"path":"scripts/move_jet/move_jet.yy",},
     {"name":"move","order":2,"path":"scripts/move/move.yy",},

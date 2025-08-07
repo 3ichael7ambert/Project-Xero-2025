@@ -26,6 +26,26 @@ angle=0;
 
 hsp=0;
 
+//mission
+has_mission=choose(true,false);
+spin_angle = 0;
+// old mission
+mission_num=0;
+
+mission_id = "collect_10_parts";
+mission_text = "Collect 10 parts scattered around the map.";
+mission_active = false;
+mission_completed = false;
+
+interaction_range = 48;
+show_msg = false;
+
+// Support multiple control types
+target = obj_Player1;
+
+
+//end mission
+
 image_xscale=scale;
 image_yscale=scale;
 

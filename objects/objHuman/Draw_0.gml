@@ -233,3 +233,37 @@ switch (state) {
 			
 	}
 //hat_style=choose("none","backwards","beanie","forwards","bandana");
+
+if (has_mission)
+{
+    var cx = x;
+    var cy = y - sprite_height - 10; // Above head
+    var r = 12;
+
+    var scale_y = sin(degtorad(spin_angle)); // Simulate horizontal spin
+    var flatten = 0.5; // How flat the spin gets (1 = full height, 0 = flat)
+
+    var y_scale = scale_y * flatten;
+
+    var x1 = cx - r;
+    var y1 = cy - y_scale * r;
+
+    var x2 = cx + r;
+    var y2 = cy - y_scale * r;
+
+    var x3 = cx;
+    var y3 = cy + y_scale * r;
+
+    draw_set_color(c_aqua);
+    draw_triangle(x1, y1, x2, y2, x3, y3, true); // true = filled
+	
+	///
+	if (show_msg && !global.mission_active && distance_to_object(target)<50) {
+    draw_text(x, y - 32, "Press [Enter] or (A) to accept mission");
+	}
+
+	if (mission_active) {
+	    draw_text(x, y - 48, "Mission Active");
+	}
+
+}

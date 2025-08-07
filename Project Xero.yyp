@@ -385,6 +385,8 @@
     {"id":{"name":"InputManager","path":"scripts/InputManager/InputManager.yy",},},
     {"id":{"name":"instance_create","path":"scripts/instance_create/instance_create.yy",},},
     {"id":{"name":"MenuManager","path":"scripts/MenuManager/MenuManager.yy",},},
+    {"id":{"name":"MiissonManager","path":"scripts/MiissonManager/MiissonManager.yy",},},
+    {"id":{"name":"mission_sq001_complete_callback","path":"scripts/mission_sq001_complete_callback/mission_sq001_complete_callback.yy",},},
     {"id":{"name":"mission_system_advanced","path":"scripts/mission_system_advanced/mission_system_advanced.yy",},},
     {"id":{"name":"move_jet","path":"scripts/move_jet/move_jet.yy",},},
     {"id":{"name":"move","path":"scripts/move/move.yy",},},
