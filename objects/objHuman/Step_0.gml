@@ -241,6 +241,24 @@ foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
 }
 
 
+//target
+if (instance_exists(obj_Player1) {
+	// Assume you're looking for the closest obj_enemy
+	var closest = noone;
+	var closest_dist = 100; // a large number
+
+	// Loop through all instances of obj_enemy
+	with (obj_Player1) {
+	    var d = point_distance(other.x, other.y, x, y);
+	    if (d < closest_dist) {
+	        closest = id;
+	        closest_dist = d;
+	    }
+	}
+	// Set the target
+	target = closest;	
+}
+
 //mision
 
 if (instance_exists(target)) {

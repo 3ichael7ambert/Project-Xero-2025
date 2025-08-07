@@ -184,6 +184,7 @@
     {"id":{"name":"objBuilding_back","path":"objects/objBuilding_back/objBuilding_back.yy",},},
     {"id":{"name":"objBuilding","path":"objects/objBuilding/objBuilding.yy",},},
     {"id":{"name":"objBullet_Enemy","path":"objects/objBullet_Enemy/objBullet_Enemy.yy",},},
+    {"id":{"name":"objBullet_Human","path":"objects/objBullet_Human/objBullet_Human.yy",},},
     {"id":{"name":"objBullet","path":"objects/objBullet/objBullet.yy",},},
     {"id":{"name":"objCamera_Infinite","path":"objects/objCamera_Infinite/objCamera_Infinite.yy",},},
     {"id":{"name":"objCamera","path":"objects/objCamera/objCamera.yy",},},

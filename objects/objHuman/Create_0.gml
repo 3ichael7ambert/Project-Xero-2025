@@ -24,12 +24,17 @@ eyes_mood="calm";
 mouth_mood="calm";
 angle=0;
 
+poi="none";
+
 hsp=0;
+
+
 
 //mission
 has_mission=choose(true,false);
 spin_angle = 0;
 // old mission
+/*
 mission_num=0;
 
 mission_id = "collect_10_parts";
@@ -39,9 +44,8 @@ mission_completed = false;
 
 interaction_range = 48;
 show_msg = false;
-
+*/
 // Support multiple control types
-target = obj_Player1;
 
 
 //end mission

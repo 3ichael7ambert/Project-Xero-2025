@@ -236,6 +236,7 @@ switch (state) {
 
 if (has_mission)
 {
+	//triangle
     var cx = x;
     var cy = y - sprite_height - 10; // Above head
     var r = 12;

@@ -1,0 +1,2 @@
+attacking=true;
+poi="human";
