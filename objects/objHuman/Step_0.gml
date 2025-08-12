@@ -24,6 +24,29 @@ if (spin_angle >= 360) spin_angle -= 360;
 	 angle=-hsp;
  }
  
+ //nearest
+if instance_exists(obj_Player1)  {
+	player_nearest = instance_nearest(x,y,obj_Player1);
+} else {
+	player_nearest = noone; 
+}
+if instance_exists(obj_Enemy_Robot)  {
+	robot_nearest = instance_nearest(x,y,obj_Enemy_Robot);
+} else {
+	robot_nearest = noone;
+}
+
+if !instance_exists(human_nearest)  {
+	human_nearest = noone;
+}
+if (distance_to_object(player_nearest) <= distance_to_object(robot_nearest)) && (!target==human_nearest) {
+	target = player_nearest;
+}
+if (distance_to_object(player_nearest) > distance_to_object(robot_nearest)) && (!target==human_nearest)  {
+	target = robot_nearest;
+}
+
+ 
  // Apply gravity
 if !is_on_ground {
     vsp += grav; // Increase vertical speed due to gravity
@@ -152,10 +175,10 @@ arm_back_x = x + lengthdir_x(50 * scale, 120+angle);
 arm_back_y = y + lengthdir_y(50 * scale, 120+angle);
 arm_front_x = x + lengthdir_x(50 * scale, 37+angle);
 arm_front_y = y + lengthdir_y(50 * scale, 37+angle);
-fist_back_x = arm_back_x + lengthdir_x(65,armB_dir+12);
-fist_back_y = arm_back_y + lengthdir_y(65,armB_dir+12);
-fist_front_x = arm_front_x + lengthdir_x(65,arm_dir+12);
-fist_front_y = arm_front_y + lengthdir_y(65,arm_dir+12);
+fist_back_x = arm_back_x + lengthdir_x(65 * scale,armB_dir+12);
+fist_back_y = arm_back_y + lengthdir_y(65 * scale,armB_dir+12);
+fist_front_x = arm_front_x + lengthdir_x(65 * scale,arm_dir+12);
+fist_front_y = arm_front_y + lengthdir_y(65 * scale,arm_dir+12);
 
 leg_back_x = x + lengthdir_x(50 * scale, 255+angle);
 leg_back_y = y + lengthdir_y(50 * scale, 255+angle);
@@ -241,31 +264,17 @@ foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
 }
 
 
-//target
-if (instance_exists(obj_Player1) {
-	// Assume you're looking for the closest obj_enemy
-	var closest = noone;
-	var closest_dist = 100; // a large number
 
-	// Loop through all instances of obj_enemy
-	with (obj_Player1) {
-	    var d = point_distance(other.x, other.y, x, y);
-	    if (d < closest_dist) {
-	        closest = id;
-	        closest_dist = d;
-	    }
-	}
-	// Set the target
-	target = closest;	
-}
+
 
 //mision
 
-if (instance_exists(target)) {
+if (instance_exists(player_target)) {
     var dist = point_distance(x, y, target.x, target.y);
     
     show_msg = (dist < interaction_range);
     
+	/*
     if (show_message && !global.mission_active) {
         var key_pressed = keyboard_check_pressed(vk_enter);
         var gamepad_pressed = gamepad_button_check_pressed(0, gp_face1); // A button
@@ -279,4 +288,5 @@ if (instance_exists(target)) {
           //  instance_create_layer(x, y, "Controllers", objMissionController);
         }
     }
+	*/
 }

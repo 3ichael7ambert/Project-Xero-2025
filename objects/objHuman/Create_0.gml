@@ -29,10 +29,17 @@ poi="none";
 hsp=0;
 
 
+player_nearest=noone;
+robot_nearest=noone;
+human_nearest=noone;
+
 
 //mission
 has_mission=choose(true,false);
 spin_angle = 0;
+
+interaction_range = 48;
+mission_active = false;
 // old mission
 /*
 mission_num=0;
