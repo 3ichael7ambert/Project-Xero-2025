@@ -116,11 +116,11 @@ if state == "idle" {
 // If the player is close, panic
 if (instance_exists(target))
 {
-if distance_to_object(target) < 100 {
-    state = "panic";
-    panic_cooldown = 100; // Number of steps to stay in panic state
-    dir = (x < target.x) ? "left" : "right";
-}
+	if distance_to_object(target) < 100 {
+	    state = "panic";
+	    panic_cooldown = 100; // Number of steps to stay in panic state
+	    dir = (x < target.x) ? "left" : "right";
+	}
 }
 
 
@@ -140,57 +140,57 @@ if (dir=="left") {
 			wpn_dir=90;
 	}
 	
-head_x = x + lengthdir_x(75 * scale, 90+angle);
-head_y = y + lengthdir_y(75 * scale, 90+angle);
+	head_x = x + lengthdir_x(75 * scale, 90+angle);
+	head_y = y + lengthdir_y(75 * scale, 90+angle);
 
-eyes_x = head_x + lengthdir_x(60 * scale, 122);
-eyes_y = head_y + lengthdir_y(60 * scale, 122);
+	eyes_x = head_x + lengthdir_x(60 * scale, 122);
+	eyes_y = head_y + lengthdir_y(60 * scale, 122);
 
-eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, 200);
-eyes_pupils_y = eyes_y + lengthdir_y(15 * scale, 200);
+	eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, 200);
+	eyes_pupils_y = eyes_y + lengthdir_y(15 * scale, 200);
 
-eyelids_x = eyes_x + lengthdir_x(0 * scale, 105);
-eyelids_y = eyes_y + lengthdir_y(0 * scale, 105);
-mouth_x = head_x + lengthdir_x(30 * scale, 165);
-mouth_y = head_y + lengthdir_y(30 * scale, 165);
-nose_x = head_x + lengthdir_x(50 * scale, 105);
-nose_y = head_y + lengthdir_y(50 * scale, 105);
+	eyelids_x = eyes_x + lengthdir_x(0 * scale, 105);
+	eyelids_y = eyes_y + lengthdir_y(0 * scale, 105);
+	mouth_x = head_x + lengthdir_x(30 * scale, 165);
+	mouth_y = head_y + lengthdir_y(30 * scale, 165);
+	nose_x = head_x + lengthdir_x(50 * scale, 105);
+	nose_y = head_y + lengthdir_y(50 * scale, 105);
 
-eyebrows_x = eyes_x + lengthdir_x(20 * scale, 80);
-eyebrows_y = eyes_y + lengthdir_y(20 * scale, 80);
+	eyebrows_x = eyes_x + lengthdir_x(20 * scale, 80);
+	eyebrows_y = eyes_y + lengthdir_y(20 * scale, 80);
 
 
-hair_x = head_x + lengthdir_x(53 * scale, 100);
-hair_y = head_y + lengthdir_y(53 * scale, 100);
+	hair_x = head_x + lengthdir_x(53 * scale, 100);
+	hair_y = head_y + lengthdir_y(53 * scale, 100);
 
-shirt_x = x + lengthdir_x(10 * scale, 120);
-shirt_y = y + lengthdir_y(10 * scale, 120);
+	shirt_x = x + lengthdir_x(10 * scale, 120);
+	shirt_y = y + lengthdir_y(10 * scale, 120);
 
-pants_x = x + lengthdir_x(0 * scale, 235);
-pants_y = y + lengthdir_y(0 * scale, 235);
-skirt_x = x + lengthdir_x(50 * scale, 270);
-skirt_y = y + lengthdir_y(50 * scale, 270);
+	pants_x = x + lengthdir_x(0 * scale, 235);
+	pants_y = y + lengthdir_y(0 * scale, 235);
+	skirt_x = x + lengthdir_x(50 * scale, 270);
+	skirt_y = y + lengthdir_y(50 * scale, 270);
 
-arm_back_x = x + lengthdir_x(50 * scale, 120+angle);
-arm_back_y = y + lengthdir_y(50 * scale, 120+angle);
-arm_front_x = x + lengthdir_x(50 * scale, 37+angle);
-arm_front_y = y + lengthdir_y(50 * scale, 37+angle);
-fist_back_x = arm_back_x + lengthdir_x(65 * scale,armB_dir+12);
-fist_back_y = arm_back_y + lengthdir_y(65 * scale,armB_dir+12);
-fist_front_x = arm_front_x + lengthdir_x(65 * scale,arm_dir+12);
-fist_front_y = arm_front_y + lengthdir_y(65 * scale,arm_dir+12);
+	arm_back_x = x + lengthdir_x(50 * scale, 120+angle);
+	arm_back_y = y + lengthdir_y(50 * scale, 120+angle);
+	arm_front_x = x + lengthdir_x(50 * scale, 37+angle);
+	arm_front_y = y + lengthdir_y(50 * scale, 37+angle);
+	fist_back_x = arm_back_x + lengthdir_x(65 * scale,armB_dir+12);
+	fist_back_y = arm_back_y + lengthdir_y(65 * scale,armB_dir+12);
+	fist_front_x = arm_front_x + lengthdir_x(65 * scale,arm_dir+12);
+	fist_front_y = arm_front_y + lengthdir_y(65 * scale,arm_dir+12);
 
-leg_back_x = x + lengthdir_x(50 * scale, 255+angle);
-leg_back_y = y + lengthdir_y(50 * scale, 255+angle);
-leg_front_x = x + lengthdir_x(60 * scale, 305+angle);
-leg_front_y = y + lengthdir_y(60 * scale, 305+angle);
-foot_back_x = leg_back_x + lengthdir_x(8 * scale,270);
-foot_back_y = leg_back_y + lengthdir_y(8 * scale,270);
-foot_front_x = leg_front_x + lengthdir_x(8 * scale,270);
-foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
+	leg_back_x = x + lengthdir_x(50 * scale, 255+angle);
+	leg_back_y = y + lengthdir_y(50 * scale, 255+angle);
+	leg_front_x = x + lengthdir_x(60 * scale, 305+angle);
+	leg_front_y = y + lengthdir_y(60 * scale, 305+angle);
+	foot_back_x = leg_back_x + lengthdir_x(8 * scale,270);
+	foot_back_y = leg_back_y + lengthdir_y(8 * scale,270);
+	foot_front_x = leg_front_x + lengthdir_x(8 * scale,270);
+	foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
 
-//shoes_x = x + lengthdir_x(40 * scale, 270);
-//shoes_y = y + lengthdir_y(40 * scale, 270);
+	//shoes_x = x + lengthdir_x(40 * scale, 270);
+	//shoes_y = y + lengthdir_y(40 * scale, 270);
 
 
 			
@@ -207,57 +207,57 @@ if (dir=="right") {
 			arm_dir=270;
 			}
 		
-head_x = x + lengthdir_x(75 * scale, 90);
-head_y = y + lengthdir_y(75 * scale, 90);
+	head_x = x + lengthdir_x(75 * scale, 90);
+	head_y = y + lengthdir_y(75 * scale, 90);
 
-eyes_x = head_x + lengthdir_x(60 * scale, 58);
-eyes_y = head_y + lengthdir_y(60 * scale, 58);
+	eyes_x = head_x + lengthdir_x(60 * scale, 58);
+	eyes_y = head_y + lengthdir_y(60 * scale, 58);
 
-eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, -20);
-eyes_pupils_y = eyes_y + lengthdir_y(15 * scale, -20);
+	eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, -20);
+	eyes_pupils_y = eyes_y + lengthdir_y(15 * scale, -20);
 
-eyelids_x = eyes_x + lengthdir_x(0 * scale, 75);
-eyelids_y = eyes_y + lengthdir_y(0 * scale, 75);
-mouth_x = head_x + lengthdir_x(30 * scale, 15);
-mouth_y = head_y + lengthdir_y(30 * scale, 15);
-nose_x = head_x + lengthdir_x(50 * scale, 75);
-nose_y = head_y + lengthdir_y(50 * scale, 75);
+	eyelids_x = eyes_x + lengthdir_x(0 * scale, 75);
+	eyelids_y = eyes_y + lengthdir_y(0 * scale, 75);
+	mouth_x = head_x + lengthdir_x(30 * scale, 15);
+	mouth_y = head_y + lengthdir_y(30 * scale, 15);
+	nose_x = head_x + lengthdir_x(50 * scale, 75);
+	nose_y = head_y + lengthdir_y(50 * scale, 75);
 
-eyebrows_x = eyes_x + lengthdir_x(20 * scale, 100);
-eyebrows_y = eyes_y + lengthdir_y(20 * scale, 100);
+	eyebrows_x = eyes_x + lengthdir_x(20 * scale, 100);
+	eyebrows_y = eyes_y + lengthdir_y(20 * scale, 100);
 
 
-hair_x = head_x + lengthdir_x(53 * scale, 80);
-hair_y = head_y + lengthdir_y(53 * scale, 80);
+	hair_x = head_x + lengthdir_x(53 * scale, 80);
+	hair_y = head_y + lengthdir_y(53 * scale, 80);
 
-shirt_x = x + lengthdir_x(10 * scale, 40);
-shirt_y = y + lengthdir_y(10 * scale, 40);
+	shirt_x = x + lengthdir_x(10 * scale, 40);
+	shirt_y = y + lengthdir_y(10 * scale, 40);
 
-pants_x = x + lengthdir_x(0 * scale, -55);
-pants_y = y + lengthdir_y(0 * scale, -55);
-skirt_x = x + lengthdir_x(50 * scale, 270+angle);
-skirt_y = y + lengthdir_y(50 * scale, 270+angle);
+	pants_x = x + lengthdir_x(0 * scale, -55);
+	pants_y = y + lengthdir_y(0 * scale, -55);
+	skirt_x = x + lengthdir_x(50 * scale, 270+angle);
+	skirt_y = y + lengthdir_y(50 * scale, 270+angle);
 
-arm_back_x = x + lengthdir_x(50 * scale, 60);
-arm_back_y = y + lengthdir_y(50 * scale, 60);
-arm_front_x = x + lengthdir_x(50 * scale, 143);
-arm_front_y = y + lengthdir_y(50 * scale, 143);
-fist_back_x = arm_back_x + lengthdir_x(65 * scale,armB_dir-12);
-fist_back_y = arm_back_y + lengthdir_y(65 * scale,armB_dir-12);
-fist_front_x = arm_front_x + lengthdir_x(65 * scale,arm_dir-12);
-fist_front_y = arm_front_y + lengthdir_y(65 * scale,arm_dir-12);
+	arm_back_x = x + lengthdir_x(50 * scale, 60);
+	arm_back_y = y + lengthdir_y(50 * scale, 60);
+	arm_front_x = x + lengthdir_x(50 * scale, 143);
+	arm_front_y = y + lengthdir_y(50 * scale, 143);
+	fist_back_x = arm_back_x + lengthdir_x(65 * scale,armB_dir-12);
+	fist_back_y = arm_back_y + lengthdir_y(65 * scale,armB_dir-12);
+	fist_front_x = arm_front_x + lengthdir_x(65 * scale,arm_dir-12);
+	fist_front_y = arm_front_y + lengthdir_y(65 * scale,arm_dir-12);
 
-leg_back_x = x + lengthdir_x(50 * scale, 285);
-leg_back_y = y + lengthdir_y(50 * scale, 285);
-leg_front_x = x + lengthdir_x(60 * scale, 235);
-leg_front_y = y + lengthdir_y(60 * scale, 235);
-foot_back_x = leg_back_x + lengthdir_x(8 * scale,270);
-foot_back_y = leg_back_y + lengthdir_y(8 * scale,270);
-foot_front_x = leg_front_x + lengthdir_x(8 * scale,270);
-foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
+	leg_back_x = x + lengthdir_x(50 * scale, 285);
+	leg_back_y = y + lengthdir_y(50 * scale, 285);
+	leg_front_x = x + lengthdir_x(60 * scale, 235);
+	leg_front_y = y + lengthdir_y(60 * scale, 235);
+	foot_back_x = leg_back_x + lengthdir_x(8 * scale,270);
+	foot_back_y = leg_back_y + lengthdir_y(8 * scale,270);
+	foot_front_x = leg_front_x + lengthdir_x(8 * scale,270);
+	foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
 
-//shoes_x = x + lengthdir_x(40 * scale, 270);
-//shoes_y = y + lengthdir_y(40 * scale, 270);
+	//shoes_x = x + lengthdir_x(40 * scale, 270);
+	//shoes_y = y + lengthdir_y(40 * scale, 270);
 
 
 			

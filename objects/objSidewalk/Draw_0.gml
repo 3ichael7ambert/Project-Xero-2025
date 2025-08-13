@@ -31,7 +31,7 @@ gpu_set_zwriteenable(true);
  gpu_set_ztestenable(true);
  
  
-draw_sprite_3d(sprSidewalk,0,fenceMatrix);
+draw_sprite_3d(sprSidewalk,6,fenceMatrix);
 //sidewalk
 draw_sprite_3d(sprSidewalk,0,swMatrix1);
 draw_sprite_3d(sprSidewalk,0,swMatrix2);

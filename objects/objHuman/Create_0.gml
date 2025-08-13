@@ -28,7 +28,7 @@ poi="none";
 
 hsp=0;
 
-
+player_target=noone;
 player_nearest=noone;
 robot_nearest=noone;
 human_nearest=noone;
