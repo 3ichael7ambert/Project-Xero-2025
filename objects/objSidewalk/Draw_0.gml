@@ -27,6 +27,7 @@ draw_sprite_pos(sprSidewalk,0,x-hdepth,y+64,x+64-hdepth,y+64,x+64,y+72,x,y+72,1)
 */
 //fence
 
+/*
 gpu_set_zwriteenable(true);
  gpu_set_ztestenable(true);
  
@@ -50,3 +51,4 @@ gpu_set_zwriteenable(false);
 gpu_set_ztestenable(false);
 
 matrix_set(matrix_world, matrix_build_identity());
+ * */

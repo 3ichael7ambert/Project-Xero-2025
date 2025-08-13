@@ -104,7 +104,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.13.0.190",
+    "IDEVersion":"2024.13.1.193",
   },
   "name":"Project Xero",
   "resources":[
@@ -157,6 +157,7 @@
     {"id":{"name":"obj_block3D","path":"objects/obj_block3D/obj_block3D.yy",},},
     {"id":{"name":"obj_Boundary_bike","path":"objects/obj_Boundary_bike/obj_Boundary_bike.yy",},},
     {"id":{"name":"obj_box","path":"objects/obj_box/obj_box.yy",},},
+    {"id":{"name":"obj_building_extractor","path":"objects/obj_building_extractor/obj_building_extractor.yy",},},
     {"id":{"name":"obj_CollisionParent_bike","path":"objects/obj_CollisionParent_bike/obj_CollisionParent_bike.yy",},},
     {"id":{"name":"obj_Controller_bike","path":"objects/obj_Controller_bike/obj_Controller_bike.yy",},},
     {"id":{"name":"obj_Enemy_Robot_Rayu","path":"objects/obj_Enemy_Robot_Rayu/obj_Enemy_Robot_Rayu.yy",},},
@@ -469,6 +470,7 @@
     {"id":{"name":"spawn_wave","path":"scripts/spawn_wave/spawn_wave.yy",},},
     {"id":{"name":"stick_to","path":"scripts/stick_to/stick_to.yy",},},
     {"id":{"name":"texture_set_repeat","path":"scripts/texture_set_repeat/texture_set_repeat.yy",},},
+    {"id":{"name":"Tile3d","path":"scripts/Tile3d/Tile3d.yy",},},
     {"id":{"name":"update_object","path":"scripts/update_object/update_object.yy",},},
     {"id":{"name":"Vector2","path":"scripts/Vector2/Vector2.yy",},},
     {"id":{"name":"world_to_screen","path":"scripts/world_to_screen/world_to_screen.yy",},},

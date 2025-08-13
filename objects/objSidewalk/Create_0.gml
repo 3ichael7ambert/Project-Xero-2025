@@ -14,3 +14,7 @@ swMatrix7 = build_drawing_matrix(x,y,-64,90,0,0);
 
 swMatrixCurb = build_drawing_matrix(x,y,-128,0,0,0);
 swMatrixStreet = build_drawing_matrix(x,y+8,-128,90,0,0);
+
+transform_selections = [
+	fenceMatrix,swMatrix1,swMatrix2,swMatrix3,swMatrix4,swMatrix5,swMatrix6,swMatrix7,swMatrixCurb,swMatrixStreet
+];

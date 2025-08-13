@@ -46,3 +46,8 @@ leftMatrix3 = build_drawing_matrix(x, y, 492, 0, 45, 0);
 leftMatrix1b = build_drawing_matrix(x,y,364,0,90,0);
 leftMatrix2b = build_drawing_matrix(x,y,428,0,90,0);
 leftMatrix3b = build_drawing_matrix(x,y,492,0,90,0);
+
+transform_selections = [
+	roofMatrix,roofMatrix2,roofMatrix3,frontMatrix,rightMatrix1,rightMatrix2,rightMatrix3,rightMatrix1b,
+	rightMatrix2b,rightMatrix3b,leftMatrix1,leftMatrix2,leftMatrix3,leftMatrix1b,leftMatrix2b,leftMatrix3b
+];
