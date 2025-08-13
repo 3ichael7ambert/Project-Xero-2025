@@ -8,7 +8,7 @@ with(objSidewalk){
 	
 	/// add in all faces
 	for(var i = 0; i < _len; i++){
-		other.builder.add_tile_ext(transform_selections[i], sprite_width, sprite_height, sprSidewalk, 0);
+		other.builder.add_tile_ext(transform_selections[i], sprite_width, sprite_height, sprSidewalk, transform_index[i]);
 	}
 	
 }

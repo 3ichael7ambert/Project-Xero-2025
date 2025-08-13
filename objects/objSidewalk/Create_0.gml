@@ -18,3 +18,6 @@ swMatrixStreet = build_drawing_matrix(x,y+8,-128,90,0,0);
 transform_selections = [
 	fenceMatrix,swMatrix1,swMatrix2,swMatrix3,swMatrix4,swMatrix5,swMatrix6,swMatrix7,swMatrixCurb,swMatrixStreet
 ];
+
+transform_index = array_create(10, 0);
+transform_index[0] = 6;
