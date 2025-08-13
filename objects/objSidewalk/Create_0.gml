@@ -21,3 +21,7 @@ transform_selections = [
 
 transform_index = array_create(10, 0);
 transform_index[0] = 6;
+
+// draw_sprite_3d_pos(sprSidewalk,0,swMatrixCurb,0,0,64,0,64,8,0,8);
+position_update = array_create(10, -1);
+position_update[8] = [0,0,64,0,64,8,0,8];
