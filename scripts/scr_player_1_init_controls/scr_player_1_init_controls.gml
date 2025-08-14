@@ -45,7 +45,7 @@ else if (gamepad==false) {
     move_down = keyboard_check(vk_down);
     
 	
-	 talk_button = keyboard_check(ord(vk_enter));
+	 talk_button = keyboard_check(vk_enter);
 	 
      shoot_button = keyboard_check(ord("A")) || mouse_check_button(mb_left);
 	 shoot_button_pressed = keyboard_check_pressed(ord("A"));

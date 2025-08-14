@@ -284,6 +284,8 @@ if (distance_to_object(player_nearest)<100*scale) && (has_mission==true) {
 	if (player_nearest.talk_button) {
 		mission_active=true;
 	}*/
+} else if (has_mission==true) && (distance_to_object(player_nearest)>100*scale) {
+	mission_indicator_color=c_aqua;
 }
 
 if (mission_active==true) {
@@ -291,7 +293,7 @@ if (mission_active==true) {
 	}
 
 
-
+/*
 if (has_mission) {
 	if (mission_active) {
 		draw_text(x,y,"ACTIVE");
@@ -299,3 +301,4 @@ if (has_mission) {
 		draw_text(x,y,"INACTIVE");
 	}
 }
+*/
