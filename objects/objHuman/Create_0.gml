@@ -12,6 +12,7 @@ vsp = 0; // Vertical speed
 is_on_ground = false; // Is the NPC standing on the ground?
 
 target=obj_Player1;
+mission_indicator_color=c_aqua;
 
 if room==rmCity {
 	scale=.2;

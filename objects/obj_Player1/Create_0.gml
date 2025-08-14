@@ -22,7 +22,7 @@ if (gamepad==true) {
 gamepad_num = -1;
 
 scr_player_1_init_controls(gamepad_num);
-
+nearest_human = noone;
 
 //debug
 mouse_x_3d=  mouse_x;//mouse_x_world;

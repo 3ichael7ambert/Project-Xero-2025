@@ -256,7 +256,7 @@ if (has_mission)
     var x3 = cx;
     var y3 = cy + y_scale * r;
 
-    draw_set_color(c_aqua);
+    draw_set_color(mission_indicator_color);
     draw_triangle(x1, y1, x2, y2, x3, y3, true); // true = filled
 	
 	///
@@ -270,4 +270,32 @@ if (has_mission)
 	}
 	*/
 
+}
+
+
+
+//mission
+if (distance_to_object(player_nearest)<100*scale) && (has_mission==true) {
+	state = "idle";
+	if (mission_active==false) {
+		mission_indicator_color=c_fuchsia;
+	}
+	/*
+	if (player_nearest.talk_button) {
+		mission_active=true;
+	}*/
+}
+
+if (mission_active==true) {
+		mission_indicator_color=c_yellow;
+	}
+
+
+
+if (has_mission) {
+	if (mission_active) {
+		draw_text(x,y,"ACTIVE");
+	} else {
+		draw_text(x,y,"INACTIVE");
+	}
 }

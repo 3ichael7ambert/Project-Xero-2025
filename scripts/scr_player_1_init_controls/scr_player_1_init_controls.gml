@@ -10,6 +10,8 @@ if (gamepad_is_connected(gamepad_num)) && (gamepad==true) {
      change_weapon_button = gamepad_button_check_pressed(gamepad_num, gp_shoulderr);
      pause_button = gamepad_button_check_pressed(gamepad_num, gp_start);
 	 
+	 talk_button = gamepad_button_check_pressed(gamepad_num, gp_face1);
+	 
 	 shoot_button_pressed = gamepad_button_check_pressed(gamepad_num, gp_shoulderrb);
 	 shoot_button_released = gamepad_button_check_released(gamepad_num, gp_shoulderrb);
 	 wpn_chg_up = undefined;
@@ -42,6 +44,9 @@ else if (gamepad==false) {
     move_up = keyboard_check(vk_up);
     move_down = keyboard_check(vk_down);
     
+	
+	 talk_button = keyboard_check(ord(vk_enter));
+	 
      shoot_button = keyboard_check(ord("A")) || mouse_check_button(mb_left);
 	 shoot_button_pressed = keyboard_check_pressed(ord("A"));
 	 shoot_button_released = keyboard_check_released(ord("A"));

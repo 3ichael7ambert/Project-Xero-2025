@@ -73,10 +73,12 @@ if place_meeting(x, y, objSidewalk) {
 image_yscale=scale;
 // Step Event
 
+
+
 // Example: Basic AI state transitions
 if state == "idle" {
     // Randomly decide to start walking
-    if irandom_range(0, 100) < 5 {
+    if irandom_range(0, 100) < 5 && (distance_to_object(player_nearest)>100*scale){
         state = "walk";
         dir = choose("left", "right");
     }
