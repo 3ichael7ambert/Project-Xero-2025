@@ -470,7 +470,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		} else {
 			obj_snipe = instance_create(x,y,objSnipe);
 			with (obj_snipe) {
-				parent=obj_Player1;
+				parent=self;
 			}
 		}
 	}else{

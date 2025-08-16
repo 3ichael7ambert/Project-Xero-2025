@@ -13,7 +13,7 @@ swMatrix6 = build_drawing_matrix(x,y,0,90,0,0);
 swMatrix7 = build_drawing_matrix(x,y,-64,90,0,0);
 
 //swMatrixCurb = build_drawing_matrix(x,y,-128,0,0,0);
-swMatrixCurb = build_drawing_matrix_scale(x+32,y,-96,0,0,0,1,1,1);
+swMatrixCurb = build_drawing_matrix_scale(x-32,y,-96,0,0,0,1,1,1);
 
 //draw_sprite_3d_pos(sprSidewalk,0,swMatrixCurb,0,0,64,0,64,8,0,8);
 

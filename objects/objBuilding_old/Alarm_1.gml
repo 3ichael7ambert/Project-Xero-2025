@@ -17,7 +17,7 @@ while (!place_free(x, y - gridHeight * 64)) {
 // Set the sprite index for all instances in the grid
 for (var i = 0; i < gridWidth; i++) {
     for (var j = 0; j < gridHeight; j++) {
-        var inst = instance_place(x - i * 64, y - j * 64, objBuilding);
+        var inst = instance_place(x - i * 64, y - j * 64, objBuilding_old);
         
 		//inst.building=building;
 		//inst.subimg=subimg;

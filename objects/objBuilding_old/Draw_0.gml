@@ -5,10 +5,10 @@ gpu_set_zwriteenable(true);
  
  if building==0 {
 	 ///FRONT
-if place_meeting(x+64,y,objBuilding) && place_meeting(x-64,y,objBuilding)
+if place_meeting(x+64,y,objBuilding_old) && place_meeting(x-64,y,objBuilding_old)
 {
 		//ROOF
-	if !place_meeting(x,y-64,objBuilding) 
+	if !place_meeting(x,y-64,objBuilding_old) 
 	{
 
 /*
@@ -29,7 +29,7 @@ if place_meeting(x+64,y,objBuilding) && place_meeting(x-64,y,objBuilding)
 }
 
 ///RIGHT
-if !place_meeting(x+64,y,objBuilding) && place_meeting(x-64,y,objBuilding)
+if !place_meeting(x+64,y,objBuilding_old) && place_meeting(x-64,y,objBuilding_old)
 {
 	
 
@@ -50,7 +50,7 @@ if !place_meeting(x+64,y,objBuilding) && place_meeting(x-64,y,objBuilding)
 	
 
 		//ROOF
-	if !place_meeting(x,y-64,objBuilding) 
+	if !place_meeting(x,y-64,objBuilding_old) 
 	{
 		draw_sprite_3d_pos(sprite,subimg,roofMatrix,0,0,64,0,64,0,0,64);
 		draw_sprite_3d(sprite,subimg,roofMatrix2);
@@ -62,7 +62,7 @@ if !place_meeting(x+64,y,objBuilding) && place_meeting(x-64,y,objBuilding)
 }
 
 /// Left
-if place_meeting(x+64,y,objBuilding) && !place_meeting(x-64,y,objBuilding)
+if place_meeting(x+64,y,objBuilding_old) && !place_meeting(x-64,y,objBuilding_old)
 {
 		var c = sprite_get_width(sprite); // Width of the sprite
 
@@ -80,7 +80,7 @@ if place_meeting(x+64,y,objBuilding) && !place_meeting(x-64,y,objBuilding)
 	draw_sprite_3d_pos(sprite,subimg,x,y,192,0,45,0,0,0,90.5,0,90.5,64,0,64);
 	*/
 			//ROOF
-	if !place_meeting(x,y-64,objBuilding) 
+	if !place_meeting(x,y-64,objBuilding_old) 
 	{
 		draw_sprite_3d_pos(sprite,subimg,roofMatrix,0,0,90.5,0,64,0,64,64);
 		draw_sprite_3d(sprite,subimg,roofMatrix2);
@@ -97,10 +97,10 @@ if place_meeting(x+64,y,objBuilding) && !place_meeting(x-64,y,objBuilding)
 
 
  if building==1 {
-if place_meeting(x+64,y,objBuilding) && place_meeting(x-64,y,objBuilding)
+if place_meeting(x+64,y,objBuilding_old) && place_meeting(x-64,y,objBuilding_old)
 {
 		//ROOF
-	if !place_meeting(x,y-64,objBuilding) 
+	if !place_meeting(x,y-64,objBuilding_old) 
 	{
 		draw_sprite_3d(sprite,subimg,roofMatrix);
 		draw_sprite_3d(sprite,subimg,roofMatrix2);
@@ -117,7 +117,7 @@ if place_meeting(x+64,y,objBuilding) && place_meeting(x-64,y,objBuilding)
 
 
 ///RIGHT
-if !place_meeting(x+64,y,objBuilding) && place_meeting(x-64,y,objBuilding)
+if !place_meeting(x+64,y,objBuilding_old) && place_meeting(x-64,y,objBuilding_old)
 {
 	var c = sprite_get_width(sprite); // Width of the sprite
 	var a = c * dcos(45); //ax
@@ -130,7 +130,7 @@ if !place_meeting(x+64,y,objBuilding) && place_meeting(x-64,y,objBuilding)
 	draw_sprite_3d(sprite,subimg,rightMatrix3b);
 	//draw_sprite_3d_pos(sprite,subimg,x,y,256,0,-45,0,0,0,90.5,0,90.5,64,0,64);
 		//ROOF
-	if !place_meeting(x,y-64,objBuilding) 
+	if !place_meeting(x,y-64,objBuilding_old) 
 	{
 		//draw_sprite_3d_pos(sprite,subimg,x,y,128,90,0,0,0,0,64,0,64,0,0,64);
 		draw_sprite_3d(sprite,subimg,roofMatrix);
@@ -148,7 +148,7 @@ if !place_meeting(x+64,y,objBuilding) && place_meeting(x-64,y,objBuilding)
 
 
 /// Left
-if place_meeting(x+64,y,objBuilding) && !place_meeting(x-64,y,objBuilding)
+if place_meeting(x+64,y,objBuilding_old) && !place_meeting(x-64,y,objBuilding_old)
 {
 		var c = sprite_get_width(sprite); // Width of the sprite
 
@@ -162,7 +162,7 @@ if place_meeting(x+64,y,objBuilding) && !place_meeting(x-64,y,objBuilding)
 	draw_sprite_3d(sprite,subimg,leftMatrix3b);
 	//draw_sprite_3d_pos(sprite,subimg,x,y,192,0,45,0,0,0,90.5,0,90.5,64,0,64);
 			//ROOF
-	if !place_meeting(x,y-64,objBuilding) 
+	if !place_meeting(x,y-64,objBuilding_old) 
 	{
 		//draw_sprite_3d_pos(sprite,subimg,x,y,128,90,0,0,0,0,90.5,0,64,0,64,64);
 		draw_sprite_3d(sprite,subimg,roofMatrix);
