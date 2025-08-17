@@ -36,15 +36,19 @@ window_style = choose(
 						"glass3", //16
 						);
 */
-building_style=choose(2,3,4,5,6,7,8,10,11,12,13,14,15);
-window_style=choose(1,9,16);
-door_style=choose(1,9,16);
+building_style=irandom_range(0,13);
+roof_style=irandom_range(0,13);
+window_style=irandom_range(0,2);
+door_style=irandom_range(0,16);
+window_front_style = irandom_range(0,2);
 
-spr_front = sprSidewalk;  frm_front = building_style;   // facade frame
-spr_side  = sprSidewalk;  frm_side  = building_style;   // side wall frame
-spr_roof  = sprSidewalk;  frm_roof  = building_style;  // roof frame
-spr_window = sprSidewalk; frm_window  = window_style;
-spr_door = sprSidewalk;	  frm_door  = door_style;
+spr_front = sprBuilding_walls;  frm_front = building_style;   // facade frame
+spr_side  = sprBuilding_walls;  frm_side  = building_style;   // side wall frame
+spr_roof  = sprBuilding_roof;  frm_roof  = roof_style;  // roof frame
+spr_window = sprBuilding_windows; frm_window  = window_style;
+spr_door = sprBuilding_door;	  frm_door  = door_style;
+
+spr_store_glass = sprBuilding_windows; frm_store_glass = window_front_style;
 
 
 
