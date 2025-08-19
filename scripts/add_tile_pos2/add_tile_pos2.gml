@@ -1,4 +1,4 @@
-function add_tile_pos(_matrix, _sprite, _frame, _x1, _y1, _x2, _y2, _x3, _y3, _x4, _y4) {
+function add_tile_pos2(_matrix, _sprite, _frame, _x1, _y1, _x2, _y2, _x3, _y3, _x4, _y4) {
         var _tile_struct = {
             matrix: _matrix,
             uvs: sprite_get_uvs(_sprite, _frame),

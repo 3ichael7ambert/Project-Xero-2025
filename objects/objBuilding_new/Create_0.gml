@@ -12,6 +12,8 @@ building_height = irandom_range(7, 11);  // floors
 building_depth  = irandom_range(3,5);                     // tiles “back” from the front face
 building_z      = 10;                     // base Z for the front face (use 0 unless you have a Z system)
 
+
+build_style=2;
 // TEMP: use the same sprite for all parts so they share a texture page.
 // Swap these to real building sprites later (then we’ll add auto-batching).
 /*

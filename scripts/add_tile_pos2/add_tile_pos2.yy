@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"add_tile_pos",
+  "%Name":"add_tile_pos2",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"add_tile_pos",
+  "name":"add_tile_pos2",
   "parent":{
     "name":"Project Xero",
     "path":"Project Xero.yyp",

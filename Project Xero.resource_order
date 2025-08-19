@@ -247,7 +247,7 @@
     {"name":"_clamp","order":242,"path":"scripts/_clamp/_clamp.yy",},
     {"name":"action_inherited","order":1,"path":"scripts/action_inherited/action_inherited.yy",},
     {"name":"action_kill_object","order":2,"path":"scripts/action_kill_object/action_kill_object.yy",},
-    {"name":"add_tile_pos","order":241,"path":"scripts/add_tile_pos/add_tile_pos.yy",},
+    {"name":"add_tile_pos2","order":241,"path":"scripts/add_tile_pos2/add_tile_pos2.yy",},
     {"name":"angle_approach","order":2,"path":"scripts/angle_approach/angle_approach.yy",},
     {"name":"arm_draw","order":1,"path":"scripts/arm_draw/arm_draw.yy",},
     {"name":"arm_fix","order":2,"path":"scripts/arm_fix/arm_fix.yy",},
