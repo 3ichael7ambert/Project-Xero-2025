@@ -508,20 +508,46 @@ if (build_style==3) {
     for (var i = 0; i < w; i++) {
         var xx = x0 + i * TILE-32;
 		var pythag_corner=sqrt(TILE*TILE+TILE*TILE);
+		var pythag_corner_1=sqrt((TILE/2)*(TILE/2)+TILE*TILE);
         for (var j = 0; j < h; j++) {
             var yy = y0 - j * TILE;
             var M  = build_drawing_matrix(xx, yy, z_front, 0, 0, 0);
-            var Ml  = build_drawing_matrix(xx, yy, z_front+TILE, 0, -45, 0);
-            var Mr  = build_drawing_matrix(xx, yy, z_front, 0, 45, 0);
+            var Mlback  = build_drawing_matrix(xx+TILE/2, yy, z_front+(TILE*1.5)+TILE, 0, -67.5, 0);
+            var Ml  = build_drawing_matrix(xx, yy, z_front+(TILE/2)+TILE, 0, -45, 0);
+            var Mlfront  = build_drawing_matrix(xx, yy, z_front+(TILE/2), 0, -22.5, 0);
+			
+			var Mrback  = build_drawing_matrix(xx, yy, z_front+(TILE*1.5), 0, 67.5, 0);
+            var Mr  = build_drawing_matrix(xx, yy, z_front+(TILE/2), 0, 45, 0);
+          //  var Mr  = build_drawing_matrix(xx, yy, z_front, 0, 45, 0);
+			var Mrfront  = build_drawing_matrix(xx, yy, z_front, 0, 22.5, 0);
+			
+            
             // Full tile in 0..TILE local plane; matches storefront/windows plane
 			if (i==0) {
+	            other.builder.add_tile_pos(Mlback, spr_front, frm_front,
+	                0, 0,   pythag_corner_1, 0,
+	                pythag_corner_1, TILE,   0, TILE);
+			} else if (i==1) {
 	            other.builder.add_tile_pos(Ml, spr_front, frm_front,
 	                0, 0,   pythag_corner, 0,
 	                pythag_corner, TILE,   0, TILE);
+			} else if (i==2) {
+	            other.builder.add_tile_pos(Mlfront, spr_front, frm_front,
+	                0, 0,   pythag_corner_1, 0,
+	                pythag_corner_1, TILE,   0, TILE);
 			} else if (i==w-1) {
+	            other.builder.add_tile_pos(Mrback, spr_front, frm_front,
+	                0, 0,   pythag_corner_1, 0,
+	                pythag_corner_1, TILE,   0, TILE);
+					
+			} else if (i==w-2) {
 	            other.builder.add_tile_pos(Mr, spr_front, frm_front,
 	                0, 0,   pythag_corner, 0,
-	                pythag_corner, TILE,   0, TILE);
+	                pythag_corner, TILE,   0, TILE); 
+			} else if (i==w-3) {
+	            other.builder.add_tile_pos(Mrfront, spr_front, frm_front,
+	                0, 0,   pythag_corner_1, 0,
+	                pythag_corner_1, TILE,   0, TILE);
 			} else {
 	            other.builder.add_tile_pos(M, spr_front, frm_front,
 	                0, 0,   TILE, 0,
@@ -547,7 +573,7 @@ if (build_style==3) {
     // Optional: z-bias to avoid z-fighting with wall
     // var z_eps = 0.25;
 
-    for (var i = 1; i < w-2; i++) {
+    for (var i = 3; i < w-4; i++) {
         if (i >= w - 1) continue; // skip final col for all glass
 
         var xx = x0 + i * TILE;
@@ -637,7 +663,7 @@ if (build_style==3) {
     // ------------------------------------------------------
     // FRONT WALL — PASS 3: upper-floor windows (overlay)
     // ------------------------------------------------------
-    for (var i = 1; i < w-2; i++) {
+    for (var i = 3; i < w-4; i++) {
         if (i >= w - 1) continue; // avoid last column spill
 
         for (var j = 1; j < h; j++) {
@@ -672,8 +698,8 @@ if (build_style==3) {
     // LEFT / RIGHT / ROOF (same)
     // ==========================
     // LEFT WALL: depth × height, yaw +90, flush with left edge
-    var x_left = x0 - TILE * 0.5;
-    for (var k = 1; k < d-1; k++) {
+    var x_left = (TILE/2) + x0 - TILE * 0.5;
+    for (var k = 3; k < d-1; k++) {
         var zz = z_front + k * TILE;
         for (var j = 0; j < h; j++) {
             var yy = y0 - j * TILE+32;
@@ -683,8 +709,8 @@ if (build_style==3) {
     }
 
     // RIGHT WALL: depth × height, yaw -90, flush with right edge
-    var x_right = x0 + w * TILE - TILE * 0.5;
-    for (var k = 1; k < d-1; k++) {
+    var x_right = -(TILE/2) + x0 + w * TILE - TILE * 0.5;
+    for (var k = 3; k < d-1; k++) {
         var zz = z_front + k * TILE;
         for (var j = 0; j < h; j++) {
             var yy = y0 - j * TILE+32;
