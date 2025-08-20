@@ -1,5 +1,5 @@
 /// @description  SET UP VARIABLES
-
+randomize();
 event_inherited();
 //b1,w1,b2,b3,b4,brick1,(brick2),brick3,brick4,w2,wood1,wood2,metal1,wood3,wood4,metal2,window3,
 
@@ -13,7 +13,7 @@ building_depth  = irandom_range(3,5);                     // tiles “back” fr
 building_z      = 10;                     // base Z for the front face (use 0 unless you have a Z system)
 
 
-build_style=3;
+build_style=choose(1,2);
 // TEMP: use the same sprite for all parts so they share a texture page.
 // Swap these to real building sprites later (then we’ll add auto-batching).
 /*

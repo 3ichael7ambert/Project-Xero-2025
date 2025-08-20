@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_building_skyline",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_building_skyline",
+  "parent":{
+    "name":"Project Xero",
+    "path":"Project Xero.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

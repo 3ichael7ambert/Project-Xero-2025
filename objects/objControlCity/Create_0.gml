@@ -16,6 +16,7 @@ randomize();
 
 global.gameReady=false;
 
+scr_building_skyline();
 
 scr_hud_bubble_init();
 scr_infinite_hud_init();

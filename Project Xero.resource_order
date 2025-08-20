@@ -342,6 +342,7 @@
     {"name":"raycast3","order":6,"path":"scripts/raycast3/raycast3.yy",},
     {"name":"rotate_smooth","order":2,"path":"scripts/rotate_smooth/rotate_smooth.yy",},
     {"name":"scr_bone_BodyPart_Character2D_AnimationTrack","order":39,"path":"scripts/scr_bone_BodyPart_Character2D_AnimationTrack/scr_bone_BodyPart_Character2D_AnimationTrack.yy",},
+    {"name":"scr_building_skyline","order":243,"path":"scripts/scr_building_skyline/scr_building_skyline.yy",},
     {"name":"scr_draw_player_indicator","order":19,"path":"scripts/scr_draw_player_indicator/scr_draw_player_indicator.yy",},
     {"name":"scr_Enemy_Robot_create_init_ai","order":1,"path":"scripts/scr_Enemy_Robot_create_init_ai/scr_Enemy_Robot_create_init_ai.yy",},
     {"name":"scr_Enemy_Robot_create_init_draw","order":2,"path":"scripts/scr_Enemy_Robot_create_init_draw/scr_Enemy_Robot_create_init_draw.yy",},
