@@ -75,7 +75,7 @@ __background_set_colour( choose(
 
 
 */
-scr_timeofday_backgroun_init();
+scr_timeofday_background_init();
 
 
 //instance_create(x,y,oMissionManager);

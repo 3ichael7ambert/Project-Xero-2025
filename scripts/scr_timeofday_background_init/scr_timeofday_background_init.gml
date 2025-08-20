@@ -1,4 +1,4 @@
-function scr_timeofday_backgroun_init(){
+function scr_timeofday_background_init(){
 
 var blended_color;
 blend_factor=current_minute/60;
@@ -12,6 +12,7 @@ color4 = make_color_rgb(239, 64, 158); // Red
 color5 = make_color_rgb(5,5,15); //black
 color6 = make_color_rgb(97, 151, 210); //  Light Blue
 blended_color=color1;
+
 
 if current_hour>=0 && current_hour<6 {
     blended_color = merge_color(color5,color2,blend_factor);

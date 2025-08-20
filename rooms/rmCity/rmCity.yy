@@ -2920,7 +2920,7 @@
         {"name":"g_CloudShadeOffset","type":0,"value":"0.4",},
         {"name":"g_CloudShadeFade","type":0,"value":"18.1",},
         {"name":"g_CloudTexture","type":2,"value":"_filter_clouds_texture",},
-      ],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":true,"visible":false,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
+      ],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":true,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],
   "name":"rmCity",
   "parent":{

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_timeofday_backgroun_init",
+  "%Name":"scr_timeofday_background_init",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_timeofday_backgroun_init",
+  "name":"scr_timeofday_background_init",
   "parent":{
     "name":"draw",
     "path":"folders/Scripts/draw.yy",

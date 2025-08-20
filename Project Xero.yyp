@@ -456,7 +456,7 @@
     {"id":{"name":"scr_player_1_init_particles","path":"scripts/scr_player_1_init_particles/scr_player_1_init_particles.yy",},},
     {"id":{"name":"scr_player_1_init","path":"scripts/scr_player_1_init/scr_player_1_init.yy",},},
     {"id":{"name":"scr_range_finder","path":"scripts/scr_range_finder/scr_range_finder.yy",},},
-    {"id":{"name":"scr_timeofday_backgroun_init","path":"scripts/scr_timeofday_backgroun_init/scr_timeofday_backgroun_init.yy",},},
+    {"id":{"name":"scr_timeofday_background_init","path":"scripts/scr_timeofday_background_init/scr_timeofday_background_init.yy",},},
     {"id":{"name":"script_missions","path":"scripts/script_missions/script_missions.yy",},},
     {"id":{"name":"seg_add","path":"scripts/seg_add/seg_add.yy",},},
     {"id":{"name":"seg_apply_force","path":"scripts/seg_apply_force/seg_apply_force.yy",},},
