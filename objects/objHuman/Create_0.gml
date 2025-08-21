@@ -74,6 +74,7 @@ image_yscale=scale;
  
  
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
  sunglasses=choose(true,false);
  race=choose("human","alien");
  
@@ -93,6 +94,10 @@ image_yscale=scale;
 		 skin_color= c_white;
 	 }
 	 
+=======
+ //sunglasses=choose(true,false);
+ //race=choose("human","alien");
+>>>>>>> Stashed changes
 =======
  //sunglasses=choose(true,false);
  //race=choose("human","alien");
