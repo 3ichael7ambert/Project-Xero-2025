@@ -73,8 +73,11 @@ image_yscale=scale;
  hat_color=(make_color_rgb(random(255),random(255),random(255)));
  
  
+<<<<<<< HEAD
+
+=======
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
+>>>>>>> parent of 02bfeb1 (Update Create_0.gml)
  sunglasses=choose(true,false);
  race=choose("human","alien");
  
@@ -94,14 +97,13 @@ image_yscale=scale;
 		 skin_color= c_white;
 	 }
 	 
+<<<<<<< HEAD
+=======
 =======
  //sunglasses=choose(true,false);
  //race=choose("human","alien");
 >>>>>>> Stashed changes
-=======
- //sunglasses=choose(true,false);
- //race=choose("human","alien");
->>>>>>> Stashed changes
+>>>>>>> parent of 02bfeb1 (Update Create_0.gml)
  
  
 	skin_color=c_white;
