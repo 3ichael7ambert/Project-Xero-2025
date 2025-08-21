@@ -237,6 +237,7 @@ switch (state) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 
@@ -445,6 +446,8 @@ if (race=="alien") {
 
 
 
+=======
+>>>>>>> parent of 29b375e (alien v1)
 =======
 >>>>>>> parent of 29b375e (alien v1)
 =======
