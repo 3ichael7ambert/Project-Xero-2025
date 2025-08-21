@@ -28,15 +28,13 @@ global.__Tile3dFormat = {
 /// This allows for highly efficient rendering of many 3D-transformed tiles across multiple texture pages,
 /// with correct sorting for opaque and transparent geometry.
 function Tile3d() constructor {
-    // Structs to hold tile data and built meshes, segregated by transparency.
+    // Structs to hold tile data, segregated by transparency.
     tile_groups = {
         opaque: {},
         transparent: {}
     };
-    meshes = {
-        opaque: {},
-        transparent: {}
-    };
+    // A single list of built meshes, ordered with opaque first, then transparent.
+    render_list = [];
 
     /// @function add_tile(x, y, z, width, height, rotX, rotY, rotZ, sprite, frame, is_transparent)
     /// @description Adds a single tile's data using individual transform components.
@@ -141,29 +139,19 @@ function Tile3d() constructor {
         }
     }
 
-    /// @function build([_texture])
-    /// @description Builds vertex buffers for opaque and transparent tiles from the stored data.
-    static build = function(_texture = -1) {
+    /// @function build()
+    /// @description Builds vertex buffers for opaque and transparent tiles and adds them to an ordered render list.
+    static build = function() {
         global.__Tile3dFormat.init();
 
-        // Helper function to clear a set of meshes
-        var _clear_mesh_set = function(mesh_set) {
-            var _mesh_keys = variable_struct_get_names(mesh_set);
-            for (var i = 0; i < array_length(_mesh_keys); i++) {
-                var _key = _mesh_keys[i];
-                var _vbuff = mesh_set[$ _key].vbuff;
-                vertex_delete_buffer(_vbuff);
-            }
-        };
-
         // Clear any previously built meshes
-        _clear_mesh_set(meshes.opaque);
-        _clear_mesh_set(meshes.transparent);
-        meshes.opaque = {};
-        meshes.transparent = {};
+        for (var i = 0; i < array_length(render_list); i++) {
+            vertex_delete_buffer(render_list[i].vbuff);
+        }
+        render_list = [];
         
-        // Helper function to build a set of meshes from a group of tiles
-        var _build_mesh_set = function(source_groups, target_meshes) {
+        // Helper function to build a set of meshes and append them to the render_list
+        var _build_and_append_meshes = function(source_groups) {
             var _group_keys = variable_struct_get_names(source_groups);
             for (var i = 0; i < array_length(_group_keys); i++) {
                 var _tex_key = _group_keys[i];
@@ -211,13 +199,15 @@ function Tile3d() constructor {
                 }
                 vertex_end(_vbuff);
                 vertex_freeze(_vbuff);
-                target_meshes[$ _tex_key] = { vbuff: _vbuff, sprite: _representative_sprite };
+                array_push(render_list, { vbuff: _vbuff, sprite: _representative_sprite });
             }
         };
 
-        // Build both sets of meshes
-        _build_mesh_set(tile_groups.opaque, meshes.opaque);
-        _build_mesh_set(tile_groups.transparent, meshes.transparent);
+        // Build opaque meshes first and add them to the list
+        _build_and_append_meshes(tile_groups.opaque);
+        
+        // Build transparent meshes and add them to the end of the list
+        _build_and_append_meshes(tile_groups.transparent);
         
         // Clear the temporary tile data
         tile_groups.opaque = {};
@@ -225,46 +215,27 @@ function Tile3d() constructor {
     }
 
     /// @function submit()
-    /// @description Submits all built vertex buffers, drawing opaque meshes first, then transparent ones.
+    /// @description Submits all built vertex buffers from the ordered render list.
     static submit = function() {
-        // Helper function to submit a set of meshes
-        var _submit_mesh_set = function(mesh_set) {
-            var _mesh_keys = variable_struct_get_names(mesh_set);
-            for (var i = 0; i < array_length(_mesh_keys); i++) {
-                var _key = _mesh_keys[i];
-                var _mesh = mesh_set[$ _key];
-                var _texture = sprite_get_texture(_mesh.sprite, 0);
-                if (_texture != -1) {
-                    vertex_submit(_mesh.vbuff, pr_trianglelist, _texture);
-                }
+        var _len = array_length(render_list);
+        for (var i = 0; i < _len; i++) {
+            var _mesh = render_list[i];
+            var _texture = sprite_get_texture(_mesh.sprite, 0);
+            if (_texture != -1) {
+                vertex_submit(_mesh.vbuff, pr_trianglelist, _texture);
             }
-        };
-        
-        // Opaque pass
-        _submit_mesh_set(meshes.opaque);
-        
-        // Transparent pass
-        _submit_mesh_set(meshes.transparent);
+        }
     }
 
     /// @function destroy()
     /// @description Cleans up all vertex buffers and tile data.
     static destroy = function() {
-        // Helper function to clear a set of meshes
-        var _clear_mesh_set = function(mesh_set) {
-            var _mesh_keys = variable_struct_get_names(mesh_set);
-            for (var i = 0; i < array_length(_mesh_keys); i++) {
-                var _key = _mesh_keys[i];
-                var _mesh = mesh_set[$ _key];
-                vertex_delete_buffer(_mesh.vbuff);
-            }
-        };
+        // Clear any built meshes
+        for (var i = 0; i < array_length(render_list); i++) {
+            vertex_delete_buffer(render_list[i].vbuff);
+        }
         
-        _clear_mesh_set(meshes.opaque);
-        _clear_mesh_set(meshes.transparent);
-        
-        meshes.opaque = {};
-        meshes.transparent = {};
+        render_list = [];
         tile_groups.opaque = {};
         tile_groups.transparent = {};
     }
