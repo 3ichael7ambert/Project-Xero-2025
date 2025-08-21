@@ -195,6 +195,7 @@ if (weapon==0 && punch==false && shooting && wpn_cooldown==0) { //FIST
 	
 	if (weapon==3 && shooting && wpn_cooldown==0) {
 			wpn_charge+=1;
+			/*
 	if !part_system_exists(global.partSysCharge)
 			{
 			    global.partSysCharge = part_system_create(part_charge_wpn);
@@ -209,15 +210,15 @@ if (weapon==0 && punch==false && shooting && wpn_cooldown==0) { //FIST
 			var dirxy = point_direction(xxxx,yyyy,xxx,yyy);
 		
 		
-part_type_shape(_ptypeCharge, pt_shape_sphere);
-part_type_size(_ptypeCharge, .1*wpn_charge, .1*wpn_charge, 0, 0);
-part_type_scale(_ptypeCharge, 0.1, 0.1);
-// Get the interpolated color
-var charge_color1 = get_interpolated_color(wpn_charge-2, wpn_charge_max);
-var charge_color2 = get_interpolated_color(wpn_charge, wpn_charge_max);
-var charge_color3 = get_interpolated_color(wpn_charge+2, wpn_charge_max);
-//part_type_colour1(_ptypeBlast, charge_color); // Single color for simplicity
-part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
+			part_type_shape(_ptypeCharge, pt_shape_sphere);
+			part_type_size(_ptypeCharge, .1*wpn_charge, .1*wpn_charge, 0, 0);
+			part_type_scale(_ptypeCharge, 0.1, 0.1);
+			// Get the interpolated color
+			var charge_color1 = get_interpolated_color(wpn_charge-2, wpn_charge_max);
+			var charge_color2 = get_interpolated_color(wpn_charge, wpn_charge_max);
+			var charge_color3 = get_interpolated_color(wpn_charge+2, wpn_charge_max);
+			//part_type_colour1(_ptypeBlast, charge_color); // Single color for simplicity
+			part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		
 			part_type_direction(_ptypeCharge, dirxy, dirxy, 0, 0);
 			part_type_life(_ptypeCharge, 2*wpn_charge*scale, 2*wpn_charge*scale);
@@ -226,7 +227,8 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 			//part_particles_create(global._ps,nx_fistF,ny_fistF,_ptype1,10);
 			//part_system_position(global.partSysCharge,xxx,yyy);
 			//part_system_depth(global.partSysCharge,depth-10);
-		}}
+		}*/
+		}
 		
 	
 	
@@ -503,60 +505,61 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 	if (weapon==10 && shooting && wpn_cooldown==0) { //FLAMETHROWER
 		//draw_sprite_ext(sprFlamethrower, 0, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprFist, image_index, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
-	if (facing_right) {
-		bullet = instance_create(nx_fistF+lengthdir_x(120*scale,armF_dir+15),ny_fistF+lengthdir_y(120*scale,armF_dir+15),objBullet_Enemy);
-	} else {
-		bullet = instance_create(nx_fistF+lengthdir_x(120*scale,armF_dir-15),ny_fistF+lengthdir_y(120*scale,armF_dir-15),objBullet_Enemy);
-	}
+		if (facing_right) {
+			bullet = instance_create(nx_fistF+lengthdir_x(120*scale,armF_dir+15),ny_fistF+lengthdir_y(120*scale,armF_dir+15),objBullet_Enemy);
+		} else {
+			bullet = instance_create(nx_fistF+lengthdir_x(120*scale,armF_dir-15),ny_fistF+lengthdir_y(120*scale,armF_dir-15),objBullet_Enemy);
+		}
 	
-	wpn_cooldown=0;
-	with (bullet) {
-		parent=obj_Player1;
-		weapon=10;
-		scale=.05;
-		depth=parent.depth+1;
-		sprite_index=sprBullet;
-		direction=parent.armF_dir;
-		speed=10;
-		image_xscale=.5*parent.scale;
-		image_yscale=.5*parent.scale;
-		hitbox=true;
-		grav=-4;
-		decay=40*parent.scale;
-	}
+		wpn_cooldown=0;
+		with (bullet) {
+			parent=obj_Player1;
+			weapon=10;
+			scale=.05;
+			depth=parent.depth+1;
+			sprite_index=sprBullet;
+			direction=parent.armF_dir;
+			speed=10;
+			image_xscale=.5*parent.scale;
+			image_yscale=.5*parent.scale;
+			hitbox=true;
+			grav=-4;
+			decay=40*parent.scale;
+		}
 	
 	
-	
-	if !part_system_exists(global._psFlamethrower)
-			{
-			    global._psFlamethrower = part_system_create(part_smoke);
-			}
-		if part_system_exists(global._psFlamethrower) {
+		/*
+		if !part_system_exists(global._psFlamethrower)
+				{
+				    global._psFlamethrower = part_system_create(part_smoke);
+				}
+			if part_system_exists(global._psFlamethrower) {
 			
-		part_type_direction(_ptypeFlamethrower,armF_dir +10, armF_dir - 10, 0, 0);
-			if (facing_right) {
+			part_type_direction(_ptypeFlamethrower,armF_dir +10, armF_dir - 10, 0, 0);
+				if (facing_right) {
 				
-				part_particles_create(global._psFlamethrower,nx_fistF+lengthdir_x(120*scale,armF_dir+10),ny_fistF+lengthdir_y(120*scale,armF_dir+10),_ptypeFlamethrower,10);
-			//part_system_position(global.partSysSmoke,nx_fistF,ny_fistF);
-			//part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,1);
-			//part_system_depth(global.partSysSmoke,depth-10);
-			} else {
-				part_particles_create(global._psFlamethrower,nx_fistF+lengthdir_x(120*scale,armF_dir-10),ny_fistF+lengthdir_y(120*scale,armF_dir-10),_ptypeFlamethrower,10);
+					part_particles_create(global._psFlamethrower,nx_fistF+lengthdir_x(120*scale,armF_dir+10),ny_fistF+lengthdir_y(120*scale,armF_dir+10),_ptypeFlamethrower,10);
+				//part_system_position(global.partSysSmoke,nx_fistF,ny_fistF);
+				//part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,1);
+				//part_system_depth(global.partSysSmoke,depth-10);
+				} else {
+					part_particles_create(global._psFlamethrower,nx_fistF+lengthdir_x(120*scale,armF_dir-10),ny_fistF+lengthdir_y(120*scale,armF_dir-10),_ptypeFlamethrower,10);
+				}
 			}
-		}
 	
-		if !part_system_exists(global.partSysSmoke)
-			{
-			    global.partSysSmoke = part_system_create(part_smoke);
-			}
-		if part_system_exists(global.partSysSmoke) {
-			part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,-1);
-			//part_system_position(global.partSysSmoke,nx_fistF,ny_fistF);
-			part_system_depth(global.partSysSmoke,depth-10);
-//part_particles_clear(_ptypeSmoke);
-//part_system_destroy(global.partSysSmoke);
+			if !part_system_exists(global.partSysSmoke)
+				{
+				    global.partSysSmoke = part_system_create(part_smoke);
+				}
+			if part_system_exists(global.partSysSmoke) {
+				part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,-1);
+				//part_system_position(global.partSysSmoke,nx_fistF,ny_fistF);
+				part_system_depth(global.partSysSmoke,depth-10);
+			//part_particles_clear(_ptypeSmoke);
+			//part_system_destroy(global.partSysSmoke);
 
-		}
+			}
+			*/
 	
 	}
 	
@@ -598,8 +601,10 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		
 		var xxx=nx_armF+lengthdir_x(200*scale,armF_dir-3);
 		var yyy=ny_armF+lengthdir_y(200*scale,armF_dir-3);
+		/*
 		part_system_depth(global._psElec,depth-10);
 		part_particles_create(global._psElec,xxx,yyy,_ptypeElec,10);
+		*/
 	
 	
 	}
@@ -642,6 +647,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		//draw_sprite_ext(sprChainsaw, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprChainsaw, chainsaw_blade+2, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		chainsaw_blade++;
+		/*
 		if !part_system_exists(global.partSysSmoke)
 			{
 			    global.partSysSmoke = part_system_create(part_smoke);
@@ -661,19 +667,19 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 
 		}
 		
-		
+		*/
 		
 		
 		
 	}
 	
 	if (weapon=12 && !shooting) {
-			
+			/*
 		if !part_system_exists(global.partSysSmoke)
 			{
 			    part_system_destroy(global.partSysSmoke);
 			}
-
+*/
 
 	}
 	

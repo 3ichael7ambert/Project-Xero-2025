@@ -381,7 +381,7 @@ ny_legB = cy + lengthdir_y(crad_legB, cnext_legB);
 
 
 
-
+/*
 
 //PARTICLES
 global.partSysSmoke=part_system_create(part_smoke);
@@ -478,3 +478,5 @@ part_type_life(_ptypeElec, 15*scale, 18*scale);
 
 ///DEBUG
 //part_smoke_count = part_particles_count(global.partSysCharge);
+
+*/

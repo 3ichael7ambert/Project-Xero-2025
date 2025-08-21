@@ -1067,38 +1067,41 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	if (weapon==3 && shoot_button&& wpn_cooldown==0) {
 			wpn_charge+=1;
 			attack+=1;
-	if !part_system_exists(global.partSysCharge)
-			{
-			    global.partSysCharge = part_system_create(part_charge_wpn);
-			}
-		if part_system_exists(global.partSysCharge) {
+	/*
+		if !part_system_exists(global.partSysCharge)
+				{
+				    global.partSysCharge = part_system_create(part_charge_wpn);
+				}
+			if part_system_exists(global.partSysCharge) {
 			
-			var xxx=nx_armF+lengthdir_x(100*scale,armF_dir);
-			var yyy=ny_armF+lengthdir_y(100*scale,armF_dir);
-			var spwn_rdm = irandom(360);
-			var xxxx = xxx + lengthdir_x(20*wpn_charge*scale,spwn_rdm);
-			var yyyy = yyy + lengthdir_y(20*wpn_charge*scale,spwn_rdm);
-			var dirxy = point_direction(xxxx,yyyy,xxx,yyy);
+				var xxx=nx_armF+lengthdir_x(100*scale,armF_dir);
+				var yyy=ny_armF+lengthdir_y(100*scale,armF_dir);
+				var spwn_rdm = irandom(360);
+				var xxxx = xxx + lengthdir_x(20*wpn_charge*scale,spwn_rdm);
+				var yyyy = yyy + lengthdir_y(20*wpn_charge*scale,spwn_rdm);
+				var dirxy = point_direction(xxxx,yyyy,xxx,yyy);
 		
 		
-part_type_shape(_ptypeCharge, pt_shape_sphere);
-part_type_size(_ptypeCharge, .1*wpn_charge, .1*wpn_charge, 0, 0);
-part_type_scale(_ptypeCharge, 0.1, 0.1);
-// Get the interpolated color
-var charge_color1 = get_interpolated_color(wpn_charge-2, wpn_charge_max);
-var charge_color2 = get_interpolated_color(wpn_charge, wpn_charge_max);
-var charge_color3 = get_interpolated_color(wpn_charge+2, wpn_charge_max);
-//part_type_colour1(_ptypeBlast, charge_color); // Single color for simplicity
-part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
+				part_type_shape(_ptypeCharge, pt_shape_sphere);
+				part_type_size(_ptypeCharge, .1*wpn_charge, .1*wpn_charge, 0, 0);
+				part_type_scale(_ptypeCharge, 0.1, 0.1);
+				// Get the interpolated color
+				var charge_color1 = get_interpolated_color(wpn_charge-2, wpn_charge_max);
+				var charge_color2 = get_interpolated_color(wpn_charge, wpn_charge_max);
+				var charge_color3 = get_interpolated_color(wpn_charge+2, wpn_charge_max);
+				//part_type_colour1(_ptypeBlast, charge_color); // Single color for simplicity
+				part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		
-			part_type_direction(_ptypeCharge, dirxy, dirxy, 0, 0);
-			part_type_life(_ptypeCharge, 2*wpn_charge*scale, 2*wpn_charge*scale);
-			//part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,1);
-			part_particles_create(global.partSysCharge,xxxx,yyyy,_ptypeCharge,10);
-			//part_particles_create(global._ps,nx_fistF,ny_fistF,_ptype1,10);
-			//part_system_position(global.partSysCharge,xxx,yyy);
-			//part_system_depth(global.partSysCharge,depth-10);
-		}}
+				part_type_direction(_ptypeCharge, dirxy, dirxy, 0, 0);
+				part_type_life(_ptypeCharge, 2*wpn_charge*scale, 2*wpn_charge*scale);
+				//part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,1);
+				part_particles_create(global.partSysCharge,xxxx,yyyy,_ptypeCharge,10);
+				//part_particles_create(global._ps,nx_fistF,ny_fistF,_ptype1,10);
+				//part_system_position(global.partSysCharge,xxx,yyy);
+				//part_system_depth(global.partSysCharge,depth-10);
+			}
+			*/
+		}
 		
 	
 	
@@ -1408,23 +1411,23 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 	}
 	
 	
-	
+	/*
 	if !part_system_exists(global._psFlamethrower)
 			{
 			    global._psFlamethrower = part_system_create(part_smoke);
 			}
 		if part_system_exists(global._psFlamethrower) {
 			
-		part_type_direction(_ptypeFlamethrower,armF_dir +10, armF_dir - 10, 0, 0);
-			if (facing_right) {
+			part_type_direction(_ptypeFlamethrower,armF_dir +10, armF_dir - 10, 0, 0);
+				if (facing_right) {
 				
-				part_particles_create(global._psFlamethrower,nx_fistF+lengthdir_x(120*scale,armF_dir+10),ny_fistF+lengthdir_y(120*scale,armF_dir+10),_ptypeFlamethrower,10);
-			//part_system_position(global.partSysSmoke,nx_fistF,ny_fistF);
-			//part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,1);
-			//part_system_depth(global.partSysSmoke,depth-10);
-			} else {
-				part_particles_create(global._psFlamethrower,nx_fistF+lengthdir_x(120*scale,armF_dir-10),ny_fistF+lengthdir_y(120*scale,armF_dir-10),_ptypeFlamethrower,10);
-			}
+					part_particles_create(global._psFlamethrower,nx_fistF+lengthdir_x(120*scale,armF_dir+10),ny_fistF+lengthdir_y(120*scale,armF_dir+10),_ptypeFlamethrower,10);
+				//part_system_position(global.partSysSmoke,nx_fistF,ny_fistF);
+				//part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,1);
+				//part_system_depth(global.partSysSmoke,depth-10);
+				} else {
+					part_particles_create(global._psFlamethrower,nx_fistF+lengthdir_x(120*scale,armF_dir-10),ny_fistF+lengthdir_y(120*scale,armF_dir-10),_ptypeFlamethrower,10);
+				}
 		}
 	
 		if !part_system_exists(global.partSysSmoke)
@@ -1435,11 +1438,11 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 			part_particles_create(global.partSysSmoke,nx_fistF,ny_fistF,_ptypeSmoke,-1);
 			//part_system_position(global.partSysSmoke,nx_fistF,ny_fistF);
 			part_system_depth(global.partSysSmoke,depth-10);
-//part_particles_clear(_ptypeSmoke);
-//part_system_destroy(global.partSysSmoke);
+		//part_particles_clear(_ptypeSmoke);
+		//part_system_destroy(global.partSysSmoke);
 
 		}
-	
+	*/
 	}
 	
 	
@@ -1481,9 +1484,9 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		
 		var xxx=nx_armF+lengthdir_x(200*scale,armF_dir-3);
 		var yyy=ny_armF+lengthdir_y(200*scale,armF_dir-3);
-		part_system_depth(global._psElec,depth-10);
+		/*part_system_depth(global._psElec,depth-10);
 		part_particles_create(global._psElec,xxx,yyy,_ptypeElec,10);
-	
+	*/
 	
 	}
 	
@@ -1526,6 +1529,7 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 		//draw_sprite_ext(sprChainsaw, 1, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		//draw_sprite_ext(sprChainsaw, chainsaw_blade+2, nx_fistF, ny_fistF, -scale, scale, armF_dir+180, -1, 1); ///
 		chainsaw_blade++;
+		/*
 		if !part_system_exists(global.partSysSmoke)
 			{
 			    global.partSysSmoke = part_system_create(part_smoke);
@@ -1540,24 +1544,24 @@ part_type_colour3(_ptypeCharge, charge_color1, charge_color2, charge_color3);
 			part_system_depth(global.partSysSmoke,depth-10);
 			
 			
-//part_particles_clear(_ptypeSmoke);
-//part_system_destroy(global.partSysSmoke);
+			//part_particles_clear(_ptypeSmoke);
+			//part_system_destroy(global.partSysSmoke);
 
 		}
-		
-		
-		
-		
+		*/
 		
 	}
 	
+	
+	
 	if (weapon=12 && !shoot_button) {
 			
+			/*
 		if !part_system_exists(global.partSysSmoke)
 			{
 			    part_system_destroy(global.partSysSmoke);
 			}
-
+*/
 
 	}
 	
