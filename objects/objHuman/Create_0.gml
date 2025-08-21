@@ -77,6 +77,9 @@ image_yscale=scale;
 
 =======
 <<<<<<< Updated upstream
+<<<<<<< HEAD
+>>>>>>> parent of 02bfeb1 (Update Create_0.gml)
+=======
 >>>>>>> parent of 02bfeb1 (Update Create_0.gml)
  sunglasses=choose(true,false);
  race=choose("human","alien");
@@ -103,6 +106,9 @@ image_yscale=scale;
  //sunglasses=choose(true,false);
  //race=choose("human","alien");
 >>>>>>> Stashed changes
+<<<<<<< HEAD
+>>>>>>> parent of 02bfeb1 (Update Create_0.gml)
+=======
 >>>>>>> parent of 02bfeb1 (Update Create_0.gml)
  
  
