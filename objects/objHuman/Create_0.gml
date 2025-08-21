@@ -80,7 +80,7 @@ image_yscale=scale;
 	// Hue around orange (15–35), low saturation for lighter skin, higher for darker
 	var h = irandom_range(15, 35);          // hue ~orange/brown range
 	var s = irandom_range(20, 80);          // saturation (pale to deep tones)
-	var v = irandom_range(70, 100);         // brightness (light to dark)
+	var v = irandom_range(70, 255);         // brightness (light to dark)
 
 		skin_color = make_color_hsv(h, s, v);
 
@@ -94,11 +94,8 @@ image_yscale=scale;
 	 
 
 
- //sunglasses=choose(true,false);
- //race=choose("human","alien");
-
  
-	skin_color=c_white;
+	//skin_color=c_white;
 	
 	has_weapon=false;
 	weapon = choose("gun","raygun","shotgun");

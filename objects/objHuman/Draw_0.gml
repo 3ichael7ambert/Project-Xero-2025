@@ -390,7 +390,7 @@ if (race=="alien") {
       //  draw_sprite_ext(sprHuman_Head_Eyes_Pupils,1,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,eye_color,1);
 	//	draw_sprite_ext(sprHuman_Head_Eyes_Pupils,0,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,c_white,1);
 		
-        //draw_sprite_ext(sprHuman_eyes_sunglasses,0,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
+        draw_sprite_ext(sprHuman_eyes_sunglasses,0,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
         
 		switch (eyes_mood) {
 			case "calm": 
