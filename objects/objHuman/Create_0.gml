@@ -6,6 +6,8 @@
  hp=100;
  weapon="none";
  
+ odonis=choose(true,false);
+ 
  // Create Event
 grav = 0.5; // Gravity strength
 vsp = 0; // Vertical speed
