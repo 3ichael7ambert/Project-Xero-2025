@@ -17,10 +17,8 @@ switch (state) {
         break;
 }
 
-<<<<<<< HEAD
 if (race=="human") {
-=======
->>>>>>> parent of 29b375e (alien v1)
+
 // Draw the sprite with flipping
 		//back arm
 		if (state=="walk") {
