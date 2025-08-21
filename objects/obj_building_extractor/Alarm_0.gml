@@ -32,6 +32,7 @@ if (build_style==1) {
     var h        = building_height;
     var d        = building_depth;
     var z_front  = building_z;
+	var z_doors  = z_front-1;
    // var TILE     = TILE; // assuming this exists on the instance
 
     // --- anchor (front face centered on x,y)
@@ -77,7 +78,7 @@ if (build_style==1) {
 
         var xx = x0 + i * TILE;
         var yy = y0;                        // ground row (j==0)
-        var M  = build_drawing_matrix(xx, yy, z_front /*- z_eps*/, 0, 0, 0);
+        var M  = build_drawing_matrix(xx, yy, z_doors /*- z_eps*/, 0, 0, 0);
 
         var xL = frame_px;
         var xR = TILE - frame_px;
@@ -102,7 +103,7 @@ if (build_style==1) {
             // Door glass
             other.builder.add_tile_pos(M, spr_door, frm_door,
                 xL, yGlass1,  xR, yGlass1,
-                xR, yGlass2,  xL, yGlass2);
+                xR, yGlass2,  xL, yGlass2, true);
 
             // Kickplate
             if (kickplate_px > 0) {
@@ -171,7 +172,7 @@ if (build_style==1) {
 
             var xx = x0 + i * TILE;
             var yy = y0 - j * TILE;
-            var M  = build_drawing_matrix(xx, yy, z_front /*- z_eps*/, 0, 0, 0);
+            var M  = build_drawing_matrix(xx, yy, z_doors /*- z_eps*/, 0, 0, 0);
 
             var wm_l = 10, wm_r = 10, wm_t = 12, wm_b = 16;
             var x1 = wm_l,         y1 = wm_t;
@@ -242,6 +243,7 @@ if (build_style==2) {
     var h        = building_height;
     var d        = building_depth;
     var z_front  = building_z;
+	var z_doors  = z_front-1;
    // var TILE     = TILE; // assuming this exists on the instance
 
     // --- anchor (front face centered on x,y)
@@ -299,7 +301,7 @@ if (build_style==2) {
 
         var xx = x0 + i * TILE;
         var yy = y0;                        // ground row (j==0)
-        var M  = build_drawing_matrix(xx, yy, z_front /*- z_eps*/, 0, 0, 0);
+        var M  = build_drawing_matrix(xx, yy, z_doors /*- z_eps*/, 0, 0, 0);
 
         var xL = frame_px;
         var xR = TILE - frame_px;
@@ -324,7 +326,7 @@ if (build_style==2) {
             // Door glass
             other.builder.add_tile_pos(M, spr_door, frm_door,
                 xL, yGlass1,  xR, yGlass1,
-                xR, yGlass2,  xL, yGlass2);
+                xR, yGlass2,  xL, yGlass2, true);
 
             // Kickplate
             if (kickplate_px > 0) {
@@ -393,7 +395,7 @@ if (build_style==2) {
 
             var xx = x0 + i * TILE;
             var yy = y0 - j * TILE;
-            var M  = build_drawing_matrix(xx, yy, z_front /*- z_eps*/, 0, 0, 0);
+            var M  = build_drawing_matrix(xx, yy, z_doors /*- z_eps*/, 0, 0, 0);
 
             var wm_l = 10, wm_r = 10, wm_t = 12, wm_b = 16;
             var x1 = wm_l,         y1 = wm_t;
@@ -495,6 +497,7 @@ if (build_style==3) {
     var h        = building_height;
     var d        = building_depth;
     var z_front  = building_z;
+	var z_doors  = z_front-1;
    // var TILE     = TILE; // assuming this exists on the instance
 
     // --- anchor (front face centered on x,y)
@@ -578,7 +581,7 @@ if (build_style==3) {
 
         var xx = x0 + i * TILE;
         var yy = y0;                        // ground row (j==0)
-        var M  = build_drawing_matrix(xx, yy, z_front /*- z_eps*/, 0, 0, 0);
+        var M  = build_drawing_matrix(xx, yy, z_doors /*- z_eps*/, 0, 0, 0);
 
         var xL = frame_px;
         var xR = TILE - frame_px;
@@ -603,7 +606,7 @@ if (build_style==3) {
             // Door glass
             other.builder.add_tile_pos(M, spr_door, frm_door,
                 xL, yGlass1,  xR, yGlass1,
-                xR, yGlass2,  xL, yGlass2);
+                xR, yGlass2,  xL, yGlass2, true);
 
             // Kickplate
             if (kickplate_px > 0) {
@@ -672,7 +675,7 @@ if (build_style==3) {
 
             var xx = x0 + i * TILE;
             var yy = y0 - j * TILE;
-            var M  = build_drawing_matrix(xx, yy, z_front /*- z_eps*/, 0, 0, 0);
+            var M  = build_drawing_matrix(xx, yy, z_doors /*- z_eps*/, 0, 0, 0);
 
             var wm_l = 10, wm_r = 10, wm_t = 12, wm_b = 16;
             var x1 = wm_l,         y1 = wm_t;

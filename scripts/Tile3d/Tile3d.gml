@@ -25,254 +25,247 @@ global.__Tile3dFormat = {
 
 /// @function Tile3d()
 /// @description A constructor for creating and managing a 3D tile mesh using a vertex buffer.
-/// This allows for highly efficient rendering of many 3D-transformed tiles across multiple texture pages.
+/// This allows for highly efficient rendering of many 3D-transformed tiles across multiple texture pages,
+/// with correct sorting for opaque and transparent geometry.
 function Tile3d() constructor {
-    // A struct to hold tile data, grouped by texture page ID.
-    // Key: string(texture_id), Value: array of tile structs
-    tile_groups = {};
+    // Structs to hold tile data and built meshes, segregated by transparency.
+    tile_groups = {
+        opaque: {},
+        transparent: {}
+    };
+    meshes = {
+        opaque: {},
+        transparent: {}
+    };
 
-    // A struct to hold the built vertex buffer and texture for each mesh.
-    // Key: string(texture_id), Value: { vbuff: buffer_id, texture: texture_id }
-    meshes = {};
-
-    /// @function add_tile(x, y, z, width, height, rotX, rotY, rotZ, sprite, frame)
+    /// @function add_tile(x, y, z, width, height, rotX, rotY, rotZ, sprite, frame, is_transparent)
     /// @description Adds a single tile's data using individual transform components.
-    static add_tile = function(_x, _y, _z, _width, _height, _rotX, _rotY, _rotZ, _sprite, _frame) {
+    static add_tile = function(_x, _y, _z, _width, _height, _rotX, _rotY, _rotZ, _sprite, _frame, _is_transparent = false) {
+        var _group = _is_transparent ? tile_groups.transparent : tile_groups.opaque;
         var _tex = sprite_get_texture(_sprite, _frame);
         var _tex_key = string(_tex);
 
-        if (!variable_struct_exists(tile_groups, _tex_key)) {
-            tile_groups[$ _tex_key] = {
+        if (!variable_struct_exists(_group, _tex_key)) {
+            _group[$ _tex_key] = {
                 tiles: [],
                 sprite_asset: _sprite // Store the sprite to get a fresh texture pointer later
             };
         }
         
         var _tile_struct = {
-            x: _x,
-            y: _y,
-            z: _z,
-            width: _width,
-            height: _height,
-            rotX: _rotX,
-            rotY: _rotY,
-            rotZ: _rotZ,
-            sprite: _sprite,
-            frame: _frame,
+            x: _x, y: _y, z: _z,
+            width: _width, height: _height,
+            rotX: _rotX, rotY: _rotY, rotZ: _rotZ,
+            sprite: _sprite, frame: _frame,
+            is_transparent: _is_transparent,
             uvs: sprite_get_uvs(_sprite, _frame)
         };
-        array_push(tile_groups[$ _tex_key].tiles, _tile_struct);
+        array_push(_group[$ _tex_key].tiles, _tile_struct);
     }
 
-    /// @function add_tile_ext(_matrix, _width, _height, _sprite, _frame)
+    /// @function add_tile_ext(_matrix, _width, _height, _sprite, _frame, _is_transparent)
     /// @description Adds a single tile's data using a pre-built transformation matrix.
-    static add_tile_ext = function(_matrix, _width, _height, _sprite, _frame) {
+    static add_tile_ext = function(_matrix, _width, _height, _sprite, _frame, _is_transparent = false) {
+        var _group = _is_transparent ? tile_groups.transparent : tile_groups.opaque;
         var _tex = sprite_get_texture(_sprite, _frame);
         var _tex_key = string(_tex);
 
-        if (!variable_struct_exists(tile_groups, _tex_key)) {
-            tile_groups[$ _tex_key] = {
+        if (!variable_struct_exists(_group, _tex_key)) {
+            _group[$ _tex_key] = {
                 tiles: [],
-                sprite_asset: _sprite // Store the sprite to get a fresh texture pointer later
+                sprite_asset: _sprite
             };
         }
 
         var _tile_struct = {
             matrix: _matrix,
-            width: _width,
-            height: _height,
-            sprite: _sprite,
-            frame: _frame,
+            width: _width, height: _height,
+            sprite: _sprite, frame: _frame,
+            is_transparent: _is_transparent,
             uvs: sprite_get_uvs(_sprite, _frame)
         };
-        array_push(tile_groups[$ _tex_key].tiles, _tile_struct);
+        array_push(_group[$ _tex_key].tiles, _tile_struct);
     }
     
-    /// @function add_tile_pos(_matrix, _sprite, _frame, _x1, _y1, _x2, _y2, _x3, _y3, _x4, _y4)
+    /// @function add_tile_pos(_matrix, _sprite, _frame, _x1, _y1, _x2, _y2, _x3, _y3, _x4, _y4, _is_transparent)
     /// @description Adds a single distorted tile's data using a matrix and four local corner points.
-    static add_tile_pos = function(_matrix, _sprite, _frame, _x1, _y1, _x2, _y2, _x3, _y3, _x4, _y4) {
+    static add_tile_pos = function(_matrix, _sprite, _frame, _x1, _y1, _x2, _y2, _x3, _y3, _x4, _y4, _is_transparent = false) {
+        var _group = _is_transparent ? tile_groups.transparent : tile_groups.opaque;
         var _tex = sprite_get_texture(_sprite, _frame);
         var _tex_key = string(_tex);
 
-        if (!variable_struct_exists(tile_groups, _tex_key)) {
-            tile_groups[$ _tex_key] = {
+        if (!variable_struct_exists(_group, _tex_key)) {
+            _group[$ _tex_key] = {
                 tiles: [],
-                sprite_asset: _sprite // Store the sprite to get a fresh texture pointer later
+                sprite_asset: _sprite
             };
         }
 
         var _tile_struct = {
             matrix: _matrix,
-            sprite: _sprite,
-            frame: _frame,
+            sprite: _sprite, frame: _frame,
+            is_transparent: _is_transparent,
             uvs: sprite_get_uvs(_sprite, _frame),
-            // The four corner points of the quad in local space.
-            // Corresponds to draw_sprite_pos(top-left, top-right, bottom-right, bottom-left)
             p1: { x: _x1, y: _y1, z: 0 },
             p2: { x: _x2, y: _y2, z: 0 },
             p3: { x: _x3, y: _y3, z: 0 },
             p4: { x: _x4, y: _y4, z: 0 },
         };
-        array_push(tile_groups[$ _tex_key].tiles, _tile_struct);
+        array_push(_group[$ _tex_key].tiles, _tile_struct);
     }
 
     /// @function add_tiles(tiles_array)
-    /// @description Adds an array of tiles' data to the internal array for a future build.
-    /// @note The structs in the array MUST contain 'sprite' and 'frame' fields.
+    /// @description Adds an array of tiles' data. Structs can optionally contain an 'is_transparent' field.
     static add_tiles = function(tiles_array) {
         var _len = array_length(tiles_array);
         for (var i = 0; i < _len; i++) {
             var _tile = tiles_array[i];
             
             if (!variable_struct_exists(_tile, "sprite") || !variable_struct_exists(_tile, "frame")) {
-                show_debug_message("WARNING: Tile3d.add_tiles() was called with a tile struct at index " + string(i) + " that is missing a 'sprite' or 'frame' property. The tile has been skipped.");
+                show_debug_message("WARNING: Tile3d.add_tiles() skipped a tile at index " + string(i) + " due to missing 'sprite' or 'frame' property.");
                 continue;
             }
             
+            var _is_transparent = variable_struct_exists(_tile, "is_transparent") ? _tile.is_transparent : false;
+            var _group = _is_transparent ? tile_groups.transparent : tile_groups.opaque;
             var _tex = sprite_get_texture(_tile.sprite, _tile.frame);
             var _tex_key = string(_tex);
             
-            if (!variable_struct_exists(tile_groups, _tex_key)) {
-                tile_groups[$ _tex_key] = {
+            if (!variable_struct_exists(_group, _tex_key)) {
+                _group[$ _tex_key] = {
                     tiles: [],
-                    sprite_asset: _tile.sprite // Store the sprite to get a fresh texture pointer later
+                    sprite_asset: _tile.sprite
                 };
             }
-            array_push(tile_groups[$ _tex_key].tiles, _tile);
+            array_push(_group[$ _tex_key].tiles, _tile);
         }
     }
 
     /// @function build([_texture])
-    /// @description Builds vertex buffers for each texture group from the internally stored tile data.
-    /// @param {Asset.Sprite} [_texture] - This argument is ignored and kept for backwards compatibility.
+    /// @description Builds vertex buffers for opaque and transparent tiles from the stored data.
     static build = function(_texture = -1) {
         global.__Tile3dFormat.init();
 
-        // Clear any previously built meshes before creating new ones
-        var _mesh_keys = variable_struct_get_names(meshes);
-        for (var i = 0; i < array_length(_mesh_keys); i++) {
-            var _key = _mesh_keys[i];
-            var _vbuff = meshes[$ _key].vbuff;
-            vertex_delete_buffer(_vbuff);
-        }
-        meshes = {};
-
-        // Build a new mesh for each tile group (i.e., for each unique texture)
-        var _group_keys = variable_struct_get_names(tile_groups);
-        for (var i = 0; i < array_length(_group_keys); i++) {
-            var _tex_key = _group_keys[i];
-            var _group = tile_groups[$ _tex_key];
-            var _tiles_for_tex = _group.tiles;
-            var _representative_sprite = _group.sprite_asset;
-            var _tile_count = array_length(_tiles_for_tex);
-            
-            if (_tile_count == 0) continue;
-
-            var _vbuff = vertex_create_buffer();
-            vertex_begin(_vbuff, global.__Tile3dFormat.format);
-
-            for (var j = 0; j < _tile_count; j++) {
-                var _tile = _tiles_for_tex[j];
-                var _matrix;
-                var _p1, _p2, _p3, _p4; // Local space points for the quad
-
-                // First, get the transformation matrix for the tile
-                if (variable_struct_exists(_tile, "matrix")) {
-                    _matrix = _tile.matrix;
-                } else {
-                    // Build matrix from individual components
-                    var _epsilon = 0.0001;
-                    var _scale_x = 1 / (abs(dcos(_tile.rotY)) + _epsilon);
-                    var _scale_y = 1 / (abs(dcos(_tile.rotX)) + _epsilon);
-                    _matrix = matrix_build(
-                        _tile.x, _tile.y, _tile.z,
-                        _tile.rotX, _tile.rotY, _tile.rotZ,
-                        _scale_x, _scale_y, 1
-                    );
-                }
-
-                // Next, get the local-space vertex positions for the quad
-                if (variable_struct_exists(_tile, "p1")) {
-                    // --- Use Custom Quad from add_tile_pos ---
-                    _p1 = _tile.p1;
-                    _p2 = _tile.p2;
-                    _p3 = _tile.p3;
-                    _p4 = _tile.p4;
-                } else {
-                    // --- Use Standard Rectangular Quad from add_tile / add_tile_ext ---
-                    var _half_w = _tile.width / 2;
-                    var _half_h = _tile.height / 2;
-                    _p1 = { x: -_half_w, y: -_half_h, z: 0 };
-                    _p2 = { x:  _half_w, y: -_half_h, z: 0 };
-                    _p3 = { x:  _half_w, y:  _half_h, z: 0 };
-                    _p4 = { x: -_half_w, y:  _half_h, z: 0 };
-                }
-                
-                // --- Common Vertex Calculation ---
-                var _v1 = matrix_transform_vertex(_matrix, _p1.x, _p1.y, _p1.z);
-                var _v2 = matrix_transform_vertex(_matrix, _p2.x, _p2.y, _p2.z);
-                var _v3 = matrix_transform_vertex(_matrix, _p3.x, _p3.y, _p3.z);
-                var _v4 = matrix_transform_vertex(_matrix, _p4.x, _p4.y, _p4.z);
-                
-                var _uvs = _tile.uvs;
-                var _uv_x1 = _uvs[0]; var _uv_y1 = _uvs[1];
-                var _uv_x2 = _uvs[2]; var _uv_y2 = _uvs[3];
-
-                var _color = c_white;
-                var _alpha = 1;
-
-                // Triangle 1: (v1, v2, v3)
-                vertex_position_3d(_vbuff, _v1[0], _v1[1], _v1[2]); vertex_texcoord(_vbuff, _uv_x1, _uv_y1); vertex_color(_vbuff, _color, _alpha);
-                vertex_position_3d(_vbuff, _v2[0], _v2[1], _v2[2]); vertex_texcoord(_vbuff, _uv_x2, _uv_y1); vertex_color(_vbuff, _color, _alpha);
-                vertex_position_3d(_vbuff, _v3[0], _v3[1], _v3[2]); vertex_texcoord(_vbuff, _uv_x2, _uv_y2); vertex_color(_vbuff, _color, _alpha);
-
-                // Triangle 2: (v1, v3, v4)
-                vertex_position_3d(_vbuff, _v1[0], _v1[1], _v1[2]); vertex_texcoord(_vbuff, _uv_x1, _uv_y1); vertex_color(_vbuff, _color, _alpha);
-                vertex_position_3d(_vbuff, _v3[0], _v3[1], _v3[2]); vertex_texcoord(_vbuff, _uv_x2, _uv_y2); vertex_color(_vbuff, _color, _alpha);
-                vertex_position_3d(_vbuff, _v4[0], _v4[1], _v4[2]); vertex_texcoord(_vbuff, _uv_x1, _uv_y2); vertex_color(_vbuff, _color, _alpha);
+        // Helper function to clear a set of meshes
+        var _clear_mesh_set = function(mesh_set) {
+            var _mesh_keys = variable_struct_get_names(mesh_set);
+            for (var i = 0; i < array_length(_mesh_keys); i++) {
+                var _key = _mesh_keys[i];
+                var _vbuff = mesh_set[$ _key].vbuff;
+                vertex_delete_buffer(_vbuff);
             }
-            
-            vertex_end(_vbuff);
-            vertex_freeze(_vbuff);
+        };
 
-            // Store the newly created mesh with the representative sprite
-            meshes[$ _tex_key] = {
-                vbuff: _vbuff,
-                sprite: _representative_sprite
-            };
-        }
+        // Clear any previously built meshes
+        _clear_mesh_set(meshes.opaque);
+        _clear_mesh_set(meshes.transparent);
+        meshes.opaque = {};
+        meshes.transparent = {};
         
-        // Clear the temporary tile data now that it's been baked into vertex buffers
-        tile_groups = {};
+        // Helper function to build a set of meshes from a group of tiles
+        var _build_mesh_set = function(source_groups, target_meshes) {
+            var _group_keys = variable_struct_get_names(source_groups);
+            for (var i = 0; i < array_length(_group_keys); i++) {
+                var _tex_key = _group_keys[i];
+                var _group = source_groups[$ _tex_key];
+                var _tiles_for_tex = _group.tiles;
+                var _representative_sprite = _group.sprite_asset;
+                var _tile_count = array_length(_tiles_for_tex);
+                if (_tile_count == 0) continue;
+
+                var _vbuff = vertex_create_buffer();
+                vertex_begin(_vbuff, global.__Tile3dFormat.format);
+
+                for (var j = 0; j < _tile_count; j++) {
+                    var _tile = _tiles_for_tex[j];
+                    var _matrix;
+                    var _p1, _p2, _p3, _p4;
+                    if (variable_struct_exists(_tile, "matrix")) {
+                        _matrix = _tile.matrix;
+                    } else {
+                        var _epsilon = 0.0001;
+                        var _scale_x = 1 / (abs(dcos(_tile.rotY)) + _epsilon);
+                        var _scale_y = 1 / (abs(dcos(_tile.rotX)) + _epsilon);
+                        _matrix = matrix_build(_tile.x, _tile.y, _tile.z, _tile.rotX, _tile.rotY, _tile.rotZ, _scale_x, _scale_y, 1);
+                    }
+                    if (variable_struct_exists(_tile, "p1")) {
+                        _p1 = _tile.p1; _p2 = _tile.p2; _p3 = _tile.p3; _p4 = _tile.p4;
+                    } else {
+                        var _half_w = _tile.width / 2; var _half_h = _tile.height / 2;
+                        _p1 = { x: -_half_w, y: -_half_h, z: 0 }; _p2 = { x: _half_w, y: -_half_h, z: 0 };
+                        _p3 = { x: _half_w, y: _half_h, z: 0 }; _p4 = { x: -_half_w, y: _half_h, z: 0 };
+                    }
+                    var _v1 = matrix_transform_vertex(_matrix, _p1.x, _p1.y, _p1.z);
+                    var _v2 = matrix_transform_vertex(_matrix, _p2.x, _p2.y, _p2.z);
+                    var _v3 = matrix_transform_vertex(_matrix, _p3.x, _p3.y, _p3.z);
+                    var _v4 = matrix_transform_vertex(_matrix, _p4.x, _p4.y, _p4.z);
+                    var _uvs = _tile.uvs;
+                    var _uv_x1 = _uvs[0]; var _uv_y1 = _uvs[1]; var _uv_x2 = _uvs[2]; var _uv_y2 = _uvs[3];
+                    var _color = c_white; var _alpha = 1;
+                    vertex_position_3d(_vbuff, _v1[0], _v1[1], _v1[2]); vertex_texcoord(_vbuff, _uv_x1, _uv_y1); vertex_color(_vbuff, _color, _alpha);
+                    vertex_position_3d(_vbuff, _v2[0], _v2[1], _v2[2]); vertex_texcoord(_vbuff, _uv_x2, _uv_y1); vertex_color(_vbuff, _color, _alpha);
+                    vertex_position_3d(_vbuff, _v3[0], _v3[1], _v3[2]); vertex_texcoord(_vbuff, _uv_x2, _uv_y2); vertex_color(_vbuff, _color, _alpha);
+                    vertex_position_3d(_vbuff, _v1[0], _v1[1], _v1[2]); vertex_texcoord(_vbuff, _uv_x1, _uv_y1); vertex_color(_vbuff, _color, _alpha);
+                    vertex_position_3d(_vbuff, _v3[0], _v3[1], _v3[2]); vertex_texcoord(_vbuff, _uv_x2, _uv_y2); vertex_color(_vbuff, _color, _alpha);
+                    vertex_position_3d(_vbuff, _v4[0], _v4[1], _v4[2]); vertex_texcoord(_vbuff, _uv_x1, _uv_y2); vertex_color(_vbuff, _color, _alpha);
+                }
+                vertex_end(_vbuff);
+                vertex_freeze(_vbuff);
+                target_meshes[$ _tex_key] = { vbuff: _vbuff, sprite: _representative_sprite };
+            }
+        };
+
+        // Build both sets of meshes
+        _build_mesh_set(tile_groups.opaque, meshes.opaque);
+        _build_mesh_set(tile_groups.transparent, meshes.transparent);
+        
+        // Clear the temporary tile data
+        tile_groups.opaque = {};
+        tile_groups.transparent = {};
     }
 
     /// @function submit()
-    /// @description Submits all built vertex buffers to be drawn by the GPU.
+    /// @description Submits all built vertex buffers, drawing opaque meshes first, then transparent ones.
     static submit = function() {
-        var _mesh_keys = variable_struct_get_names(meshes);
-        for (var i = 0; i < array_length(_mesh_keys); i++) {
-            var _key = _mesh_keys[i];
-            var _mesh = meshes[$ _key];
-            
-            // Get a fresh, valid texture pointer just before drawing
-            var _texture = sprite_get_texture(_mesh.sprite, 0);
-
-            if (_texture != -1) {
-                vertex_submit(_mesh.vbuff, pr_trianglelist, _texture);
+        // Helper function to submit a set of meshes
+        var _submit_mesh_set = function(mesh_set) {
+            var _mesh_keys = variable_struct_get_names(mesh_set);
+            for (var i = 0; i < array_length(_mesh_keys); i++) {
+                var _key = _mesh_keys[i];
+                var _mesh = mesh_set[$ _key];
+                var _texture = sprite_get_texture(_mesh.sprite, 0);
+                if (_texture != -1) {
+                    vertex_submit(_mesh.vbuff, pr_trianglelist, _texture);
+                }
             }
-        }
+        };
+        
+        // Opaque pass
+        _submit_mesh_set(meshes.opaque);
+        
+        // Transparent pass
+        _submit_mesh_set(meshes.transparent);
     }
 
     /// @function destroy()
-    /// @description Cleans up instance-specific data (all vertex buffers and tile data).
+    /// @description Cleans up all vertex buffers and tile data.
     static destroy = function() {
-        var _mesh_keys = variable_struct_get_names(meshes);
-        for (var i = 0; i < array_length(_mesh_keys); i++) {
-            var _key = _mesh_keys[i];
-            var _mesh = meshes[$ _key];
-            vertex_delete_buffer(_mesh.vbuff);
-        }
-        meshes = {};
-        tile_groups = {};
+        // Helper function to clear a set of meshes
+        var _clear_mesh_set = function(mesh_set) {
+            var _mesh_keys = variable_struct_get_names(mesh_set);
+            for (var i = 0; i < array_length(_mesh_keys); i++) {
+                var _key = _mesh_keys[i];
+                var _mesh = mesh_set[$ _key];
+                vertex_delete_buffer(_mesh.vbuff);
+            }
+        };
+        
+        _clear_mesh_set(meshes.opaque);
+        _clear_mesh_set(meshes.transparent);
+        
+        meshes.opaque = {};
+        meshes.transparent = {};
+        tile_groups.opaque = {};
+        tile_groups.transparent = {};
     }
 }
