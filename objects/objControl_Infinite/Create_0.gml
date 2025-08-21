@@ -5,11 +5,21 @@
 scr_infinite_hud_init();
 /// @description Create objects
 
+builder = new Tile3d();
+
+mesh_dirty  = true;   // set this to true any time sidewalks/buildings change
+default_w   = 64;     // fallback width for sidewalk rects
+default_h   = 64; 
+
+
 fpsreal = fps_real;
 alarm[2]=30;
 
 scale=1;
 
+if !variable_global_exists("players") {
+	global.players=0;
+}
 
 
 /*
