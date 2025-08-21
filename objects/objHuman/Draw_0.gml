@@ -17,8 +17,6 @@ switch (state) {
         break;
 }
 
-
-if (race=="human") {
 // Draw the sprite with flipping
 		//back arm
 		if (state=="walk") {
@@ -164,10 +162,8 @@ if (race=="human") {
 		
 		draw_sprite_ext(sprHuman_Head,img_idx_head,head_x,head_y,image_xscale,image_yscale,0,skin_color,1);
         draw_sprite_ext(sprHuman_Head_Eyes,img_idx_eyes,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
-        draw_sprite_ext(sprHuman_Head_Eyes_Pupils,1,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,eye_color,1);
+        draw_sprite_ext(sprHuman_Head_Eyes_Pupils,1,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,c_white,1);
 		draw_sprite_ext(sprHuman_Head_Eyes_Pupils,0,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,c_white,1);
-		
-        draw_sprite_ext(sprHuman_eyes_sunglasses,0,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
         
 		switch (eyes_mood) {
 			case "calm": 
@@ -238,6 +234,7 @@ if (race=="human") {
 			
 	}
 //hat_style=choose("none","backwards","beanie","forwards","bandana");
+<<<<<<< HEAD
 }
 
 
@@ -446,6 +443,8 @@ if (race=="alien") {
 
 
 
+=======
+>>>>>>> parent of 29b375e (alien v1)
 
 if (has_mission)
 {

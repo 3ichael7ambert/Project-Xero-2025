@@ -556,7 +556,6 @@
     {"name":"sprHuman_Body_1","order":14,"path":"sprites/sprHuman_Body_1/sprHuman_Body_1.yy",},
     {"name":"sprHuman_Body_bbox","order":7,"path":"sprites/sprHuman_Body_bbox/sprHuman_Body_bbox.yy",},
     {"name":"sprHuman_Body","order":6,"path":"sprites/sprHuman_Body/sprHuman_Body.yy",},
-    {"name":"sprHuman_eyes_sunglasses","order":2,"path":"sprites/sprHuman_eyes_sunglasses/sprHuman_eyes_sunglasses.yy",},
     {"name":"sprHuman_Head_Eyebrows","order":1,"path":"sprites/sprHuman_Head_Eyebrows/sprHuman_Head_Eyebrows.yy",},
     {"name":"sprHuman_Head_Eyelids","order":2,"path":"sprites/sprHuman_Head_Eyelids/sprHuman_Head_Eyelids.yy",},
     {"name":"sprHuman_Head_Eyes_Pupils","order":4,"path":"sprites/sprHuman_Head_Eyes_Pupils/sprHuman_Head_Eyes_Pupils.yy",},
