@@ -95,7 +95,7 @@ image_yscale=scale;
 	 
  
  
-	skin_color=c_white;
+
 	
 	has_weapon=false;
 	weapon = choose("gun","raygun","shotgun");
