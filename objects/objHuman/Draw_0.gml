@@ -235,6 +235,7 @@ switch (state) {
 	}
 //hat_style=choose("none","backwards","beanie","forwards","bandana");
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 
@@ -443,6 +444,8 @@ if (race=="alien") {
 
 
 
+=======
+>>>>>>> parent of 29b375e (alien v1)
 =======
 >>>>>>> parent of 29b375e (alien v1)
 
