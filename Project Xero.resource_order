@@ -475,6 +475,8 @@
     {"name":"sprAerialView4","order":14,"path":"sprites/sprAerialView4/sprAerialView4.yy",},
     {"name":"sprAerialView5","order":15,"path":"sprites/sprAerialView5/sprAerialView5.yy",},
     {"name":"sprAerialView6","order":16,"path":"sprites/sprAerialView6/sprAerialView6.yy",},
+    {"name":"sprAlien_Head_Eyes","order":11,"path":"sprites/sprAlien_Head_Eyes/sprAlien_Head_Eyes.yy",},
+    {"name":"sprAlien_Head","order":10,"path":"sprites/sprAlien_Head/sprAlien_Head.yy",},
     {"name":"sprArmArms","order":1,"path":"sprites/sprArmArms/sprArmArms.yy",},
     {"name":"sprArmHand","order":2,"path":"sprites/sprArmHand/sprArmHand.yy",},
     {"name":"sprArmLegWalljump","order":3,"path":"sprites/sprArmLegWalljump/sprArmLegWalljump.yy",},

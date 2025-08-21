@@ -387,22 +387,22 @@ if (race=="alien") {
 		//	head_x=cx+lengthdir_x()
 		}
 		
-		draw_sprite_ext(sprHuman_Head,img_idx_head,head_x,head_y,image_xscale,image_yscale,0,skin_color,1);
-        draw_sprite_ext(sprHuman_Head_Eyes,img_idx_eyes,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
-        draw_sprite_ext(sprHuman_Head_Eyes_Pupils,1,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,eye_color,1);
-		draw_sprite_ext(sprHuman_Head_Eyes_Pupils,0,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,c_white,1);
+		draw_sprite_ext(sprAlien_Head,img_idx_head,head_x,head_y,image_xscale,image_yscale,0,skin_color,1);
+        draw_sprite_ext(sprHuman_Head_Eyes,img_idx_eyes,eyes_x,eyes_y,image_xscale,image_yscale,0,eye_color,1);
+      //  draw_sprite_ext(sprHuman_Head_Eyes_Pupils,1,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,eye_color,1);
+	//	draw_sprite_ext(sprHuman_Head_Eyes_Pupils,0,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,c_white,1);
 		
         draw_sprite_ext(sprHuman_eyes_sunglasses,0,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
         
 		switch (eyes_mood) {
 			case "calm": 
-				draw_sprite_ext(sprHuman_Head_Eyelids,0,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
+			//	draw_sprite_ext(sprAlien_Head_Eyelids,0,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
 				break;
 			case "panic": 
 				//draw_sprite_ext(sprHuman_Head_Eyelids,img_idx_eyelids,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
 				break;
 			case "blink":
-				draw_sprite_ext(sprHuman_Head_Eyelids,1,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
+			//	draw_sprite_ext(sprAlien_Head_Eyelids,1,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
 				break;
 		}
 		
@@ -421,22 +421,22 @@ if (race=="alien") {
 				break;
 		}
 		
-		draw_sprite_ext(sprHuman_Head_Eyebrows,img_idx_eyebrows,eyebrows_x,eyebrows_y,image_xscale,image_yscale,0,hair_color,1);
+		//draw_sprite_ext(sprHuman_Head_Eyebrows,img_idx_eyebrows,eyebrows_x,eyebrows_y,image_xscale,image_yscale,0,hair_color,1);
     
 
 	
 	switch (hat_style) {
 		case "backwards":
-			draw_sprite_ext(sprHuman_Head_Hats,0,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
+			draw_sprite_ext(sprHuman_Head_Hats,0,hair_x,hair_y-(10*scale),image_xscale,image_yscale,0,hat_color,1);
 			break;
 		case "forwards":
-			draw_sprite_ext(sprHuman_Head_Hats,0,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
+			//draw_sprite_ext(sprHuman_Head_Hats,0,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
 			break;
 		case "beanie":
-			draw_sprite_ext(sprHuman_Head_Hats,1,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
+			//draw_sprite_ext(sprHuman_Head_Hats,1,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
 			break;
 		case "bandana":
-			draw_sprite_ext(sprHuman_Head_Hats,2,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
+			//draw_sprite_ext(sprHuman_Head_Hats,2,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
 			break;
 			
 	}

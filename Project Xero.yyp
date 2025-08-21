@@ -568,6 +568,8 @@
     {"id":{"name":"sprAerialView4","path":"sprites/sprAerialView4/sprAerialView4.yy",},},
     {"id":{"name":"sprAerialView5","path":"sprites/sprAerialView5/sprAerialView5.yy",},},
     {"id":{"name":"sprAerialView6","path":"sprites/sprAerialView6/sprAerialView6.yy",},},
+    {"id":{"name":"sprAlien_Head_Eyes","path":"sprites/sprAlien_Head_Eyes/sprAlien_Head_Eyes.yy",},},
+    {"id":{"name":"sprAlien_Head","path":"sprites/sprAlien_Head/sprAlien_Head.yy",},},
     {"id":{"name":"sprArm","path":"sprites/sprArm/sprArm.yy",},},
     {"id":{"name":"sprArmArms","path":"sprites/sprArmArms/sprArmArms.yy",},},
     {"id":{"name":"sprArmHand","path":"sprites/sprArmHand/sprArmHand.yy",},},
