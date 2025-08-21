@@ -17,7 +17,10 @@ switch (state) {
         break;
 }
 
+<<<<<<< HEAD
 if (race=="human") {
+=======
+>>>>>>> parent of 29b375e (alien v1)
 // Draw the sprite with flipping
 		//back arm
 		if (state=="walk") {
@@ -235,6 +238,7 @@ if (race=="human") {
 			
 	}
 //hat_style=choose("none","backwards","beanie","forwards","bandana");
+<<<<<<< HEAD
 }
 
 
@@ -441,6 +445,8 @@ if (race=="alien") {
 }
 
 
+=======
+>>>>>>> parent of 29b375e (alien v1)
 
 if (has_mission)
 {

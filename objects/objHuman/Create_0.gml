@@ -92,10 +92,13 @@ image_yscale=scale;
 		 skin_color= c_white;
 	 }
 	 
+<<<<<<< HEAD
 
  //sunglasses=choose(true,false);
  //race=choose("human","alien");
 
+=======
+>>>>>>> parent of 29b375e (alien v1)
  
  
 	skin_color=c_white;
