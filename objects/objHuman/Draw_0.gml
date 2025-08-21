@@ -234,12 +234,16 @@ switch (state) {
 			
 	}
 //hat_style=choose("none","backwards","beanie","forwards","bandana");
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+
+>>>>>>> Stashed changes
 }
 
 
