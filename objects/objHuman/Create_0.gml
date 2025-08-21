@@ -6,8 +6,6 @@
  hp=100;
  weapon="none";
  
- race=choose("human","alien");
- 
  // Create Event
 grav = 0.5; // Gravity strength
 vsp = 0; // Vertical speed
@@ -74,23 +72,29 @@ image_yscale=scale;
  eye_color=(make_color_rgb(random(255),random(255),random(255)));
  hat_color=(make_color_rgb(random(255),random(255),random(255)));
  
- //sunglasses=choose(true,false);
  
- if (race=="human") {
+ sunglasses=choose(true,false);
+ race=choose("human","alien");
+ 
+  if (race=="human") {
 	// Hue around orange (15–35), low saturation for lighter skin, higher for darker
 	var h = irandom_range(15, 35);          // hue ~orange/brown range
 	var s = irandom_range(20, 80);          // saturation (pale to deep tones)
 	var v = irandom_range(70, 100);         // brightness (light to dark)
 
-	skin_color = make_color_hsv(h, s, v);
+		skin_color = make_color_hsv(h, s, v);
 
  } else if (race=="alien") {
-	 skin_color=make_color_hsv(irandom(255),255,255);
+		 skin_color=make_color_hsv(irandom(255),255,255);
  }
 	 else {
 	 
-	 skin_color= c_white;
+		 skin_color= c_white;
 	 }
+	 
+ 
+ 
+	skin_color=c_white;
 	
 	has_weapon=false;
 	weapon = choose("gun","raygun","shotgun");
