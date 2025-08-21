@@ -73,6 +73,7 @@ image_yscale=scale;
  hat_color=(make_color_rgb(random(255),random(255),random(255)));
  
  
+<<<<<<< Updated upstream
  sunglasses=choose(true,false);
  race=choose("human","alien");
  
@@ -92,6 +93,10 @@ image_yscale=scale;
 		 skin_color= c_white;
 	 }
 	 
+=======
+ //sunglasses=choose(true,false);
+ //race=choose("human","alien");
+>>>>>>> Stashed changes
  
  
 	skin_color=c_white;
