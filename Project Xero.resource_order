@@ -601,6 +601,7 @@
     {"name":"sprMoon","order":42,"path":"sprites/sprMoon/sprMoon.yy",},
     {"name":"sprMtnDist","order":43,"path":"sprites/sprMtnDist/sprMtnDist.yy",},
     {"name":"sprOceanOld","order":21,"path":"sprites/sprOceanOld/sprOceanOld.yy",},
+    {"name":"sprPalmTree_parts","order":245,"path":"sprites/sprPalmTree_parts/sprPalmTree_parts.yy",},
     {"name":"sprPalmTree","order":44,"path":"sprites/sprPalmTree/sprPalmTree.yy",},
     {"name":"sprPalmTreeLarge","order":45,"path":"sprites/sprPalmTreeLarge/sprPalmTreeLarge.yy",},
     {"name":"sprPaperLined","order":22,"path":"sprites/sprPaperLined/sprPaperLined.yy",},

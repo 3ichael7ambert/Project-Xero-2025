@@ -703,6 +703,7 @@
     {"id":{"name":"sprMouse","path":"sprites/sprMouse/sprMouse.yy",},},
     {"id":{"name":"sprMtnDist","path":"sprites/sprMtnDist/sprMtnDist.yy",},},
     {"id":{"name":"sprOceanOld","path":"sprites/sprOceanOld/sprOceanOld.yy",},},
+    {"id":{"name":"sprPalmTree_parts","path":"sprites/sprPalmTree_parts/sprPalmTree_parts.yy",},},
     {"id":{"name":"sprPalmTree","path":"sprites/sprPalmTree/sprPalmTree.yy",},},
     {"id":{"name":"sprPalmTreeLarge","path":"sprites/sprPalmTreeLarge/sprPalmTreeLarge.yy",},},
     {"id":{"name":"sprPaperLined","path":"sprites/sprPaperLined/sprPaperLined.yy",},},
