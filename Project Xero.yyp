@@ -482,6 +482,7 @@
     {"id":{"name":"sh_flash","path":"shaders/sh_flash/sh_flash.yy",},},
     {"id":{"name":"sh_transition","path":"shaders/sh_transition/sh_transition.yy",},},
     {"id":{"name":"sh_water","path":"shaders/sh_water/sh_water.yy",},},
+    {"id":{"name":"shd_tone_color","path":"shaders/shd_tone_color/shd_tone_color.yy",},},
     {"id":{"name":"music_drums_lofi_1","path":"sounds/music_drums_lofi_1/music_drums_lofi_1.yy",},},
     {"id":{"name":"snd_arrow_l","path":"sounds/snd_arrow_l/snd_arrow_l.yy",},},
     {"id":{"name":"snd_arrow_r","path":"sounds/snd_arrow_r/snd_arrow_r.yy",},},

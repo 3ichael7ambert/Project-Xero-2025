@@ -1,6 +1,6 @@
 function scr_timeofday_background_init(){
 
-var blended_color;
+ blended_color=c_white;
 blend_factor=current_minute/60;
 
 
