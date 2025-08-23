@@ -17,11 +17,16 @@ randomize();
 global.gameReady=false;
 
 scr_building_skyline();
+scr_building_skyline_bg(3584,350,irandom_range(5, 7),irandom_range(7, 11),irandom_range(3, 5),irandom_range(1,2),irandom_range(1,2),-3,-3)
+scr_building_skyline_bg(3584,600,irandom_range(5, 7),irandom_range(7, 11),irandom_range(3, 5),irandom_range(1,2),irandom_range(1,2),-3,-3)
+scr_building_skyline_bg(3584,950,irandom_range(5, 7),irandom_range(7, 11),irandom_range(3, 5),irandom_range(1,2),irandom_range(1,2),-3,-3)
+
 
 scr_hud_bubble_init();
 scr_infinite_hud_init();
 
 instance_create(x,y,oGameSystem);
+instance_create(x,y,oMissionManager);
 
 if (!variable_global_exists("players")) {global.players=1;}
 

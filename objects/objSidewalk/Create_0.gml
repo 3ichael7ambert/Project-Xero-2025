@@ -4,7 +4,10 @@ event_inherited();
 
 fenceMatrix = build_drawing_matrix_scale(x,y-32,300,0,0,0,1,1,10);
 
-swMatrix1 = build_drawing_matrix(x,y,300,90,0,0);
+
+//swMatrixbg = build_drawing_matrix_scale(x,y,364,90,0,0,1,10,1);
+
+swMatrix1 = build_drawing_matrix_scale(x,y,300,90,0,0,1,100,1);
 swMatrix2 = build_drawing_matrix(x,y,236,90,0,0);
 swMatrix3 = build_drawing_matrix(x,y,172,90,0,0);
 swMatrix4 = build_drawing_matrix(x,y,128,90,0,0);
