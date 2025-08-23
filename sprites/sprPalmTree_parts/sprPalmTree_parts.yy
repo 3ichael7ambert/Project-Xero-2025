@@ -32,7 +32,7 @@
   ],
   "name":"sprPalmTree_parts",
   "nineSlice":null,
-  "origin":0,
+  "origin":6,
   "parent":{
     "name":"Project Xero",
     "path":"Project Xero.yyp",
@@ -114,7 +114,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":0,
-    "yorigin":0,
+    "yorigin":128,
   },
   "swatchColours":null,
   "swfPrecision":0.5,
