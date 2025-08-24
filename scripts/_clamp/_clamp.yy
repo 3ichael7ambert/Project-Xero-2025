@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"_clamp",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"math stuff",
+    "path":"folders/Scripts/math stuff.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

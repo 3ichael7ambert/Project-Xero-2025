@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"get_interpolated_color",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"draw",
+    "path":"folders/Scripts/draw.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

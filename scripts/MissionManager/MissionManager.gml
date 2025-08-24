@@ -1,5 +1,4 @@
 /// @description Enum for the status of a mission
-/*
 enum MISSION_STATUS {
     NotStarted,
     Active,
@@ -18,7 +17,7 @@ enum MISSION_EVENT {
     PLAYER_LEVEL_UP
     // Add any other game events you might need here
 }
-*/
+
 
 /// @function MissionObjective(_type, _target_id, _amount)
 /// @description Base constructor for a mission objective.
