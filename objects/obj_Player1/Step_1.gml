@@ -24,10 +24,14 @@ if (instance_exists(objHuman)) {
 if (talk_button) && (distance_to_object(nearest_human)<(100*scale)) {
 	with (nearest_human) {
 		if (has_mission) {
+			
 			mission_active=true;
-			if (get_mission_status("SQ_001_Rubble") == MISSION_STATUS.NotStarted)
-			{
-			    activate_mission("SQ_001_Rubble");
+			
+			with (oMissionManager) {
+				if (get_mission_status("SQ_001_Rubble") == MISSION_STATUS.NotStarted)
+				{
+				    activate_mission("SQ_001_Rubble");
+				}
 			}
 		}
 	}
