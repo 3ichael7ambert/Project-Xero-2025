@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"Tile3d",
+  "%Name":"MissionManager",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Tile3d",
+  "name":"MissionManager",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Missions",
+    "path":"folders/Scripts/Missions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

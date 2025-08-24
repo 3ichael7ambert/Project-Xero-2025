@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"mission_system_advanced",
   "parent":{
-    "name":"control",
-    "path":"folders/Scripts/control.yy",
+    "name":"Missions",
+    "path":"folders/Scripts/Missions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

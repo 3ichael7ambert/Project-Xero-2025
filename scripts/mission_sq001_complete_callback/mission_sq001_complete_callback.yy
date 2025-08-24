@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"mission_sq001_complete_callback",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"Missions",
+    "path":"folders/Scripts/Missions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
