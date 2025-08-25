@@ -11,8 +11,8 @@
   "name":"oMissionManager",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Mission",
+    "path":"folders/Objects/Mission.yy",
   },
   "parentObjectId":null,
   "persistent":false,
