@@ -1,6 +1,10 @@
 function mission_talk(){
 
-if (talk_button) && (distance_to_object(nearest_human)<(100*scale)) {
+if (talk_button) && 
+(distance_to_object(nearest_human)<(100*scale)) 
+//&& (oMissionManager.active_missions == 0) 
+{
+    
 	with (nearest_human) {
 		if (has_mission) {
 			

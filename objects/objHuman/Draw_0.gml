@@ -888,25 +888,30 @@ if (has_mission)
 }
 
 
-
+if instance_exists(oMissionManager) {
+	
 //mission
-if (distance_to_object(player_nearest)<100*scale) && (has_mission==true) {
-	state = "idle";
-	if (mission_active==false) {
-		mission_indicator_color=c_fuchsia;
-	}
-	/*
-	if (player_nearest.talk_button) {
-		mission_active=true;
-	}*/
-} else if (has_mission==true) && (distance_to_object(player_nearest)>100*scale) {
-	mission_indicator_color=c_aqua;
-}
 
+if (array_length(oMissionManager.active_missions) == 0) {
+    
+
+	if (distance_to_object(player_nearest)<100*scale) && (has_mission==true) {
+		state = "idle";
+		if (mission_active==false) {
+			mission_indicator_color=c_fuchsia;
+		}
+		/*
+		if (player_nearest.talk_button) {
+			mission_active=true;
+		}*/
+	} else if (has_mission==true) && (distance_to_object(player_nearest)>100*scale) {
+		mission_indicator_color=c_aqua;
+	}
+}
 if (mission_active==true) {
 		mission_indicator_color=c_yellow;
 	}
-
+}
 
 /*
 if (has_mission) {
