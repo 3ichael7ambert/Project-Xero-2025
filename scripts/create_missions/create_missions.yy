@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"mission_system_advanced",
+  "%Name":"create_missions",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"mission_system_advanced",
+  "name":"create_missions",
   "parent":{
     "name":"Missions",
     "path":"folders/Scripts/Missions.yy",

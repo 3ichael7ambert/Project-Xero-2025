@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"script_missions",
+  "%Name":"mission_talk",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"script_missions",
+  "name":"mission_talk",
   "parent":{
     "name":"Missions",
     "path":"folders/Scripts/Missions.yy",
