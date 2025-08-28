@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"music_drums_lofi_1",
+  "%Name":"snd_snare",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -9,17 +9,17 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":7.384626,
-  "name":"music_drums_lofi_1",
+  "duration":2.0,
+  "name":"snd_snare",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"gms_drums_pack",
+    "path":"folders/MusicEngine/Instrument_Sounds/gms_drums_pack.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"music_drums_lofi_1.wav",
+  "soundFile":"snd_snare.wav",
   "type":0,
   "volume":1.0,
 }

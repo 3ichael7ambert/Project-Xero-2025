@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"snd_kick",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":2.0,
+  "name":"snd_kick",
+  "parent":{
+    "name":"gms_drums_pack",
+    "path":"folders/MusicEngine/Instrument_Sounds/gms_drums_pack.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_kick.wav",
+  "type":0,
+  "volume":1.0,
+}

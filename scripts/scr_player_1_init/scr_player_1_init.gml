@@ -50,4 +50,6 @@ wpn_cooldown=0;
 offsetX=23;
 offsetY=56;
 
+can_move=true;
+
 }
