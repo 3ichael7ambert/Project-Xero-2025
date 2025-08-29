@@ -21,4 +21,5 @@ if (instance_exists(objHuman)) {
 	nearest_human = noone;
 }
 
+
 mission_talk();

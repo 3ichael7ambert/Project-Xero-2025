@@ -198,6 +198,7 @@ function mission_manager_setup() {
     global.mission_manager = self;
 
     available_missions = {};
+	available_ids = [];  
     active_missions = [];
     completed_missions = [];
     failed_missions = [];
