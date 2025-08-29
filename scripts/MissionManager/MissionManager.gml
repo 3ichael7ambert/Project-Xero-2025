@@ -18,6 +18,12 @@ enum MISSION_EVENT {
     // Add any other game events you might need here
 }
 
+enum MISSION_SCOPE {
+    Any,    // count any kill of that object type
+    Mine    // count only kills of targets spawned for THIS mission
+}
+
+
 
 /// @function MissionObjective(_type, _target_id, _amount)
 /// @description Base constructor for a mission objective.
@@ -40,17 +46,29 @@ function MissionObjective(_type, _target_id, _amount) constructor {
 
 /// @function ObjectiveKill(_target_obj_index, _amount)
 /// @description Objective to kill a certain number of a specific enemy type.
-function ObjectiveKill(_target_obj_index, _amount) : MissionObjective("kill", _target_obj_index, _amount) constructor {
+/// @function ObjectiveKill(_target_obj_index, _amount, _scope_mode, _owner_guid)
+function ObjectiveKill(_target_obj_index, _amount, _scope_mode, _owner_guid)
+    : MissionObjective("kill", _target_obj_index, _amount) constructor
+{
+    scope_mode = is_undefined(_scope_mode) ? MISSION_SCOPE.Any : _scope_mode;
+    owner_guid = is_undefined(_owner_guid) ? -1 : _owner_guid;
+
     static check_progress = function(_event_type, _event_data) {
-        if (_event_type == MISSION_EVENT.ENEMY_KILLED && _event_data.enemy_object_index == self.target_id) {
-            if (!self.is_completed) {
-                self.current = min(self.current + 1, self.amount);
-                if (self.current >= self.amount) {
-                    self.is_completed = true;
-                }
-                show_debug_message($"Kill Objective Progress: {self.get_display_string()}");
-                return true;
-            }
+        if (_event_type != MISSION_EVENT.ENEMY_KILLED) return false;
+        if (_event_data.enemy_object_index != self.target_id) return false;
+
+        // Scope filter
+        if (self.scope_mode == MISSION_SCOPE.Mine) {
+            if (!variable_struct_exists(_event_data, "mission_guid")) return false;
+            if (_event_data.mission_guid != self.owner_guid) return false;
+        }
+        // MISSION_SCOPE.Any falls through
+
+        if (!self.is_completed) {
+            self.current = min(self.current + 1, self.amount);
+            if (self.current >= self.amount) self.is_completed = true;
+            show_debug_message($"Kill Objective Progress: {self.get_display_string()}");
+            return true;
         }
         return false;
     }
@@ -60,6 +78,7 @@ function ObjectiveKill(_target_obj_index, _amount) : MissionObjective("kill", _t
         return $"Kill {_target_name}s: {self.current}/{self.amount}";
     }
 }
+
 
 /// @function ObjectiveCollect(_target_item_id_string, _amount)
 /// @description Objective to collect a certain number of a specific item.
@@ -189,6 +208,8 @@ function event_bus_post(_event_type, _event_data) {
     show_debug_message($"Event Posted: {string(_event_type)} with data: {string(_event_data)}");
 }
 
+
+
 /// @description Initialize the Mission Manager Singleton and all its methods.
 function mission_manager_setup() {
     if (variable_global_exists("mission_manager") && instance_exists(global.mission_manager) && global.mission_manager != self) {
@@ -202,6 +223,13 @@ function mission_manager_setup() {
     active_missions = [];
     completed_missions = [];
     failed_missions = [];
+	
+	if (!variable_global_exists("_mission_guid_seed")) global._mission_guid_seed = 0;
+	self._make_guid = function() {
+	    global._mission_guid_seed += 1;
+	    return global._mission_guid_seed;
+	};
+
 
     self.init_missions = function() {
         self.available_missions = {};
@@ -219,13 +247,21 @@ function mission_manager_setup() {
                     var _obj_data = _data.objectives[j];
                     var _target = variable_struct_get(_obj_data, "target");
                     var _amount = variable_struct_get(_obj_data, "amount");
+					
+					var _scope_str = variable_struct_exists(_obj_data, "scope") ? string_lower(_obj_data.scope) : "any";
+					var _scope_enum = (_scope_str == "mine") ? MISSION_SCOPE.Mine : MISSION_SCOPE.Any;
 
                     switch (_obj_data.type) {
                         case "kill":
-                            var _obj_index = asset_get_index(_target);
-                            if (_obj_index > -1) array_push(_objectives, new ObjectiveKill(_obj_index, _amount));
-                            else show_debug_message($"WARNING: Unknown object '{_target}' for kill objective in mission '{_data.id}'");
-                            break;
+					        var _obj_index = asset_get_index(_target);
+					        if (_obj_index > -1) {
+					            var _proto = new ObjectiveKill(_obj_index, _amount); // prototype
+					            _proto.scope = _scope_enum; // <-- store scope on the prototype
+					            array_push(_objectives, _proto);
+					        } else {
+					            show_debug_message($"WARNING: Unknown object '{_target}' for kill objective in mission '{_data.id}'");
+					        }
+					        break;
                         case "collect": array_push(_objectives, new ObjectiveCollect(_target, _amount)); break;
                         case "location": array_push(_objectives, new ObjectiveLocation(_target)); break;
                         case "talk": array_push(_objectives, new ObjectiveTalkToNPC(_target)); break;
@@ -266,7 +302,7 @@ function mission_manager_setup() {
         return MISSION_STATUS.NotStarted;
     }
 
-    self.activate_mission = function(_mission_id) {
+    self.activate_mission = function(_mission_id, _pre_guid) {
         if (!variable_struct_exists(self.available_missions, _mission_id)) {
             show_debug_message($"Attempted to activate non-existent mission: {_mission_id}");
             return false;
@@ -277,6 +313,10 @@ function mission_manager_setup() {
         }
 
         var _mission_def = self.available_missions[$ _mission_id];
+		
+		// if missions will spawn targets BEFORE activation (dynamic_count), we can preassign a GUID
+		var _guid = is_undefined(_pre_guid) ? self._make_guid() : _pre_guid;
+
 
         for (var i = 0; i < array_length(_mission_def.prerequisites); i++) {
             var _prereq_id = _mission_def.prerequisites[i];
@@ -286,40 +326,45 @@ function mission_manager_setup() {
             }
         }
 
-        var _new_objectives_array = [];
-        for (var i = 0; i < array_length(_mission_def.objectives); i++) {
-            var _obj_def = _mission_def.objectives[i];
-            var _final_amount = _obj_def.amount;
-            var _new_obj = undefined;
-            
-            if (_obj_def.amount == "dynamic_count" && _obj_def.type == "kill") {
-                _final_amount = instance_number(_obj_def.target_id);
-            }
-
-            switch (_obj_def.type) {
-                case "kill": _new_obj = new ObjectiveKill(_obj_def.target_id, _final_amount); break;
-                case "collect": _new_obj = new ObjectiveCollect(_obj_def.target_id, _final_amount); break;
-                case "location": _new_obj = new ObjectiveLocation(_obj_def.target_id); break;
-                case "talk": _new_obj = new ObjectiveTalkToNPC(_obj_def.target_id); break;
-            }
-            
-            if (_new_obj != undefined) {
-                _new_obj.is_optional = _obj_def.is_optional;
-                array_push(_new_objectives_array, _new_obj);
-            }
-        }
+        // Build active objectives (copy scope from prototype, and inject owner_guid)
+	    var _new_objectives_array = [];
+	    for (var i = 0; i < array_length(_mission_def.objectives); i++) {
+	        var _obj_def = _mission_def.objectives[i];
+	        var _final_amount = _obj_def.amount;
+	        var _new_obj = undefined;
         
-        var _new_active_mission = new Mission(
-            _mission_def.id, _mission_def.name, _mission_def.description, 
-            _new_objectives_array, _mission_def.rewards, _mission_def.prerequisites
-        );
-        _new_active_mission.time_limit = _mission_def.time_limit;
-        _new_active_mission.on_mission_complete_script = _mission_def.on_mission_complete_script; // **NEW** Copy the callback
+	        if (_obj_def.amount == "dynamic_count" && _obj_def.type == "kill") {
+	            _final_amount = instance_number(_obj_def.target_id);
+	        }
 
-        _new_active_mission.set_status(MISSION_STATUS.Active);
-        array_push(self.active_missions, _new_active_mission);
-        show_debug_message($"Mission '{_mission_id}' activated!");
-        return true;
+	        switch (_obj_def.type) {
+	            case "kill":
+	                var _scope_enum = variable_instance_exists(_obj_def, "scope") ? _obj_def.scope : MISSION_SCOPE.Any;
+	                _new_obj = new ObjectiveKill(_obj_def.target_id, _final_amount, _scope_enum, _guid);
+	                break;
+	            case "collect":  _new_obj = new ObjectiveCollect(_obj_def.target_id, _final_amount); break;
+	            case "location": _new_obj = new ObjectiveLocation(_obj_def.target_id); break;
+	            case "talk":     _new_obj = new ObjectiveTalkToNPC(_obj_def.target_id); break;
+	        }
+	        if (!is_undefined(_new_obj)) {
+	            _new_obj.is_optional = _obj_def.is_optional;
+	            array_push(_new_objectives_array, _new_obj);
+	        }
+	    }
+        
+         var _new_active_mission = new Mission(
+        _mission_def.id, _mission_def.name, _mission_def.description,
+        _new_objectives_array, _mission_def.rewards, _mission_def.prerequisites
+	    );
+	    _new_active_mission.time_limit = _mission_def.time_limit;
+	    _new_active_mission.on_mission_complete_script = _mission_def.on_mission_complete_script;
+	    _new_active_mission.guid = _guid; // <— store on mission
+
+	    _new_active_mission.set_status(MISSION_STATUS.Active);
+	    array_push(self.active_missions, _new_active_mission);
+	    show_debug_message($"Mission '{_mission_id}' activated! guid={string(_guid)}");
+	    return true;
+	
     }
 
     self.on_game_event = function(_event_type, _event_data) {
