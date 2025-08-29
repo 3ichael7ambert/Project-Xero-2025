@@ -7,6 +7,7 @@
  weapon="none";
  
  odonis=choose(true,false);
+ hero=false;
  
  // Create Event
 grav = 0.5; // Gravity strength
@@ -35,6 +36,8 @@ player_target=noone;
 player_nearest=noone;
 robot_nearest=noone;
 human_nearest=noone;
+
+jetpack=false;
 
 
 //mission
@@ -75,7 +78,7 @@ image_yscale=scale;
  hat_color=(make_color_rgb(random(255),random(255),random(255)));
  
 
- sunglasses=choose(true,false);
+ 
  race=choose("human","alien");
  
   if (race=="human") {
@@ -127,6 +130,13 @@ image_yscale=scale;
 	shirtless = random(100);
 	pantsless = random(100);
 	hat_chance = random(100);
+	
+	sunglasses_chance = random(100);
+	if (sunglasses_chance>15) {
+		sunglasses=false;
+	} else {
+		sunglasses=choose(true,false);
+	}
 	
 gender=choose("male","female");
 

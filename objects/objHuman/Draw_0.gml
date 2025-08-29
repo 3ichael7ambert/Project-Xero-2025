@@ -196,6 +196,11 @@ if (race=="human") {
 		
 		draw_sprite_ext(sprHuman_Head_Eyebrows,img_idx_eyebrows,eyebrows_x,eyebrows_y,image_xscale,image_yscale,0,hair_color,1);
     
+	if (sunglasses==true) {
+			draw_sprite_ext(sprHuman_eyes_sunglasses,0,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
+		}
+		
+		
 	switch (hair_style) {
 		  //hair_style=choose("long","short","bald","braids","long2","short");
 			 case "long": 
@@ -389,9 +394,10 @@ if (race=="alien") {
         draw_sprite_ext(sprHuman_Head_Eyes,img_idx_eyes,eyes_x,eyes_y,image_xscale,image_yscale,0,eye_color,1);
       //  draw_sprite_ext(sprHuman_Head_Eyes_Pupils,1,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,eye_color,1);
 	//	draw_sprite_ext(sprHuman_Head_Eyes_Pupils,0,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,c_white,1);
+		if (sunglasses==true) {
+			draw_sprite_ext(sprHuman_eyes_sunglasses,0,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
+		}
 		
-        draw_sprite_ext(sprHuman_eyes_sunglasses,0,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
-        
 		switch (eyes_mood) {
 			case "calm": 
 			//	draw_sprite_ext(sprAlien_Head_Eyelids,0,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
