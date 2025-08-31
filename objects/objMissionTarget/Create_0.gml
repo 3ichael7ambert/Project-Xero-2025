@@ -23,6 +23,10 @@ if (species=="balloon") {
 	bob_amp    = irandom_range(1, 3);
 	bob_freq   = random_range(0.8, 1.3);
 	t          = irandom(1000);
+	               // how fast bird turns
+	//bird
+	wander_jit= 0.8;  
+	spd       = irandom_range(1,3); 
 
 	x_anchor   = x;
 	y_anchor   = y;

@@ -1,3 +1,5 @@
+
+
 if species=="bird" {
 	draw_self();
 }
@@ -57,3 +59,8 @@ if (species=="balloon") {
 	 draw_ellipse_color(bx - baseW*0.18, by - baseH*0.28, bx - baseW*0.02, by - baseH*0.12, c_white, c_white, false);
 
 }
+
+
+/// --- DEBUG --- ///
+
+draw_text_outlined(x,y,"GUID: " + string(mission_guid),c_yellow,c_red);
