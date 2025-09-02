@@ -8,6 +8,7 @@
 depth = 0;
 
 var date_time_of_day_color = scr_timeofday_color();
+var atmosphere_color = merge_colour(c_black,date_time_of_day_color,.5);
 //var date_time_of_day_color = c_aqua;
 
 gpu_set_zwriteenable(true);
@@ -79,7 +80,7 @@ if (L.sh = -1) {
 } else {
     builder.submit(); // fallback flat
 	
-	gpu_set_fog(true, date_time_of_day_color, 100, 1000); 
+	gpu_set_fog(true, atmosphere_color, 500, 1000); 
 }
 
 
@@ -89,11 +90,11 @@ if (L.sh = -1) {
 
 ///
 
-
+/*
 var fog_a = gpu_get_fog();
 fog_a[1] = date_time_of_day_color;
 gpu_set_fog(fog_a);
-
+*/
 
 gpu_set_zwriteenable(false);
 gpu_set_ztestenable(false);
