@@ -45,11 +45,11 @@ else if current_hour>=21 && current_hour<25 {
     blended_color = merge_color(color2,color5,blend_factor);
 }
 
-
-__background_set_colour(blended_color);
-
-var lay_id = layer_get_id("Colour");
-var back_id = layer_background_get_id(lay_id);
-layer_background_blend(back_id, blended_color);
+ __background_set_colour(blended_color);
+    var lay_id = layer_get_id("Colour");
+    if (lay_id != -1) {
+        var back_id = layer_background_get_id(lay_id);
+        if (back_id != -1) layer_background_blend(back_id, blended_color);
+    }
 
 }

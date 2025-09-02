@@ -1,9 +1,9 @@
 /// @description Camera properties
 
 init_sys_camera();
-cam_reset(1920,1080,1,obj_Player1);
 
-
+//////
+cam_reset(1920, 1080, 1, obj_Player1);
 cam_wrapper = new CamWrap(global.CameraManager.w, global.CameraManager.h);
 	
 	
@@ -23,6 +23,4 @@ cam_max=-3000;
 speed=3;
 
 global.CameraManager.target = obj_Player1;
-
-
 

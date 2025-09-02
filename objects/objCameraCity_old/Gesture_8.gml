@@ -6,7 +6,7 @@
 
 
 
-if camDist<cam_min { camDist+=10;}
+if camDist<cam_mix { camDist+=10;}
 
 
 

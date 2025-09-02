@@ -10,6 +10,7 @@ global.__Tile3dFormat = {
             vertex_format_add_position_3d(); // Vertex position (x, y, z)
             vertex_format_add_texcoord();    // Texture coordinates (u, v)
             vertex_format_add_color();       // Vertex color (RGBA)
+			//vertex_format_add_normal();
             format = vertex_format_end();
         }
     },

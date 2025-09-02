@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"init_sys_camera_city",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"init_sys_camera_city",
+  "parent":{
+    "name":"control",
+    "path":"folders/Scripts/control.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -95,3 +95,6 @@ vh = camera_get_view_height(view_camera[0]);
 maxX = vw - 200;
 maxY = vh - 200;
 	
+	
+	//LIGHTING
+	instance_create(x,y,objCityLighting);

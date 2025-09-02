@@ -1082,5 +1082,4 @@ with(obj_block3D_infinite){
 }
 
 
-/// finish up
 builder.build(sprSidewalk);

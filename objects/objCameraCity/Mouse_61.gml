@@ -1,0 +1,1 @@
+if camDist<cam_min { camDist+=10;}

@@ -1,12 +1,11 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+if camDist>cam_max { camDist-=10;}
 
 
 
 
-
-if camDist<cam_min { camDist+=10;}
 
 
 
