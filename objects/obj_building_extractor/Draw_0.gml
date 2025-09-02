@@ -7,9 +7,12 @@
 
 depth = 0;
 
+var date_time_of_day_color = scr_timeofday_color();
+
 gpu_set_zwriteenable(true);
 gpu_set_ztestenable(true);
 gpu_set_cullmode(cull_noculling);
+//gpu_set_fog(true, date_time_of_day_color, 0, 1000); 
 
 /*
 var date_time_of_day_color = scr_timeofday_color();
@@ -48,6 +51,8 @@ if (sh_sun != -1 && shader_is_compiled(sh_sun)) {
 // DO NOT attach to GUI/HUD layers
 
 
+
+
 var L = global.Lighting;
 if (L.sh != -1) {
     shader_set(L.sh);
@@ -78,7 +83,7 @@ if (L.sh != -1) {
 
 ///
 
-
+gpu_set_fog(true, date_time_of_day_color, 0, 1000); 
 gpu_set_zwriteenable(false);
 gpu_set_ztestenable(false);
 
