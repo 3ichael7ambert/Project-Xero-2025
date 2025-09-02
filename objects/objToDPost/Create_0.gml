@@ -1,4 +1,4 @@
-sh_tone = asset_get_index(shd_tod_tone);
+/*sh_tone = asset_get_index(shd_sun);
 if (sh_tone != -1 && shader_is_compiled(sh_tone)) {
     u_tone = shader_get_uniform(sh_tone, "u_ToneColor");
     u_str  = shader_get_uniform(sh_tone, "u_Strength");

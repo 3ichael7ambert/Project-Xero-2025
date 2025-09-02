@@ -7,10 +7,10 @@ global.__Tile3dFormat = {
     init: function() {
         if (format == -1) {
             vertex_format_begin();
-            vertex_format_add_position_3d(); // Vertex position (x, y, z)
-            vertex_format_add_texcoord();    // Texture coordinates (u, v)
-            vertex_format_add_color();       // Vertex color (RGBA)
-			//vertex_format_add_normal();
+			vertex_format_add_position_3d();
+			vertex_format_add_texcoord();
+			vertex_format_add_color();
+			vertex_format_add_normal(); // required
             format = vertex_format_end();
         }
     },
@@ -185,19 +185,64 @@ function Tile3d() constructor {
                         _p3 = { x: _half_w, y: _half_h, z: 0 }; _p4 = { x: -_half_w, y: _half_h, z: 0 };
                     }
                     var _v1 = matrix_transform_vertex(_matrix, _p1.x, _p1.y, _p1.z);
-                    var _v2 = matrix_transform_vertex(_matrix, _p2.x, _p2.y, _p2.z);
-                    var _v3 = matrix_transform_vertex(_matrix, _p3.x, _p3.y, _p3.z);
-                    var _v4 = matrix_transform_vertex(_matrix, _p4.x, _p4.y, _p4.z);
-                    var _uvs = _tile.uvs;
-                    var _uv_x1 = _uvs[0]; var _uv_y1 = _uvs[1]; var _uv_x2 = _uvs[2]; var _uv_y2 = _uvs[3];
-                    var _color = c_white; var _alpha = 1;
-                    vertex_position_3d(_vbuff, _v1[0], _v1[1], _v1[2]); vertex_texcoord(_vbuff, _uv_x1, _uv_y1); vertex_color(_vbuff, _color, _alpha);
-                    vertex_position_3d(_vbuff, _v2[0], _v2[1], _v2[2]); vertex_texcoord(_vbuff, _uv_x2, _uv_y1); vertex_color(_vbuff, _color, _alpha);
-                    vertex_position_3d(_vbuff, _v3[0], _v3[1], _v3[2]); vertex_texcoord(_vbuff, _uv_x2, _uv_y2); vertex_color(_vbuff, _color, _alpha);
-                    vertex_position_3d(_vbuff, _v1[0], _v1[1], _v1[2]); vertex_texcoord(_vbuff, _uv_x1, _uv_y1); vertex_color(_vbuff, _color, _alpha);
-                    vertex_position_3d(_vbuff, _v3[0], _v3[1], _v3[2]); vertex_texcoord(_vbuff, _uv_x2, _uv_y2); vertex_color(_vbuff, _color, _alpha);
-                    vertex_position_3d(_vbuff, _v4[0], _v4[1], _v4[2]); vertex_texcoord(_vbuff, _uv_x1, _uv_y2); vertex_color(_vbuff, _color, _alpha);
-                }
+					var _v2 = matrix_transform_vertex(_matrix, _p2.x, _p2.y, _p2.z);
+					var _v3 = matrix_transform_vertex(_matrix, _p3.x, _p3.y, _p3.z);
+					var _v4 = matrix_transform_vertex(_matrix, _p4.x, _p4.y, _p4.z);
+
+					// --- NEW: compute a world-space face normal from the first tri
+					var _e1 = [ _v2[0]-_v1[0], _v2[1]-_v1[1], _v2[2]-_v1[2] ];
+					var _e2 = [ _v3[0]-_v1[0], _v3[1]-_v1[1], _v3[2]-_v1[2] ];
+					var _Nx = _e1[1]*_e2[2] - _e1[2]*_e2[1];
+					var _Ny = _e1[2]*_e2[0] - _e1[0]*_e2[2];
+					var _Nz = _e1[0]*_e2[1] - _e1[1]*_e2[0];
+					// builder (face normal)
+					var _L  = max(0.000001, sqrt(_Nx*_Nx + _Ny*_Ny + _Nz*_Nz));
+					_Nx /= _L; 
+					_Ny /= _L; 
+					_Nz /= _L;
+
+					// If some faces shade inside-out, flip once:  _Nx=-_Nx; _Ny=-_Ny; _Nz=-_Nz;
+
+					var _uvs = _tile.uvs;
+					var _uv_x1 = _uvs[0]; var _uv_y1 = _uvs[1];
+					var _uv_x2 = _uvs[2]; var _uv_y2 = _uvs[3];
+					var _color = c_white; var _alpha = 1;
+
+// (your six vertex_position_3d calls are here)
+
+                    // tri 1: v1, v2, v3
+					vertex_position_3d(_vbuff, _v1[0], _v1[1], _v1[2]);
+					vertex_texcoord   (_vbuff, _uv_x1, _uv_y1);
+					vertex_color      (_vbuff, _color, _alpha);
+					vertex_normal  (_vbuff, _Nx, _Ny, _Nz);
+
+					vertex_position_3d(_vbuff, _v2[0], _v2[1], _v2[2]);
+					vertex_texcoord   (_vbuff, _uv_x2, _uv_y1);
+					vertex_color      (_vbuff, _color, _alpha);
+					vertex_normal  (_vbuff, _Nx, _Ny, _Nz);
+
+					vertex_position_3d(_vbuff, _v3[0], _v3[1], _v3[2]);
+					vertex_texcoord   (_vbuff, _uv_x2, _uv_y2);
+					vertex_color      (_vbuff, _color, _alpha);
+					vertex_normal  (_vbuff, _Nx, _Ny, _Nz);
+
+					// tri 2: v1, v3, v4
+					vertex_position_3d(_vbuff, _v1[0], _v1[1], _v1[2]);
+					vertex_texcoord   (_vbuff, _uv_x1, _uv_y1);
+					vertex_color      (_vbuff, _color, _alpha);
+					vertex_normal  (_vbuff, _Nx, _Ny, _Nz);
+
+					vertex_position_3d(_vbuff, _v3[0], _v3[1], _v3[2]);
+					vertex_texcoord   (_vbuff, _uv_x2, _uv_y2);
+					vertex_color      (_vbuff, _color, _alpha);
+					vertex_normal  (_vbuff, _Nx, _Ny, _Nz);
+
+					vertex_position_3d(_vbuff, _v4[0], _v4[1], _v4[2]);
+					vertex_texcoord   (_vbuff, _uv_x1, _uv_y2);
+					vertex_color      (_vbuff, _color, _alpha);
+					vertex_normal  (_vbuff, _Nx, _Ny, _Nz);
+					
+					}
                 vertex_end(_vbuff);
                 vertex_freeze(_vbuff);
                 array_push(render_list, { vbuff: _vbuff, sprite: _representative_sprite });

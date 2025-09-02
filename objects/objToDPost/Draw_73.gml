@@ -1,5 +1,5 @@
 // Helpers (use your versions if already added)
-
+/*
 var hour   = date_get_hour(date_current_datetime());
 var minute = date_get_minute(date_current_datetime());
 var bg_col = scr_timeofday_color(hour, minute);

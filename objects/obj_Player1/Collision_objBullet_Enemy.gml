@@ -19,5 +19,5 @@ switch (player) {
 with (other) {instance_destroy();}
 
 if (room == rmCity) {
-	cam_shake(10,10);
+	cam_shake(1,5);
 }

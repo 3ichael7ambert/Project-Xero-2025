@@ -470,6 +470,7 @@
     {"id":{"name":"scr_player_1_init_particles","path":"scripts/scr_player_1_init_particles/scr_player_1_init_particles.yy",},},
     {"id":{"name":"scr_player_1_init","path":"scripts/scr_player_1_init/scr_player_1_init.yy",},},
     {"id":{"name":"scr_range_finder","path":"scripts/scr_range_finder/scr_range_finder.yy",},},
+    {"id":{"name":"scr_tile3d_utils","path":"scripts/scr_tile3d_utils/scr_tile3d_utils.yy",},},
     {"id":{"name":"scr_timeofday_background_init","path":"scripts/scr_timeofday_background_init/scr_timeofday_background_init.yy",},},
     {"id":{"name":"scr_timeofday_color","path":"scripts/scr_timeofday_color/scr_timeofday_color.yy",},},
     {"id":{"name":"seg_add","path":"scripts/seg_add/seg_add.yy",},},

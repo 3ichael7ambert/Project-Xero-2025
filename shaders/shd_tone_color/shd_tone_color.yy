@@ -3,8 +3,8 @@
   "%Name":"shd_tone_color",
   "name":"shd_tone_color",
   "parent":{
-    "name":"Shaders",
-    "path":"folders/Shaders.yy",
+    "name":"City Lighting",
+    "path":"folders/Shaders/City Lighting.yy",
   },
   "resourceType":"GMShader",
   "resourceVersion":"2.0",
