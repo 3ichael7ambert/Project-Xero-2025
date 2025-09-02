@@ -8,6 +8,7 @@
 depth = 0;
 
 var date_time_of_day_color = scr_timeofday_color();
+//var date_time_of_day_color = c_aqua;
 
 gpu_set_zwriteenable(true);
 gpu_set_ztestenable(true);
@@ -54,7 +55,7 @@ if (sh_sun != -1 && shader_is_compiled(sh_sun)) {
 
 
 var L = global.Lighting;
-if (L.sh != -1) {
+if (L.sh = -1) {
     shader_set(L.sh);
 
     // Example sun from up-left, slightly forward; must be normalized
@@ -71,9 +72,14 @@ if (L.sh != -1) {
     shader_set_uniform_f(L.u_gs,  0.02);           // gradient falloff (per world unit)
 
     builder.submit();
-    shader_reset();
+	
+	//gpu_set_fog(true, date_time_of_day_color, 100, 1000); 
+   
+   shader_reset();
 } else {
     builder.submit(); // fallback flat
+	
+	gpu_set_fog(true, date_time_of_day_color, 100, 1000); 
 }
 
 
@@ -83,7 +89,12 @@ if (L.sh != -1) {
 
 ///
 
-gpu_set_fog(true, date_time_of_day_color, 0, 1000); 
+
+var fog_a = gpu_get_fog();
+fog_a[1] = date_time_of_day_color;
+gpu_set_fog(fog_a);
+
+
 gpu_set_zwriteenable(false);
 gpu_set_ztestenable(false);
 
