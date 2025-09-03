@@ -29,8 +29,8 @@ function setup_partsys(_target) {
 	pMisc = setup_wander(pt_orb);
 	pSplash = setup_water_ripple(pt_splash);
 	/// ice attack
-	pFrost = setup_splash(pt_ice);
-	pIce = setup_crystal(pFrost,pt_ice);
+	pFrost = setup_splash(pt_leaf);
+	pIce = setup_crystal(pFrost,pt_leaf);
 	/// fire attack
 	pFlame = create_small_flame();
 	/// rock attack
