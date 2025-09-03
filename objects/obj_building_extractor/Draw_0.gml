@@ -14,7 +14,8 @@ var atmosphere_color = merge_colour(c_black,date_time_of_day_color,.5);
 gpu_set_zwriteenable(true);
 gpu_set_ztestenable(true);
 gpu_set_cullmode(cull_noculling);
-//gpu_set_fog(true, date_time_of_day_color, 0, 1000); 
+
+gpu_set_fog(true, date_time_of_day_color, 500, 1000); 
 
 /*
 var date_time_of_day_color = scr_timeofday_color();
@@ -53,7 +54,7 @@ if (sh_sun != -1 && shader_is_compiled(sh_sun)) {
 // DO NOT attach to GUI/HUD layers
 
 
-
+/*
 
 var L = global.Lighting;
 if (L.sh = -1) {
@@ -80,12 +81,12 @@ if (L.sh = -1) {
 } else {
     builder.submit(); // fallback flat
 	
-	gpu_set_fog(true, atmosphere_color, 500, 1000); 
+//	gpu_set_fog(true, atmosphere_color, 500, 1000); 
 }
 
+*/
 
-
-//builder.submit();
+builder.submit();
 
 
 ///
@@ -98,6 +99,8 @@ gpu_set_fog(fog_a);
 
 gpu_set_zwriteenable(false);
 gpu_set_ztestenable(false);
+
+gpu_set_fog(false, date_time_of_day_color, 500, 1000); 
 
 
 

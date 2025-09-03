@@ -11,8 +11,8 @@
   "name":"objCityParent_Skyline",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"City",
+    "path":"folders/Objects/City.yy",
   },
   "parentObjectId":null,
   "persistent":false,

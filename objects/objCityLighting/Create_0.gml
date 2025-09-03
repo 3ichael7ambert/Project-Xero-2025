@@ -1,8 +1,14 @@
 // --- GPU state once (global defaults)
+
+depth=-99999;
+var sun_col = scr_timeofday_color();
+
 gpu_set_zwriteenable(true);
 gpu_set_ztestenable(true);
 gpu_set_cullmode(cull_noculling);
 
+//gpu_set_fog(true,sun_col,0,9999);
+/*
 // --- Cache shader + uniforms into a global struct
 global.Lighting = {
     sh   : asset_get_index("shd_sun"),
@@ -43,3 +49,32 @@ if (!global.__lighting_layers_set) {
     }
     global.__lighting_layers_set = true;
 }
+*/
+// warm-ish sunlight color
+
+
+draw_set_lighting(true);
+//draw_light_define_direction(1, 0, 1, 0, sun_col);
+
+
+// Set a default ambient (soft sky fill)
+draw_light_define_ambient(sun_col); // tweak later by time-of-day
+
+// Define a “sun” directional light (index 0)
+global.light_sun = 0;
+
+// start with a sensible sun direction (normalized)
+var lx = 0.4, ly = 0.8, lz = 0.3;
+var len = max(0.000001, sqrt(lx*lx + ly*ly + lz*lz));
+lx /= len; ly /= len; lz /= len;
+
+
+
+// Directional light (by index)
+//draw_light_define_direction(global.light_sun, lx, ly, lz, sun_col);
+//light_enable_index(global.light_sun, true);
+draw_light_enable(0, true);
+draw_light_enable(1, true);
+
+
+

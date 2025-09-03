@@ -97,5 +97,6 @@ maxY = vh - 200;
 	
 	
 	//LIGHTING
-	// instance_create(x,y,objCityLighting);
+	 instance_create(x,y,objCityLighting);
+	 instance_create(x,y,objCityWeather);
 	// instance_create(x,y,objToDPost);

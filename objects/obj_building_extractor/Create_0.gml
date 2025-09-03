@@ -8,7 +8,7 @@ mesh_dirty  = true;   // set this to true any time sidewalks/buildings change
 default_w   = 64;     // fallback width for sidewalk rects
 default_h   = 64;     // fallback height for sidewalk rects
 
-
+/*
 global.Lighting = {};
 with (global.Lighting) {
     sh = asset_get_index(shd_sun);
@@ -23,7 +23,7 @@ with (global.Lighting) {
     } else sh = -1;
 }
 
-
+*/
 
 /// LIGHTING
 // Cache shader + uniform locations

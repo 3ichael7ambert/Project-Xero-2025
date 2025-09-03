@@ -12,8 +12,8 @@
   "name":"objCameraCity_old",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"City",
+    "path":"folders/Objects/City.yy",
   },
   "parentObjectId":null,
   "persistent":false,

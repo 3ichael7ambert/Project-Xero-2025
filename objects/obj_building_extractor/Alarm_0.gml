@@ -260,8 +260,8 @@ if (build_style==2) {
         for (var j = 0; j < h; j++) {
             var yy = y0 - j * TILE;
             var M  = build_drawing_matrix(xx, yy, z_front, 0, 0, 0);
-            var Ml  = build_drawing_matrix(xx, yy, z_front+TILE, 0, -45, 0);
-            var Mr  = build_drawing_matrix(xx, yy, z_front, 0, 45, 0);
+            var Ml  = build_drawing_matrix(xx+TILE, yy, z_front, 0, 135, 0);
+            var Mr  = build_drawing_matrix(xx+TILE, yy, z_front+TILE, 0, -135, 0);
             // Full tile in 0..TILE local plane; matches storefront/windows plane
 			if (i==0) {
 	            other.builder.add_tile_pos(Ml, spr_front, frm_front,
@@ -456,10 +456,10 @@ if (build_style==2) {
 			}
 			else if (i==0) && (k==d-1) { //back left
 				var zz = z_front + k * TILE;
-	            var M = build_drawing_matrix(xx, y_top, zz + TILE, 90, 0, 0);
+	            var M = build_drawing_matrix(xx, y_top, zz, -90, 0, 0);
 	           // other.builder.add_tile_ext(M, TILE, TILE, spr_roof, frm_roof); }
 				
-				other.builder.add_tile_pos(M,spr_roof,frm_roof,0,0+TILE,0+TILE,0+TILE,0+TILE,0,0,0+TILE);
+				other.builder.add_tile_pos(M,spr_roof,frm_roof,0+TILE,0+TILE,0+TILE,0,0,0,0+TILE,0+TILE);
 			}
 			else if (i==w-1) && (k==0) { //front right
 				var zz = z_front + k * TILE;
