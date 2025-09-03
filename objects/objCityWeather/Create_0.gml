@@ -1,3 +1,13 @@
+
+/// setup
+
+setup_partsys(self);
+
+part_state_player = "None";
+part_spawn_count = 50;
+/*
+
+
 // ---------- CONFIG ----------
 mode        = "clear";   // "clear","rain","snow","fog","storm"
 intensity   = 0.6;       // 0..1

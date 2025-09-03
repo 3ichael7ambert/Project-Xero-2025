@@ -1,3 +1,7 @@
+/// exit
+
+exit;
+/*
 // Draw particles in world space (they were spawned in view coords already)
 part_system_drawit(ps);
 

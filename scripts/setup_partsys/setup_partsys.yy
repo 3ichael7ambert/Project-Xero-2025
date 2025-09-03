@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"setup_partsys",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"setup_partsys",
+  "parent":{
+    "name":"Particles",
+    "path":"folders/Particle_System/Particles.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

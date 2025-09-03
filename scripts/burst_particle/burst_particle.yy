@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"burst_particle",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"burst_particle",
+  "parent":{
+    "name":"Particles",
+    "path":"folders/Particle_System/Particles.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
