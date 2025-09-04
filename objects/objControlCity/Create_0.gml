@@ -97,6 +97,7 @@ maxY = vh - 200;
 	
 	
 	//LIGHTING
-	 instance_create(x,y,objCityLighting);
-	 instance_create(x,y,objCityWeather);
+	 var a = instance_create(x,y,objCityLighting);
+	 var b = instance_create(x,y,objCityWeather);
+	 b.part_state_player = choose("Snow","Rain","Slush");
 	// instance_create(x,y,objToDPost);

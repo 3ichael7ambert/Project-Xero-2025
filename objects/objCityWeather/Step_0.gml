@@ -5,7 +5,7 @@ pWeatherRain = scr_setup_part_rain();
 pWeatherSnow = scr_setup_part_snow();
 pWeatherSlush = scr_setup_part_slush();
 */
-
+/*
 switch(keyboard_lastchar){
 	case "1" : part_state_player = "Rain"; break;
 	case "2" : part_state_player = "Snow"; break;
@@ -13,13 +13,14 @@ switch(keyboard_lastchar){
 	case "4" : part_state_player = "None"; break;
 	case "+" : part_spawn_count += 25; break;
 	case "-" : part_spawn_count -= 25; break;
-}
+}*/
 keyboard_lastchar="";
 part_spawn_count = clamp(part_spawn_count, 25, 500);
 
 /// spawn particle effects
 var cam = view_camera[0];
-var cam_x = camera_get_view_x(cam);
+//var cam_x = camera_get_view_x(cam);
+var cam_x = global.CameraManager.x;
 var cam_w = camera_get_view_width(cam);
 var height = 64;
 

@@ -1,4 +1,5 @@
-if (part_system_exists(ps)) part_system_destroy(ps);
+
+/*if (part_system_exists(ps)) part_system_destroy(ps);
 part_type_destroy(pt_rain);
 part_type_destroy(pt_snow);
 part_type_destroy(pt_mist);
