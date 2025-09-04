@@ -22,6 +22,9 @@ var cam = view_camera[0];
 //var cam_x = camera_get_view_x(cam);
 var cam_x = global.CameraManager.x;
 var cam_w = camera_get_view_width(cam);
+var cam_y = camera_get_view_y(cam);
+var cam_h = camera_get_view_height(cam);
+
 var height = 64;
 
 var _part = -1;
@@ -38,7 +41,7 @@ switch(part_state_player){
 }
 
 if(_part != -1){
-	burst_particle_box(cam_x-100, -height, cam_x + cam_w + 100, 0, false, _part, part_spawn_count);
+	burst_particle_box(cam_x-100, cam_y-height, cam_x + cam_w + 100, cam_y, false, _part, part_spawn_count);
 
 }
 
