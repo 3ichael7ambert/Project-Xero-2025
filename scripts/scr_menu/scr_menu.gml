@@ -416,7 +416,7 @@ if (keyboard_check_pressed(vk_enter)) {
 // --- Gameplay Starter ---
 function start_cityscape_game() {
    // global.player_count = player_count;
-    room_goto(rmCity);
+    transition_room(rmCity);
 }
 
 function start_survival_game(player_count, _level) {
@@ -425,11 +425,11 @@ function start_survival_game(player_count, _level) {
 
 if global.gameReady=true {
     switch (_level) {
-        case "Outerspace": room_goto(r_level_infinite); break;
-        case "Sky": room_goto(r_level_infinite); break;
-        case "Forest": room_goto(r_levelSide_infinite); break;
-        case "Jungle": room_goto(r_levelSide_infinite); break;
-        case "Beach": room_goto(rm_Infinite_beach); break;
+        case "Outerspace": transition_room(r_level_infinite); break;
+        case "Sky": transition_room(r_level_infinite); break;
+        case "Forest": transition_room(r_levelSide_infinite); break;
+        case "Jungle": transition_room(r_levelSide_infinite); break;
+        case "Beach": transition_room(rm_Infinite_beach); break;
     }
 }
 
@@ -443,10 +443,10 @@ function create_player_count_menu_cityscape() {
 
 //show_debug_message("room_target " + string(room_target));
 
-    menu.add_option("1 Player", function() { global.players = 1; room_goto(global._next_room); });
-    menu.add_option("2 Players", function() { global.players = 2; room_goto(global._next_room);  });
-    menu.add_option("3 Players", function() { global.players = 3; room_goto(global._next_room);  });
-    menu.add_option("4 Players", function() { global.players = 4; room_goto(global._next_room);  });
+    menu.add_option("1 Player", function() { global.players = 1; transition_room(global._next_room); });
+    menu.add_option("2 Players", function() { global.players = 2; transition_room(global._next_room);  });
+    menu.add_option("3 Players", function() { global.players = 3; transition_room(global._next_room);  });
+    menu.add_option("4 Players", function() { global.players = 4; transition_room(global._next_room);  });
 
     return menu;
 }

@@ -6,8 +6,8 @@
 
 
 
-room_goto_next();
-
+//room_goto_next();
+transition_room(rm_menu);
 
 
 

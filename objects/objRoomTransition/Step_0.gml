@@ -1,22 +1,24 @@
+if (!captured) {
+    // wait until we’ve captured the frame in Draw before progressing
+    exit;
+}
+
 switch (state) {
     case "out":
         t++;
-        k += 0.08; // for distort wobble
+        k += 0.08;
         if (t >= dur_out) {
-            // swap rooms but keep this object alive
             room_goto(_rm);
-            // after swap, continue with fade-in
             state = "in";
             t = 0;
         }
-        break;
+    break;
 
     case "in":
         t++;
         if (t >= dur_in) {
-            // cleanup
             if (surface_exists(surf)) surface_free(surf);
             instance_destroy();
         }
-        break;
+    break;
 }
