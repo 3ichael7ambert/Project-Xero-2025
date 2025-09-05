@@ -77,3 +77,21 @@ if (!variable_global_exists("WeatherOnce")) {
     weather_set_wind(25, 0.4);
     weather_set_fog(0.15, make_color_rgb(120,140,165));
 }
+*/
+
+/// API - Weather ///
+/// WeatherController: Create
+weather = {
+    mode: "clear",        // "clear","cloudy","rain","snow","fog","storm"
+    city: "", state: "",
+    lat: 0, lon: 0,
+    last_update: -1
+};
+
+ip_req_id = http_request("http://ip-api.com/json/", "GET", "", "");
+weather_req_id = -1;
+
+// update every 30 minutes
+update_interval_ms = 30 * 60 * 1000;
+alarm[0] = room_speed * 5; // initial retry in 5s if something fails
+

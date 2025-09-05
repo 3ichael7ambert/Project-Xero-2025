@@ -350,6 +350,7 @@
     {"name":"init_sys_camera","order":6,"path":"scripts/init_sys_camera/init_sys_camera.yy",},
     {"name":"InputManager","order":8,"path":"scripts/InputManager/InputManager.yy",},
     {"name":"light_from_object","order":2,"path":"scripts/light_from_object/light_from_object.yy",},
+    {"name":"map_wmo_to_mode","order":254,"path":"scripts/map_wmo_to_mode/map_wmo_to_mode.yy",},
     {"name":"MenuManager","order":9,"path":"scripts/MenuManager/MenuManager.yy",},
     {"name":"mission_sq001_complete_callback","order":3,"path":"scripts/mission_sq001_complete_callback/mission_sq001_complete_callback.yy",},
     {"name":"mission_talk","order":5,"path":"scripts/mission_talk/mission_talk.yy",},
