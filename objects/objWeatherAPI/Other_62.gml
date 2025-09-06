@@ -21,7 +21,9 @@ if (_id == ip_req_id) {
 			var _url = "https://api.open-meteo.com/v1/forecast"
 			        + "?latitude="  + string(weather.lat)
 			        + "&longitude=" + string(weather.lon)
-			        + "&current_weather=true";
+			        + "&current_weather=true"
+			        + "&hourly=precipitation_probability";
+
 
 			weather_req_id = http_get(_url);
 			//
@@ -35,18 +37,47 @@ if (_id == ip_req_id) {
 }
 
 // ---- WEATHER RESPONSE ----
+// ---- WEATHER RESPONSE ----
 if (is_real(weather_req_id) && weather_req_id >= 0 && _id == weather_req_id) {
     if (_ok && is_string(_res)) {
         var w = json_parse(_res); // struct
+
         if (is_struct(w) && !is_undefined(w.current_weather)) {
             var cw = w.current_weather;
+
             if (is_struct(cw) && !is_undefined(cw.weathercode)) {
                 var code = cw.weathercode;
-                weather.wmo        = code;
-                weather.mode       = map_wmo_to_mode(code); // uses the helper below
-                weather.temp_c     = cw.temperature;        // °C
-                weather.wind_kph   = cw.windspeed;          // km/h
+
+                // Core fields
+                weather.wmo         = code;
+                weather.mode        = map_wmo_to_mode(code);
+                weather.temp_c      = cw.temperature;    // °C
+                weather.wind_kph    = cw.windspeed;      // km/h
                 weather.last_update = current_time;
+
+                // ---------- NEW: precipitation probability (%) ----------
+                // Requires hourly=precipitation_probability in the request URL.
+                weather.precip_pct = undefined; // default
+
+                if (!is_undefined(w.hourly) && is_struct(w.hourly)) {
+                    var times = w.hourly.time;
+                    var pp    = w.hourly.precipitation_probability;
+
+                    if (is_array(times) && is_array(pp) && array_length(pp) > 0) {
+                        // Try to align with the current hour reported by current_weather.time
+                        var cur_iso = cw.time; // e.g., "2025-09-05T20:00"
+                        var idx = -1;
+
+                        // Find matching timestamp index (exact string match)
+                        for (var i = 0; i < array_length(times); i++) {
+                            if (times[i] == cur_iso) { idx = i; break; }
+                        }
+
+                        if (idx == -1) idx = 0; // fallback to first element
+                        weather.precip_pct = pp[idx]; // 0..100
+                    }
+                }
+                // -------------------------------------------------------
             } else {
                 show_debug_message("Weather JSON missing weathercode: " + string(_res));
             }
@@ -57,4 +88,3 @@ if (is_real(weather_req_id) && weather_req_id >= 0 && _id == weather_req_id) {
         show_debug_message("Weather request failed: status=" + string(_stat) + " http=" + string(_hstat));
     }
 }
-

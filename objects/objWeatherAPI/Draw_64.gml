@@ -58,3 +58,8 @@ var wtxt = is_undefined(weather.wind_kph) ? "-- km/h"
                                           : string(round(weather.wind_kph)) + " km/h";
 draw_text(bx+180, ly, wtxt); ly += line_h;
 
+draw_set_color(c_aqua); draw_text(bx, ly, "precip:");
+draw_set_color(c_white);
+var pptxt = is_undefined(weather.precip_pct) ? "--%" : string(weather.precip_pct) + "%";
+draw_text(bx+180, ly, pptxt); ly += line_h;
+

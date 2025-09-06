@@ -6,8 +6,10 @@ weather = {
     lat: 0, lon: 0,
     temp_c: undefined, wind_kph: undefined,
     wmo: undefined,
+    precip_pct: undefined,   // <-- add this
     last_update: -1
 };
+
 
 show_panel = true;
 scroll_y   = 0;
