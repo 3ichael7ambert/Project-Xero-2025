@@ -1,10 +1,8 @@
+// Toggle panel with F9
+if (keyboard_check_pressed(vk_f9)) show_panel = !show_panel;
 
-/// API - Weather
-switch (weather.mode) {
-    case "clear":  mode = "clear";  intensity = 0.0; break;
-    case "cloudy": mode = "clear";  intensity = 0.0; /* but darker sky */ break;
-    case "fog":    mode = "fog";    fog_density = 0.5; break;
-    case "rain":   mode = "rain";   intensity = 0.6; wind_power = 0.4; break;
-    case "snow":   mode = "snow";   intensity = 0.5; wind_power = 0.2; break;
-    case "storm":  mode = "rain";   intensity = 1.0; wind_power = 0.7; /* add lightning */ break;
+// Scroll list
+var mw = mouse_wheel_up() - mouse_wheel_down(); // +1 if up, -1 if down
+if (mw != 0) {
+    scroll_y = clamp(scroll_y + mw * 24, 0, 9999);
 }

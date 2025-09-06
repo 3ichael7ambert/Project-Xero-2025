@@ -80,4 +80,4 @@ if (!variable_global_exists("WeatherOnce")) {
 */
 
 
-//instance_create(x,y,layer,objWeatherAPI);
+instance_create(x,y,objWeatherAPI);
