@@ -1,8 +1,7 @@
 /// Create
-// Initialize BEFORE any async/alarms touch it
 weather = {
     mode: "clear",
-    country: "",          // <-- add this
+    country: "",
     city: "", state: "",
     lat: 0, lon: 0,
     temp_c: undefined, wind_kph: undefined,
@@ -10,13 +9,17 @@ weather = {
     last_update: -1
 };
 
+show_panel = true;
+scroll_y   = 0;
+line_h     = 18;
+pad        = 12;
 
 ip_req_id      = -1;
-weather_req_id = -1;      // reserved for later when you add Open-Meteo
+weather_req_id = -1;
 
-// Kick off IP lookup (use HTTPS)
+// Kick off IP lookup (HTTPS)
 ip_req_id = http_get("http://ip-api.com/json/");
 
-// optional cadence
+// Refresh every 30 minutes
 update_interval_ms = 30 * 60 * 1000;
-alarm[0] = room_speed * 10;   // schedule a refresh/retry
+alarm[0] = room_speed * 10; // first retry in ~10s
