@@ -25,3 +25,5 @@ function map_wmo_to_mode(code) {
 
     return "clear";
 }
+
+

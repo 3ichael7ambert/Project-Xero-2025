@@ -9,3 +9,7 @@ if (weather.lat != 0 || weather.lon != 0) {
     // re-request IP (first run may have failed)
     ip_req_id = http_request("http://ip-api.com/json/", "GET", "", "");
 }
+
+if !instance_exists(objWeatherHUD) {
+	instance_create(x,y,objWeatherHUD);
+}
