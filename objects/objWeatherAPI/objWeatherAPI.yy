@@ -12,8 +12,8 @@
   "name":"objWeatherAPI",
   "overriddenProperties":[],
   "parent":{
-    "name":"City",
-    "path":"folders/Objects/City.yy",
+    "name":"Weather",
+    "path":"folders/Weather.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -25,3 +25,13 @@ ip_req_id = http_get("http://ip-api.com/json/");
 // Refresh every 30 minutes
 update_interval_ms = 30 * 60 * 1000;
 alarm[0] = room_speed * 10; // first retry in ~10s
+
+
+
+/// API 3
+koppen_req_id   = -1;
+elev_req_id     = -1;
+
+weather.biome   = "unknown"; // result we'll compute
+weather.koppen  = undefined; // e.g., "Csa"
+weather.elev_m  = undefined; // meters

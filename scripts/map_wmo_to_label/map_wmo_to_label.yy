@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"map_wmo_to_label",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"Weather",
+    "path":"folders/Weather.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"WeatherManager",
+  "%Name":"scr_struct_each",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"WeatherManager",
+  "name":"scr_struct_each",
   "parent":{
-    "name":"Weather",
-    "path":"folders/Weather.yy",
+    "name":"Project Xero",
+    "path":"Project Xero.yyp",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

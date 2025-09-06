@@ -26,7 +26,18 @@ if (_id == ip_req_id) {
 
 
 			weather_req_id = http_get(_url);
-			//
+			
+			// API v3
+			// --- Köppen climate ---
+			var url_k = "https://climate.mapresso.com/api/koeppen/?lat=" 
+			          + string(weather.lat) + "&lon=" + string(weather.lon);
+			koppen_req_id = http_get(url_k);
+
+			// --- Elevation (meters) ---
+			var url_e = "https://api.open-meteo.com/v1/elevation?latitude=" 
+			          + string(weather.lat) + "&longitude=" + string(weather.lon);
+			elev_req_id = http_get(url_e);
+
 			
 			        } else {
             show_debug_message("IP JSON unexpected: " + string(_res));
@@ -88,3 +99,44 @@ if (is_real(weather_req_id) && weather_req_id >= 0 && _id == weather_req_id) {
         show_debug_message("Weather request failed: status=" + string(_stat) + " http=" + string(_hstat));
     }
 }
+
+
+
+
+/// API v3 Biomes
+// ---- KÖPPEN RESPONSE ----
+if (is_real(koppen_req_id) && koppen_req_id >= 0 && _id == koppen_req_id) {
+    if (_ok && is_string(_res)) {
+        var k = json_parse(_res); // struct
+        // Expected: { status:"OK", data:[ { code:"Csa", ... }, ...] }
+        if (is_struct(k) && k.status == "OK" && is_array(k.data) && array_length(k.data) > 0) {
+            var first = k.data[0];
+            if (is_struct(first) && !is_undefined(first.code)) {
+                weather.koppen = string(first.code); // e.g., "Am","Csa","BWh"
+            }
+        } else show_debug_message("Koppen JSON unexpected: " + string(_res));
+    } else {
+        show_debug_message("Koppen request failed: status=" + string(_stat) + " http=" + string(_hstat));
+    }
+    // try computing biome if elev already known
+    if (!is_undefined(weather.koppen) && !is_undefined(weather.elev_m)) {
+        weather.biome = biome_from_koppen_and_elev(weather.koppen, weather.elev_m);
+    }
+}
+
+// ---- ELEVATION RESPONSE ----
+if (is_real(elev_req_id) && elev_req_id >= 0 && _id == elev_req_id) {
+    if (_ok && is_string(_res)) {
+        var e = json_parse(_res); // expected: { "elevation":[XYZ] }
+        if (is_struct(e) && !is_undefined(e.elevation) && is_array(e.elevation) && array_length(e.elevation) > 0) {
+            weather.elev_m = e.elevation[0];
+        } else show_debug_message("Elevation JSON unexpected: " + string(_res));
+    } else {
+        show_debug_message("Elevation request failed: status=" + string(_stat) + " http=" + string(_hstat));
+    }
+    // compute biome if koppen already known
+    if (!is_undefined(weather.koppen) && !is_undefined(weather.elev_m)) {
+        weather.biome = biome_from_koppen_and_elev(weather.koppen, weather.elev_m);
+    }
+}
+

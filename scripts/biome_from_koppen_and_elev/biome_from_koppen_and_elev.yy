@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"Script228",
+  "%Name":"biome_from_koppen_and_elev",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Script228",
+  "name":"biome_from_koppen_and_elev",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"City",
+    "path":"folders/Objects/City.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

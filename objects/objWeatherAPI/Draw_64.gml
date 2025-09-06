@@ -1,5 +1,5 @@
 /// Draw GUI
-var xx = 24, yy = 524, pw = 480, ph = 220, pad = 12, line_h = 18;
+var xx = 24, yy = 524, pw = 480, ph = 320, pad = 12, line_h = 18;
 
 draw_set_alpha(0.9);
 draw_set_color(make_color_rgb(20,24,30));
@@ -40,6 +40,7 @@ draw_set_color(c_silver);
 //draw_text(xx+pad, yy+ph-22, "HTTPS • data by ip-api.com");
 
 ///---
+/// API v2 Weather
 
 draw_set_color(c_aqua); draw_text(bx, ly, "condition:");
 draw_set_color(c_white);
@@ -63,3 +64,13 @@ draw_set_color(c_white);
 var pptxt = is_undefined(weather.precip_pct) ? "--%" : string(weather.precip_pct) + "%";
 draw_text(bx+180, ly, pptxt); ly += line_h;
 
+//API v3 Biomes
+
+draw_set_color(c_aqua); draw_text(bx, ly, "biome:");
+draw_set_color(c_white); draw_text(bx+180, ly, string(weather.biome)); ly += line_h;
+
+draw_set_color(c_aqua); draw_text(bx, ly, "koppen:");
+draw_set_color(c_white); draw_text(bx+180, ly, string(weather.koppen)); ly += line_h;
+
+draw_set_color(c_aqua); draw_text(bx, ly, "elev:");
+draw_set_color(c_white); draw_text(bx+180, ly, is_undefined(weather.elev_m) ? "-- m" : string(round(weather.elev_m)) + " m"); ly += line_h;
