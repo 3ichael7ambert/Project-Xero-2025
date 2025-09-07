@@ -1,4 +1,4 @@
-function scr_timeofday_background_init(){
+function scr_timeofday_background_init(cloudy=false,cloudy_percent=0){
 
  blended_color=c_white;
 blend_factor=current_minute/60;
@@ -44,6 +44,12 @@ else if current_hour>=19 && current_hour<21 {
 else if current_hour>=21 && current_hour<25 {
     blended_color = merge_color(color2,color5,blend_factor);
 }
+
+if (cloudy==true) {
+	blended_color = merge_colour(blended_color,c_gray,cloudy_percent);
+}
+
+
 
  __background_set_colour(blended_color);
     var lay_id = layer_get_id("Colour");

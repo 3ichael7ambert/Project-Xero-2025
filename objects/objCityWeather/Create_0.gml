@@ -5,6 +5,9 @@ setup_partsys(self);
 
 part_state_player = "None";
 part_spawn_count = 50;
+
+cloudy=false;
+
 /*s
 
 
@@ -78,6 +81,30 @@ if (!variable_global_exists("WeatherOnce")) {
     weather_set_fog(0.15, make_color_rgb(120,140,165));
 }
 */
+
+/// objCityWeather : Create (add these)
+mode           = "clear";
+part_state_player = "None";
+part_spawn_count  = 50;
+
+wind_dir      = 0;     // 0=right, 90=up (screen coords)
+wind_power    = 0;     // 0..1
+intensity     = 0;     // 0..1
+fog_density   = 0;     // 0..1
+
+cloudy        = false;
+cloudy_percent= 0;     // 0..1
+
+// optional readouts (not required, but handy if you gui-debug here)
+wmo       = 0;
+temp_c    = undefined;
+precip_pct= undefined;
+wind_kph  = undefined;
+wind_from = undefined;
+
+// keep yours
+setup_partsys(self);
+
 
 
 instance_create(x,y,objWeatherAPI);

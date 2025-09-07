@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"biome_from_koppen_and_elev",
   "parent":{
-    "name":"City",
-    "path":"folders/Objects/City.yy",
+    "name":"Weather",
+    "path":"folders/Weather.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

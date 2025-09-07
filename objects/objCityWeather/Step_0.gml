@@ -14,36 +14,60 @@ switch(keyboard_lastchar){
 	case "+" : part_spawn_count += 25; break;
 	case "-" : part_spawn_count -= 25; break;
 }*/
-keyboard_lastchar="";
-part_spawn_count = clamp(part_spawn_count, 25, 500);
+/// objCityWeather : Step
 
-/// spawn particle effects
-var cam = view_camera[0];
-//var cam_x = camera_get_view_x(cam);
-var cam_x = global.CameraManager.x;
+keyboard_lastchar = ""; // keep off for now
+part_spawn_count  = clamp(part_spawn_count, 25, 500);
+
+// Camera / spawn band
+var cam  = view_camera[0];
+var cam_x = global.CameraManager.x;                 // your custom manager
 var cam_w = camera_get_view_width(cam);
 var cam_y = camera_get_view_y(cam);
 var cam_h = camera_get_view_height(cam);
 
-var height = 64;
+var top_band_h = 64;
 
+// Choose particle set from preset
 var _part = -1;
-switch(part_state_player){
-	case "Rain":
-		_part = PARTICLE_ENGINE.pWeatherRain
-	break;
-	case "Snow":
-		_part = PARTICLE_ENGINE.pWeatherSnow
-	break;
-	case "Slush":
-		_part = PARTICLE_ENGINE.pWeatherSlush
-	break;
+switch (part_state_player) {
+    case "Rain":  _part = PARTICLE_ENGINE.pWeatherRain;  break;
+    case "Snow":  _part = PARTICLE_ENGINE.pWeatherSnow;  break;
+    case "Slush": _part = PARTICLE_ENGINE.pWeatherSlush; break;
 }
 
-if(_part != -1){
-	burst_particle_box(cam_x-100, cam_y-height, cam_x + cam_w + 100, cam_y, false, _part, part_spawn_count);
+// --- Wind shaping for new particles (if your weather types exist) ---
+if (variable_global_exists("PARTICLE_ENGINE")) {
+    // wind_dir: 0=right, 90=up. We bend around 270° (down).
+    var bend = clamp(wind_power, 0, 1);
+	var wind_x  = dcos(wind_dir); // component
+   
+   
+   // Rain: steeper, heavier
+	var rain_dir = _angle_wrap(270 + (40 * bend) * wind_x);
+    if (variable_global_exists("pWeatherRain")) {
+        part_type_direction(PARTICLE_ENGINE.pWeatherRain, rain_dir - 2, rain_dir + 2, 0, 0);
+        part_type_gravity  (PARTICLE_ENGINE.pWeatherRain, 0.5 * (1 - bend * 0.3), 270);
+    }
 
+    // Snow: gentler drift
+    
+	var snow_dir = _angle_wrap(270 + (25 * bend) * wind_x);
+    if (variable_global_exists("pWeatherSnow")) {
+        part_type_direction(PARTICLE_ENGINE.pWeatherSnow, snow_dir - 6, snow_dir + 6, 0, 0);
+        part_type_gravity  (PARTICLE_ENGINE.pWeatherSnow, 0.02 * (1 - bend * 0.4), 270);
+    }
 }
+
+// Spawn burst along the top edge of the camera
+if (_part != -1) {
+    var sx = cam_x - 100;
+    var sy = cam_y - top_band_h;
+    var ex = cam_x + cam_w + 100;
+    var ey = cam_y;
+    burst_particle_box(sx, sy, ex, ey, false, _part, part_spawn_count);
+}
+
 
 
 /*
@@ -173,3 +197,6 @@ function angle_wrap(a) {
 }
 */
 
+if (mode == "fog") {
+    part_state_player = "None";
+}

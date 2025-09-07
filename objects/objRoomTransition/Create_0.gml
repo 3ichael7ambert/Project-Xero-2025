@@ -1,20 +1,25 @@
-persistent   = true;
-depth        = -1000000;
+persistent = true;
+depth      = -1000000;
 
-state        = "out";   // "out" -> swap -> "in"
-t            = 0;
-k            = 0;
-style        = "fade";  // caller can override
-dur_out      = 30;
-dur_in       = 24;
-shade_col    = make_color_rgb(10,10,14);
+state   = "out";  // "out" -> swap -> "in"
+t = 0; k = 0;
 
-surf         = -1;
-captured     = false;
-_snd		 = noone;
+style   = "fade";
+dur_out = 30;
+dur_in  = 24;
 
-_snd = (is_undefined(_snd) ? noone : _snd);
+shade_col = make_color_rgb(10,10,14);
+
+surf        = -1;
+captured    = false;
+cap_attempt = 0;      // how many capture tries
+cap_max     = 6;      // try a few frames, then fallback
+use_capture = true;   // flips to false if we give up
+
+_snd = noone;
+
+if (is_undefined(_snd)) _snd = noone;
 if (_snd != noone) audio_play_sound(_snd, 1, false);
 
-// make sure app surface is on; we’ll still guard for existence below
+// Ensure app surface (becomes available next frame)
 application_surface_enable(true);

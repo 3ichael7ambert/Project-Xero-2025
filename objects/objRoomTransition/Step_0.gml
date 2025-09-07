@@ -1,12 +1,8 @@
-if (!captured) {
-    // wait until we’ve captured the frame in Draw before progressing
-    exit;
-}
+if (!captured) exit;
 
 switch (state) {
     case "out":
-        t++;
-        k += 0.08;
+        t++; k += 0.08;
         if (t >= dur_out) {
             room_goto(_rm);
             state = "in";

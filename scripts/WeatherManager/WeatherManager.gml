@@ -16,3 +16,9 @@ function __get_view() {
     var vh = camera_get_view_height(cam);
     return [cam, vx, vy, vw, vh];
 }
+
+function _angle_wrap(a) {
+    a = a mod 360;
+    if (a < 0) a += 360;
+    return a;
+}
