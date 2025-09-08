@@ -102,6 +102,8 @@ precip_pct= undefined;
 wind_kph  = undefined;
 wind_from = undefined;
 
+biome=undefined;
+
 // keep yours
 //setup_partsys(self);
 

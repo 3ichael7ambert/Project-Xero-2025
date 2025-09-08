@@ -5,6 +5,7 @@ weather = {
     city: "", state: "",
     lat: 0, lon: 0,
     temp_c: undefined, wind_kph: undefined,
+	wind_power: undefined,
     wmo: undefined,
     precip_pct: undefined,   // <-- add this
     last_update: -1

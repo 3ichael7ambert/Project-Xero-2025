@@ -103,7 +103,7 @@ maxY = vh - 200;
 		a.depth=-9999
 	}
 	//LIGHTING
-	 //var a = instance_create(x,y,objCityLighting);
+	 var a = instance_create(x,y,objCityLighting);
 	 var b = instance_create(x,y,objCityWeather);
 	// b.part_state_player = choose("Snow","Rain","Slush");
 	// instance_create(x,y,objToDPost);

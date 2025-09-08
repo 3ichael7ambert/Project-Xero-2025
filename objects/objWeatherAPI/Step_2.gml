@@ -61,6 +61,7 @@ with (_dest) {
     temp_c      = _temp_c;
     precip_pct  = _precip_pct;
     wind_kph    = _wind_kph;
+    wind_power    = _wind_power;
   //  wind_from   = _wind_from;
 
     // location & biome info

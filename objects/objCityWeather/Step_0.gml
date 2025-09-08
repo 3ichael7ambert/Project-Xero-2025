@@ -205,19 +205,21 @@ if (mode == "fog") {
 
 if (instance_exists(objWeatherAPI)) {
 	wmo=objWeatherAPI.weather.wmo;
-	temp_c    = undefined;
-	precip_pct= undefined;
-	wind_kph  = undefined;
-	wind_from = undefined;
+	temp_c    = objWeatherAPI.weather.temp_c;
+	precip_pct= objWeatherAPI.weather.precip_pct;
+	wind_kph  = objWeatherAPI.weather.wind_kph;
+	//wind_from = objWeatherAPI.weather.wi;
 	mode           = "clear";
-	part_state_player = "None";
+	
+	part_state_player =	map_wmo_to_label(wmo);
 	part_spawn_count  = 50;
 
 	wind_dir      = 0;     // 0=right, 90=up (screen coords)
-	wind_power    = 0;     // 0..1
+	wind_power    = objWeatherAPI.weather.wind_power;     // 0..1
 	intensity     = 0;     // 0..1
 	fog_density   = 0;     // 0..1
-
+	
+	biome	=	objWeatherAPI.weather.biome;
 	//cloudy        = false;
 	cloudy_percent= 0; 
 	//scr_infinite_hud_init(wmo);
