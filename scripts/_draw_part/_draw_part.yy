@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"_draw_part",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_draw_part",
+  "parent":{
+    "name":"Creatures",
+    "path":"folders/Objects/Creatures.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

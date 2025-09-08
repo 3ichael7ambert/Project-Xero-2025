@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"_is_on_ground",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_is_on_ground",
+  "parent":{
+    "name":"Creatures",
+    "path":"folders/Objects/Creatures.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

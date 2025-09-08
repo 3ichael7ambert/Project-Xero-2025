@@ -96,6 +96,11 @@ maxX = vw - 200;
 maxY = vh - 200;
 	
 	
+	//BIRDS
+	for (i=0;i<20;i++) {
+		var a = instance_create(random(room_width),random(room_height),objBird);
+		a.depth=-9999
+	}
 	//LIGHTING
 	 var a = instance_create(x,y,objCityLighting);
 	 var b = instance_create(x,y,objCityWeather);
