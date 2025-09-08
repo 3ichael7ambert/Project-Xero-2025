@@ -47,6 +47,7 @@ draw_set_color(c_white);
 var label = (is_undefined(weather.wmo)) ? "--" : map_wmo_to_label(weather.wmo);
 draw_text(bx+180, ly, label); ly += line_h;
 
+
 draw_set_color(c_aqua); draw_text(bx, ly, "temp:");
 draw_set_color(c_white);
 var ttxt = is_undefined(weather.temp_c) ? "--°C / --°F"
@@ -69,8 +70,11 @@ draw_text(bx+180, ly, pptxt); ly += line_h;
 draw_set_color(c_aqua); draw_text(bx, ly, "biome:");
 draw_set_color(c_white); draw_text(bx+180, ly, string(weather.biome)); ly += line_h;
 
+
+
 draw_set_color(c_aqua); draw_text(bx, ly, "koppen:");
 draw_set_color(c_white); draw_text(bx+180, ly, string(weather.koppen)); ly += line_h;
 
 draw_set_color(c_aqua); draw_text(bx, ly, "elev:");
 draw_set_color(c_white); draw_text(bx+180, ly, is_undefined(weather.elev_m) ? "-- m" : string(round(weather.elev_m)) + " m"); ly += line_h;
+

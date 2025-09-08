@@ -200,3 +200,25 @@ function angle_wrap(a) {
 if (mode == "fog") {
     part_state_player = "None";
 }
+
+/// API
+
+if (instance_exists(objWeatherAPI)) {
+	wmo=objWeatherAPI.weather.wmo;
+	temp_c    = undefined;
+	precip_pct= undefined;
+	wind_kph  = undefined;
+	wind_from = undefined;
+	mode           = "clear";
+	part_state_player = "None";
+	part_spawn_count  = 50;
+
+	wind_dir      = 0;     // 0=right, 90=up (screen coords)
+	wind_power    = 0;     // 0..1
+	intensity     = 0;     // 0..1
+	fog_density   = 0;     // 0..1
+
+	//cloudy        = false;
+	cloudy_percent= 0; 
+	//scr_infinite_hud_init(wmo);
+}

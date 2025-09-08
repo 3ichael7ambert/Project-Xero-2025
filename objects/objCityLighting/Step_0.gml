@@ -1,7 +1,11 @@
 // objCityLighting.Step
 
+if (instance_exists(objCityWeather)) {
+	wmo=objCityWeather.wmo;
+}
+
 // 2.1 Ambient from your sky blend
-var sky_col = scr_timeofday_color();    // your function returns a GM color
+var sky_col = scr_timeofday_color(wmo);    // your function returns a GM color
 draw_light_define_ambient(sky_col);
 
 // 2.2 Sun direction from time (simple: arcade path across sky)
@@ -19,3 +23,4 @@ var sun_col = make_color_rgb(255, 238, 210); // noon-ish; fade it at dusk/dawn i
 
 // Re-define or update the directional light
 draw_light_define_direction(global.light_sun, sx, sy, sz, sun_col);
+

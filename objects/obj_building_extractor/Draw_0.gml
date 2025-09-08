@@ -6,8 +6,12 @@
 
 
 depth = 0;
-
-var date_time_of_day_color = scr_timeofday_color();
+if instance_exists(objCityWeather){
+	var date_time_of_day_color = scr_timeofday_color(objCityWeather.wmo);
+	//scr_timeofday_background_init(objCityWeather.wmo);
+} else {
+	var date_time_of_day_color = scr_timeofday_color();
+}
 var atmosphere_color = merge_colour(c_black,date_time_of_day_color,.5);
 //var date_time_of_day_color = c_aqua;
 
@@ -15,7 +19,12 @@ gpu_set_zwriteenable(true);
 gpu_set_ztestenable(true);
 gpu_set_cullmode(cull_noculling);
 
-gpu_set_fog(true, date_time_of_day_color, 500, 1000); 
+if (instance_exists(objCityWeather)) {
+	gpu_set_fog(true, date_time_of_day_color, 500, 1000); 
+} else {
+	gpu_set_fog(true, date_time_of_day_color, 500, 1000); 
+
+}
 
 /*
 var date_time_of_day_color = scr_timeofday_color();

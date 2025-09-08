@@ -62,7 +62,6 @@ draw_set_alpha(1);
 draw_set_color(c_white);
 
 
-draw_set_alpha(1);
-draw_set_color(c_white);
-
+*/
+draw_text_outlined(500,500,"Cloudy: " + string(cloudy),c_white,c_black);
 

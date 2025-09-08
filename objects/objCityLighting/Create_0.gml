@@ -7,6 +7,9 @@ gpu_set_zwriteenable(true);
 gpu_set_ztestenable(true);
 gpu_set_cullmode(cull_noculling);
 
+
+wmo=0;
+
 //gpu_set_fog(true,sun_col,0,9999);
 /*
 // --- Cache shader + uniforms into a global struct

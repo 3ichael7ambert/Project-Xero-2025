@@ -1,5 +1,5 @@
 /// scr_timeofday_color(hour, minute) -> blended_color
-function scr_timeofday_color(){
+function scr_timeofday_color(cloudy=0){
 	var _hour = current_hour
 	var _minute = current_minute
     var blend_factor = (_minute / 60);
@@ -23,6 +23,35 @@ function scr_timeofday_color(){
     else if (_hour>=19 && _hour<21) blended_color = merge_color(color4,color2,blend_factor);
     else                             blended_color = merge_color(color2,color5,blend_factor);
 
+
+	switch (cloudy) {
+		case 0:
+			var cloudy_color = blended_color;
+		break;
+		
+		case 1:
+			var cloudy_color = merge_color(blended_color,c_gray,.25);
+		break;
+		
+		case 2:
+			var cloudy_color = merge_color(blended_color,c_gray,.5);
+		break;
+		
+		case 3:
+			var cloudy_color = merge_color(blended_color,c_gray,.75);
+		break;
+		
+	}
+	
+
+    if (cloudy == 45 || cloudy == 48) var cloudy_color = merge_color(blended_color,c_gray,.75);
+    if (cloudy >= 51 && cloudy <= 57) var cloudy_color = merge_color(blended_color,c_gray,.33);
+    if (cloudy >= 61 && cloudy <= 67) var cloudy_color = merge_color(blended_color,c_gray,.66);
+    if (cloudy == 71 || cloudy == 73 || cloudy == 75 || cloudy == 77) var cloudy_color = merge_color(blended_color,c_gray,.75);
+    if (cloudy >= 80 && cloudy <= 82) var cloudy_color = merge_color(blended_color,c_gray,.5);              // showers
+    if (cloudy == 95 || cloudy == 96 || cloudy == 99) var cloudy_color = merge_color(blended_color,c_black,.5);
+
+
     /*// optional: update your layer, but keep the RETURN
     __background_set_colour(blended_color);
     var lay_id = layer_get_id("Colour");
@@ -31,5 +60,5 @@ function scr_timeofday_color(){
         if (back_id != -1) layer_background_blend(back_id, blended_color);
     }
 	*/
-    return blended_color; // <-- critical
+    return cloudy_color; // <-- critical
 }

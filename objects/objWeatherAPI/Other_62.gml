@@ -47,7 +47,8 @@ if (_id == ip_req_id) {
     }
 }
 
-// ---- WEATHER RESPONSE ----
+
+
 // ---- WEATHER RESPONSE ----
 if (is_real(weather_req_id) && weather_req_id >= 0 && _id == weather_req_id) {
     if (_ok && is_string(_res)) {
@@ -65,7 +66,6 @@ if (is_real(weather_req_id) && weather_req_id >= 0 && _id == weather_req_id) {
                 weather.temp_c      = cw.temperature;    // °C
                 weather.wind_kph    = cw.windspeed;      // km/h
                 weather.last_update = current_time;
-
                 // ---------- NEW: precipitation probability (%) ----------
                 // Requires hourly=precipitation_probability in the request URL.
                 weather.precip_pct = undefined; // default
@@ -88,6 +88,11 @@ if (is_real(weather_req_id) && weather_req_id >= 0 && _id == weather_req_id) {
                         weather.precip_pct = pp[idx]; // 0..100
                     }
                 }
+				
+				// -------------------------------------------------------\
+				
+		
+				
                 // -------------------------------------------------------
             } else {
                 show_debug_message("Weather JSON missing weathercode: " + string(_res));

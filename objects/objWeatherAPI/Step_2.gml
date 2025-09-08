@@ -77,4 +77,4 @@ with (_dest) {
 // (optional) if you call the sky blend here:
 //scr_timeofday_background_init(_is_cloudy, _cloudy_pct);
 
-scr_timeofday_background_init();
+scr_timeofday_background_init(weather.wmo);

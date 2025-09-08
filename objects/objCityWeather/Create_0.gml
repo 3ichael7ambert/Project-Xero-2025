@@ -6,7 +6,7 @@ setup_partsys(self);
 part_state_player = "None";
 part_spawn_count = 50;
 
-cloudy=false;
+cloudy=0;
 
 /*s
 
@@ -92,7 +92,7 @@ wind_power    = 0;     // 0..1
 intensity     = 0;     // 0..1
 fog_density   = 0;     // 0..1
 
-cloudy        = false;
+//cloudy        = false;
 cloudy_percent= 0;     // 0..1
 
 // optional readouts (not required, but handy if you gui-debug here)
@@ -103,7 +103,7 @@ wind_kph  = undefined;
 wind_from = undefined;
 
 // keep yours
-setup_partsys(self);
+//setup_partsys(self);
 
 
 

@@ -80,8 +80,9 @@ __background_set_colour( choose(
 
 
 */
-scr_timeofday_background_init();
+//scr_timeofday_background_init();
 
+blended_color=c_red;
 
 //instance_create(x,y,oMissionManager);
 //Deactivate
@@ -102,7 +103,7 @@ maxY = vh - 200;
 		a.depth=-9999
 	}
 	//LIGHTING
-	 var a = instance_create(x,y,objCityLighting);
+	 //var a = instance_create(x,y,objCityLighting);
 	 var b = instance_create(x,y,objCityWeather);
-	 b.part_state_player = choose("Snow","Rain","Slush");
+	// b.part_state_player = choose("Snow","Rain","Slush");
 	// instance_create(x,y,objToDPost);

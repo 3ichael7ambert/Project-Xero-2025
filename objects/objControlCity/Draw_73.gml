@@ -2,8 +2,11 @@
 //if (!surface_exists(application_surface)) exit;
 
 // --- Get/compute your sky color (from your init function) ---
-var sky_col = blended_color; // or however you store it globally
-
+if instance_exists(objCityWeather){
+	var sky_col = scr_timeofday_color(objCityWeather.wmo);
+} else {
+		var sky_col = blended_color; // or however you store it globally
+	}
 // Convert 24-bit color to normalized rgb
 var r = color_get_red(sky_col)   / 255;
 var g = color_get_green(sky_col) / 255;
