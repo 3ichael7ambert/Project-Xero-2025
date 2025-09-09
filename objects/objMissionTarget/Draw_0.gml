@@ -7,7 +7,7 @@ if species=="bird" {
 
 if (species=="balloon") {
 	var bx = x;
-	var by = y_anchor + sin(t * bob_freq) * bob_amp;  // visual-only bob
+	var by = y;//y_anchor + sin(t * bob_freq) * bob_amp;  // visual-only bob
 
 	// Base size
 	var baseW = sprite_get_width(spr_balloon)  * scale;
