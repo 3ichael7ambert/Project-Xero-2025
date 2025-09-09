@@ -406,6 +406,7 @@
     {"name":"raycast2","order":5,"path":"scripts/raycast2/raycast2.yy",},
     {"name":"raycast3","order":6,"path":"scripts/raycast3/raycast3.yy",},
     {"name":"rotate_smooth","order":2,"path":"scripts/rotate_smooth/rotate_smooth.yy",},
+    {"name":"scr_bird","order":3,"path":"scripts/scr_bird/scr_bird.yy",},
     {"name":"scr_bone_BodyPart_Character2D_AnimationTrack","order":12,"path":"scripts/scr_bone_BodyPart_Character2D_AnimationTrack/scr_bone_BodyPart_Character2D_AnimationTrack.yy",},
     {"name":"scr_building_skyline","order":20,"path":"scripts/scr_building_skyline/scr_building_skyline.yy",},
     {"name":"scr_draw_player_indicator","order":19,"path":"scripts/scr_draw_player_indicator/scr_draw_player_indicator.yy",},

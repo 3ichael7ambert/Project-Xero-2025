@@ -20,7 +20,8 @@ _draw_part(spr_eye, 0, off_eye_x, off_eye_y, head_angle);
 
 // --- BEAK (top rotates to “open”)
 var beak_top_ang = head_angle + (beak_open ? beak_open_ang : 0);
-_draw_part(spr_beak_btm, 0, off_beak_x, off_beak_y, head_angle);
+//var beak_btm_ang = head_angle - (beak_open ? beak_open_ang : 0);
+_draw_part(spr_beak_btm, 0, off_beak_x, off_beak_y, 0);
 _draw_part(spr_beak_top, 0, off_beak_x, off_beak_y, beak_top_ang);
 
 // --- FRONT WING (in front)

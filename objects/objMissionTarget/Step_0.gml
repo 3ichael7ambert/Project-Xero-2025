@@ -1,5 +1,7 @@
 // Add some randomness to wander
 if (species=="bird") {
+	scr_bird_step();
+	
 	dir += random_range(-wander_jit, wander_jit);
 
 	// Smooth turning

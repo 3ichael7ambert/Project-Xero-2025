@@ -481,6 +481,7 @@
     {"id":{"name":"raycast2","path":"scripts/raycast2/raycast2.yy",},},
     {"id":{"name":"raycast3","path":"scripts/raycast3/raycast3.yy",},},
     {"id":{"name":"rotate_smooth","path":"scripts/rotate_smooth/rotate_smooth.yy",},},
+    {"id":{"name":"scr_bird","path":"scripts/scr_bird/scr_bird.yy",},},
     {"id":{"name":"scr_bone_BodyPart_Character2D_AnimationTrack","path":"scripts/scr_bone_BodyPart_Character2D_AnimationTrack/scr_bone_BodyPart_Character2D_AnimationTrack.yy",},},
     {"id":{"name":"scr_building_skyline","path":"scripts/scr_building_skyline/scr_building_skyline.yy",},},
     {"id":{"name":"scr_draw_player_indicator","path":"scripts/scr_draw_player_indicator/scr_draw_player_indicator.yy",},},

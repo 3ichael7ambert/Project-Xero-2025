@@ -1,7 +1,8 @@
 
 
 if species=="bird" {
-	draw_self();
+	//draw_self();
+	scr_bird_draw();
 }
 
 if (species=="balloon") {

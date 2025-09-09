@@ -41,6 +41,7 @@ function mission_talk() {
                 // --- Pre-spawn & tag with GUID + species ---
                 if (mission_selected == "SQ_001_Kill_Ten_Birds") {
                     _species = "bird";
+					instance_deactivate_object(objBird);
                     for (var j = 0; j < 10; j++) {
                         var inst = instance_create(
                             random(room_width),

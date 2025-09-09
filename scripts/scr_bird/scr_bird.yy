@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_bird",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_bird",
+  "parent":{
+    "name":"Creatures",
+    "path":"folders/Objects/Creatures.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
