@@ -53,16 +53,18 @@ if (mouse_check_button(mb_left)) {
     a.phy_rotation = -armF_dir;
     a.parent = self;
 
-    // How strong the shot is
-    var force_strength = 1000;       // higher = faster
-    var theta = armF_dir;            // fire in the arm's direction
+    	var xv,yv, dir, force;
+dir = armF_dir; //or point_direction function if you need.
+force = 100;
 
-    // Apply force in bullet's scope
-    with (a) {
-        var xvec = lengthdir_x(force_strength, theta);
-        var yvec = lengthdir_y(force_strength, theta);
-        physics_apply_force(x, y, xvec, yvec);
-    }
+xv = lengthdir_x(force, dir);
+yv = lengthdir_y(force, dir);
+
+a.phy_speed_x = xv;
+a.phy_speed_y = yv;
+	
+	
+
 }
 
 
