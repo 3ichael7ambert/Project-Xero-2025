@@ -98,8 +98,13 @@ maxY = vh - 200;
 	
 	
 	//BIRDS
+	if instance_exists(objSidewalk) {
+		var _yy = objSidewalk.y-100;
+	} else {
+		var _yy = (room_height/2);
+	}
 	for (i=0;i<200;i++) {
-		var a = instance_create(random(room_width),random(room_height),objBird);
+		var a = instance_create(random(room_width),random(_yy),objBird);
 		a.depth=-9999
 	}
 	//LIGHTING

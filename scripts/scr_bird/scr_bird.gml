@@ -17,82 +17,56 @@ function scr_bird_create(){
     image_yscale = scale;
 
     // Ground
-    ground = objSidewalk;  // single source of truth
-    _floor  = ground;       // (if any code still uses 'floor')
+    ground = objSidewalk;
 
-    // State & kinematics
-    state      = "fly"; // "fly","land","hop","idle"
+    // State & motion (TWO STATES ONLY)
+    state      = "fly";     // "fly" | "ground"
     hsp        = 0;
-    vsp        = -1;    // small initial upward nudge
-    g          = 0.35;  // ground gravity
-    g_air      = 0.11;  // lighter gravity while flying
-    fly_speed  = 1.6;
-    fly_wander = 0.04;
-    max_fall   = 6;
+    vsp        = -1;        // gentle start upward
+    g_ground   = 0.35;      // while on ground
+    g_air      = 0.09;      // light air gravity
+    fly_speed  = 1.8;
+    fly_wander = 0.05;
+    max_fall   = 5.5;
 
-    // Body pose
-    body_angle       = 0;
-    head_angle       = 0;
-    wing_angle       = 0;
-    tail_angle       = 0;
-    body_tilt_scale  = 1.7;
-    body_tilt_min    = -15;
-    body_tilt_max    = 20;
-    head_follow_amt  = 0.35;
+    // Pose
+    body_angle      = 0;
+    head_angle      = 0;
+    wing_angle      = 0;
+    tail_angle      = 0;
+    body_tilt_scale = 1.7;
+    body_tilt_min   = -15;
+    body_tilt_max   = 20;
+    head_follow_amt = 0.35;
 
-    // Flapping & lift (phase-driven)
+    // Flap & lift (phase-driven)
     wing_img        = 0;
-    wing_frames     = 11;   // 0..10
+    wing_frames     = 11;      // 0..10
     flap_phase      = 0.0;
-    flap_base       = 0.10; // baseline flap rate
-    flap_speed_gain = 0.05; // faster if moving horizontally
-    flap_alt_gain   = 0.10; // faster if too low
-    flap_force      = 0.28; // upforce on downstroke
+    flap_base       = 0.12;
+    flap_speed_gain = 0.06;
+    flap_alt_gain   = 0.12;
+    flap_force      = 0.42;    // strong enough to beat g_air
 
-    // Flight targets (cruise, ceiling, ground avoidance)
-    cruise_y  = y + irandom_range(-16, 16);
-    fly_ceiling_y = y - 120; // don’t climb above this; will be adjusted below
-    min_fly_y = y - 200;     // safety buffer above ground; set precisely below
+    // Flight band (cruise target, soft ceiling, ground-avoid)
+    cruise_y      = y + irandom_range(-16, 16);
+    fly_ceiling_y = y - 120;
+    min_fly_y     = -.00000001;
 
-    // Find ground under spawn (up to 600px), set safe flight band
+    // Find ground below to set safe band
     var gy = noone;
-    for (var i = 0; i < 600; i++) {
-        if (instance_place(x, y + i, ground) != noone) { gy = y + i; break; }
-    }
+    for (var i = 0; i < 600; i++) if (instance_place(x, y + i, ground) != noone) { gy = y + i; break; }
     if (gy != noone) {
-        min_fly_y     = gy - 12;               // don’t dip below this while flying
+        min_fly_y     = gy - 12;              // don’t dip below this while flying
         cruise_y      = min(cruise_y, gy - 56);
         fly_ceiling_y = min(fly_ceiling_y, gy - 120);
     }
 
-    // Beak (chirp) — step timers
-    beak_open     = false;
-    beak_open_ang = 16;
-    chirp_wait_min= room_speed * 2;
-    chirp_wait_max= room_speed * 5;
-    chirp_dur_min = room_speed * 0.4;
-    chirp_dur_max = room_speed * 0.7;
-    chirp_wait_t  = irandom_range(chirp_wait_min, chirp_wait_max);
-    chirp_dur_t   = 0;
-
-    // Tail swish — step timers
-    tail_active   = false;
-    tail_amp      = 12;
-    tail_rate     = 5;
-    tail_t        = 0;
-    tail_wait_min = room_speed * 2;
-    tail_wait_max = room_speed * 6;
-    tail_dur_min  = room_speed * 1;
-    tail_dur_max  = room_speed * 2;
-    tail_wait_t   = irandom_range(tail_wait_min, tail_wait_max);
-    tail_dur_t    = 0;
-
-    // Land/hop cadence
-    desire_to_land_t = irandom_range(room_speed*3, room_speed*8);
-    hop_cooldown     = 0;
-    hop_h            = 1.5;
-    hop_v            = 4.0;
-    idle_t           = 0;
+    // Ground behavior tuning
+    hop_cooldown = 0;
+    hop_h        = 1.5;
+    hop_v        = 3.8;
+    idle_t       = 0;
 
     // Offsets (unscaled, facing right)
     off_body_x = 0;   off_body_y = 0;
@@ -101,112 +75,131 @@ function scr_bird_create(){
     off_tail_x = -10; off_tail_y = 2;
     off_eye_x  = off_head_x + 65;  off_eye_y  = off_head_y - 28;
     off_beak_x = off_head_x + 78;  off_beak_y = off_head_y - 15;
+
+    // Beak / Tail (timers, optional – keep your existing step timers if you like)
+    beak_open     = false;
+    beak_open_ang = 16;
+    chirp_wait_min = room_speed * 2; chirp_wait_max = room_speed * 5;
+    chirp_dur_min  = room_speed * 0.4; chirp_dur_max = room_speed * 0.7;
+    chirp_wait_t   = irandom_range(chirp_wait_min, chirp_wait_max);
+    chirp_dur_t    = 0;
+
+    tail_active   = false;
+    tail_amp      = 12;
+    tail_rate     = 5;
+    tail_t        = 0;
+    tail_wait_min = room_speed * 2; tail_wait_max = room_speed * 6;
+    tail_dur_min  = room_speed * 1; tail_dur_max  = room_speed * 2;
+    tail_wait_t   = irandom_range(tail_wait_min, tail_wait_max);
+    tail_dur_t    = 0;
 }
 
 
 function scr_bird_step() {
-    // Facing
+    // Facing & scale
     if (hsp >  0.1) dir = 1;
     if (hsp < -0.1) dir = -1;
     image_xscale = scale * dir;
     image_yscale = scale;
 
-    // ===== State machine =====
     if (state == "fly") {
-        // horizontal wander
-        hsp += random_range(-fly_wander, fly_wander);
-        hsp  = clamp(hsp, -fly_speed, fly_speed);
+        // --- Better horizontal wander (keeps moving) ---
+		if (!variable_instance_exists(id, "wander_t")) {
+		    wander_t = 0;
+		    desired_hsp = choose(-1,1) * random_range(0.6, 1.0) * fly_speed;
+		}
+		wander_t--;
+		if (wander_t <= 0) {
+		    // pick a new horizontal target every 1–3 seconds
+		    desired_hsp = choose(-1,1) * random_range(0.5, 1.0) * fly_speed;
+		    // 20% chance to flip direction bias
+		    if (irandom(4) == 0) desired_hsp = -desired_hsp;
+		    wander_t = irandom_range(room_speed, room_speed*3);
+		}
+		// steer smoothly toward desired_hsp
+		hsp = lerp(hsp, desired_hsp, 0.06);
 
-        // --- vertical control (flap + gravity) ---
-        // Don’t climb too high: nudge cruise down if we breach ceiling
-        if (y < fly_ceiling_y) cruise_y = lerp(cruise_y, fly_ceiling_y + 24, 0.05);
+		// --- Ceiling control (screen Y increases downward) ---
+		// If we are ABOVE the ceiling (smaller y), push the target DOWN below us
+		if (y < fly_ceiling_y) {
+		    cruise_y = lerp(cruise_y, y + 96, 0.15);  // set a lower (greater Y) target
+		    vsp += 0.25;                               // add a little downward bias now
+		}
 
-        // Need-based flap rate
-        var speed_h  = abs(hsp);
-        var alt_err  = (cruise_y - y);                 // >0 => below target
-        var alt_need = clamp(alt_err, 0, 48);
+		// --- Flap rate & lift (corrected sign) ---
+		var speed_h  = abs(hsp);
+		var alt_err  = (y - cruise_y);     // >0 means we are BELOW (greater Y) -> need lift
+		var need     = clamp(alt_err, 0, 64) / 64.0;
 
-        var flap_speed = flap_base
-                       + speed_h * flap_speed_gain
-                       + (alt_need/48) * flap_alt_gain;
+		var flap_speed = flap_base
+		               + speed_h * flap_speed_gain
+		               + need * flap_alt_gain;
 
-        // advance flap phase 0..1
-        flap_phase += flap_speed;
-	if (flap_phase >= 1) flap_phase -= 1;
-	if (flap_phase < 0)  flap_phase += 1; // just in case
+		flap_phase += flap_speed;
+		if (flap_phase >= 1) flap_phase -= 1;
 
-        var stroke = sin(flap_phase * 2 * pi);         // -1..1
-        var lift   = max(0, stroke) * flap_force * (1 + speed_h * 0.25);
+		var stroke = sin(flap_phase * 2 * pi); // -1..1
+		var lift   = max(0, stroke) * flap_force * (1 + speed_h * 0.25);
 
-        // Air gravity first, then lift
-        vsp += g_air;
+		// Air gravity first, then lift. Only add ground-avoid lift near ground.
+		vsp += g_air;
+		if (instance_place(x, y + 48, ground) != noone) lift += 0.25;
+		vsp -= lift;
+		vsp = clamp(vsp, -max_fall, max_fall);
 
-        // extra avoidance if getting near ground
-        if (y > min_fly_y) lift += 0.35;
 
-        vsp -= lift;
-        vsp = clamp(vsp, -max_fall, max_fall);
-
-        // Land decision
-        desire_to_land_t--;
-        if (desire_to_land_t <= 0) {
-            var t = instance_place(x, y + 32, ground);
-            if (t != noone) {
-                state = "land";
-            } else {
-                desire_to_land_t = irandom_range(room_speed*3, room_speed*8);
-            }
+        // Land if ground is close under us sometimes
+        if (irandom(120) == 0 && instance_place(x, y + 24, ground) != noone) {
+            state = "ground";
         }
 
-    } else if (state == "land") {
-        // fall to ground
-        vsp += g;
-        if (_is_on_floor(ground)) {
-            // pop out of any overlap
-            while (place_meeting(x, y, ground)) y -= 1;
-            vsp = 0;
-            state = "hop";
-            hop_cooldown = irandom_range(room_speed*1, room_speed*2);
-        }
+    } else { // ===== "ground" =====
+        // Apply stronger gravity
+        vsp += g_ground;
 
-    } else if (state == "hop") {
-        if (_is_on_floor(ground)) {
+        // On ground? hop around a bit; sometimes take off
+        if (place_meeting(x, y + 1, ground)) {
             vsp = 0;
+
+            // tiny random hop
             hop_cooldown--;
-
             if (hop_cooldown <= 0) {
                 var push = choose(-hop_h, hop_h);
-                if (random(1) < 0.7) push = dir * hop_h; // bias forward
+                if (random(1) < 0.7) push = dir * hop_h;
                 hsp = push;
                 vsp = -hop_v;
                 hop_cooldown = irandom_range(room_speed*20, room_speed*40);
             }
 
-            // takeoff sometimes
+            // chance to fly away
             idle_t++;
             if (idle_t > irandom_range(room_speed*3, room_speed*7)) {
                 state = "fly";
                 idle_t = 0;
-                desire_to_land_t = irandom_range(room_speed*4, room_speed*9);
-                vsp = -random_range(1.5, 2.8);
+                vsp = -random_range(1.2, 2.4);
                 hsp += dir * random_range(0.5, 1.2);
             }
-        } else {
-            // mid-hop arc
-            vsp += g;
         }
     }
 
-    // ===== Movement (with ground-safe Y) =====
+    // ===== Movement (simple + floor resolve) =====
     x += hsp;
-  //  _move_y_solid(vsp, ground);
+    y += vsp;
 
-    // ===== Pose =====
-   // keep flap_phase in [0,1) and pick a valid subimage index
-flap_phase = (flap_phase % 1 + 1) % 1;          // robust wrap
-var frames  = max(1, wing_frames);               // avoid zero
-var idx     = floor(flap_phase * frames);
-wing_img    = clamp(idx, 0, frames - 1);
+    // If we intersect ground after moving, push out & stop vsp
+    if (place_meeting(x, y, ground)) {
+        var push = sign(vsp);
+        if (push == 0) push = 1;
+        while (place_meeting(x, y, ground)) y -= push;
+        vsp = 0;
+        state = "ground"; // if we touched ground, we are grounded now
+    }
+
+    // ===== Poses =====
+    // wing frame from phase
+    var frames = max(1, wing_frames);
+    var idx    = floor(((flap_phase % 1 + 1) % 1) * frames);
+    wing_img   = clamp(idx, 0, frames - 1);
 
     var target_body = clamp(-vsp * body_tilt_scale, body_tilt_min, body_tilt_max);
     body_angle = lerp(body_angle, target_body, 0.12);
@@ -216,44 +209,34 @@ wing_img    = clamp(idx, 0, frames - 1);
 
     if (tail_active) {
         tail_t += tail_rate;
-        tail_angle = sin(degtorad(tail_t*6)) * tail_amp;
+        tail_angle = sin(degtorad(tail_t * 6)) * tail_amp;
     } else {
-        tail_angle = lerp(tail_angle, -body_angle*0.25, 0.08);
+        tail_angle = lerp(tail_angle, -body_angle * 0.25, 0.08);
     }
 
-    // ===== Timers (chirp & tail) =====
+    // ===== Simple timers (optional) =====
     if (chirp_dur_t > 0) {
-        chirp_dur_t -= 1;
-        beak_open = true;
-        if (chirp_dur_t <= 0) {
-            beak_open = false;
-            chirp_wait_t = irandom_range(chirp_wait_min, chirp_wait_max);
-        }
+        chirp_dur_t -= 1; beak_open = true;
+        if (chirp_dur_t <= 0) { beak_open = false; chirp_wait_t = irandom_range(chirp_wait_min, chirp_wait_max); }
     } else {
         if (chirp_wait_t > 0) chirp_wait_t -= 1;
-        if (chirp_wait_t <= 0) {
-            beak_open = true;
-            // audio_play_sound(sndBirdChirp, 1, false);
-            chirp_dur_t = irandom_range(chirp_dur_min, chirp_dur_max);
-        }
+        if (chirp_wait_t <= 0) { beak_open = true; chirp_dur_t = irandom_range(chirp_dur_min, chirp_dur_max); }
     }
 
     if (tail_dur_t > 0) {
-        tail_active = true;
-        tail_dur_t -= 1;
-        if (tail_dur_t <= 0) {
-            tail_active = false;
-            tail_wait_t = irandom_range(tail_wait_min, tail_wait_max);
-        }
+        tail_active = true; tail_dur_t -= 1;
+        if (tail_dur_t <= 0) { tail_active = false; tail_wait_t = irandom_range(tail_wait_min, tail_wait_max); }
     } else {
         if (tail_wait_t > 0) tail_wait_t -= 1;
-        if (tail_wait_t <= 0) {
-            tail_active = true;
-            tail_dur_t  = irandom_range(tail_dur_min, tail_dur_max);
-        }
+        if (tail_wait_t <= 0) { tail_active = true; tail_dur_t = irandom_range(tail_dur_min, tail_dur_max); }
     }
-}
+	
+	if (x < 32)  desired_hsp = abs(desired_hsp);
+	if (x > room_width - 32) desired_hsp = -abs(desired_hsp);
 
+
+
+}
 
 
 function scr_bird_draw() {
@@ -298,37 +281,3 @@ function _is_on_floor(__floor) {
 }
 
 
-/// Collision-safe vertical move against ground (prevents tunneling)
-/*
-function _move_y_solid(_vy, _floor_obj) {
-    // No movement? nothing to do.
-    if (_vy == 0) return;
-
-    var s = sign(_vy);
-    // number of full-pixel steps (must be integer)
-    var steps = abs(floor(_vy));
-
-    // Move 1px at a time
-    repeat (steps) {
-        if (!place_meeting(x, y + s, _floor_obj)) {
-            y += s;
-        } else {
-            vsp = 0;   // stop vertical speed on impact
-            return;    // abort further movement this step
-        }
-    }
-
-    // Move the leftover fractional part (if any)
-    var frac = _vy - s * steps; // this is in (-1, 1)
-    if (frac != 0) {
-        if (!place_meeting(x, y + frac, _floor_obj)) {
-            y += frac;
-        } else {
-            vsp = 0;
-            // no return needed; nothing more to do
-        }
-    }
-}
-
-
-}
