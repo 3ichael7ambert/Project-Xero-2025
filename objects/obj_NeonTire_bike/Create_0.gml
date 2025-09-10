@@ -1,6 +1,6 @@
 /// @description  Initialize obj_NeonTire
 
-Torque = 10000;
+Torque = 1000;
 
 // Geometry
 dx = 32;

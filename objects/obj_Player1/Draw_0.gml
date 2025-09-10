@@ -224,3 +224,80 @@ draw_text(x+10,y-40, "Controller: " +string(gamepad_num));
 */
 
 	
+	
+	if (jetpack_mode == 4) {
+    // draw a single “ball” sprite or your head sprite rotated while rolling
+    var spr = sprHead; // temp: use a ball sprite if you have one
+    var ang = image_angle;
+    if (jp4_state == JP4_STATE_ROLL || jp4_state == JP4_STATE_SLAM || jp4_state == JP4_STATE_HOMING) {
+        ang += hsp * -6;
+    }
+    draw_sprite_ext(spr, 0, x, y, image_xscale, image_yscale, ang, c_white, 1);
+    // (Skip the limb assembly while in ball state, unless you want to keep it.)
+
+
+// --- SPIN UPDATE (put once after the jp4_state switch) ---
+
+var on_ground = place_meeting(x, y + 1, floor_obj);
+var speed_h   = hsp;
+var speed_tot = point_distance(0,0,hsp,vsp);
+
+// 1) Pick a target spin rate for this frame (deg/step)
+var target_degps = 0;
+
+switch (jp4_state) {
+    case JP4_STATE_ROLL:
+        if (on_ground) {
+            // wheel on ground: spin = -velocity/Radius
+            target_degps = -pxps_to_degps(speed_h);
+        } else {
+            // air: keep spinning but influenced by horizontal speed
+            target_degps = -pxps_to_degps(speed_h) * 0.6;
+        }
+    break;
+
+    case JP4_STATE_CHARGE:
+        // almost locked, tiny “vibration”
+        target_degps = 0;
+        ang_vel *= 0.9;
+        ang_vel += sin(current_time*0.4) * 2;
+    break;
+
+    case JP4_STATE_SLAM:
+        // spin matches *total* velocity vector for juicy feel
+        // bias by horizontal so it doesn’t look weird on straight down slams
+        target_degps = -pxps_to_degps(speed_tot) * (0.6 + 0.4*abs(lengthdir_x(1, point_direction(0,0,hsp,vsp))));
+    break;
+
+    case JP4_STATE_HOMING:
+        // fast spin burst
+        target_degps = -pxps_to_degps(speed_tot) * 1.1;
+    break;
+
+    default:
+        // idle
+        target_degps = 0;
+    break;
+}
+
+// 2) Ease ang_vel toward target, with different damping on ground vs air
+var accel = spin_accel;
+var diff  = clamp(target_degps - ang_vel, -accel, accel);
+ang_vel  += diff;
+
+// extra damping
+if (on_ground) {
+    // bleed mismatch so it quickly syncs with ground speed
+    ang_vel = lerp(ang_vel, target_degps, 1 - ground_stick);
+} else {
+    // let it persist in air
+    ang_vel *= air_decay;
+}
+
+// 3) Clamp and integrate
+ang_vel   = clamp(ang_vel, -spin_max, spin_max);
+ang      += ang_vel;
+
+// 4) Apply to sprite
+image_angle = ang;
+	}

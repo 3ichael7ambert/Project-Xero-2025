@@ -17,54 +17,59 @@ draw_set_color(c_black);
 draw_circle(mouse_x,mouse_y,10,1);
 
 
+body_x = xx;
+body_y = yy;
+body_angle=-25+phy_speed_x/10;
 
-var body_x = xx;
-var body_y = yy;
-var body_angle=-25+phy_speed_x/10;
+	mx = mouse_x;
+	my = mouse_y;
 
 if (facing_right==true) {
-	var head_x = body_x + lengthdir_x(60*scale,body_angle+70);
-	var head_y = body_y + lengthdir_y(60*scale,body_angle+70);
+	head_x = body_x + lengthdir_x(60*scale,body_angle+70);
+	head_y = body_y + lengthdir_y(60*scale,body_angle+70);
 
-	var eyes_x = head_x + lengthdir_x(60*scale,70);
-	var eyes_y = head_y + lengthdir_y(60*scale,70);
+	eyes_x = head_x + lengthdir_x(60*scale,70);
+	eyes_y = head_y + lengthdir_y(60*scale,70);
 
-	var armF_x = body_x + lengthdir_x(40*scale,body_angle+160);
-	var armF_y = body_y + lengthdir_y(40*scale,body_angle+160);
+	armF_x = body_x + lengthdir_x(40*scale,body_angle+160);
+	armF_y = body_y + lengthdir_y(40*scale,body_angle+160);
 	
 
 
+
+	armF_dir=point_direction(armF_x,armF_y,mx,my);
+
 	
-	var handF_x = armF_x + lengthdir_x(80*scale,armF_dir-5);
-	var handF_y = armF_y + lengthdir_y(80*scale,armF_dir-5);
+	handF_x = armF_x + lengthdir_x(80*scale,armF_dir-5);
+	handF_y = armF_y + lengthdir_y(80*scale,armF_dir-5);
 }
 if (facing_right==false) {
-	var head_x = body_x + lengthdir_x(60*scale,body_angle+70);
-	var head_y = body_y + lengthdir_y(60*scale,body_angle+70);
+	head_x = body_x + lengthdir_x(60*scale,body_angle+70);
+	head_y = body_y + lengthdir_y(60*scale,body_angle+70);
 
-	var eyes_x = head_x + lengthdir_x(60*scale,130);
-	var eyes_y = head_y + lengthdir_y(60*scale,130);
+	eyes_x = head_x + lengthdir_x(60*scale,130);
+	eyes_y = head_y + lengthdir_y(60*scale,130);
 
-	var armF_x = body_x + lengthdir_x(40*scale,body_angle+150);
-	var armF_y = body_y + lengthdir_y(40*scale,body_angle+150);
+	armF_x = body_x + lengthdir_x(40*scale,body_angle+150);
+	armF_y = body_y + lengthdir_y(40*scale,body_angle+150);
 	
-
+	armF_dir=point_direction(armF_x,armF_y,mx,my);
 	
-	var handF_x = armF_x + lengthdir_x(80*scale,armF_dir+5);
-	var handF_y = armF_y + lengthdir_y(80*scale,armF_dir+5);
+	handF_x = armF_x + lengthdir_x(80*scale,armF_dir+5);
+	handF_y = armF_y + lengthdir_y(80*scale,armF_dir+5);
 }
 
 
 
-	var armB_x = body_x+lengthdir_x(20*scale,body_angle+140);
-	var armB_y = body_y+lengthdir_y(20*scale,body_angle+140);
+	armB_x = body_x+lengthdir_x(20*scale,body_angle+140);
+	armB_y = body_y+lengthdir_y(20*scale,body_angle+140);
 
 
-var legB_x = body_x+lengthdir_x(20*scale,body_angle-40+phy_rotation);
-var legB_y = body_y+lengthdir_y(20*scale,body_angle-40+phy_rotation);
+legB_x = body_x+lengthdir_x(20*scale,body_angle-40+phy_rotation);
+legB_y = body_y+lengthdir_y(20*scale,body_angle-40+phy_rotation);
 
-var legF_x = body_x+lengthdir_x(67*scale,body_angle-112);
-var legF_y = body_y+lengthdir_y(67*scale,body_angle-112);
+legF_x = body_x+lengthdir_x(67*scale,body_angle-112);
+legF_y = body_y+lengthdir_y(67*scale,body_angle-112);
 
 
 //BACK LEG

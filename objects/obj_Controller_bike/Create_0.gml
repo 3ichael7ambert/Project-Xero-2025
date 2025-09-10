@@ -1,4 +1,4 @@
-with (other) {
+
 /// Initialize obj_Controller
 
 randomize();
@@ -25,7 +25,11 @@ FloorLength = (__view_get( e__VW.WView, view_current ) / 2) div FloorStep;     /
 FloorLast = x;                                                  // For obj_Player view & obj_Boundary phy_y position
 
 SkyTexture = sprite_get_texture(spr_Sky_bike, 0);                    // Define textures for drawing sky (for Neon Rider demo), floor, and subfloor respectively
+
+//BG
+
 SkyTextureHeight = sprite_get_height(spr_Sky_bike);
+
 
 //FloorTexture = sprite_get_texture(spr_Floor, 0);                // For ball demo
 FloorTexture = sprite_get_texture(spr_Floor_bike, 2);                // For Neon Rider demo
@@ -132,5 +136,7 @@ FloorID.PlayerID = PlayerID;
 scr_GenerateFloor_bike(id);
 
 /* */
-}
+
 /*  */
+
+instance_create(x,y,obj_bike_parralax);

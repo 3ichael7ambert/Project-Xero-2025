@@ -26,11 +26,16 @@ if (can_switch_jetpack) {
 	    // Key 3 is pressed
 	    jetpack_mode = 3;
 	}
+	if (keyboard_check_pressed(ord(4)))
+	{
+	    // Key 3 is pressed
+	    jetpack_mode = 4;
+	}
 
 	if (change_jetpack) { 
 		//jetpack_mode++; 
 		}
-	if (jetpack_mode>3) {jetpack=1;}
+	if (jetpack_mode>4) {jetpack=1;}
 
 }
 
@@ -70,23 +75,6 @@ cm_y=mouse_y;
 mouse_x_3d=  mouse_x;//mouse_x_world;
 mouse_y_3d= mouse_y;//mouse_y_world;
 }
-
-
-
-// Mouse input
-/*
-mouse_xdiff = xm - ww/2;
-mouse_ydiff = ym - wh/2;
-mouse_xdiff /= ww;
-mouse_ydiff /= wh;
-direction += xdiff;    // Horizontal movement of the mouse means look left or right
-zdir += ydiff;         // Vertical movement of the mouse means look up or down
-// Re-center the mouse
-window_mouse_set(ww/2, wh/2);    // Reset the mouse so we can get a new offset from the window center next step/frame
-*/
-
-
-poi = point_direction(x,y,mouse_x_3d,mouse_y_3d);
 
 
 // Mouse input
@@ -283,6 +271,23 @@ if jetpack_mode=2 || jetpack_mode==3
     }
 }
 
+// After you snap to ground & set vsp=0:
+if (jetpack_mode == 4) {
+    var in_spin = (jp4_state == JP4_STATE_ROLL) || (jp4_state == JP4_STATE_SLAM) || (jp4_state == JP4_STATE_HOMING);
+    // impact velocity magnitude (use previous vsp; cache before zeroing if needed)
+    var impact_v = abs(vsp_previous); // store vsp_previous = vsp before resolution
+    if (in_spin && impact_v > 2.5) {
+        _jp4_bounce_from_impact(impact_v);
+        // stay in roll after bounce
+        jp4_state = JP4_STATE_ROLL;
+    } else {
+        // gentle landing: reset to idle unless still charging
+        if (jp4_state != JP4_STATE_CHARGE) jp4_state = JP4_STATE_IDLE;
+        // small settle squash
+        _jp4_squash(1.1, 0.9, 6);
+    }
+}
+
 // Jumping logic
 if (move_up) {
     if (jetpack_mode == 3) && place_empty(x,bbox_top,floor_obj)
@@ -400,7 +405,9 @@ angle_armB = image_angle;
 angle_legB = image_angle;
 angle_legF = image_angle;
 
-if jetpack_mode=1
+
+/// --- moddified bbox
+if jetpack_mode==1
 {
 	image_angle = 0;
 	//gravity=.5;
@@ -530,7 +537,9 @@ var width = modified_bbox_right - modified_bbox_left;
 var height = modified_bbox_bottom - modified_bbox_top;
 }
 
-if jetpack_mode=2
+
+
+if jetpack_mode==2
 {
 	//grav=0.5;
 image_angle = 0 - 2 * hsp;
@@ -660,7 +669,7 @@ var width = modified_bbox_right - modified_bbox_left;
 var height = modified_bbox_bottom - modified_bbox_top;
 }
 
-if jetpack_mode=3
+if jetpack_mode==3
 {
 	grav=0;
 image_angle = 0 - 2 * hsp;
@@ -791,6 +800,257 @@ var height = modified_bbox_bottom - modified_bbox_top;
 }
 
 
+if jetpack_mode==4
+{
+	image_angle = 0;
+	//gravity=.5;
+	//grav=.5;
+// Calculate the bounding box for each sprite relative to sprite_body
+var modified_bbox_left = min(nx_body - sprite_get_bbox_left(sprite_body), nx_head - sprite_get_bbox_left(sprite_head), nx_armB - sprite_get_bbox_left(sprArmArms), nx_armF - sprite_get_bbox_left(sprArmArms), nx_legB - sprite_get_bbox_left(sprLeg3), nx_legF - sprite_get_bbox_left(sprLeg3), nx_jet - sprite_get_bbox_left(sprJetBack));
+var modified_bbox_right = max(nx_body + sprite_get_bbox_right(sprite_body) - sprite_get_bbox_left(sprite_body), nx_head + sprite_get_bbox_right(sprite_head) - sprite_get_bbox_left(sprite_head), nx_armB + sprite_get_bbox_right(sprArmArms) - sprite_get_bbox_left(sprArmArms), nx_armF + sprite_get_bbox_right(sprArmArms) - sprite_get_bbox_left(sprArmArms), nx_legB + sprite_get_bbox_right(sprLeg3) - sprite_get_bbox_left(sprLeg3), nx_legF + sprite_get_bbox_right(sprLeg3) - sprite_get_bbox_left(sprLeg3), nx_jet + sprite_get_bbox_right(sprJetBack) - sprite_get_bbox_left(sprJetBack));
+var modified_bbox_top = min(ny_body - sprite_get_bbox_top(sprite_body), ny_head - sprite_get_bbox_top(sprite_head), ny_armB - sprite_get_bbox_top(sprArmArms), ny_armF - sprite_get_bbox_top(sprArmArms), ny_legB - sprite_get_bbox_top(sprLeg3), ny_legF - sprite_get_bbox_top(sprLeg3), ny_jet - sprite_get_bbox_top(sprJetBack));
+var modified_bbox_bottom = max(ny_body + sprite_get_bbox_bottom(sprite_body) - sprite_get_bbox_top(sprite_body), ny_head + sprite_get_bbox_bottom(sprite_head) - sprite_get_bbox_top(sprite_head), ny_armB + sprite_get_bbox_bottom(sprArmArms) - sprite_get_bbox_top(sprArmArms), ny_armF + sprite_get_bbox_bottom(sprArmArms) - sprite_get_bbox_top(sprArmArms), ny_legB + sprite_get_bbox_bottom(sprLeg3) - sprite_get_bbox_top(sprLeg3), ny_legF + sprite_get_bbox_bottom(sprLeg3) - sprite_get_bbox_top(sprLeg3), ny_jet + sprite_get_bbox_bottom(sprJetBack) - sprite_get_bbox_top(sprJetBack));
+
+// Calculate the bounding box for each sprite relative to sprite_body
+var bbox_body_left = x - sprite_get_bbox_right(sprite_body) * image_xscale;
+var bbox_body_right = x + sprite_get_bbox_right(sprite_body) * image_xscale;
+var bbox_body_top = y - sprite_get_bbox_top(sprite_body) * image_yscale;
+var bbox_body_bottom = y + sprite_get_bbox_bottom(sprite_body) * image_yscale;
+
+var bbox_head_left = nx_head - sprite_get_bbox_right(sprite_head) * image_xscale;
+var bbox_head_right = nx_head + sprite_get_bbox_right(sprite_head) * image_xscale;
+var bbox_head_top = ny_head - sprite_get_bbox_top(sprite_head) * image_yscale;
+var bbox_head_bottom = ny_head + sprite_get_bbox_bottom(sprite_head) * image_yscale;
+
+var bbox_armB_left = nx_armB - sprite_get_bbox_right(sprArmArms) * image_xscale;
+var bbox_armB_right = nx_armB + sprite_get_bbox_right(sprArmArms) * image_xscale;
+var bbox_armB_top = ny_armB - sprite_get_bbox_top(sprArmArms) * image_yscale;
+var bbox_armB_bottom = ny_armB + sprite_get_bbox_bottom(sprArmArms) * image_yscale;
+
+var bbox_armF_left = nx_armF - sprite_get_bbox_right(sprArmArms) * image_xscale;
+var bbox_armF_right = nx_armF + sprite_get_bbox_right(sprArmArms) * image_xscale;
+var bbox_armF_top = ny_armF - sprite_get_bbox_top(sprArmArms) * image_yscale;
+var bbox_armF_bottom = ny_armF + sprite_get_bbox_bottom(sprArmArms) * image_yscale;
+
+var bbox_legB_left = nx_legB - sprite_get_bbox_right(sprLeg3) * image_xscale;
+var bbox_legB_right = nx_legB + sprite_get_bbox_right(sprLeg3) * image_xscale;
+var bbox_legB_top = ny_legB - sprite_get_bbox_top(sprLeg3) * image_yscale;
+var bbox_legB_bottom = ny_legB + sprite_get_bbox_bottom(sprLeg3) * image_yscale;
+
+var bbox_legF_left = nx_legF - sprite_get_bbox_right(sprLeg3) * image_xscale;
+var bbox_legF_right = nx_legF + sprite_get_bbox_right(sprLeg3) * image_xscale;
+var bbox_legF_top = ny_legF - sprite_get_bbox_top(sprLeg3) * image_yscale;
+var bbox_legF_bottom = ny_legF + sprite_get_bbox_bottom(sprLeg3)  * image_yscale;
+// Calculate the bounding box for each sprite relative to sprite_body 
+var bbox_body = [x - sprite_get_bbox_right(sprite_body) * image_xscale, y - sprite_get_bbox_top(sprite_body) * image_yscale, x + sprite_get_bbox_right(sprite_body) * image_xscale, y + sprite_get_bbox_bottom(sprite_body) * image_yscale];
+var bbox_head = [nx_head - sprite_get_bbox_right(sprite_head) * image_xscale, ny_head - sprite_get_bbox_top(sprite_head) * image_yscale, nx_head + sprite_get_bbox_right(sprite_head) * image_xscale, ny_head + sprite_get_bbox_bottom(sprite_head) * image_yscale];
+var bbox_armB = [nx_armB - sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armB - sprite_get_bbox_top(sprArmArms) * image_yscale, nx_armB + sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armB + sprite_get_bbox_bottom(sprArmArms) * image_yscale];
+var bbox_armF = [nx_armF - sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armF - sprite_get_bbox_top(sprArmArms) * image_yscale, nx_armF + sprite_get_bbox_right(sprArmArms) * image_xscale, ny_armF + sprite_get_bbox_bottom(sprArmArms) * image_yscale];
+var bbox_legB = [nx_legB - sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legB - sprite_get_bbox_top(sprLeg3) * image_yscale, nx_legB + sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legB + sprite_get_bbox_bottom(sprLeg3) * image_yscale];
+var bbox_legF = [nx_legF - sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legF - sprite_get_bbox_top(sprLeg3) * image_yscale, nx_legF + sprite_get_bbox_right(sprLeg3) * image_xscale, ny_legF + sprite_get_bbox_bottom(sprLeg3) * image_yscale];
+var bbox_jet = [nx_jet - sprite_get_bbox_right(sprJetBack) * image_xscale, ny_jet - sprite_get_bbox_top(sprJetBack) * image_yscale, nx_jet + sprite_get_bbox_right(sprJetBack) * image_xscale, ny_jet + sprite_get_bbox_bottom(sprJetBack) * image_yscale];
+
+// Calculate the rotated bounding box coordinates based on sprite_body image_angle
+var cos_angle = lengthdir_x(image_angle, 1);
+var sin_angle = lengthdir_y(image_angle, 1);
+
+var rotated_bbox_body = [x + bbox_body[0] * cos_angle - bbox_body[1] * sin_angle, y + bbox_body[0] * sin_angle + bbox_body[1] * cos_angle, x + bbox_body[2] * cos_angle - bbox_body[3] * sin_angle, y + bbox_body[2] * sin_angle + bbox_body[3] * cos_angle];
+var rotated_bbox_head = [nx_head + bbox_head[0] * cos_angle - bbox_head[1] * sin_angle, ny_head + bbox_head[0] * sin_angle + bbox_head[1] * cos_angle, nx_head + bbox_head[2] * cos_angle - bbox_head[3] * sin_angle, ny_head + bbox_head[2] * sin_angle + bbox_head[3] * cos_angle];
+var rotated_bbox_armB = [nx_armB + bbox_armB[0] * cos_angle - bbox_armB[1] * sin_angle, ny_armB + bbox_armB[0] * sin_angle + bbox_armB[1] * cos_angle, nx_armB + bbox_armB[2] * cos_angle - bbox_armB[3] * sin_angle, ny_armB + bbox_armB[2] * sin_angle + bbox_armB[3] * cos_angle];
+var rotated_bbox_armF = [nx_armF + bbox_armF[0] * cos_angle - bbox_armF[1] * sin_angle, ny_armF + bbox_armF[0] * sin_angle + bbox_armF[1] * cos_angle, nx_armF + bbox_armF[2] * cos_angle - bbox_armF[3] * sin_angle, ny_armF + bbox_armF[2] * sin_angle + bbox_armF[3] * cos_angle];
+var rotated_bbox_legB = [nx_legB + bbox_legB[0] * cos_angle - bbox_legB[1] * sin_angle, ny_legB + bbox_legB[0] * sin_angle + bbox_legB[1] * cos_angle, nx_legB+ bbox_legB[2] * cos_angle - bbox_legB[3] * sin_angle, ny_legB + bbox_legB[2] * sin_angle + bbox_legB[3] * cos_angle];
+
+// Calculate the rotated bounding box coordinates based on sprite_body image_angle
+var cos_angle_body = cos(degtorad(image_angle));
+var sin_angle_body = sin(degtorad(image_angle));
+var cos_angle_head = cos(degtorad(angle_head));
+var sin_angle_head = sin(degtorad(angle_head));
+var cos_angle_armB = cos(degtorad(angle_armB));
+var sin_angle_armB = sin(degtorad(angle_armB));
+var cos_angle_armF = cos(degtorad(angle_armF));
+var sin_angle_armF = sin(degtorad(angle_armF));
+var cos_angle_legB = cos(degtorad(angle_legB));
+var sin_angle_legB = sin(degtorad(angle_legB));
+var cos_angle_legF = cos(degtorad(angle_legF));
+var sin_angle_legF = sin(degtorad(angle_legF));
+var cos_angle_jet = cos(degtorad(angle_jet));
+var sin_angle_jet = sin(degtorad(angle_jet));
+
+var rotated_bbox_body = bbox_rotate(bbox_body, image_angle);
+var rotated_bbox_head = bbox_rotate(bbox_head, angle_head);
+var rotated_bbox_armB = bbox_rotate(bbox_armB, angle_armB);
+var rotated_bbox_armF = bbox_rotate(bbox_armF, angle_armF);
+var rotated_bbox_legB = bbox_rotate(bbox_legB, angle_legB);
+var rotated_bbox_legF = bbox_rotate(bbox_legF, angle_legF);
+var rotated_bbox_jet = bbox_rotate(bbox_jet, angle_jet);
+
+// Calculate the modified bounding box coordinates
+var modified_bbox_left = min(
+    x + rotated_bbox_body[0] * cos_angle_body - rotated_bbox_body[1] * sin_angle_body,
+    nx_head + rotated_bbox_head[0] * cos_angle_head - rotated_bbox_head[1] * sin_angle_head,
+    nx_armB + rotated_bbox_armB[0] * cos_angle_armB - rotated_bbox_armB[1] * sin_angle_armB,
+    nx_armF + rotated_bbox_armF[0] * cos_angle_armF - rotated_bbox_armF[1] * sin_angle_armF,
+    nx_legB + rotated_bbox_legB[0] * cos_angle_legB - rotated_bbox_legB[1] * sin_angle_legB,
+    nx_legF + rotated_bbox_legF[0] * cos_angle_legF - rotated_bbox_legF[1] * sin_angle_legF,
+    nx_jet + rotated_bbox_jet[0] * cos_angle_jet - rotated_bbox_jet[1] * sin_angle_jet
+);
+
+var modified_bbox_right = max(
+    x + rotated_bbox_body[2] * cos_angle_body - rotated_bbox_body[3] * sin_angle_body,
+    nx_head + rotated_bbox_head[2] * cos_angle_head - rotated_bbox_head[3] * sin_angle_head,
+    nx_armB + rotated_bbox_armB[2] * cos_angle_armB - rotated_bbox_armB[3] * sin_angle_armB,
+    nx_armF + rotated_bbox_armF[2] * cos_angle_armF - rotated_bbox_armF[3] * sin_angle_armF,
+    nx_legB + rotated_bbox_legB[2] * cos_angle_legB - rotated_bbox_legB[3] * sin_angle_legB,
+    nx_legF + rotated_bbox_legF[2] * cos_angle_legF - rotated_bbox_legF[3] * sin_angle_legF,
+    nx_jet + rotated_bbox_jet[2] * cos_angle_jet - rotated_bbox_jet[3] * sin_angle_jet
+);
+
+var modified_bbox_top = min(
+    y + rotated_bbox_body[0] * sin_angle_body + rotated_bbox_body[1] * cos_angle_body,
+    ny_head + rotated_bbox_head[0] * sin_angle_head + rotated_bbox_head[1] * cos_angle_head,
+    ny_armB + rotated_bbox_armB[0] * sin_angle_armB + rotated_bbox_armB[1] * cos_angle_armB,
+    ny_armF + rotated_bbox_armF[0] * sin_angle_armF + rotated_bbox_armF[1] * cos_angle_armF,
+    ny_legB + rotated_bbox_legB[0] * sin_angle_legB + rotated_bbox_legB[1] * cos_angle_legB,
+    ny_legF + rotated_bbox_legF[0] * sin_angle_legF + rotated_bbox_legF[1] * cos_angle_legF,
+    ny_jet + rotated_bbox_jet[0] * sin_angle_jet + rotated_bbox_jet[1] * cos_angle_jet
+);
+
+var modified_bbox_bottom = min(
+    y + rotated_bbox_body[2] * sin_angle_body + rotated_bbox_body[3] * cos_angle_body,
+    ny_head + rotated_bbox_head[2] * sin_angle_head + rotated_bbox_head[3] * cos_angle_head,
+    ny_armB + rotated_bbox_armB[2] * sin_angle_armB + rotated_bbox_armB[3] * cos_angle_armB,
+    ny_armF + rotated_bbox_armF[2] * sin_angle_armF + rotated_bbox_armF[3] * cos_angle_armF,
+    ny_legB + rotated_bbox_legB[2] * sin_angle_legB + rotated_bbox_legB[3] * cos_angle_legB,
+    ny_legF + rotated_bbox_legF[2] * sin_angle_legF + rotated_bbox_legF[3] * cos_angle_legF,
+    ny_jet + rotated_bbox_jet[2] * sin_angle_jet + rotated_bbox_jet[3] * cos_angle_jet
+);
+
+// Calculate the overall width and height
+var width = modified_bbox_right - modified_bbox_left;
+var height = modified_bbox_bottom - modified_bbox_top;
+}
+
+
+
+
+if (jetpack_mode == 4) {
+
+    // Physics baseline for this mode
+  grav = jp4_grav;
+   var grav_mul = 1.0;
+	if (jetpack_mode == 4 && jp4_state == JP4_STATE_SLAM) grav_mul = 0.6;
+	vsp += grav * grav_mul;
+
+
+    // Optional: circular mask while in roll/charge/slam for cleaner collisions
+    if (jp4_state == JP4_STATE_ROLL || jp4_state == JP4_STATE_CHARGE || jp4_state == JP4_STATE_SLAM || jp4_state == JP4_STATE_HOMING) {
+        if (mask_index != sprMaskBall) mask_index = sprMaskBall;
+    } else if (mask_index == sprMaskBall) {
+        mask_index = sprite_index; // or your normal mask
+    }
+
+    // --- INPUTS ---
+    var press_rollTap  = keyboard_check_pressed(btn_rollTap);
+    var hold_charge    = mouse_check_button(btn_charge) || keyboard_check(vk_control);
+    var release_charge = (!mouse_check_button(btn_charge) && !keyboard_check(vk_control));
+    var press_homing   = keyboard_check_pressed(btn_homing);
+
+    // --- STATE MACHINE ---
+    switch (jp4_state) {
+
+        case JP4_STATE_IDLE:
+            // quick entry points
+            if (press_rollTap) _jp4_start_roll();
+            if (hold_charge)   _jp4_start_charge();
+        break;
+
+        case JP4_STATE_ROLL:
+		{
+		    // ✅ Correct ground check: "am I touching a solid one pixel below?"
+		    var on_ground = place_meeting(x, y + 1, ground_obj); // <-- use ground_obj (set once)
+
+		    // steer
+		    if (on_ground) {
+		        if (move_left)  hsp -= 0.6;
+		        if (move_right) hsp += 0.6;
+		        hsp *= jp4_fric_ground;
+		        image_angle += sign(hsp) * 18;
+
+		        // ❌ vsp = 0;  <-- remove this; let the vertical resolver zero vsp
+		    } else {
+		        // air control & spin
+		        if (move_left)  hsp -= jp4_air_control;
+		        if (move_right) hsp += jp4_air_control;
+		        hsp *= jp4_fric_air;
+		        image_angle += sign(hsp) * 14;
+		    }
+
+		    if (hold_charge) _jp4_start_charge();
+		    if (press_homing && !on_ground) _jp4_try_homing();
+		}
+		break;
+
+
+        case JP4_STATE_CHARGE:
+        {
+            // you can slide a tiny bit, but mostly we “tighten”
+            hsp *= 0.92;
+
+            // build up charge
+            jp4_charge = min(jp4_charge + jp4_charge_rate, jp4_charge_max);
+
+            // subtle breathe squash while charging
+            var wob = 0.04 * sin(current_time * 0.02);
+            _jp4_squash(1.0 - 0.12 + wob, 1.0 + 0.12 - wob, 2);
+
+            if (release_charge) _jp4_release_slam();
+            if (press_homing)   _jp4_try_homing();
+        }
+        break;
+
+        case JP4_STATE_SLAM:
+        {
+            // during slam, maintain trajectory with slight drag
+            hsp *= 0.995;
+            //vsp += grav * 0.6; // reduced gravity during slam so it carries
+
+            // auto-end when we slow down a lot in air
+            if (abs(hsp) + abs(vsp) < 3) jp4_state = JP4_STATE_IDLE;
+        }
+        break;
+
+        case JP4_STATE_HOMING:
+        {
+            jp4_homing_t--;
+            if (jp4_homing_t <= 0) {
+                jp4_state = JP4_STATE_IDLE;
+            } else {
+                // keep speed pointed where we started (simple burst)
+                var spd = point_distance(0,0,hsp,vsp);
+                var dir = point_direction(0,0,hsp,vsp);
+                spd = max(spd, jp4_homing_speed);
+                hsp = lengthdir_x(spd, dir);
+                vsp = lengthdir_y(spd, dir);
+            }
+        }
+        break;
+    }
+
+    // Gravity (you already add vsp += grav later; ok to leave this as is)
+    // vsp += grav;  // keep your global vertical integration below
+
+    // --- SQUASH & STRETCH DECAY ---
+    if (jp4_squash_t > 0) jp4_squash_t--;
+    var sx = lerp(jp4_squash_x, 1, (jp4_squash_time - jp4_squash_t) / max(1,jp4_squash_time));
+    var sy = lerp(jp4_squash_y, 1, (jp4_squash_time - jp4_squash_t) / max(1,jp4_squash_time));
+    // apply on top of your existing scale
+    image_xscale = scale * sx;
+    image_yscale = scale * sy;
+
+    // facing for cosmetics
+    if (hsp >  0.25) facing_right = true;
+    if (hsp < -0.25) facing_right = false;
+}
 
 
 
@@ -835,8 +1095,9 @@ if (place_meeting(x, y + modified_bbox_bottom, obj_block_64)) {
         y += sign(vsp);
     }
     vsp = 0; // Stop vertical movement
-	isJumping = false;
+    isJumping = false;
 }
+
 
 
 

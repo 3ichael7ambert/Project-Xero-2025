@@ -409,5 +409,22 @@ ny_legB = cy + lengthdir_y(crad_legB, cnext_legB);
 }
 
 
+//JP4
+scr_player_ball_init();
+vsp_previous = 0;
+// --- Spin model (shared) ---
+ang        = 0;     // current image_angle (deg)
+ang_vel    = 0;     // deg per step
+spin_R     = 18;    // effective radius in pixels (tune to your sprite)
+spin_max   = 900;   // clamp max spin speed (deg/step)
+spin_accel = 80;    // how fast we chase target spin (deg/step^2)
+air_decay  = 0.97;  // passive spin decay in air
+ground_stick = 0.90;// how much we damp mismatch when grounded
+
+// helper: convert linear px/step to deg/step
+function pxps_to_degps(px) {
+    // v = ωR, ω(rad/step)=v/R; deg = rad * 180/pi
+    return (px / max(1, spin_R)) * (180 / pi);
+}
 
 

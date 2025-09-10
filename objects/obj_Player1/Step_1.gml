@@ -1,3 +1,5 @@
+// step begin
+
 if (global.health<=0 && player==1) {
 	instance_destroy();
 }

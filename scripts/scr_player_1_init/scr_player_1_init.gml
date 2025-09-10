@@ -1,4 +1,10 @@
 function scr_player_1_init(){
+	
+#macro STATE_NORMAL 0
+#macro STATE_GRIND  1
+
+
+
 image_angle=0;
 facing_right = true;
 depth=-10;

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"_draw_part",
+  "%Name":"scr_grind",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"_draw_part",
+  "name":"scr_grind",
   "parent":{
-    "name":"Creatures",
-    "path":"folders/Objects/Creatures.yy",
+    "name":"Grinding",
+    "path":"folders/Grinding.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

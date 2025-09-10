@@ -11,8 +11,9 @@ spr_beak_btm=sprBirdBeakBtm;
 
 wing_img=0;
 
+col=c_red;
 // Scale & ground
-scale  = .5;
+scale  = random_range(.16,.24);
 ground  = objSidewalk;
 
 // Movement + state
@@ -65,18 +66,22 @@ hop_v            = 4.0; // hop up
 idle_t           = 0;
 
 // Draw offsets (tweak to fit your sprites)
-off_body_x   = 0 * scale;   
-off_body_y   = 0 * scale;
-off_head_x   = off_body_x + 12 * scale;  
-off_head_y   = off_body_y + -6 * scale;
-off_wing_x   = 2 * scale;   
-off_wing_y   = 0 * scale;
-off_tail_x   = -10 * scale; 
-off_tail_y   = 2 * scale;
-off_eye_x    = off_head_x + (65 * scale);  
-off_eye_y    = off_head_y - (28 * scale);
-off_beak_x   = off_head_x + (78 * scale);  
-off_beak_y   = off_head_y - (15 * scale);
+// Draw offsets (IN SPRITE PIXELS, UN-SCALED, facing right)
+off_body_x = 0;   off_body_y = 0;
+
+off_head_x = off_body_x + 12;
+off_head_y = off_body_y - 6;
+
+off_wing_x = 2;   off_wing_y = 0;
+off_tail_x = -10; off_tail_y = 2;
+
+// if these were tuned for 1.0 scale, leave them as-is here:
+off_eye_x  = off_head_x + 65;
+off_eye_y  = off_head_y - 28;
+
+off_beak_x = off_head_x + 78;
+off_beak_y = off_head_y - 15;
+
 
 // Facing & scale
 image_xscale = scale;
@@ -286,31 +291,33 @@ function scr_bird_draw() {
 
 var base_ang = 0;
 
-
+shader_hue_start(col);
 // --- BACK WING (behind)
-_draw_part(spr_wing_back, wing_img, off_wing_x, off_wing_y, body_angle + wing_angle);
+_draw_bird_part(spr_wing_back, wing_img, off_wing_x, off_wing_y, body_angle + wing_angle);
 
 // --- BODY
-_draw_part(spr_body, 0, off_body_x, off_body_y, body_angle);
+_draw_bird_part(spr_body, 0, off_body_x, off_body_y, body_angle);
 
 // --- TAIL (slightly behind body center)
-_draw_part(spr_tail, 0, off_tail_x, off_tail_y, body_angle + tail_angle);
+_draw_bird_part(spr_tail, 0, off_tail_x, off_tail_y, body_angle + tail_angle);
 
 // --- HEAD
-_draw_part(spr_head, 0, off_head_x, off_head_y, head_angle);
+_draw_bird_part(spr_head, 0, off_head_x, off_head_y, head_angle);
 
 // --- EYE (kept simple; could add tiny bob)
-_draw_part(spr_eye, 0, off_eye_x, off_eye_y, head_angle);
+_draw_bird_part(spr_eye, 0, off_eye_x, off_eye_y, head_angle);
 
 // --- BEAK (top rotates to “open”)
 var beak_top_ang = head_angle + (beak_open ? beak_open_ang : 0);
-//var beak_btm_ang = head_angle - (beak_open ? beak_open_ang : 0);
-_draw_part(spr_beak_btm, 0, off_beak_x, off_beak_y, 0);
-_draw_part(spr_beak_top, 0, off_beak_x, off_beak_y, beak_top_ang);
+var beak_btm_ang = head_angle;
+_draw_bird_part(spr_beak_btm, 0, off_beak_x, off_beak_y, beak_btm_ang);
+_draw_bird_part(spr_beak_top, 0, off_beak_x, off_beak_y, beak_top_ang);
+
 
 // --- FRONT WING (in front)
-_draw_part(spr_wing_front, wing_img, off_wing_x, off_wing_y, body_angle - wing_angle);
+_draw_bird_part(spr_wing_front, wing_img, off_wing_x, off_wing_y, body_angle - wing_angle);
 	
+	shader_reset();
 }
 
 }

@@ -41,9 +41,29 @@ if (keyboard_check_pressed(ord("Q"))) {
 
 
 
+// Keyboard/button shoot
+if (mouse_check_button(mb_left)) {	
+    var sx = armF_x + lengthdir_x(120 * scale, armF_dir);
+    var sy = armF_y + lengthdir_y(120 * scale, armF_dir);
 
+    // Create bullet on correct layer
+    var a = instance_create(sx, sy, obj_bike_bullet);
 
+    // Rotate bullet sprite/fixture
+    a.phy_rotation = -armF_dir;
+    a.parent = self;
 
+    // How strong the shot is
+    var force_strength = 1000;       // higher = faster
+    var theta = armF_dir;            // fire in the arm's direction
+
+    // Apply force in bullet's scope
+    with (a) {
+        var xvec = lengthdir_x(force_strength, theta);
+        var yvec = lengthdir_y(force_strength, theta);
+        physics_apply_force(x, y, xvec, yvec);
+    }
+}
 
 
 
