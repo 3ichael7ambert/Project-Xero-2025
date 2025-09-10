@@ -65,3 +65,4 @@ if (species=="balloon") {
 /// --- DEBUG --- ///
 
 draw_text_outlined(x,y,"GUID: " + string(mission_guid),c_yellow,c_red);
+draw_text_outlined(x,y-10,"HP: " + string(hp),c_yellow,c_red);

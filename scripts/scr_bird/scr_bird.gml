@@ -1,5 +1,6 @@
 function scr_bird_create(){
-    // Sprites
+    
+// Sprites
     spr_head       = sprBirdHead;
     spr_body       = sprBirdBody;
     spr_wing_front = sprBirdWingFront;
@@ -18,6 +19,11 @@ function scr_bird_create(){
 	perch_y            = y;                        // y to touch down on
 	landing_flap_mul   = 0.35;                     // reduce lift while landing
 	perch_snap_pad     = 2;                        // snap when within this many pixels
+	land_scan_ahead    = 24;        // look a bit ahead in facing dir
+	landing            = false;
+	landing_descent    = 0.25;      // extra downward bias while landing
+	landing_hsp_damp   = 0.12;      // how fast to bleed horizontal speed
+
 
 
     // Visual
@@ -108,7 +114,8 @@ function scr_bird_create(){
 
 
 function scr_bird_step() {
-    // Facing & scale
+   
+ // Facing & scale
     if (hsp >  0.1) dir = 1;
     if (hsp < -0.1) dir = -1;
     image_xscale = scale * dir;
@@ -118,32 +125,41 @@ function scr_bird_step() {
     // --- Better horizontal wander so they *move* ---
     if (!variable_instance_exists(id, "wander_t")) {
         wander_t = 0;
-        desired_hsp = choose(-1,1) * random_range(0.6, 1.0) * fly_speed;
+        desired_hsp = choose(-5,5) * random_range(0.6, 1.0) * fly_speed;
     }
     wander_t--;
     if (wander_t <= 0) {
-        desired_hsp = choose(-1,1) * random_range(0.5, 1.0) * fly_speed;
+        desired_hsp = choose(-5,5) * random_range(0.5, 1.0) * fly_speed;
         if (irandom(4) == 0) desired_hsp = -desired_hsp;       // sometimes flip bias
         wander_t = irandom_range(room_speed, room_speed*3);
     }
     // steer smoothly toward target horizontal speed
     hsp = lerp(hsp, desired_hsp, 0.06);
+	if (landing) {
+    // steer horizontally toward the perch and bleed speed
+    var dx = perch_x - x;                 // how far from perch in X
+    var steer = clamp(dx * 0.02, -0.8, 0.8);
+    desired_hsp = steer;                  // head toward perch center
+    hsp = lerp(hsp, desired_hsp, 0.20);   // bleed sideways quickly
+	}
 
-    // --- Decide to land occasionally if ground is below ---
-    land_timer--;
-    if (!landing && land_timer <= 0) {
-        land_timer = irandom_range(land_check_min, land_check_max);
 
-        // scan downward up to land_scan_dist to find the first ground pixel
-        var yy = y, i = 0;
-        while (i < land_scan_dist && !place_meeting(x, yy + 1, ground)) { yy++; i++; }
-        if (i < land_scan_dist) {
-            landing = true;
-            perch_y = yy;                 // where we’ll touch down
-            // pull the cruise target down near the perch so we *want* to descend
-            cruise_y = perch_y - 12;
-        }
-    }
+    // --- Decide to land occasionally if ground is below in front ---
+	land_timer--;
+	if (!landing && land_timer <= 0) {
+	    land_timer = irandom_range(land_check_min, land_check_max);
+
+	    var ahead_x = x + dir * land_scan_ahead;       // look slightly ahead
+	    var yy = y, i = 0;
+	    while (i < land_scan_dist && !place_meeting(ahead_x, yy + 1, ground)) { yy++; i++; }
+
+	    if (i < land_scan_dist) {
+	        landing = true;
+	        perch_x = ahead_x;          // lock target X
+	        perch_y = yy;               // first ground pixel
+	        cruise_y = perch_y - 12;    // bring target below us so we want to descend
+	    }
+	}
 
     // --- Keep within a vertical band (screen Y grows downward) ---
     if (y < fly_ceiling_y) {
@@ -169,22 +185,34 @@ function scr_bird_step() {
     // --- Air gravity, then lift (reduced if we're landing) ---
     vsp += g_air;
 
-    // small extra help only when near ground band
-    if (instance_place(x, y + 48, ground) != noone) lift += 0.20;
+	if (landing) {
+	    // Commit to descent: remove the near-ground bonus, cut lift, and add a push down
+	    lift *= landing_flap_mul;        // (e.g., 20% of normal)
+	    vsp  += landing_descent;         // extra downward bias
+	} else {
+	    // Only when NOT landing, give a tiny "stay aloft" help near ground
+	    if (instance_place(x, y + 48, ground) != noone) lift += 0.12;
+	}
 
-    if (landing) lift *= landing_flap_mul;          // cut lift to allow descent
 
     vsp -= lift;
     vsp = clamp(vsp, -max_fall, max_fall);
 
     // --- Touchdown: if we're at/just above perch and descending onto ground ---
-    if (landing && vsp >= 0 && y >= perch_y - perch_snap_pad && place_meeting(x, y + 1, ground)) {
-        while (place_meeting(x, y, ground)) y -= 1; // pop out
-        vsp = 0;
-        state = "ground";
-        landing = false;
-        hop_cooldown = irandom_range(room_speed*10, room_speed*25); // chill before first hop
-    }
+    // Touchdown: if descending and within snap pad of perch OR actually touching ground
+	if (landing && vsp >= -0.2 && y >= perch_y - perch_snap_pad) {
+	    // If we are intersecting, push up out; else snap just above ground
+	    if (place_meeting(x, y, ground)) {
+	        while (place_meeting(x, y, ground)) y -= 1;
+	    } else {
+	        y = perch_y - 1;
+	    }
+	    vsp = 0;
+	    state = "ground";
+	    landing = false;
+	    hop_cooldown = irandom_range(room_speed*10, room_speed*25); // settle before first hop
+	}
+
 }
  else { // ===== "ground" =====
         // Apply stronger gravity
@@ -230,9 +258,35 @@ function scr_bird_step() {
 
     // ===== Poses =====
     // wing frame from phase
-    var frames = max(1, wing_frames);
-    var idx    = floor(((flap_phase % 1 + 1) % 1) * frames);
-    wing_img   = clamp(idx, 0, frames - 1);
+    /// ---- Flap rate from movement (frame-rate independent) ----
+	var dt = 1 / room_speed;            // seconds per step
+
+	var max_up   = 3.0;                 // expected max upward vsp magnitude
+	var max_down = max_fall;
+	var h_norm   = clamp(abs(hsp) / fly_speed, 0, 1);  // 0..1 from horizontal speed
+	var up_norm  = clamp(-vsp / max_up,        0, 1);  // 0..1 when rising (vsp < 0)
+	var dn_norm  = clamp( vsp / max_down,      0, 1);  // 0..1 when falling (vsp > 0)
+
+	// Weight: faster when rising or moving sideways, slower when falling
+	var weight = clamp(0.5*h_norm + 0.7*up_norm - 0.6*dn_norm, 0, 1);
+
+	// Target flaps per second (really slow at the low end)
+	var flaps_min = 0.05;   // 1 flap every 20 seconds
+	var flaps_max = 0.60;   // ~1 flap every 1.7 seconds
+	var flaps_per_sec = lerp(flaps_min, flaps_max, weight);
+
+	// Optional: even slower when on ground
+	if (state == "ground") flaps_per_sec = 0.03;
+
+	// Advance phase using time, not frames
+	flap_phase = (flap_phase + flaps_per_sec * dt) % 1;
+
+	// Pick wing frame from phase
+	var frames = max(1, wing_frames);
+	wing_img   = floor(flap_phase * frames);
+
+
+
 
     var target_body = clamp(-vsp * body_tilt_scale, body_tilt_min, body_tilt_max);
     body_angle = lerp(body_angle, target_body, 0.12);
@@ -273,6 +327,7 @@ function scr_bird_step() {
 
 
 function scr_bird_draw() {
+
 /// ===== BIRD: Draw =====
 
 var base_ang = 0;

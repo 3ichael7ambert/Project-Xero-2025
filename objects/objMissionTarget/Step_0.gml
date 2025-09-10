@@ -20,6 +20,9 @@ if (species=="bird") {
 	if (place_meeting(x, y, objSidewalk)) {
 	    dir += 180; // turn around
 	}
+	
+	//HP DESTROY
+	if (hp<0) instance_destroy();
 }
 
 if (species=="balloon") {
@@ -29,5 +32,5 @@ if (species=="balloon") {
 	depth = -y_anchor;
 	if (y_anchor < -64) instance_destroy();
 
-
+	if (hp<0) instance_destroy();
 }
