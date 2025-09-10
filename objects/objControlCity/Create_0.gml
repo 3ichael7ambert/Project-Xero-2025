@@ -99,7 +99,7 @@ maxY = vh - 200;
 	
 	//BIRDS
 	if instance_exists(objSidewalk) {
-		var _yy = objSidewalk.y-100;
+		var _yy = objSidewalk.y-1;
 	} else {
 		var _yy = (room_height/2);
 	}

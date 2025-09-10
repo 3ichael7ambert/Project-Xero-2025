@@ -9,6 +9,17 @@ function scr_bird_create(){
     spr_beak_top   = sprBirdBeakTop;
     spr_beak_btm   = sprBirdBeakBtm;
 
+	// --- Landing planner (fly -> ground)
+	land_scan_dist     = 64;                       // how far below to look for ground
+	land_check_min     = room_speed * 2;
+	land_check_max     = room_speed * 5;
+	land_timer         = irandom_range(land_check_min, land_check_max);
+	landing            = false;                    // are we in a landing approach?
+	perch_y            = y;                        // y to touch down on
+	landing_flap_mul   = 0.35;                     // reduce lift while landing
+	perch_snap_pad     = 2;                        // snap when within this many pixels
+
+
     // Visual
     col   = c_red;
     scale = random_range(0.16, 0.24);
@@ -20,6 +31,7 @@ function scr_bird_create(){
     ground = objSidewalk;
 
     // State & motion (TWO STATES ONLY)
+    //state      = choose("fly","ground");     // "fly" | "ground"
     state      = "fly";     // "fly" | "ground"
     hsp        = 0;
     vsp        = -1;        // gentle start upward
@@ -103,57 +115,78 @@ function scr_bird_step() {
     image_yscale = scale;
 
     if (state == "fly") {
-        // --- Better horizontal wander (keeps moving) ---
-		if (!variable_instance_exists(id, "wander_t")) {
-		    wander_t = 0;
-		    desired_hsp = choose(-1,1) * random_range(0.6, 1.0) * fly_speed;
-		}
-		wander_t--;
-		if (wander_t <= 0) {
-		    // pick a new horizontal target every 1–3 seconds
-		    desired_hsp = choose(-1,1) * random_range(0.5, 1.0) * fly_speed;
-		    // 20% chance to flip direction bias
-		    if (irandom(4) == 0) desired_hsp = -desired_hsp;
-		    wander_t = irandom_range(room_speed, room_speed*3);
-		}
-		// steer smoothly toward desired_hsp
-		hsp = lerp(hsp, desired_hsp, 0.06);
+    // --- Better horizontal wander so they *move* ---
+    if (!variable_instance_exists(id, "wander_t")) {
+        wander_t = 0;
+        desired_hsp = choose(-1,1) * random_range(0.6, 1.0) * fly_speed;
+    }
+    wander_t--;
+    if (wander_t <= 0) {
+        desired_hsp = choose(-1,1) * random_range(0.5, 1.0) * fly_speed;
+        if (irandom(4) == 0) desired_hsp = -desired_hsp;       // sometimes flip bias
+        wander_t = irandom_range(room_speed, room_speed*3);
+    }
+    // steer smoothly toward target horizontal speed
+    hsp = lerp(hsp, desired_hsp, 0.06);
 
-		// --- Ceiling control (screen Y increases downward) ---
-		// If we are ABOVE the ceiling (smaller y), push the target DOWN below us
-		if (y < fly_ceiling_y) {
-		    cruise_y = lerp(cruise_y, y + 96, 0.15);  // set a lower (greater Y) target
-		    vsp += 0.25;                               // add a little downward bias now
-		}
+    // --- Decide to land occasionally if ground is below ---
+    land_timer--;
+    if (!landing && land_timer <= 0) {
+        land_timer = irandom_range(land_check_min, land_check_max);
 
-		// --- Flap rate & lift (corrected sign) ---
-		var speed_h  = abs(hsp);
-		var alt_err  = (y - cruise_y);     // >0 means we are BELOW (greater Y) -> need lift
-		var need     = clamp(alt_err, 0, 64) / 64.0;
-
-		var flap_speed = flap_base
-		               + speed_h * flap_speed_gain
-		               + need * flap_alt_gain;
-
-		flap_phase += flap_speed;
-		if (flap_phase >= 1) flap_phase -= 1;
-
-		var stroke = sin(flap_phase * 2 * pi); // -1..1
-		var lift   = max(0, stroke) * flap_force * (1 + speed_h * 0.25);
-
-		// Air gravity first, then lift. Only add ground-avoid lift near ground.
-		vsp += g_air;
-		if (instance_place(x, y + 48, ground) != noone) lift += 0.25;
-		vsp -= lift;
-		vsp = clamp(vsp, -max_fall, max_fall);
-
-
-        // Land if ground is close under us sometimes
-        if (irandom(120) == 0 && instance_place(x, y + 24, ground) != noone) {
-            state = "ground";
+        // scan downward up to land_scan_dist to find the first ground pixel
+        var yy = y, i = 0;
+        while (i < land_scan_dist && !place_meeting(x, yy + 1, ground)) { yy++; i++; }
+        if (i < land_scan_dist) {
+            landing = true;
+            perch_y = yy;                 // where we’ll touch down
+            // pull the cruise target down near the perch so we *want* to descend
+            cruise_y = perch_y - 12;
         }
+    }
 
-    } else { // ===== "ground" =====
+    // --- Keep within a vertical band (screen Y grows downward) ---
+    if (y < fly_ceiling_y) {
+        cruise_y = lerp(cruise_y, y + 96, 0.15);   // aim below current pos
+        vsp += 0.25;                                // nudge downward now
+    }
+
+    // --- Flap: faster if moving sideways and if we're *below* target (need lift) ---
+    var speed_h   = abs(hsp);
+    var alt_err   = (y - cruise_y);                 // >0 means we are below target
+    var need      = clamp(alt_err, 0, 64) / 64.0;
+
+    var flap_speed = flap_base
+                   + speed_h * flap_speed_gain
+                   + need * flap_alt_gain;
+
+    flap_phase += flap_speed;
+    if (flap_phase >= 1) flap_phase -= 1;
+
+    var stroke = sin(flap_phase * 2 * pi);          // -1..1
+    var lift   = max(0, stroke) * flap_force * (1 + speed_h * 0.25);
+
+    // --- Air gravity, then lift (reduced if we're landing) ---
+    vsp += g_air;
+
+    // small extra help only when near ground band
+    if (instance_place(x, y + 48, ground) != noone) lift += 0.20;
+
+    if (landing) lift *= landing_flap_mul;          // cut lift to allow descent
+
+    vsp -= lift;
+    vsp = clamp(vsp, -max_fall, max_fall);
+
+    // --- Touchdown: if we're at/just above perch and descending onto ground ---
+    if (landing && vsp >= 0 && y >= perch_y - perch_snap_pad && place_meeting(x, y + 1, ground)) {
+        while (place_meeting(x, y, ground)) y -= 1; // pop out
+        vsp = 0;
+        state = "ground";
+        landing = false;
+        hop_cooldown = irandom_range(room_speed*10, room_speed*25); // chill before first hop
+    }
+}
+ else { // ===== "ground" =====
         // Apply stronger gravity
         vsp += g_ground;
 
