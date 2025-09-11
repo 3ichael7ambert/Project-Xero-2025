@@ -16,15 +16,13 @@ function scr_bird_create(){
 	land_check_max     = room_speed * 5;
 	land_timer         = irandom_range(land_check_min, land_check_max);
 	landing            = false;                    // are we in a landing approach?
+	perch_x            = x;                        // x position to land at - ADDED THIS
 	perch_y            = y;                        // y to touch down on
 	landing_flap_mul   = 0.35;                     // reduce lift while landing
-	perch_snap_pad     = 2;                        // snap when within this many pixels
-	land_scan_ahead    = 24;        // look a bit ahead in facing dir
-	landing            = false;
-	landing_descent    = 0.25;      // extra downward bias while landing
-	landing_hsp_damp   = 0.12;      // how fast to bleed horizontal speed
-
-
+	perch_snap_pad     = 8;                        // snap when within this many pixels - increased for easier landing
+	land_scan_ahead    = 24;                       // look a bit ahead in facing dir
+	landing_descent    = 0.25;                     // extra downward bias while landing
+	landing_hsp_damp   = 0.12;                     // how fast to bleed horizontal speed
 
     // Visual
     col   = c_red;
@@ -37,8 +35,7 @@ function scr_bird_create(){
     ground = objSidewalk;
 
     // State & motion (TWO STATES ONLY)
-    //state      = choose("fly","ground");     // "fly" | "ground"
-    state      = "fly";     // "fly" | "ground"
+    state      = "ground";     // "fly" | "ground"
     hsp        = 0;
     vsp        = -1;        // gentle start upward
     g_ground   = 0.35;      // while on ground
@@ -75,7 +72,7 @@ function scr_bird_create(){
     var gy = noone;
     for (var i = 0; i < 600; i++) if (instance_place(x, y + i, ground) != noone) { gy = y + i; break; }
     if (gy != noone) {
-        min_fly_y     = gy - 12;              // don’t dip below this while flying
+        min_fly_y     = gy - 12;              // don't dip below this while flying
         cruise_y      = min(cruise_y, gy - 56);
         fly_ceiling_y = min(fly_ceiling_y, gy - 120);
     }
@@ -85,6 +82,12 @@ function scr_bird_create(){
     hop_h        = 1.5;
     hop_v        = 3.8;
     idle_t       = 0;
+    
+    // Ground nibbling behavior - ADDED THIS
+    nibble_cooldown = 0;
+    nibble_duration = 0;
+    is_nibbling = false;
+    head_bob_offset = 0;
 
     // Offsets (unscaled, facing right)
     off_body_x = 0;   off_body_y = 0;
@@ -135,14 +138,14 @@ function scr_bird_step() {
     }
     // steer smoothly toward target horizontal speed
     hsp = lerp(hsp, desired_hsp, 0.06);
+	
 	if (landing) {
-    // steer horizontally toward the perch and bleed speed
-    var dx = perch_x - x;                 // how far from perch in X
-    var steer = clamp(dx * 0.02, -0.8, 0.8);
-    desired_hsp = steer;                  // head toward perch center
-    hsp = lerp(hsp, desired_hsp, 0.20);   // bleed sideways quickly
+        // steer horizontally toward the perch and bleed speed
+        var dx = perch_x - x;                 // how far from perch in X
+        var steer = clamp(dx * 0.02, -0.8, 0.8);
+        desired_hsp = steer;                  // head toward perch center
+        hsp = lerp(hsp, desired_hsp, 0.20);   // bleed sideways quickly
 	}
-
 
     // --- Decide to land occasionally if ground is below in front ---
 	land_timer--;
@@ -150,14 +153,19 @@ function scr_bird_step() {
 	    land_timer = irandom_range(land_check_min, land_check_max);
 
 	    var ahead_x = x + dir * land_scan_ahead;       // look slightly ahead
-	    var yy = y, i = 0;
-	    while (i < land_scan_dist && !place_meeting(ahead_x, yy + 1, ground)) { yy++; i++; }
-
-	    if (i < land_scan_dist) {
-	        landing = true;
-	        perch_x = ahead_x;          // lock target X
-	        perch_y = yy;               // first ground pixel
-	        cruise_y = perch_y - 12;    // bring target below us so we want to descend
+	    var yy = y;
+	    var found_ground = false;
+	    
+	    // Better ground detection
+	    for (var i = 0; i < land_scan_dist; i++) {
+	        if (instance_place(ahead_x, yy + i, ground) != noone) {
+	            landing = true;
+	            perch_x = ahead_x;          // lock target X
+	            perch_y = yy + i - 1;       // just above ground pixel
+	            cruise_y = perch_y - 12;    // bring target below us so we want to descend
+	            found_ground = true;
+	            break;
+	        }
 	    }
 	}
 
@@ -187,61 +195,99 @@ function scr_bird_step() {
 
 	if (landing) {
 	    // Commit to descent: remove the near-ground bonus, cut lift, and add a push down
-	    lift *= landing_flap_mul;        // (e.g., 20% of normal)
+	    lift *= landing_flap_mul;        // (e.g., 35% of normal)
 	    vsp  += landing_descent;         // extra downward bias
 	} else {
 	    // Only when NOT landing, give a tiny "stay aloft" help near ground
 	    if (instance_place(x, y + 48, ground) != noone) lift += 0.12;
 	}
 
-
     vsp -= lift;
     vsp = clamp(vsp, -max_fall, max_fall);
 
-    // --- Touchdown: if we're at/just above perch and descending onto ground ---
-    // Touchdown: if descending and within snap pad of perch OR actually touching ground
-	if (landing && vsp >= -0.2 && y >= perch_y - perch_snap_pad) {
-	    // If we are intersecting, push up out; else snap just above ground
-	    if (place_meeting(x, y, ground)) {
-	        while (place_meeting(x, y, ground)) y -= 1;
-	    } else {
-	        y = perch_y - 1;
+    // --- Touchdown: improved landing detection ---
+	if (landing && vsp >= -0.5) {
+	    // Check if we're close enough to perch position
+	    var dist_to_perch = point_distance(x, y, perch_x, perch_y);
+	    
+	    if (dist_to_perch < perch_snap_pad || place_meeting(x, y + 2, ground)) {
+	        // Land successfully
+	        if (place_meeting(x, y, ground)) {
+	            while (place_meeting(x, y, ground)) y -= 1;
+	        } else {
+	            // Move to just above ground
+	            var ground_y = y;
+	            for (var i = 0; i < 32; i++) {
+	                if (instance_place(x, ground_y + i, ground) != noone) {
+	                    y = ground_y + i - 1;
+	                    break;
+	                }
+	            }
+	        }
+	        vsp = 0;
+	        hsp *= 0.3; // slow down when landing
+	        state = "ground";
+	        landing = false;
+	        hop_cooldown = irandom_range(room_speed*2, room_speed*4); // settle before first hop
+	        nibble_cooldown = irandom_range(room_speed*1, room_speed*3); // start nibbling soon
 	    }
-	    vsp = 0;
-	    state = "ground";
-	    landing = false;
-	    hop_cooldown = irandom_range(room_speed*10, room_speed*25); // settle before first hop
 	}
 
-}
- else { // ===== "ground" =====
-        // Apply stronger gravity
-        vsp += g_ground;
+} else { 
+    // ===== "ground" =====
+    // Apply stronger gravity
+    vsp += g_ground;
 
-        // On ground? hop around a bit; sometimes take off
-        if (place_meeting(x, y + 1, ground)) {
-            vsp = 0;
+    // On ground? hop around a bit; sometimes take off
+    if (place_meeting(x, y + 1, ground)) {
+        vsp = 0;
 
-            // tiny random hop
-            hop_cooldown--;
-            if (hop_cooldown <= 0) {
-                var push = choose(-hop_h, hop_h);
-                if (random(1) < 0.7) push = dir * hop_h;
-                hsp = push;
-                vsp = -hop_v;
-                hop_cooldown = irandom_range(room_speed*20, room_speed*40);
+        // Handle nibbling behavior - ADDED THIS
+        if (nibble_duration > 0) {
+            is_nibbling = true;
+            nibble_duration--;
+            // Bob head up and down while nibbling
+            head_bob_offset = sin(nibble_duration * 0.3) * 3;
+            // Open beak occasionally while nibbling
+            if (irandom(10) == 0) {
+                beak_open = true;
+                chirp_dur_t = 5; // brief beak open
             }
-
-            // chance to fly away
-            idle_t++;
-            if (idle_t > irandom_range(room_speed*3, room_speed*7)) {
-                state = "fly";
-                idle_t = 0;
-                vsp = -random_range(1.2, 2.4);
-                hsp += dir * random_range(0.5, 1.2);
+        } else {
+            is_nibbling = false;
+            head_bob_offset = lerp(head_bob_offset, 0, 0.1);
+            
+            nibble_cooldown--;
+            if (nibble_cooldown <= 0) {
+                nibble_duration = irandom_range(room_speed * 0.5, room_speed * 2);
+                nibble_cooldown = irandom_range(room_speed * 2, room_speed * 5);
             }
         }
+
+        // tiny random hop
+        hop_cooldown--;
+        if (hop_cooldown <= 0 && !is_nibbling) {
+            var push = choose(-hop_h, hop_h);
+            if (random(1) < 0.7) push = dir * hop_h;
+            hsp = push;
+            vsp = -hop_v;
+            hop_cooldown = irandom_range(room_speed*3, room_speed*8);
+        }
+
+        // chance to fly away (reduced while nibbling)
+        idle_t++;
+        var fly_chance = is_nibbling ? room_speed*8 : room_speed*5;
+        if (idle_t > irandom_range(room_speed*4, fly_chance)) {
+            state = "fly";
+            idle_t = 0;
+            vsp = -random_range(1.2, 2.4);
+            hsp += dir * random_range(0.5, 1.2);
+            is_nibbling = false;
+            nibble_duration = 0;
+            head_bob_offset = 0;
+        }
     }
+}
 
     // ===== Movement (simple + floor resolve) =====
     x += hsp;
@@ -253,7 +299,7 @@ function scr_bird_step() {
         if (push == 0) push = 1;
         while (place_meeting(x, y, ground)) y -= push;
         vsp = 0;
-        state = "ground"; // if we touched ground, we are grounded now
+        if (state == "fly") state = "ground"; // if we touched ground, we are grounded now
     }
 
     // ===== Poses =====
@@ -285,13 +331,10 @@ function scr_bird_step() {
 	var frames = max(1, wing_frames);
 	wing_img   = floor(flap_phase * frames);
 
-
-
-
     var target_body = clamp(-vsp * body_tilt_scale, body_tilt_min, body_tilt_max);
     body_angle = lerp(body_angle, target_body, 0.12);
 
-    var target_head = body_angle * head_follow_amt;
+    var target_head = body_angle * head_follow_amt + head_bob_offset; // Added head bob
     head_angle = lerp(head_angle, target_head, 0.18);
 
     if (tail_active) {
@@ -318,54 +361,69 @@ function scr_bird_step() {
         if (tail_wait_t <= 0) { tail_active = true; tail_dur_t = irandom_range(tail_dur_min, tail_dur_max); }
     }
 	
-	if (x < 32)  desired_hsp = abs(desired_hsp);
-	if (x > room_width - 32) desired_hsp = -abs(desired_hsp);
-
-
-
+	// Keep birds in room bounds - check if desired_hsp exists first
+	if (variable_instance_exists(id, "desired_hsp")) {
+	    if (x < 32)  desired_hsp = abs(desired_hsp);
+	    if (x > room_width - 32) desired_hsp = -abs(desired_hsp);
+	}
 }
 
 
 function scr_bird_draw() {
-
-/// ===== BIRD: Draw =====
-
-var base_ang = 0;
-
-shader_hue_start(col);
-// --- BACK WING (behind)
-_draw_bird_part(spr_wing_back, wing_img, off_wing_x, off_wing_y, body_angle + wing_angle);
-
-// --- BODY
-_draw_bird_part(spr_body, 0, off_body_x, off_body_y, body_angle);
-
-// --- TAIL (slightly behind body center)
-_draw_bird_part(spr_tail, 0, off_tail_x, off_tail_y, body_angle + tail_angle);
-
-// --- HEAD
-_draw_bird_part(spr_head, 0, off_head_x, off_head_y, head_angle);
-
-// --- EYE (kept simple; could add tiny bob)
-_draw_bird_part(spr_eye, 0, off_eye_x, off_eye_y, head_angle);
-
-// --- BEAK (top rotates to “open”)
-var beak_top_ang = head_angle + (beak_open ? beak_open_ang : 0);
-var beak_btm_ang = head_angle;
-_draw_bird_part(spr_beak_btm, 0, off_beak_x, off_beak_y, beak_btm_ang);
-_draw_bird_part(spr_beak_top, 0, off_beak_x, off_beak_y, beak_top_ang);
-
-
-// --- FRONT WING (in front)
-_draw_bird_part(spr_wing_front, wing_img, off_wing_x, off_wing_y, body_angle - wing_angle);
-	
-	//shader_reset();
+    /// ===== BIRD: Draw =====
+    var base_ang = 0;
+    shader_hue_start(col);
+    
+    if (state == "fly") {
+        // --- BACK WING (behind)
+        _draw_bird_part(spr_wing_back, wing_img, off_wing_x, off_wing_y, body_angle + wing_angle);
+    }
+    if (state == "ground") {
+        // --- BACK WING (behind) - folded wings on ground
+       // _draw_bird_part(spr_wing_back, wing_img, off_wing_x, off_wing_y, body_angle + wing_angle + 90);
+    }
+    
+    // --- BODY
+    _draw_bird_part(spr_body, 0, off_body_x, off_body_y, body_angle);
+    
+    // --- TAIL (slightly behind body center)
+    _draw_bird_part(spr_tail, 0, off_tail_x, off_tail_y, body_angle + tail_angle);
+    
+    // --- HEAD
+    _draw_bird_part(spr_head, 0, off_head_x, off_head_y, head_angle);
+    
+    // --- EYE (kept simple; could add tiny bob)
+    _draw_bird_part(spr_eye, 0, off_eye_x, off_eye_y, head_angle);
+    
+    // --- BEAK (top rotates to "open")
+    var beak_top_ang = head_angle + (beak_open ? beak_open_ang : 0);
+    var beak_btm_ang = head_angle;
+    _draw_bird_part(spr_beak_btm, 0, off_beak_x, off_beak_y, beak_btm_ang);
+    _draw_bird_part(spr_beak_top, 0, off_beak_x, off_beak_y, beak_top_ang);
+    
+    if (state == "fly") {
+        // --- FRONT WING (in front)
+        _draw_bird_part(spr_wing_front, wing_img, off_wing_x, off_wing_y, body_angle - wing_angle);
+    }
+    if (state == "ground") {
+        // --- FRONT WING (in front) - folded wings on ground
+		if (dir==1) {
+			//_draw_bird_part(spr_wing_front, wing_img, off_wing_x, off_wing_y, body_angle - wing_angle + 90);
+			draw_sprite_ext(spr_wing_front,wing_img,off_wing_x,scale,-scale,off_wing_y,body_angle+90,col,1);
+		}
+		if (dir==-1) {
+			//_draw_bird_part(spr_wing_front, wing_img, off_wing_x, off_wing_y, body_angle - wing_angle);
+			draw_sprite_ext(spr_wing_front,wing_img,off_wing_x,off_wing_y,image_xscale,-image_yscale,body_angle+90,col,1);
+		}
+   }
+    
+    shader_reset();
 }
-
-
 
 /// Returns true if standing on ground
 function _is_on_floor(__floor) {
     return place_meeting(x, y + 1, __floor);
 }
+
 
 
