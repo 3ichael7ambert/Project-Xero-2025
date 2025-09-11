@@ -355,10 +355,16 @@ function scr_bird_step() {
 	var flaps_max = 0.25;   // ~1 flap every 4 seconds when active
 	var flaps_per_sec = lerp(flaps_min, flaps_max, weight);
 	
-	// Stamina affects flapping rate
+	// Stamina affects flapping rate - but keep flapping during landing!
 	if (state == "fly") {
 	    var stamina_factor = stamina / stamina_max; // 0 to 1
-	    flaps_per_sec *= (0.5 + stamina_factor * 0.5); // 50-100% based on stamina
+	    if (landing) {
+	        // Flap actively during landing for control
+	        flaps_per_sec *= 1.2; // increase flapping during landing
+	    } else {
+	        // Normal stamina effect
+	        flaps_per_sec *= (0.5 + stamina_factor * 0.5); // 50-100% based on stamina
+	    }
 	}
 
 	// Optional: even slower when on ground
