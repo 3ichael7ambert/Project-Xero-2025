@@ -12,16 +12,16 @@ function scr_bird_create(){
 
 	// --- Landing planner (fly -> ground)
 	land_scan_dist     = 64;                       // how far below to look for ground
-	land_check_min     = room_speed * 2;
-	land_check_max     = room_speed * 5;
+	land_check_min     = room_speed * 3;           // increased frequency
+	land_check_max     = room_speed * 8;           
 	land_timer         = irandom_range(land_check_min, land_check_max);
 	landing            = false;                    // are we in a landing approach?
 	perch_x            = x;                        // x position to land at - ADDED THIS
 	perch_y            = y;                        // y to touch down on
-	landing_flap_mul   = 0.35;                     // reduce lift while landing
-	perch_snap_pad     = 8;                        // snap when within this many pixels - increased for easier landing
-	land_scan_ahead    = 24;                       // look a bit ahead in facing dir
-	landing_descent    = 0.25;                     // extra downward bias while landing
+	landing_flap_mul   = 0.25;                     // reduce lift more while landing
+	perch_snap_pad     = 16;                       // increased snap distance
+	land_scan_ahead    = 12;                       // reduced look ahead
+	landing_descent    = 0.35;                     // increased downward bias
 	landing_hsp_damp   = 0.12;                     // how fast to bleed horizontal speed
 
     // Visual
@@ -35,7 +35,7 @@ function scr_bird_create(){
     ground = objSidewalk;
 
     // State & motion (TWO STATES ONLY)
-    state      = "ground";     // "fly" | "ground"
+    state      = "fly";     // "fly" | "ground"
     hsp        = 0;
     vsp        = -1;        // gentle start upward
     g_ground   = 0.35;      // while on ground
@@ -117,6 +117,39 @@ function scr_bird_create(){
 
 
 function scr_bird_step() {
+   
+    // Initialize stamina variables if they don't exist (for existing instances)
+    if (!variable_instance_exists(id, "stamina")) {
+        stamina_max     = room_speed * 8;  
+        stamina         = stamina_max;     
+        stamina_drain   = 1;               
+        stamina_regen   = 2;               
+        stamina_low     = stamina_max * 0.3; 
+        stamina_critical = stamina_max * 0.1; 
+        must_land       = false;           
+    }
+    
+    // DEBUG: Force landing every few seconds to test
+    if (!variable_instance_exists(id, "debug_land_timer")) {
+        debug_land_timer = room_speed * 3;
+    }
+    debug_land_timer--;
+    if (debug_land_timer <= 0) {
+        debug_land_timer = room_speed * 5;
+        show_debug_message("Bird trying to land - stamina: " + string(stamina) + " state: " + state);
+        
+        // Force transition to ground for testing
+        if (state == "fly") {
+            state = "ground";
+            vsp = 0;
+            hsp *= 0.3;
+            landing = false;
+            must_land = false;
+            hop_cooldown = room_speed * 2;
+            nibble_cooldown = room_speed * 1;
+            show_debug_message("FORCED BIRD TO GROUND STATE");
+        }
+    }
    
  // Facing & scale
     if (hsp >  0.1) dir = 1;
@@ -274,10 +307,11 @@ function scr_bird_step() {
             hop_cooldown = irandom_range(room_speed*3, room_speed*8);
         }
 
-        // chance to fly away (reduced while nibbling)
+        // chance to fly away (much longer ground time)
         idle_t++;
-        var fly_chance = is_nibbling ? room_speed*8 : room_speed*5;
-        if (idle_t > irandom_range(room_speed*4, fly_chance)) {
+        var fly_chance_min = is_nibbling ? room_speed*15 : room_speed*10; // stay grounded much longer
+        var fly_chance_max = is_nibbling ? room_speed*25 : room_speed*20;
+        if (idle_t > irandom_range(fly_chance_min, fly_chance_max)) {
             state = "fly";
             idle_t = 0;
             vsp = -random_range(1.2, 2.4);
@@ -316,13 +350,19 @@ function scr_bird_step() {
 	// Weight: faster when rising or moving sideways, slower when falling
 	var weight = clamp(0.5*h_norm + 0.7*up_norm - 0.6*dn_norm, 0, 1);
 
-	// Target flaps per second (really slow at the low end)
-	var flaps_min = 0.05;   // 1 flap every 20 seconds
-	var flaps_max = 0.60;   // ~1 flap every 1.7 seconds
+	// Target flaps per second (much slower overall)
+	var flaps_min = 0.02;   // 1 flap every 50 seconds when resting
+	var flaps_max = 0.25;   // ~1 flap every 4 seconds when active
 	var flaps_per_sec = lerp(flaps_min, flaps_max, weight);
+	
+	// Stamina affects flapping rate
+	if (state == "fly") {
+	    var stamina_factor = stamina / stamina_max; // 0 to 1
+	    flaps_per_sec *= (0.5 + stamina_factor * 0.5); // 50-100% based on stamina
+	}
 
 	// Optional: even slower when on ground
-	if (state == "ground") flaps_per_sec = 0.03;
+	if (state == "ground") flaps_per_sec = 0.01;
 
 	// Advance phase using time, not frames
 	flap_phase = (flap_phase + flaps_per_sec * dt) % 1;
