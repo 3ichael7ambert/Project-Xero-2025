@@ -4,7 +4,6 @@
  
  
  hp=100;
- weapon="none";
  
  odonis=choose(true,false);
  hero=false;
@@ -17,6 +16,35 @@ is_on_ground = false; // Is the NPC standing on the ground?
 target=obj_Player1;
 mission_indicator_color=c_aqua;
 
+
+//skin_color=c_white;
+	
+	has_weapon=true;
+	weapon = choose("gun","raygun","shotgun");
+	attacking=false;
+	wpn_dir=270;
+	arm_img_angle=270;
+	
+	switch (weapon) {
+		case "gun":
+			sprite_gun=sprGrenadeLauncher;
+			gun_idx=0;
+			break;
+		case "raygun":
+			sprite_gun=sprRayGun;
+			gun_idx=2;
+			break;
+		case "shotgun":
+			sprite_gun=sprShotgun;
+			gun_idx=0;
+			break;
+		case default:
+			sprite_gun=sprGrenadeLauncher;
+			gun_idx=0;
+			break;
+	}
+	
+	
 if room==rmCity {
 	scale=.2;
 } else {
@@ -100,32 +128,7 @@ image_yscale=scale;
 
 
  
-	//skin_color=c_white;
 	
-	has_weapon=false;
-	weapon = choose("gun","raygun","shotgun");
-	attacking=false;
-	wpn_dir=270;
-	arm_img_angle=270;
-	
-	switch (weapon) {
-		case "gun":
-			sprite_gun=sprGrenadeLauncher;
-			gun_idx=0;
-			break;
-		case "raygun":
-			sprite_gun=sprRayGun;
-			gun_idx=2;
-			break;
-		case "shotgun":
-			sprite_gun=sprShotgun;
-			gun_idx=0;
-			break;
-		case default:
-			sprite_gun=sprGrenadeLauncher;
-			gun_idx=0;
-			break;
-	}
 	
 	shirtless = random(100);
 	pantsless = random(100);

@@ -18,6 +18,8 @@ xx=x;
 yy=y;
 
 
+_id=id;
+
 attack=1;
 bullet_speed=1;
 

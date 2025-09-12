@@ -1,2 +1,2 @@
 attacking=true;
-poi="player";
+hp--;

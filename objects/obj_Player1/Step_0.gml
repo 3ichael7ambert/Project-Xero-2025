@@ -1225,6 +1225,7 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
 	wpn_cooldown=2;
+	bullet._id = id;
 	
 	
 	with (bullet) {

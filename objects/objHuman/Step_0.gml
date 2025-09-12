@@ -12,6 +12,8 @@
  img_idx_hair=0;
  img_idx_hair=0;
  
+ if (poi!="none")
+ 
  //misions
  spin_angle += 4; // You can adjust speed
 if (spin_angle >= 360) spin_angle -= 360;
@@ -46,6 +48,10 @@ if (distance_to_object(player_nearest) > distance_to_object(robot_nearest)) && (
 	target = robot_nearest;
 }
 
+// POI AND TARGET
+ if (poi!="none") {
+	 target=poi;
+ }
  
  // Apply gravity
 if !is_on_ground {

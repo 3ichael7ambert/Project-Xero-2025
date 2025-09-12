@@ -928,3 +928,11 @@ if (has_mission) {
 	}
 }
 */
+
+
+
+//DEBUG
+
+draw_text_outlined(x,y,"POI: " + string(poi),c_black,c_white);
+draw_text_outlined(x,y+15,"Weapon: " + string(weapon),c_black,c_white);
+draw_text_outlined(x,y+30,"Attacking: " + string(attacking),c_black,c_white);
