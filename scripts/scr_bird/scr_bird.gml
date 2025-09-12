@@ -24,6 +24,29 @@ function scr_bird_create(){
 	landing_descent    = 0.35;                     // increased downward bias
 	landing_hsp_damp   = 0.12;                     // how fast to bleed horizontal speed
 
+	// --- Flocking (Boids-lite) ---
+	flock_on            = true;      // master switch
+	flock_tag           = 0;         // birds only flock with same tag (0..N). Use if you want subflocks.
+	flock_range         = 160;       // how far to sense neighbors
+	flock_sep_range     = 28;        // strong push if closer than this
+	flock_max_neighbors = 8;         // perf clamp
+
+	// steering weights
+	flock_w_align = 0.8;             // match heading/speed
+	flock_w_coh   = 0.6;             // move toward center
+	flock_w_sep   = 1.3;             // keep distance
+	flock_mix     = 0.55;            // how much flocking overrides wander [0..1]
+
+	// limits/smoothing
+	flock_max_force = 0.08;          // max steering delta per step (horizontal)
+	flock_smooth    = 0.12;          // lerp factor when applying steer
+
+	// vertical cohesion → adjust cruise_y slowly (not during landing)
+	flock_coh_vert_gain = 0.02;      // how quickly cruise_y drifts toward flock Y
+	flock_coh_vert_offset = -24;     // keep a little above group center
+	// In Create:
+	is_leader = (irandom(7) == 0); // ~1/8 are leaders
+
     // Visual
     col   = c_red;
     scale = random_range(0.16, 0.24);
@@ -120,7 +143,7 @@ function scr_bird_step() {
    
     // Initialize stamina variables if they don't exist (for existing instances)
     if (!variable_instance_exists(id, "stamina")) {
-        stamina_max     = room_speed * 8;  
+        stamina_max     = room_speed * 16;  
         stamina         = stamina_max;     
         stamina_drain   = 1;               
         stamina_regen   = 2;               
@@ -172,6 +195,87 @@ function scr_bird_step() {
     }
     // steer smoothly toward target horizontal speed
     hsp = lerp(hsp, desired_hsp, 0.06);
+	//if 
+	// --- FLOCKING (only in air, skip while landing descent is critical) ---
+		if (flock_on) {
+		    var sum_x = 0, sum_y = 0, sum_h = 0;  // positions & horizontal speeds
+		    var sep_x = 0;                        // separation push (horizontal)
+		    var n = 0;
+
+		    // Iterate neighbors (cap for perf)
+		if (object_index == objBird && flock_on) {
+		    var sum_x = 0, sum_y = 0, sum_h = 0;
+		    var sep_x = 0;
+		    var n = 0;
+		    with (objBird) {
+		        if (id == other.id) continue;
+		        if (!flock_on) continue;
+		        if (flock_tag != other.flock_tag) continue;   // optional subflock
+		        if (other.state != "fly") continue;           // only flock with flyers
+
+		        var dx = x - other.x;
+		        var dy = y - other.y;
+		        var d2 = dx*dx + dy*dy;
+		        if (d2 <= sqr(other.flock_range)) {
+		            // Count (cap to avoid O(N^2) cost blowup)
+		            n += 1;
+		            if (n > other.flock_max_neighbors) break;
+
+		            // Cohesion / alignment
+		            sum_x += other.x;
+		            sum_y += other.y;
+		            sum_h += other.hsp;
+
+		            // Separation (stronger if very close)
+		            if (d2 < sqr(other.flock_sep_range)) {
+		                var d = max(1, sqrt(d2));
+		                sep_x += (x - other.x) / d; // horizontal push away
+		            }
+		        }
+		    }
+		}
+
+	    if (n > 0) {
+	        var avg_x = sum_x / n;
+	        var avg_y = sum_y / n;
+	        var avg_h = sum_h / n;
+
+	        // Alignment: match group horizontal speed
+	        var steer_align = (avg_h - hsp);
+
+	        // Cohesion: move toward center in X (small, bounded)
+	        var to_center_x = clamp((avg_x - x) * 0.02, -1, 1) * fly_speed;
+
+	        // Separation: push away in X
+	        var steer_sep = sep_x * fly_speed; // already ~normalized by distance
+
+	        // Combine
+	        var steer =  flock_w_align * steer_align
+	                   + flock_w_coh   * to_center_x
+	                   + flock_w_sep   * steer_sep;
+
+	        // Limit steering force
+	        steer = clamp(steer, -flock_max_force, flock_max_force);
+			
+			// In Step just before blending flock:
+			if (is_leader) { flock_mix = 0.15; } else { flock_mix = 0.55; }
+
+	        // Blend flocking with your current desired_hsp
+	        var flock_target_hsp = clamp(hsp + steer, -fly_speed, fly_speed);
+
+	        // If landing, keep flock influence small so we don't miss perch
+	        var mix = landing ? flock_mix * 0.25 : flock_mix;
+
+	        desired_hsp = lerp(desired_hsp, flock_target_hsp, flock_smooth * mix);
+
+	        // Vertical cohesion: gently drift cruise_y toward flock's Y (not during landing)
+	        if (!landing) {
+	            var target_cruise = avg_y + flock_coh_vert_offset;
+	            cruise_y = lerp(cruise_y, target_cruise, flock_coh_vert_gain);
+	        }
+	    }
+	}
+
 	
 	if (landing) {
 	    var dx = perch_x - x;
