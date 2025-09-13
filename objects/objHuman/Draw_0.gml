@@ -1,6 +1,18 @@
 /// @description Insert description here
 // You can write your code in this editor
 // Draw Event
+
+// --- COMBAT HOOK (top of Draw) ---
+var in_combat = (state == "combat") || attacking || provoked; // your own flags
+var sx = image_xscale, sy = image_yscale;
+
+// Convert arm_dir to a draw angle that mirrors when facing left
+var aim_angle = arm_dir;
+//if (sx < 0) aim_angle = 180 - aim_angle;  // mirror the aim
+
+var gun_angle = aim_angle; // keep gun aligned with arm
+
+
 switch (state) {
     case "idle":
         sprite_index = sprHuman_Body;
@@ -21,7 +33,7 @@ if (race=="human") {
 
 // Draw the sprite with flipping
 		//back arm
-		if (state=="walk") {
+		if (state=="walk" || state=="combat") {
 		//back arm
 			draw_sprite_ext(sprHuman_Arm_Walk_Arms,img_idx_body+4,arm_back_x,arm_back_y,image_xscale,image_yscale,0,skin_color,1);
 			if (shirt_style=="short") {
@@ -87,7 +99,7 @@ if (race=="human") {
 			draw_sprite_ext(sprHuman_Shirt,img_idx_shirt,shirt_x,shirt_y,image_xscale,image_yscale,angle, shirt_color,1);
 		}
 		//front limbs
-		if (state=="walk") {
+		if (state=="walk" || state=="combat") {
 			
 			//front leg
 			draw_sprite_ext(sprHuman_Pants_Walk_Feet,img_idx_body+4,leg_front_x,leg_front_y,image_xscale,image_yscale,0,skin_color,1);
@@ -106,17 +118,43 @@ if (race=="human") {
 				draw_sprite_ext(sprHuman_Pants_Walk_Skirt,img_idx_shoes+4,skirt_x,skirt_y,image_xscale,image_yscale,0,shoes_color,1);
 			}
 		//front arm
-			draw_sprite_ext(sprHuman_Arm_Walk_Arms,img_idx_body,arm_front_x,arm_front_y,image_xscale,image_yscale,0,skin_color,1);
+			// front arm
+		if (!in_combat && !has_weapon) {
+		    // (your original walk front-arm sprites)
+		    draw_sprite_ext(sprHuman_Arm_Walk_Arms, img_idx_body, arm_front_x, arm_front_y, sx, sy, 0, skin_color, 1);
+		    if (shirt_style == "short") {
+		        draw_sprite_ext(sprHuman_Arm_Shirt_Short_Walk, img_idx_shirt_sleeves, arm_front_x, arm_front_y, sx, sy, 0, shirt_color, 1);
+			}
+			if (shirt_style == "long") {
+		        draw_sprite_ext(sprHuman_Arm_Shirt_Long_Walk,  img_idx_shirt_sleeves, arm_front_x, arm_front_y, sx, sy, 0, shirt_color, 1);
+			}
+			//draw_sprite_ext(sprite_gun,gun_idx,fist_front_x,fist_front_y,image_xscale,image_yscale,wpn_dir,c_white,1);
+			draw_sprite_ext(sprHuman_Arm_Walk_Hand, img_idx_body, arm_front_x, arm_front_y, sx, sy, 0, skin_color, 1);
+			
+
+		
+		/// START HERE ///
+		} else if (!in_combat && has_weapon) {
+			
+			//draw_sprite_ext(sprHuman_Arm_Walk_Hand, img_idx_body, arm_front_x, arm_front_y, sx, sy, 0, skin_color, 1);
+			//front arm
+			draw_sprite_ext(sprHuman_Arm_Idle,img_idx_body,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_img_angle,skin_color,1);
 			if (shirt_style=="short") {
-				draw_sprite_ext(sprHuman_Arm_Shirt_Short_Walk,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,0, shirt_color,1);
+				draw_sprite_ext(sprHuman_Arm_Shirt_Short_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_img_angle, shirt_color,1);
 			}
 			if (shirt_style=="long") {
-				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Walk,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,0, shirt_color,1);
+				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_img_angle, shirt_color,1);
 			}
-			draw_sprite_ext(sprHuman_Arm_Walk_Hand,img_idx_body,arm_front_x,arm_front_y,image_xscale,image_yscale,0,skin_color,1);
+			if (has_weapon==true) {
+				draw_sprite_ext(sprite_gun,gun_idx,fist_front_x,fist_front_y,image_xscale,image_yscale,wpn_dir,c_white,1);
+			}
+				draw_sprite_ext(sprHuman_Arm_Hand,img_idx_body,fist_front_x,fist_front_y,image_xscale,image_yscale,0,skin_color,1);
 		
-		
+				
 		}
+		}
+		
+		
 		if (state=="idle") {
 		//front leg
 			draw_sprite_ext(sprHuman_Pants_Idle_Feet,0,foot_front_x,foot_front_y,image_xscale,image_yscale,0,skin_color,1);
@@ -144,7 +182,7 @@ if (race=="human") {
 				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_img_angle, shirt_color,1);
 			}
 			if (has_weapon==true) {
-				draw_sprite_ext(sprite_gun,gun_idx,fist_front_x,fist_front_y,image_xscale,image_yscale,wpn_dir,c_white,1);
+				//draw_sprite_ext(sprite_gun,gun_idx,fist_front_x,fist_front_y,image_xscale,image_yscale,wpn_dir,c_white,1);
 			}
 				draw_sprite_ext(sprHuman_Arm_Hand,img_idx_body,fist_front_x,fist_front_y,image_xscale,image_yscale,arm_img_angle,skin_color,1);
 		
@@ -241,6 +279,46 @@ if (race=="human") {
 			
 	}
 //hat_style=choose("none","backwards","beanie","forwards","bandana");
+
+
+if (state=="walk" || state=="combat") {
+			
+		//front arm
+			// front arm
+		if (in_combat) && dir=="right" {
+		    // Aim + gun while walking
+		    draw_sprite_ext(sprHuman_Arm_Idle, img_idx_body, arm_front_x, arm_front_y, sx, sy, aim_angle, skin_color, 1);
+		    if (shirt_style=="short") {
+				draw_sprite_ext(sprHuman_Arm_Shirt_Short_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_dir, shirt_color,1);
+			}
+			if (shirt_style=="long") {
+				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_dir, shirt_color,1);
+			}
+		    if (has_weapon) {
+		        draw_sprite_ext(sprite_gun, gun_idx, fist_front_x, fist_front_y, sx, sy, gun_angle, c_white, 1);
+			}
+		    draw_sprite_ext(sprHuman_Arm_Hand,img_idx_body,fist_front_x,fist_front_y,image_xscale,image_yscale,arm_dir,skin_color,1);
+		} 
+		if (in_combat) && dir=="left" {
+		    // Aim + gun while walking
+		    draw_sprite_ext(sprHuman_Arm_Idle, img_idx_body, arm_front_x, arm_front_y, -sx, -sy, aim_angle, skin_color, 1);
+		    if (shirt_style=="short") {
+				draw_sprite_ext(sprHuman_Arm_Shirt_Short_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,-sx,-sy,aim_angle, shirt_color,1);
+			}
+			if (shirt_style=="long") {
+				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,-sx,-sy,aim_angle, shirt_color,1);
+			}
+		    if (has_weapon) {
+		        draw_sprite_ext(sprite_gun, gun_idx, fist_front_x, fist_front_y, -sx, -sy, aim_angle, c_white, 1);
+			}
+		    draw_sprite_ext(sprHuman_Arm_Hand,img_idx_body,fist_front_x,fist_front_y,sx,-sy,aim_angle+180,skin_color,1);
+		} 
+
+		
+		
+		}
+		
+		
 }
 
 
@@ -933,6 +1011,21 @@ if (has_mission) {
 
 //DEBUG
 
-draw_text_outlined(x,y,"POI: " + string(poi),c_black,c_white);
-draw_text_outlined(x,y+15,"Weapon: " + string(weapon),c_black,c_white);
-draw_text_outlined(x,y+30,"Attacking: " + string(attacking),c_black,c_white);
+//draw_text_outlined(x,y,"POI: " + string(poi),c_black,c_white);
+//draw_text_outlined(x,y+15,"Weapon: " + string(weapon),c_black,c_white);
+//draw_text_outlined(x,y+30,"Attacking: " + string(attacking),c_black,c_white);
+/*
+var _t = instance_exists(target) ? string(target.id) : "noone";
+draw_text(x+12, y-48, "state:"+string(state)
+    + "\nattacking:"+string(attacking)
+    + "\nfire_cd:"+string(fire_cd)
+    + "\ntarget:"+_t);
+
+draw_text(x+12, y+48, "target:" + (instance_exists(target)? string(target.id) : "noone"));
+
+*/
+
+if instance_exists(target) {
+	if (target.x > x) {dir = "right";}
+	if (target.x < x) {dir = "left";}
+}

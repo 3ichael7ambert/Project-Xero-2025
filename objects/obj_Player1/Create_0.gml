@@ -11,6 +11,7 @@ input_mapper = undefined;
 player_num=0;
 gamepad=false;
 
+team="";
 
 if (gamepad==true) {
 	//gamepad_num = input_mapper.controller.device_index;

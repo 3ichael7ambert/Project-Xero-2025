@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-
+/*
 
 //PUNCH
 if (follow_player==true) && (weapon==0) {

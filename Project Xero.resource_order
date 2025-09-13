@@ -239,7 +239,6 @@
     {"name":"objSpike","order":15,"path":"objects/objSpike/objSpike.yy",},
     {"name":"objStressTest","order":1,"path":"objects/objStressTest/objStressTest.yy",},
     {"name":"objTitle","order":16,"path":"objects/objTitle/objTitle.yy",},
-    {"name":"objToDPost","order":22,"path":"objects/objToDPost/objToDPost.yy",},
     {"name":"objTownPlayer","order":1,"path":"objects/objTownPlayer/objTownPlayer.yy",},
     {"name":"objTree","order":2,"path":"objects/objTree/objTree.yy",},
     {"name":"objWeatherAPI","order":3,"path":"objects/objWeatherAPI/objWeatherAPI.yy",},

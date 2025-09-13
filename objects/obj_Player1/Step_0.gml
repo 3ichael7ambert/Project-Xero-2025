@@ -1229,7 +1229,9 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	
 	
 	with (bullet) {
-		parent=obj_Player1;
+		parent=other;
+		owner      = other;          // who fired
+		team       = other.team; 
 		weapon=0;
 		attack=5;
 		if (parent.punch_side="front") {
@@ -1268,7 +1270,9 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
 	wpn_cooldown=2;
 	with (bullet) {
-		parent=obj_Player1;
+		parent=other;
+		owner      = other;          // who fired
+		team       = other.team; 
 		weapon=1;
 		attack=10;
 		depth=parent.depth+1;
@@ -1289,7 +1293,9 @@ if (weapon==0 && punch==false && shoot_button && wpn_cooldown==0) { //FIST
 	bullet = instance_create(nx_fistF,ny_fistF,objBullet);
 	wpn_cooldown=4;
 	with (bullet) {
-		parent=obj_Player1;
+		parent=other;
+		owner      = other;          // who fired
+		team       = other.team; 
 		weapon=2;
 		attack=15;
 		depth=parent.depth+1;

@@ -13,9 +13,12 @@ grav = 0.5; // Gravity strength
 vsp = 0; // Vertical speed
 is_on_ground = false; // Is the NPC standing on the ground?
 
-target=obj_Player1;
+target=noone;
+poi=noone;
+
 mission_indicator_color=c_aqua;
 
+threat_map = ds_map_create();
 
 //skin_color=c_white;
 	
@@ -23,7 +26,17 @@ mission_indicator_color=c_aqua;
 	weapon = choose("gun","raygun","shotgun");
 	attacking=false;
 	wpn_dir=270;
-	arm_img_angle=270;
+	arm_img_angle=270;// objHuman Create (add these)
+	provoked     = false;            // only true after being attacked
+	alert_timer  = 0;                // counts down; while >0 stay provoked
+	//team         = TEAM_HUMAN;       // use a numeric constant, not ""
+			
+	team          = "";       // make sure TEAM_* constants exist
+	attack_range  = 600;
+	fire_cd       = 0;
+	fire_cd_max   = room_speed / 5;   // 0.2s, tune as you like
+	bullet_speed  = 12;
+
 	
 	switch (weapon) {
 		case "gun":
@@ -46,7 +59,7 @@ mission_indicator_color=c_aqua;
 	
 	
 if room==rmCity {
-	scale=.2;
+	scale=.5;
 } else {
 	scale=1;
 }
@@ -56,7 +69,6 @@ eyes_mood="calm";
 mouth_mood="calm";
 angle=0;
 
-poi="none";
 
 hsp=0;
 
@@ -263,10 +275,12 @@ spr_dir=1;
 
 panic_cooldown = 100; 
 
+/*
 if instance_exists(obj_Player1) {
 	target=obj_Player1;
 	scale=obj_Player1.scale;}
 		else  {
 			target=undefined;
 		}
+	*/	
 		

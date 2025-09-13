@@ -12,7 +12,76 @@
  img_idx_hair=0;
  img_idx_hair=0;
  
- if (poi!="none")
+/// Ensure the map exists before any use
+if (!variable_instance_exists(self,"threat_map") || is_undefined(threat_map) || !ds_exists(threat_map, ds_type_map)) {
+    threat_map = ds_map_create();
+}
+
+/// Consume POI once
+if (poi != noone) { target = poi; poi = noone; }
+
+
+/// If target gone, pick the best by threat (no ds_map_keys!)
+
+// Type guards (must be first)
+// --- type guards (must be first) ---
+if (!is_real(target)) target = noone;
+if (!is_real(poi))    poi    = noone;
+
+// Ensure threat map exists
+if (!variable_instance_exists(self,"threat_map") || is_undefined(threat_map) || !ds_exists(threat_map, ds_type_map)) {
+    threat_map = ds_map_create();
+}
+
+// Consume POI once
+if (poi != noone) { target = poi; poi = noone; }
+
+// Keep/decay provoked
+if (ds_map_size(threat_map) > 0) provoked = true;
+if (alert_timer > 0) { alert_timer--; } else { alert_timer = 0; }
+// (Optional) auto-calm if nothing to fight
+if (alert_timer == 0 && ds_map_size(threat_map) == 0) provoked = false;
+
+
+if (!instance_exists(target)) {
+    target = noone;
+
+    if (ds_exists(threat_map, ds_type_map) && ds_map_size(threat_map) > 0) {
+        var best_id  = noone;
+		var best_val = -1000000000; // big negative sentinel
+
+
+        var k = ds_map_find_first(threat_map);
+        while (k != undefined) {
+            var inst_id = real(k);
+            if (instance_exists(inst_id)) {
+                var val = threat_map[? k];
+                if (val > best_val) { best_val = val; best_id = inst_id; }
+                k = ds_map_find_next(threat_map, k);
+            } else {
+                // delete and advance safely
+                var nxt = ds_map_find_next(threat_map, k);
+                ds_map_delete(threat_map, k);
+                k = nxt;
+            }
+        }
+        target = best_id;
+    }
+}
+
+/// Decay threat over time (again, no ds_map_keys)
+if (ds_exists(threat_map, ds_type_map) && ds_map_size(threat_map) > 0) {
+    var k2 = ds_map_find_first(threat_map);
+    while (k2 != undefined) {
+        var nxt = ds_map_find_next(threat_map, k2);
+        var v = max(0, threat_map[? k2] - 0.1);
+        if (v <= 0) ds_map_delete(threat_map, k2); else threat_map[? k2] = v;
+        k2 = nxt;
+    }
+}
+
+
+
  
  //misions
  spin_angle += 4; // You can adjust speed
@@ -27,31 +96,27 @@ if (spin_angle >= 360) spin_angle -= 360;
  }
  
  //nearest
-if instance_exists(obj_Player1)  {
-	player_nearest = instance_nearest(x,y,obj_Player1);
-} else {
-	player_nearest = noone; 
-}
-if instance_exists(obj_Enemy_Robot)  {
-	robot_nearest = instance_nearest(x,y,obj_Enemy_Robot);
-} else {
-	robot_nearest = noone;
+// Only pick a nearest if we don't already have a valid target
+// Only pick a nearest if we DON'T already have a valid target AND we are provoked
+if (provoked && !instance_exists(target)) {
+    var d_player = 100000000, d_robot = 100000000;
+
+    if (instance_exists(obj_Player1)) {
+        player_nearest = instance_nearest(x,y,obj_Player1);
+        if (instance_exists(player_nearest)) d_player = point_distance(x,y, player_nearest.x, player_nearest.y);
+    } else player_nearest = noone;
+
+    if (instance_exists(obj_Enemy_Robot)) {
+        robot_nearest = instance_nearest(x,y,obj_Enemy_Robot);
+        if (instance_exists(robot_nearest)) d_robot = point_distance(x,y, robot_nearest.x,  robot_nearest.y);
+    } else robot_nearest = noone;
+
+    if (d_player <= d_robot && instance_exists(player_nearest))      target = player_nearest;
+    else if (instance_exists(robot_nearest))                         target = robot_nearest;
 }
 
-if !instance_exists(human_nearest)  {
-	human_nearest = noone;
-}
-if (distance_to_object(player_nearest) <= distance_to_object(robot_nearest)) && (!target==human_nearest) {
-	target = player_nearest;
-}
-if (distance_to_object(player_nearest) > distance_to_object(robot_nearest)) && (!target==human_nearest)  {
-	target = robot_nearest;
-}
 
-// POI AND TARGET
- if (poi!="none") {
-	 target=poi;
- }
+
  
  // Apply gravity
 if !is_on_ground {
@@ -121,15 +186,18 @@ if state == "idle" {
 }
 
 
+
+
 // If the player is close, panic
-if (instance_exists(target))
-{
-	if distance_to_object(target) < 100 {
-	    state = "panic";
-	    panic_cooldown = 100; // Number of steps to stay in panic state
-	    dir = (x < target.x) ? "left" : "right";
-	}
+// If the player is close, panic (but not when provoked/combat-focused)
+if (!provoked && instance_exists(target)) {
+    if (state != "combat" && point_distance(x,y,target.x,target.y) < 100) {
+        state = "panic";
+        panic_cooldown = 100;
+        dir = (x < target.x) ? "right" : "left";
+    }
 }
+
 
 
 
@@ -187,6 +255,9 @@ if (dir=="left") {
 	fist_back_y = arm_back_y + lengthdir_y(65 * scale,armB_dir+12);
 	fist_front_x = arm_front_x + lengthdir_x(65 * scale,arm_dir+12);
 	fist_front_y = arm_front_y + lengthdir_y(65 * scale,arm_dir+12);
+	
+	
+	
 
 	leg_back_x = x + lengthdir_x(50 * scale, 255+angle);
 	leg_back_y = y + lengthdir_y(50 * scale, 255+angle);
@@ -298,3 +369,74 @@ if (instance_exists(player_target)) {
     }
 	*/
 }
+
+
+// --- COMBAT AI: move toward/away, strafe, jump, shoot ---
+if (provoked && instance_exists(target)) {
+    var dist = point_distance(x, y, target.x, target.y);
+
+    // Face the target
+    dir = (x < target.x) ? "right" : "left";
+
+    // Keep a ring around the target
+    var keep_min = max(32, attack_range * 0.60);
+    var keep_max = attack_range * 0.90;
+
+    // Horizontal move intent
+    var _move = 0;
+    if (dist > keep_max)       _move = sign(target.x - x);     // close
+    else if (dist < keep_min)  _move = -sign(target.x - x);    // back off
+    else                       _move = choose(-1, 1);          // strafe
+
+    var move_spd = 2.5;
+    hsp = move_spd * _move;
+    x  += hsp;
+
+    // Jump sometimes / over tiny obstacles
+    if (is_on_ground) {
+        if (irandom(59) == 0) {
+            var js = variable_instance_exists(self,"jump_speed") ? jump_speed : 8;
+            vsp = -js; is_on_ground = false;
+        }
+        var ahead = (dir == "right") ? 8 : -8;
+        if (place_meeting(x + ahead, y, objSidewalk) && irandom(4) == 0) {
+            var js2 = variable_instance_exists(self,"jump_speed") ? jump_speed : 8;
+            vsp = -js2; is_on_ground = false;
+        }
+    }
+
+    // Aim at the target NOW
+    arm_dir = point_direction(arm_front_x, arm_front_y, target.x, target.y);
+
+    // --- IMPORTANT: keep the fist in sync with the *new* arm_dir ---
+    if (dir == "right") {
+        fist_front_x = arm_front_x + lengthdir_x(65 * scale, arm_dir - 12);
+        fist_front_y = arm_front_y + lengthdir_y(65 * scale, arm_dir - 12);
+    } else {
+        fist_front_x = arm_front_x + lengthdir_x(65 * scale, arm_dir + 12);
+        fist_front_y = arm_front_y + lengthdir_y(65 * scale, arm_dir + 12);
+    }
+
+    // Shoot when in range + cooldown ready
+    if (dist <= attack_range && fire_cd <= 0) {
+        // Create on the same layer as this instance so it's visible
+        var hb = instance_create(fist_front_x, fist_front_y,objBullet_Human);
+
+        // Set properties WITHOUT relying on locals inside a with()
+        hb.owner     = id;
+        hb.team      = team;
+        hb.damage    = 5;
+        hb.direction = arm_dir;        // world-space aim (not arm_img_angle)
+        hb.speed     = bullet_speed;
+
+        fire_cd  = fire_cd_max;
+        attacking = true;
+    } else {
+        attacking = false;
+    }
+
+    state = "combat";
+} else {
+    attacking = false;
+}
+if (fire_cd > 0) fire_cd--;

@@ -1,5 +1,6 @@
-target=undefined;
-parent=undefined;
+owner=noone;
+target=noone;
+parent=noone;
 homing=false;
 life_limit=false;
 life_countdown=0;
@@ -18,7 +19,7 @@ xx=x;
 yy=y;
 
 
-_id=id;
+//_id=id;
 
 attack=1;
 bullet_speed=1;

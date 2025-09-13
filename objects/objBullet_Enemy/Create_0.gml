@@ -1,3 +1,4 @@
+owner=undefined;
 target=undefined;
 parent=undefined;
 homing=false;
