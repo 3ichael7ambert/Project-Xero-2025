@@ -134,7 +134,9 @@ if (race=="human") {
 
 		
 		/// START HERE ///
-		} else if (!in_combat && has_weapon) {
+		} 
+		
+		else if (!in_combat && has_weapon) {
 			
 			//draw_sprite_ext(sprHuman_Arm_Walk_Hand, img_idx_body, arm_front_x, arm_front_y, sx, sy, 0, skin_color, 1);
 			//front arm
@@ -145,13 +147,13 @@ if (race=="human") {
 			if (shirt_style=="long") {
 				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_img_angle, shirt_color,1);
 			}
-			if (has_weapon==true) {
-				draw_sprite_ext(sprite_gun,gun_idx,fist_front_x,fist_front_y,image_xscale,image_yscale,wpn_dir,c_white,1);
-			}
-				draw_sprite_ext(sprHuman_Arm_Hand,img_idx_body,fist_front_x,fist_front_y,image_xscale,image_yscale,0,skin_color,1);
+				draw_sprite_ext(sprite_gun,gun_idx,fist_front_x,fist_front_y,image_xscale,image_yscale,arm_img_angle,c_white,1);
+				draw_sprite_ext(sprHuman_Arm_Hand,img_idx_body,fist_front_x,fist_front_y,image_xscale,image_yscale,arm_img_angle,skin_color,1);
 		
 				
 		}
+		
+		
 		}
 		
 		
@@ -182,7 +184,7 @@ if (race=="human") {
 				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_img_angle, shirt_color,1);
 			}
 			if (has_weapon==true) {
-				//draw_sprite_ext(sprite_gun,gun_idx,fist_front_x,fist_front_y,image_xscale,image_yscale,wpn_dir,c_white,1);
+				draw_sprite_ext(sprite_gun,gun_idx,fist_front_x,fist_front_y,image_xscale,image_yscale,arm_img_angle,c_white,1);
 			}
 				draw_sprite_ext(sprHuman_Arm_Hand,img_idx_body,fist_front_x,fist_front_y,image_xscale,image_yscale,arm_img_angle,skin_color,1);
 		
@@ -327,7 +329,7 @@ if (state=="walk" || state=="combat") {
 if (race=="alien") {
 // Draw the sprite with flipping
 		//back arm
-		if (state=="walk") {
+		if (state=="walk" || state=="combat") {
 		//back arm
 			draw_sprite_ext(sprHuman_Arm_Walk_Arms,img_idx_body+4,arm_back_x,arm_back_y,image_xscale,image_yscale,0,skin_color,1);
 			if (shirt_style=="short") {
@@ -381,7 +383,7 @@ if (race=="alien") {
 		draw_sprite_ext(sprHuman_Body,0,x,y,image_xscale,image_yscale,angle,skin_color,1);
 		//UNDERWEAR//
 		if (gender="female"){
-			draw_sprite_ext(sprHuman_Body,2,pants_x,pants_y,image_xscale,image_yscale,angle, shirt_color,1);
+			//draw_sprite_ext(sprHuman_Body,2,pants_x,pants_y,image_xscale,image_yscale,angle, shirt_color,1);
 		}
 		draw_sprite_ext(sprHuman_Body,1,x,y,image_xscale,image_yscale,angle,skin_color,1);
 		//pants
@@ -393,7 +395,7 @@ if (race=="alien") {
 			draw_sprite_ext(sprHuman_Shirt,img_idx_shirt,shirt_x,shirt_y,image_xscale,image_yscale,angle, shirt_color,1);
 		}
 		//front limbs
-		if (state=="walk") {
+		if (state=="walk" || state=="combat") {
 			
 			//front leg
 			draw_sprite_ext(sprHuman_Pants_Walk_Feet,img_idx_body+4,leg_front_x,leg_front_y,image_xscale,image_yscale,0,skin_color,1);
@@ -412,6 +414,7 @@ if (race=="alien") {
 				draw_sprite_ext(sprHuman_Pants_Walk_Skirt,img_idx_shoes+4,skirt_x,skirt_y,image_xscale,image_yscale,0,shoes_color,1);
 			}
 		//front arm
+		if (!in_combat && !has_weapon) {
 			draw_sprite_ext(sprHuman_Arm_Walk_Arms,img_idx_body,arm_front_x,arm_front_y,image_xscale,image_yscale,0,skin_color,1);
 			if (shirt_style=="short") {
 				draw_sprite_ext(sprHuman_Arm_Shirt_Short_Walk,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,0, shirt_color,1);
@@ -420,9 +423,27 @@ if (race=="alien") {
 				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Walk,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,0, shirt_color,1);
 			}
 			draw_sprite_ext(sprHuman_Arm_Walk_Hand,img_idx_body,arm_front_x,arm_front_y,image_xscale,image_yscale,0,skin_color,1);
+		} else if (!in_combat && has_weapon) {
+			
+			//draw_sprite_ext(sprHuman_Arm_Walk_Hand, img_idx_body, arm_front_x, arm_front_y, sx, sy, 0, skin_color, 1);
+			//front arm
+			draw_sprite_ext(sprHuman_Arm_Idle,img_idx_body,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_img_angle,skin_color,1);
+			if (shirt_style=="short") {
+				draw_sprite_ext(sprHuman_Arm_Shirt_Short_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_img_angle, shirt_color,1);
+			}
+			if (shirt_style=="long") {
+				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_img_angle, shirt_color,1);
+			}
+				draw_sprite_ext(sprite_gun,gun_idx,fist_front_x,fist_front_y,image_xscale,image_yscale,arm_img_angle,c_white,1);
+				draw_sprite_ext(sprHuman_Arm_Hand,img_idx_body,fist_front_x,fist_front_y,image_xscale,image_yscale,arm_img_angle,skin_color,1);
+		
+				
+		}
+		
 		
 		
 		}
+		
 		if (state=="idle") {
 		//front leg
 			draw_sprite_ext(sprHuman_Pants_Idle_Feet,0,foot_front_x,foot_front_y,image_xscale,image_yscale,0,skin_color,1);
@@ -523,6 +544,45 @@ if (race=="alien") {
 			
 	}
 //hat_style=choose("none","backwards","beanie","forwards","bandana");
+
+if (state=="walk" || state=="combat") {
+			
+		//front arm
+			// front arm
+		if (in_combat) && dir=="right" {
+		    // Aim + gun while walking
+		    draw_sprite_ext(sprHuman_Arm_Idle, img_idx_body, arm_front_x, arm_front_y, sx, sy, aim_angle, skin_color, 1);
+		    if (shirt_style=="short") {
+				draw_sprite_ext(sprHuman_Arm_Shirt_Short_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_dir, shirt_color,1);
+			}
+			if (shirt_style=="long") {
+				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_dir, shirt_color,1);
+			}
+		    if (has_weapon) {
+		        draw_sprite_ext(sprite_gun, gun_idx, fist_front_x, fist_front_y, sx, sy, gun_angle, c_white, 1);
+			}
+		    draw_sprite_ext(sprHuman_Arm_Hand,img_idx_body,fist_front_x,fist_front_y,image_xscale,image_yscale,arm_dir,skin_color,1);
+		} 
+		if (in_combat) && dir=="left" {
+		    // Aim + gun while walking
+		    draw_sprite_ext(sprHuman_Arm_Idle, img_idx_body, arm_front_x, arm_front_y, -sx, -sy, aim_angle, skin_color, 1);
+		    if (shirt_style=="short") {
+				draw_sprite_ext(sprHuman_Arm_Shirt_Short_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,-sx,-sy,aim_angle, shirt_color,1);
+			}
+			if (shirt_style=="long") {
+				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,-sx,-sy,aim_angle, shirt_color,1);
+			}
+		    if (has_weapon) {
+		        draw_sprite_ext(sprite_gun, gun_idx, fist_front_x, fist_front_y, -sx, -sy, aim_angle, c_white, 1);
+			}
+		    draw_sprite_ext(sprHuman_Arm_Hand,img_idx_body,fist_front_x,fist_front_y,sx,-sy,aim_angle+180,skin_color,1);
+		} 
+
+		
+		
+		}
+		
+		
 }
 
 

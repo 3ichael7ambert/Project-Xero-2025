@@ -534,6 +534,7 @@
     {"id":{"name":"scr_tile3d_utils","path":"scripts/scr_tile3d_utils/scr_tile3d_utils.yy",},},
     {"id":{"name":"scr_timeofday_background_init","path":"scripts/scr_timeofday_background_init/scr_timeofday_background_init.yy",},},
     {"id":{"name":"scr_timeofday_color","path":"scripts/scr_timeofday_color/scr_timeofday_color.yy",},},
+    {"id":{"name":"Script237","path":"scripts/Script237/Script237.yy",},},
     {"id":{"name":"seg_add","path":"scripts/seg_add/seg_add.yy",},},
     {"id":{"name":"seg_apply_force","path":"scripts/seg_apply_force/seg_apply_force.yy",},},
     {"id":{"name":"seg_calculate","path":"scripts/seg_calculate/seg_calculate.yy",},},

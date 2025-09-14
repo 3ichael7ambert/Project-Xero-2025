@@ -418,22 +418,31 @@ if (provoked && instance_exists(target)) {
     }
 
     // Shoot when in range + cooldown ready
-    if (dist <= attack_range && fire_cd <= 0) {
-        // Create on the same layer as this instance so it's visible
-        var hb = instance_create(fist_front_x, fist_front_y,objBullet_Human);
+	    // Shoot when in range + cooldown ready
+	if (dist <= attack_range && fire_cd <= 0) {
+	    // spawn on the same visible instance layer as this NPC
+	    var bullet_layer = layer; // (this instance's layer id)
+	    var bx = fist_front_x;
+	    var by = fist_front_y;
+	    var bdir = arm_dir;       // world-space aim
 
-        // Set properties WITHOUT relying on locals inside a with()
-        hb.owner     = id;
-        hb.team      = team;
-        hb.damage    = 5;
-        hb.direction = arm_dir;        // world-space aim (not arm_img_angle)
-        hb.speed     = bullet_speed;
+	    // DEBUG: show exactly when/where we spawn
+	    show_debug_message("[BULLET] spawn @ ("+string(bx)+","+string(by)+") dir="+string(bdir));
+    
+	    var hb = instance_create(bx, by, objBullet_Human);
+	    hb.owner      = id;
+	    hb.team       = team;
+	    hb.damage     = 5;
+	    hb.direction  = bdir;
+	    hb.speed      = 12;//bullet_speed;
+	    hb.image_angle= bdir;
 
-        fire_cd  = fire_cd_max;
-        attacking = true;
-    } else {
-        attacking = false;
-    }
+	    fire_cd  = fire_cd_max;
+	    attacking = true;
+	} else {
+	    attacking = false;
+	}
+
 
     state = "combat";
 } else {
