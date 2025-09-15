@@ -119,7 +119,9 @@ image_yscale=scale;
  
 
  
- race=choose("human","alien");
+ //race=choose("human","alien");
+race=choose("odonis","spraycan");
+ species=race;
  
   if (race=="human") {
 	// Hue around orange (15–35), low saturation for lighter skin, higher for darker
@@ -131,6 +133,8 @@ image_yscale=scale;
 
  } else if (race=="alien") {
 		 skin_color=make_color_hsv(irandom(255),255,255);
+ } else if (race=="odonis") {
+		 skin_color=c_yellow;
  }
 	 else {
 	 

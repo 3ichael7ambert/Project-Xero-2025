@@ -19,8 +19,8 @@ xx=x;
 yy=y;
 
 attack=1;
-bullet_speed=1;
-
+bullet_speed=10;
+species="";
 
 weapon=0;
 

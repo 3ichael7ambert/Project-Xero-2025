@@ -80,6 +80,13 @@ if (ds_exists(threat_map, ds_type_map) && ds_map_size(threat_map) > 0) {
     }
 }
 
+/*
+if (ds_map_empty(threat_map)) {
+	state="idle";
+	provoked=false;
+	attacking=false;
+}
+*/
 
 
  
@@ -436,6 +443,8 @@ if (provoked && instance_exists(target)) {
 	    hb.direction  = bdir;
 	    hb.speed      = 12;//bullet_speed;
 	    hb.image_angle= bdir;
+		hb.scale=scale*.5;
+		hb.species=species;
 
 	    fire_cd  = fire_cd_max;
 	    attacking = true;

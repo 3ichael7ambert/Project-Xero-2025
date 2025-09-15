@@ -35,7 +35,7 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":true,
+  "solid":false,
   "spriteId":{
     "name":"sprHuman_Body",
     "path":"sprites/sprHuman_Body/sprHuman_Body.yy",
