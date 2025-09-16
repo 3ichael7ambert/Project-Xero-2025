@@ -29,10 +29,10 @@ switch (state) {
         break;
 }
 
-
+//arm
 spr_walk_arms_skin = sprHuman_Arm_Walk_Arms;
 spr_idle_arms_skin = sprHuman_Arm_Idle;
-//arm
+
 spr_walk_arms_shirt = sprBlank;
 spr_idle_arms_shirt = sprBlank;
 if (shirt_style=="short") {
@@ -46,21 +46,41 @@ if (shirt_style=="long") {
 spr_walk_arms_hand = sprHuman_Arm_Walk_Hand;
 spr_idle_arms_hand = sprHuman_Arm_Hand;
 //leg
+spr_walk_legs_skin = sprHuman_Leg_Idle;
 spr_walk_legs_pants = sprBlank;
+spr_idle_legs_pants = sprBlank;
+
+
 if (pants_style=="shorts") {
 	spr_walk_legs_pants = sprHuman_Pants_Walk_Shorts;
+	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
 }
 if (pants_style=="long") {
 	spr_walk_legs_pants = sprHuman_Pants_Walk_Pants;
+	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
 } 
 spr_walk_legs_feet = sprHuman_Pants_Walk_Feet;
+spr_idle_legs_feet = sprHuman_Pants_Idle_Feet;
 spr_walk_legs_skin = sprHuman_Leg_Walk;
+spr_idle_legs_skin = sprHuman_Leg_Idle;
+
 spr_walk_legs_shoes = sprHuman_Pants_Walk_Shoes;
 spr_idle_legs_shoes = sprHuman_Pants_Idle_Shoes;
 spr_body = sprHuman_Body;
 spr_shirt = sprHuman_Shirt;
 spr_skirt = sprHuman_Pants_Walk_Skirt;
+spr_skirt_idle = sprHuman_Pants_Idle_Skirt;
 
+spr_head = sprHuman_Head;
+spr_eyes = sprHuman_Head_Eyes;
+spr_eyes_pupils = sprHuman_Head_Eyes_Pupils;
+spr_eye_eyelids = sprHuman_Head_Eyelids;
+spr_mouth = sprHuman_Head_Mouths;
+spr_eyebrows = sprHuman_Head_Eyebrows;
+spr_sunglasses = sprHuman_eyes_sunglasses;
+spr_hair_front = sprHuman_Head_Hair_Front;
+spr_hair_back = sprHuman_Head_Hair_Back;
+spr_hat = sprHuman_Head_Hats;
 
 if (race=="human") {
 
@@ -157,34 +177,24 @@ if (race=="human") {
 		
 		if (state=="idle") {
 		//front leg
-			draw_sprite_ext(sprHuman_Pants_Idle_Feet,0,foot_front_x,foot_front_y,image_xscale,image_yscale,0,skin_color,1);
-			draw_sprite_ext(sprHuman_Leg_Idle,0,leg_front_x,leg_front_y,image_xscale,image_yscale,0,skin_color,1);
-			if (pants_style=="long") {
-				draw_sprite_ext(sprHuman_Pants_Idle_Pants,0,leg_front_x,leg_front_y,image_xscale,image_yscale,0,pants_color,1);
-			}
-			if (pants_style=="shorts") {
-				draw_sprite_ext(sprHuman_Pants_Idle_Shorts,0,leg_front_x,leg_front_y,image_xscale,image_yscale,0,pants_color,1);
-			}
+			draw_sprite_ext(spr_idle_legs_feet,0,foot_front_x,foot_front_y,image_xscale,image_yscale,0,skin_color,1);
+			draw_sprite_ext(spr_idle_legs_skin,0,leg_front_x,leg_front_y,image_xscale,image_yscale,0,skin_color,1);
+			draw_sprite_ext(spr_idle_legs_pants,0,leg_front_x,leg_front_y,image_xscale,image_yscale,0,pants_color,1);
 			if (shoes_style=="sneakers") {
-				draw_sprite_ext(sprHuman_Pants_Idle_Shoes,0,foot_front_x,foot_front_y,image_xscale,image_yscale,0,shoes_color,1);
+				draw_sprite_ext(spr_idle_legs_shoes,0,foot_front_x,foot_front_y,image_xscale,image_yscale,0,shoes_color,1);
 			}
 		//skirt
 			if (pants_style=="skirt") {
-				draw_sprite_ext(sprHuman_Pants_Idle_Skirt,img_idx_shoes,skirt_x,skirt_y,image_xscale,image_yscale,0,shoes_color,1);
+				draw_sprite_ext(spr_skirt_idle,img_idx_shoes,skirt_x,skirt_y,image_xscale,image_yscale,0,shoes_color,1);
 			}
 			
 		//front arm
-			draw_sprite_ext(sprHuman_Arm_Idle,img_idx_body,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_img_angle,skin_color,1);
-			if (shirt_style=="short") {
-				draw_sprite_ext(sprHuman_Arm_Shirt_Short_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_img_angle, shirt_color,1);
-			}
-			if (shirt_style=="long") {
-				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_img_angle, shirt_color,1);
-			}
+			draw_sprite_ext(spr_idle_arms_skin,img_idx_body,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_img_angle,skin_color,1);
+			draw_sprite_ext(spr_idle_arms_shirt,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_img_angle, shirt_color,1);
 			if (has_weapon==true) {
 				draw_sprite_ext(sprite_gun,gun_idx,fist_front_x,fist_front_y,image_xscale,image_yscale,arm_img_angle,c_white,1);
 			}
-				draw_sprite_ext(sprHuman_Arm_Hand,img_idx_body,fist_front_x,fist_front_y,image_xscale,image_yscale,arm_img_angle,skin_color,1);
+				draw_sprite_ext(spr_idle_arms_hand,img_idx_body,fist_front_x,fist_front_y,image_xscale,image_yscale,arm_img_angle,skin_color,1);
 		
 		}
 	
@@ -200,81 +210,81 @@ if (race=="human") {
 		//	head_x=cx+lengthdir_x()
 		}
 		
-		draw_sprite_ext(sprHuman_Head,img_idx_head,head_x,head_y,image_xscale,image_yscale,0,skin_color,1);
-        draw_sprite_ext(sprHuman_Head_Eyes,img_idx_eyes,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
-        draw_sprite_ext(sprHuman_Head_Eyes_Pupils,1,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,c_white,1);
-		draw_sprite_ext(sprHuman_Head_Eyes_Pupils,0,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,c_white,1);
+		draw_sprite_ext(spr_head,img_idx_head,head_x,head_y,image_xscale,image_yscale,0,skin_color,1);
+        draw_sprite_ext(spr_eyes,img_idx_eyes,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
+        draw_sprite_ext(spr_eyes_pupils,1,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,eye_color,1);
+		draw_sprite_ext(spr_eyes_pupils,0,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,c_white,1);
         
 		switch (eyes_mood) {
 			case "calm": 
-				draw_sprite_ext(sprHuman_Head_Eyelids,0,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
+				draw_sprite_ext(spr_eye_eyelids,0,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
 				break;
 			case "panic": 
 				//draw_sprite_ext(sprHuman_Head_Eyelids,img_idx_eyelids,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
 				break;
 			case "blink":
-				draw_sprite_ext(sprHuman_Head_Eyelids,1,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
+				draw_sprite_ext(spr_eye_eyelids,1,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
 				break;
 		}
 		
 		switch (mouth_mood) {
 			case "calm": 
-				draw_sprite_ext(sprHuman_Head_Mouths,0,mouth_x,mouth_y,image_xscale,image_yscale,0,hair_color,1);
+				draw_sprite_ext(spr_mouth,0,mouth_x,mouth_y,image_xscale,image_yscale,0,hair_color,1);
 				break;
 			case "sad": 
-				draw_sprite_ext(sprHuman_Head_Mouths,1,mouth_x,mouth_y,image_xscale,image_yscale,0,hair_color,1);
+				draw_sprite_ext(spr_mouth,1,mouth_x,mouth_y,image_xscale,image_yscale,0,hair_color,1);
 				break;
 			case "happy": 
-				draw_sprite_ext(sprHuman_Head_Mouths,2,mouth_x,mouth_y,image_xscale,image_yscale,0,hair_color,1);
+				draw_sprite_ext(spr_mouth,2,mouth_x,mouth_y,image_xscale,image_yscale,0,hair_color,1);
 				break;
 			case "suprised": 
-				draw_sprite_ext(sprHuman_Head_Mouths,3,mouth_x,mouth_y,image_xscale,image_yscale,0,hair_color,1);
+				draw_sprite_ext(spr_mouth,3,mouth_x,mouth_y,image_xscale,image_yscale,0,hair_color,1);
 				break;
 		}
 		
-		draw_sprite_ext(sprHuman_Head_Eyebrows,img_idx_eyebrows,eyebrows_x,eyebrows_y,image_xscale,image_yscale,0,hair_color,1);
+		draw_sprite_ext(spr_eyebrows,img_idx_eyebrows,eyebrows_x,eyebrows_y,image_xscale,image_yscale,0,hair_color,1);
     
 	if (sunglasses==true) {
-			draw_sprite_ext(sprHuman_eyes_sunglasses,0,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
+			draw_sprite_ext(spr_sunglasses,0,eyes_x,eyes_y,image_xscale,image_yscale,0,c_white,1);
 		}
 		
 		
 	switch (hair_style) {
 		  //hair_style=choose("long","short","bald","braids","long2","short");
 			 case "long": 
-				draw_sprite_ext(sprHuman_Head_Hair_Back,0,hair_x,hair_y,image_xscale,image_yscale,0,hair_color,1);
-				draw_sprite_ext(sprHuman_Head_Hair_Front,0,hair_x,hair_y,image_xscale,image_yscale,0,hair_color_2,1);
+				draw_sprite_ext(spr_hair_back,0,hair_x,hair_y,image_xscale,image_yscale,0,hair_color,1);
+				draw_sprite_ext(spr_hair_front,0,hair_x,hair_y,image_xscale,image_yscale,0,hair_color_2,1);
 				break;
 			case "short": 
-				draw_sprite_ext(sprHuman_Head_Hair_Back,2,hair_x,hair_y,image_xscale,image_yscale,0,hair_color,1);
-				draw_sprite_ext(sprHuman_Head_Hair_Front,2,hair_x,hair_y,image_xscale,image_yscale,0,hair_color_2,1);
+				draw_sprite_ext(spr_hair_back,2,hair_x,hair_y,image_xscale,image_yscale,0,hair_color,1);
+				draw_sprite_ext(spr_hair_front,2,hair_x,hair_y,image_xscale,image_yscale,0,hair_color_2,1);
 				break;
 			case "braids": 
-				draw_sprite_ext(sprHuman_Head_Hair_Back,1,hair_x,hair_y,image_xscale,image_yscale,0,hair_color,1);
-				draw_sprite_ext(sprHuman_Head_Hair_Front,1,hair_x,hair_y,image_xscale,image_yscale,0,hair_color_2,1);
+				draw_sprite_ext(spr_hair_back,1,hair_x,hair_y,image_xscale,image_yscale,0,hair_color,1);
+				draw_sprite_ext(spr_hair_front,1,hair_x,hair_y,image_xscale,image_yscale,0,hair_color_2,1);
 				break;
 			case "long2": 
-				draw_sprite_ext(sprHuman_Head_Hair_Back,3,hair_x,hair_y,image_xscale,image_yscale,0,hair_color,1);
-				draw_sprite_ext(sprHuman_Head_Hair_Front,3,hair_x,hair_y,image_xscale,image_yscale,0,hair_color_2,1);
+				draw_sprite_ext(spr_hair_back,3,hair_x,hair_y,image_xscale,image_yscale,0,hair_color,1);
+				draw_sprite_ext(spr_hair_front,3,hair_x,hair_y,image_xscale,image_yscale,0,hair_color_2,1);
 				break;
 			case "short2": 
-				draw_sprite_ext(sprHuman_Head_Hair_Back,2,hair_x,hair_y,image_xscale,image_yscale,0,hair_color,1);
-				draw_sprite_ext(sprHuman_Head_Hair_Front,2,hair_x,hair_y,image_xscale,image_yscale,0,hair_color_2,1);
+				draw_sprite_ext(spr_hair_back,2,hair_x,hair_y,image_xscale,image_yscale,0,hair_color,1);
+				draw_sprite_ext(spr_hair_front,2,hair_x,hair_y,image_xscale,image_yscale,0,hair_color_2,1);
 				break;
 	}
 	
 	switch (hat_style) {
 		case "backwards":
-			draw_sprite_ext(sprHuman_Head_Hats,0,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
+			draw_sprite_ext(spr_hat,0,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
 			break;
 		case "forwards":
-			draw_sprite_ext(sprHuman_Head_Hats,0,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
+			draw_sprite_ext(spr_hat,0,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
 			break;
 		case "beanie":
-			draw_sprite_ext(sprHuman_Head_Hats,1,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
+			draw_sprite_ext(spr_hat,1,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
 			break;
 		case "bandana":
-			draw_sprite_ext(sprHuman_Head_Hats,2,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
+			draw_sprite_ext(spr_hat,2,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
 			break;
 			
 	}
@@ -287,31 +297,21 @@ if (state=="walk" || state=="combat") {
 			// front arm
 		if (in_combat) && dir=="right" {
 		    // Aim + gun while walking
-		    draw_sprite_ext(sprHuman_Arm_Idle, img_idx_body, arm_front_x, arm_front_y, sx, sy, aim_angle, skin_color, 1);
-		    if (shirt_style=="short") {
-				draw_sprite_ext(sprHuman_Arm_Shirt_Short_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_dir, shirt_color,1);
-			}
-			if (shirt_style=="long") {
-				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_dir, shirt_color,1);
-			}
+		    draw_sprite_ext(spr_idle_arms_skin, img_idx_body, arm_front_x, arm_front_y, sx, sy, aim_angle, skin_color, 1);
+			draw_sprite_ext(spr_idle_arms_shirt,img_idx_shirt_sleeves,arm_front_x,arm_front_y,image_xscale,image_yscale,arm_dir, shirt_color,1);
 		    if (has_weapon) {
 		        draw_sprite_ext(sprite_gun, gun_idx, fist_front_x, fist_front_y, sx, sy, gun_angle, c_white, 1);
 			}
-		    draw_sprite_ext(sprHuman_Arm_Hand,img_idx_body,fist_front_x,fist_front_y,image_xscale,image_yscale,arm_dir,skin_color,1);
+		    draw_sprite_ext(spr_idle_arms_hand,img_idx_body,fist_front_x,fist_front_y,image_xscale,image_yscale,arm_dir,skin_color,1);
 		} 
 		if (in_combat) && dir=="left" {
 		    // Aim + gun while walking
-		    draw_sprite_ext(sprHuman_Arm_Idle, img_idx_body, arm_front_x, arm_front_y, -sx, -sy, aim_angle, skin_color, 1);
-		    if (shirt_style=="short") {
-				draw_sprite_ext(sprHuman_Arm_Shirt_Short_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,-sx,-sy,aim_angle, shirt_color,1);
-			}
-			if (shirt_style=="long") {
-				draw_sprite_ext(sprHuman_Arm_Shirt_Long_Idle,img_idx_shirt_sleeves,arm_front_x,arm_front_y,-sx,-sy,aim_angle, shirt_color,1);
-			}
+		    draw_sprite_ext(spr_idle_arms_skin, img_idx_body, arm_front_x, arm_front_y, -sx, -sy, aim_angle, skin_color, 1);
+		    draw_sprite_ext(spr_idle_arms_shirt,img_idx_shirt_sleeves,arm_front_x,arm_front_y,-sx,-sy,aim_angle, shirt_color,1);
 		    if (has_weapon) {
 		        draw_sprite_ext(sprite_gun, gun_idx, fist_front_x, fist_front_y, -sx, -sy, aim_angle, c_white, 1);
 			}
-		    draw_sprite_ext(sprHuman_Arm_Hand,img_idx_body,fist_front_x,fist_front_y,sx,-sy,aim_angle+180,skin_color,1);
+		    draw_sprite_ext(spr_idle_arms_hand,img_idx_body,fist_front_x,fist_front_y,sx,-sy,aim_angle+180,skin_color,1);
 		} 
 
 		
