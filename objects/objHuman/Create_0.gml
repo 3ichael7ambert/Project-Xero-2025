@@ -108,20 +108,34 @@ image_yscale=scale;
 
  dir=choose("left","right");
  
- hair_color=(make_color_rgb(random(255),random(255),random(255)));
- hair_color_2=(make_color_rgb(random(255),random(255),random(255)));
- shirt_color=(make_color_rgb(random(255),random(255),random(255)));
- shirt_color_2=(make_color_rgb(random(255),random(255),random(255)));
- pants_color=(make_color_rgb(random(255),random(255),random(255)));
- shoes_color=(make_color_rgb(random(255),random(255),random(255)));
- eye_color=(make_color_rgb(random(255),random(255),random(255)));
- hat_color=(make_color_rgb(random(255),random(255),random(255)));
+
+	 
  
 
  
- //race=choose("human","alien");
-race=choose("odonis","spraycan");
+ race=choose("human","alien");
+//race=choose("odonis","spraycan");
  species=race;
+ 
+  if (race=="human" || race=="alien") {
+	 hair_color=(make_color_rgb(random(255),random(255),random(255)));
+	 hair_color_2=(make_color_rgb(random(255),random(255),random(255)));
+	 shirt_color=(make_color_rgb(random(255),random(255),random(255)));
+	 shirt_color_2=(make_color_rgb(random(255),random(255),random(255)));
+	 pants_color=(make_color_rgb(random(255),random(255),random(255)));
+	 shoes_color=(make_color_rgb(random(255),random(255),random(255)));
+	 eye_color=(make_color_rgb(random(255),random(255),random(255)));
+	 hat_color=(make_color_rgb(random(255),random(255),random(255)));
+ } else {
+	  hair_color=c_white;
+	 hair_color_2=c_white;
+	 shirt_color=c_white;
+	 shirt_color_2=c_white;
+	 pants_color=c_white;
+	 shoes_color=c_white;
+	 eye_color=c_white;
+	 hat_color=c_white;
+ }
  
   if (race=="human") {
 	// Hue around orange (15–35), low saturation for lighter skin, higher for darker
@@ -288,3 +302,37 @@ if instance_exists(obj_Player1) {
 		}
 	*/	
 		
+
+
+
+// INIT SPRITES
+spr_walk_arms_skin = sprHuman_Arm_Walk_Arms;
+spr_idle_arms_skin = sprHuman_Arm_Idle;
+//arm
+spr_walk_arms_shirt = sprBlank;
+spr_idle_arms_shirt = sprBlank;
+if (shirt_style=="short") {
+	spr_walk_arms_shirt = sprHuman_Arm_Shirt_Short_Walk;
+	spr_idle_arms_shirt = sprHuman_Arm_Shirt_Short_Idle;
+} 
+if (shirt_style=="long") {
+	spr_walk_arms_shirt = sprHuman_Arm_Shirt_Long_Walk;
+	spr_idle_arms_shirt = sprHuman_Arm_Shirt_Long_Idle;
+}
+spr_walk_arms_hand = sprHuman_Arm_Walk_Hand;
+spr_idle_arms_hand = sprHuman_Arm_Hand;
+//leg
+spr_walk_legs_pants = sprBlank;
+if (pants_style=="shorts") {
+	spr_walk_legs_pants = sprHuman_Pants_Walk_Shorts;
+}
+if (pants_style=="long") {
+	spr_walk_legs_pants = sprHuman_Pants_Walk_Pants;
+} 
+spr_walk_legs_feet = sprHuman_Pants_Walk_Feet;
+spr_walk_legs_skin = sprHuman_Leg_Walk;
+spr_walk_legs_shoes = sprHuman_Pants_Walk_Shoes;
+spr_idle_legs_shoes = sprHuman_Pants_Idle_Shoes;
+spr_body = sprHuman_Body;
+spr_shirt = sprHuman_Shirt;
+spr_skirt = sprHuman_Pants_Walk_Skirt;
