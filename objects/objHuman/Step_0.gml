@@ -223,21 +223,35 @@ if (dir=="left") {
 			wpn_dir=90;
 	}
 	
-	head_x = x + lengthdir_x(75 * scale, 90+angle);
-	head_y = y + lengthdir_y(75 * scale, 90+angle);
+	if (race!="spraycan") {
+		head_x = x + lengthdir_x(75 * scale, 90+angle);
+		head_y = y + lengthdir_y(75 * scale, 90+angle);
 
-	eyes_x = head_x + lengthdir_x(60 * scale, 122);
-	eyes_y = head_y + lengthdir_y(60 * scale, 122);
+		eyes_x = head_x + lengthdir_x(60 * scale, 122);
+		eyes_y = head_y + lengthdir_y(60 * scale, 122);
 
-	eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, 200);
-	eyes_pupils_y = eyes_y + lengthdir_y(15 * scale, 200);
+		eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, 200);
+		eyes_pupils_y = eyes_y + lengthdir_y(15 * scale, 200);
 
-	eyelids_x = eyes_x + lengthdir_x(0 * scale, 105);
-	eyelids_y = eyes_y + lengthdir_y(0 * scale, 105);
-	mouth_x = head_x + lengthdir_x(30 * scale, 165);
-	mouth_y = head_y + lengthdir_y(30 * scale, 165);
-	nose_x = head_x + lengthdir_x(50 * scale, 105);
-	nose_y = head_y + lengthdir_y(50 * scale, 105);
+		eyelids_x = eyes_x + lengthdir_x(0 * scale, 105);
+		eyelids_y = eyes_y + lengthdir_y(0 * scale, 105);
+		mouth_x = head_x + lengthdir_x(30 * scale, 165);
+		mouth_y = head_y + lengthdir_y(30 * scale, 165);
+		nose_x = head_x + lengthdir_x(50 * scale, 105);
+		nose_y = head_y + lengthdir_y(50 * scale, 105);
+	} else {
+		 head_x = x;
+		 head_y = y;
+		 eyes_x=x+lengthdir_x(85 * scale,115)*scale;
+		 eyes_y=y+lengthdir_y(85 * scale,115)*scale;
+		 eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, 200);
+		 eyes_pupils_y = eyes_y + lengthdir_y(15 * scale, 200);
+		 eyelids_x=eyes_x+lengthdir_x(0,75)*scale;
+		 eyelids_y=eyes_y+lengthdir_y(0,75)*scale;
+		 mouth_x=head_x+lengthdir_x(10,75)*scale;
+		 mouth_y=head_y+lengthdir_y(10,75)*scale;
+		 skin_color_eyelids=c_red;
+	}
 
 	eyebrows_x = eyes_x + lengthdir_x(20 * scale, 80);
 	eyebrows_y = eyes_y + lengthdir_y(20 * scale, 80);
@@ -265,15 +279,25 @@ if (dir=="left") {
 	
 	
 	
-
-	leg_back_x = x + lengthdir_x(50 * scale, 255+angle);
-	leg_back_y = y + lengthdir_y(50 * scale, 255+angle);
-	leg_front_x = x + lengthdir_x(60 * scale, 305+angle);
-	leg_front_y = y + lengthdir_y(60 * scale, 305+angle);
-	foot_back_x = leg_back_x + lengthdir_x(8 * scale,270);
-	foot_back_y = leg_back_y + lengthdir_y(8 * scale,270);
-	foot_front_x = leg_front_x + lengthdir_x(8 * scale,270);
-	foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
+	if (race!="odonis") {
+		leg_back_x = x + lengthdir_x(50 * scale, 255+angle);
+		leg_back_y = y + lengthdir_y(50 * scale, 255+angle);
+		leg_front_x = x + lengthdir_x(60 * scale, 305+angle);
+		leg_front_y = y + lengthdir_y(60 * scale, 305+angle);
+		foot_back_x = leg_back_x + lengthdir_x(8 * scale,270);
+		foot_back_y = leg_back_y + lengthdir_y(8 * scale,270);
+		foot_front_x = leg_front_x + lengthdir_x(8 * scale,270);
+		foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
+	} else {
+		leg_back_x = x + lengthdir_x(50 * scale, 273+angle);
+		leg_back_y = y + lengthdir_y(50 * scale, 273+angle);
+		leg_front_x = x + lengthdir_x(60 * scale, 305+angle);
+		leg_front_y = y + lengthdir_y(60 * scale, 305+angle);
+		foot_back_x = leg_back_x + lengthdir_x(8 * scale,270);
+		foot_back_y = leg_back_y + lengthdir_y(8 * scale,270);
+		foot_front_x = leg_front_x + lengthdir_x(8 * scale,270);
+		foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
+	}
 
 	//shoes_x = x + lengthdir_x(40 * scale, 270);
 	//shoes_y = y + lengthdir_y(40 * scale, 270);
@@ -299,15 +323,30 @@ if (dir=="right") {
 	eyes_x = head_x + lengthdir_x(60 * scale, 58);
 	eyes_y = head_y + lengthdir_y(60 * scale, 58);
 
-	eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, -20);
-	eyes_pupils_y = eyes_y + lengthdir_y(15 * scale, -20);
+	
 
+	if (race!="spraycan") {
 	eyelids_x = eyes_x + lengthdir_x(0 * scale, 75);
 	eyelids_y = eyes_y + lengthdir_y(0 * scale, 75);
+	eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, -20);
+	eyes_pupils_y = eyes_y + lengthdir_y(15 * scale, -20);
 	mouth_x = head_x + lengthdir_x(30 * scale, 15);
 	mouth_y = head_y + lengthdir_y(30 * scale, 15);
 	nose_x = head_x + lengthdir_x(50 * scale, 75);
 	nose_y = head_y + lengthdir_y(50 * scale, 75);
+	} else {
+	 head_x = x;
+	 head_y = y;
+	 eyes_x=x+lengthdir_x(85 * scale,65)*scale;
+	 eyes_y=y+lengthdir_y(85 * scale,65)*scale;
+	 eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, -20);
+	 eyes_pupils_y = eyes_y + lengthdir_y(15 * scale, -20);
+	 eyelids_x=eyes_x+lengthdir_x(0,75)*scale;
+	 eyelids_y=eyes_y+lengthdir_y(0,75)*scale;
+	 mouth_x=head_x+lengthdir_x(10,75)*scale;
+	 mouth_y=head_y+lengthdir_y(10,75)*scale;
+	 skin_color_eyelids=c_red;
+	}
 
 	eyebrows_x = eyes_x + lengthdir_x(20 * scale, 100);
 	eyebrows_y = eyes_y + lengthdir_y(20 * scale, 100);
@@ -333,14 +372,25 @@ if (dir=="right") {
 	fist_front_x = arm_front_x + lengthdir_x(65 * scale,arm_dir-12);
 	fist_front_y = arm_front_y + lengthdir_y(65 * scale,arm_dir-12);
 
-	leg_back_x = x + lengthdir_x(50 * scale, 285);
-	leg_back_y = y + lengthdir_y(50 * scale, 285);
-	leg_front_x = x + lengthdir_x(60 * scale, 235);
-	leg_front_y = y + lengthdir_y(60 * scale, 235);
-	foot_back_x = leg_back_x + lengthdir_x(8 * scale,270);
-	foot_back_y = leg_back_y + lengthdir_y(8 * scale,270);
-	foot_front_x = leg_front_x + lengthdir_x(8 * scale,270);
-	foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
+	if (race!="odonis") {
+		leg_back_x = x + lengthdir_x(50 * scale, 285);
+		leg_back_y = y + lengthdir_y(50 * scale, 285);
+		leg_front_x = x + lengthdir_x(60 * scale, 235);
+		leg_front_y = y + lengthdir_y(60 * scale, 235);
+		foot_back_x = leg_back_x + lengthdir_x(8 * scale,270);
+		foot_back_y = leg_back_y + lengthdir_y(8 * scale,270);
+		foot_front_x = leg_front_x + lengthdir_x(8 * scale,270);
+		foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
+	} else {
+		leg_back_x = x + lengthdir_x(50 * scale, 267);
+		leg_back_y = y + lengthdir_y(50 * scale, 267);
+		leg_front_x = x + lengthdir_x(60 * scale, 235);
+		leg_front_y = y + lengthdir_y(60 * scale, 235);
+		foot_back_x = leg_back_x + lengthdir_x(8 * scale,270);
+		foot_back_y = leg_back_y + lengthdir_y(8 * scale,270);
+		foot_front_x = leg_front_x + lengthdir_x(8 * scale,270);
+		foot_front_y = leg_front_y + lengthdir_y(8 * scale,270);
+	}
 
 	//shoes_x = x + lengthdir_x(40 * scale, 270);
 	//shoes_y = y + lengthdir_y(40 * scale, 270);
