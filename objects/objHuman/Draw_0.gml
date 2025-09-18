@@ -70,7 +70,9 @@ switch (state) {
 		
 		}
 		
-		
+		if (jetpack==true) {
+				draw_sprite_ext(spr_jetpack,0,x-20*scale,y,image_xscale,image_yscale,angle,skin_color,1);
+		}
 		//body
 		draw_sprite_ext(spr_body,0,x,y,image_xscale,image_yscale,angle,skin_color,1);
 		//UNDERWEAR//

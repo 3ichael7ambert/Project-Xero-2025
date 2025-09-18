@@ -2,6 +2,16 @@
 // You can write your code in this editor
  randomize();
  
+ jetpack=choose(true,false);
+ 
+ // Flight feel
+jp_speed   = 13.5;   // cruise speed
+jp_boost   = 5.5;   // used when we need a quick burst (closing gaps)
+jp_accel   = 0.18;  // how quickly we steer toward desired velocity (0..1)
+jp_drag    = 0.04;  // air drag per step (0..0.2)
+jp_orbit_h = 96;    // preferred horizontal ring radius around target
+jp_orbit_v = 24;    // small vertical offset so we don't sit perfectly level
+jp_idle_drift = 0.75; // small wander speed when no target
  
  hp=100;
  
@@ -81,7 +91,6 @@ player_nearest=noone;
 robot_nearest=noone;
 human_nearest=noone;
 
-jetpack=false;
 
 
 //mission
@@ -397,6 +406,9 @@ spr_hair_back = sprHuman_Head_Hair_Back;
 
 spr_hat = sprHuman_Head_Hats;
 
+
+spr_jetpack = sprSpraycan_Jetpack;
+
 spr_scarf = sprBlank;
 }
 
@@ -458,6 +470,9 @@ spr_hair_back = sprBlank; ///
 spr_hat = sprAlien_Head_Hats; ///
 
 
+spr_jetpack = sprSpraycan_Jetpack;
+
+
 spr_scarf = sprBlank;
 }
 
@@ -516,6 +531,9 @@ spr_hair_front = sprOdonis_Head_Hair_Back; ///
 spr_hair_back = sprOdonis_Head_Hair_Back; ///
 spr_hat = sprBlank; ///
 
+
+spr_jetpack = sprSpraycan_Jetpack;
+
 spr_scarf = sprOdonis_Scarf;
 }
 
@@ -563,6 +581,7 @@ spr_hair_back = sprBlank; ///
 
 spr_hat = sprBlank; ///
 
+spr_jetpack = sprSpraycan_Jetpack;
 
 spr_scarf = sprBlank;
 
