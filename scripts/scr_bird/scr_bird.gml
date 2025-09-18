@@ -1,14 +1,47 @@
 function scr_bird_create(){
+	
+	 if (current_month==10) {
+		 species="bat";
+	 } else {
+		 species="bird";
+	}
     
+	if (current_month!=10) {
+		color_body = make_color_hsv(irandom(255),irandom(255),irandom(255));
+		color_body_2 = make_color_hsv(irandom(255),irandom(255),irandom(255));
+		color_body_3 = make_color_hsv(irandom(255),irandom(255),irandom(255));
+		color_eye = make_color_hsv(irandom(255),irandom(255),irandom(255));
+		color_beak = make_color_hsv(irandom(255),irandom(255),irandom(255));
+	} else {
+		color_body = make_color_rgb(irandom(255),irandom(64),irandom(64));
+		color_body_2 = make_color_rgb(irandom(255),irandom(64),irandom(64));
+		color_body_3 = make_color_rgb(irandom(255),irandom(64),irandom(64));
+		color_eye = make_color_rgb(irandom_range(128,255),irandom(32),irandom(32));
+		color_beak = make_color_rgb(irandom(32),irandom(32),irandom(32));
+	}
+	
 // Sprites
     spr_head       = sprBirdHead;
     spr_body       = sprBirdBody;
-    spr_wing_front = sprBirdWingFront;
-    spr_wing_back  = sprBirdWingBack;
+	if (species!="bat") {
+		spr_wing_front = sprBirdWingFront;
+		spr_wing_back  = sprBirdWingBack;
+		spr_wing_ground = sprBirdWingGround;
+	} else {
+		spr_wing_front = sprBirdWingBat;
+		spr_wing_back  = sprBirdWingBat;
+		spr_wing_ground = sprBirdWingGround;
+	}
     spr_eye        = sprBirdEye;
     spr_tail       = sprBirdTail;
     spr_beak_top   = sprBirdBeakTop;
     spr_beak_btm   = sprBirdBeakBtm;
+	if (current_month!=10) {
+		idx_head	   = choose(0,1);
+	} else {
+		idx_head	   = choose(0,2);
+	}
+	
 
 	// --- Landing planner (fly -> ground)
 	land_scan_dist     = 64;                       // how far below to look for ground
@@ -531,52 +564,62 @@ function scr_bird_step() {
 function scr_bird_draw() {
     /// ===== BIRD: Draw =====
     var base_ang = 0;
-    shader_hue_start(col);
+   // shader_hue_start(col);
     
     if (state == "fly" || landing) {
-    _draw_bird_part(spr_wing_back, wing_img, off_wing_x, off_wing_y, body_angle + wing_angle);
+    _draw_bird_part(spr_wing_back, wing_img, off_wing_x, off_wing_y, body_angle + wing_angle,color_body);
 	}
 
     if (state == "ground") {
         // --- BACK WING (behind) - folded wings on ground
-       // _draw_bird_part(spr_wing_back, wing_img, off_wing_x, off_wing_y, body_angle + wing_angle + 90);
+       // _draw_bird_part(spr_wing_ground, wing_img, off_wing_x, off_wing_y, body_angle + wing_angle + 90,color_body);
     }
     
     // --- BODY
-    _draw_bird_part(spr_body, 0, off_body_x, off_body_y, body_angle);
+    _draw_bird_part(spr_body, 0, off_body_x, off_body_y, body_angle,color_body);
     
     // --- TAIL (slightly behind body center)
-    _draw_bird_part(spr_tail, 0, off_tail_x, off_tail_y, body_angle + tail_angle);
+    _draw_bird_part(spr_tail, 0, off_tail_x, off_tail_y, body_angle + tail_angle,color_body);
     
+	if species = "bat" {
+		_draw_bird_part(spr_head, 4, off_head_x, off_head_y, head_angle,color_body);
+	}
     // --- HEAD
-    _draw_bird_part(spr_head, 0, off_head_x, off_head_y, head_angle);
+    _draw_bird_part(spr_head, idx_head, off_head_x, off_head_y, head_angle,color_body);
+	if species = "bat" {
+		_draw_bird_part(spr_head, 3, off_head_x, off_head_y, head_angle,color_body);
+	}
     
     // --- EYE (kept simple; could add tiny bob)
-    _draw_bird_part(spr_eye, 0, off_eye_x, off_eye_y, head_angle);
+    _draw_bird_part(spr_eye, 0, off_eye_x, off_eye_y, head_angle,color_eye);
     
-    // --- BEAK (top rotates to "open")
-    var beak_top_ang = head_angle + (beak_open ? beak_open_ang : 0);
-    var beak_btm_ang = head_angle;
-    _draw_bird_part(spr_beak_btm, 0, off_beak_x, off_beak_y, beak_btm_ang);
-    _draw_bird_part(spr_beak_top, 0, off_beak_x, off_beak_y, beak_top_ang);
+	if (species!="bat") {
+	    // --- BEAK (top rotates to "open")
+	    var beak_top_ang = head_angle + (beak_open ? beak_open_ang : 0);
+	    var beak_btm_ang = head_angle;
+	    _draw_bird_part(spr_beak_btm, 0, off_beak_x, off_beak_y, beak_btm_ang,color_beak);
+	    _draw_bird_part(spr_beak_top, 0, off_beak_x, off_beak_y, beak_top_ang,color_beak);
+	}
     
     // front wing
 	if (state == "fly" || landing) {
-	    _draw_bird_part(spr_wing_front, wing_img, off_wing_x, off_wing_y, body_angle - wing_angle);
+	    _draw_bird_part(spr_wing_front, wing_img, off_wing_x, off_wing_y, body_angle - wing_angle,color_body);
 	}
     if (state == "ground") {
         // --- FRONT WING (in front) - folded wings on ground
 		if (dir==1) {
 			//_draw_bird_part(spr_wing_front, wing_img, off_wing_x, off_wing_y, body_angle - wing_angle + 90);
-			draw_sprite_ext(spr_wing_front,wing_img,off_wing_x,scale,-scale,off_wing_y,body_angle+90,col,1);
+			//draw_sprite_ext(spr_wing_ground,wing_img,off_wing_x,scale,-scale,off_wing_y,body_angle-90,color_body,1);
 		}
 		if (dir==-1) {
 			//_draw_bird_part(spr_wing_front, wing_img, off_wing_x, off_wing_y, body_angle - wing_angle);
-			draw_sprite_ext(spr_wing_front,wing_img,off_wing_x,off_wing_y,image_xscale,-image_yscale,body_angle+90,col,1);
+			//draw_sprite_ext(spr_wing_ground,wing_img,off_wing_x,off_wing_y,image_xscale,-image_yscale,body_angle-90,color_body,1);
 		}
+		_draw_bird_part(spr_wing_ground, wing_img, off_wing_x, off_wing_y, body_angle + wing_angle,color_body);
+    
    }
     
-    shader_reset();
+   // shader_reset();
 }
 
 /// Returns true if standing on ground
