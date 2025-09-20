@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprSpraycan_Head_Eyes",
   "bboxMode":0,
   "bbox_bottom":54,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"bfb069fa-95bd-4f81-a7d0-bf9abc031aba","name":"bfb069fa-95bd-4f81-a7d0-bf9abc031aba","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"bfb069fa-95bd-4f81-a7d0-bf9abc031aba","name":"bfb069fa-95bd-4f81-a7d0-bf9abc031aba","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprHuman_Head_Eyebrows",
   "bboxMode":0,
   "bbox_bottom":40,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"7a2fd52a-a206-4349-b671-0d9f35f5b83a","name":"7a2fd52a-a206-4349-b671-0d9f35f5b83a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"7a2fd52a-a206-4349-b671-0d9f35f5b83a","name":"7a2fd52a-a206-4349-b671-0d9f35f5b83a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

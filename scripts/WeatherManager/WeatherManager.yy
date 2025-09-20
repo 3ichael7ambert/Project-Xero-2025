@@ -6,7 +6,7 @@
   "name":"WeatherManager",
   "parent":{
     "name":"Weather",
-    "path":"folders/Weather.yy",
+    "path":"folders/Objects/City/Weather.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

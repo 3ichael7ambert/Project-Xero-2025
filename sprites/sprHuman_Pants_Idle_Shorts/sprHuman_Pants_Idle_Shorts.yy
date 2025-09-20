@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprHuman_Pants_Idle_Shorts",
   "bboxMode":0,
   "bbox_bottom":159,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"3a93e1bc-fd87-4518-a63c-820ba10e4445","name":"3a93e1bc-fd87-4518-a63c-820ba10e4445","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"3a93e1bc-fd87-4518-a63c-820ba10e4445","name":"3a93e1bc-fd87-4518-a63c-820ba10e4445","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

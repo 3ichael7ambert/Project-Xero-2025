@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprHuman_eyes_sunglasses",
   "bboxMode":0,
   "bbox_bottom":26,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"47a393e0-5914-4c38-9aa2-c27eb124ddf5","name":"47a393e0-5914-4c38-9aa2-c27eb124ddf5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"47a393e0-5914-4c38-9aa2-c27eb124ddf5","name":"47a393e0-5914-4c38-9aa2-c27eb124ddf5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

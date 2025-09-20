@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprOdonis_Arm_Hand",
   "bboxMode":0,
   "bbox_bottom":54,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"fc1841b6-7cde-4dc2-9f23-e25de98bff30","name":"fc1841b6-7cde-4dc2-9f23-e25de98bff30","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"fc1841b6-7cde-4dc2-9f23-e25de98bff30","name":"fc1841b6-7cde-4dc2-9f23-e25de98bff30","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

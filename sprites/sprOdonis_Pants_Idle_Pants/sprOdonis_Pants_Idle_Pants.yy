@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprOdonis_Pants_Idle_Pants",
   "bboxMode":0,
   "bbox_bottom":194,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"ab883e0c-0785-4425-83c6-22bcda73fe44","name":"ab883e0c-0785-4425-83c6-22bcda73fe44","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"ab883e0c-0785-4425-83c6-22bcda73fe44","name":"ab883e0c-0785-4425-83c6-22bcda73fe44","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

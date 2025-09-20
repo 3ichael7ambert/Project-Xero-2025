@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprStreetTiles",
   "bboxMode":0,
   "bbox_bottom":420,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"50287017-507a-453b-90e8-73f2659af99c","name":"50287017-507a-453b-90e8-73f2659af99c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"50287017-507a-453b-90e8-73f2659af99c","name":"50287017-507a-453b-90e8-73f2659af99c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

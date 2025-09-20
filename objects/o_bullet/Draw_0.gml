@@ -1,2 +1,0 @@
-draw_line_width_color(phy_position_xprevious,phy_position_yprevious,phy_position_x,phy_position_y,
-3,c_yellow,c_orange);

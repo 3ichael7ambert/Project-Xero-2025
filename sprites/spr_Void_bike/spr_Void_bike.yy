@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"spr_Void_bike",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"70963d31-10dd-47f6-9bf6-e0475442c2de","name":"70963d31-10dd-47f6-9bf6-e0475442c2de","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"48836afa-e868-4d53-b8bd-0071b356b79a","name":"48836afa-e868-4d53-b8bd-0071b356b79a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"70963d31-10dd-47f6-9bf6-e0475442c2de","name":"70963d31-10dd-47f6-9bf6-e0475442c2de","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"48836afa-e868-4d53-b8bd-0071b356b79a","name":"48836afa-e868-4d53-b8bd-0071b356b79a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

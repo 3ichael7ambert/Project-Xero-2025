@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprSpraycan_Jetpack",
   "bboxMode":0,
   "bbox_bottom":93,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"a50216c8-edcd-4b09-a17d-f0bb8cb83f28","name":"a50216c8-edcd-4b09-a17d-f0bb8cb83f28","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"a50216c8-edcd-4b09-a17d-f0bb8cb83f28","name":"a50216c8-edcd-4b09-a17d-f0bb8cb83f28","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

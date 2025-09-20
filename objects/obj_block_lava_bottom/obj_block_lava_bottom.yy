@@ -6,8 +6,8 @@
   "name":"obj_block_lava_bottom",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Buildings",
+    "path":"folders/Objects/Buildings.yy",
   },
   "parentObjectId":{
     "name":"obj_block_lava",

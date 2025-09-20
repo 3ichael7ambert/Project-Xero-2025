@@ -1,5 +1,5 @@
 {
-  "$GMSound":"v1",
+  "$GMSound":"",
   "%Name":"snd_box_groundcollision",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,7 +10,6 @@
   "compression":0,
   "conversionMode":0,
   "duration":0.119807,
-  "exportDir":"",
   "name":"snd_box_groundcollision",
   "parent":{
     "name":"SFX",

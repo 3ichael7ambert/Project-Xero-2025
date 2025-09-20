@@ -1,5 +1,5 @@
 {
-  "$GMSound":"v1",
+  "$GMSound":"",
   "%Name":"snd_boss_rocky_hit",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,7 +10,6 @@
   "compression":0,
   "conversionMode":0,
   "duration":0.323503,
-  "exportDir":"",
   "name":"snd_boss_rocky_hit",
   "parent":{
     "name":"SFX",

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprHuman_Head_Eyes",
   "bboxMode":0,
   "bbox_bottom":54,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"64b5832e-ad1e-4687-86b1-1e2a2359ac2b","name":"64b5832e-ad1e-4687-86b1-1e2a2359ac2b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"64b5832e-ad1e-4687-86b1-1e2a2359ac2b","name":"64b5832e-ad1e-4687-86b1-1e2a2359ac2b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

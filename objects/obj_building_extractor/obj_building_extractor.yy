@@ -10,8 +10,8 @@
   "name":"obj_building_extractor",
   "overriddenProperties":[],
   "parent":{
-    "name":"RoomTwo",
-    "path":"folders/Objects/RoomTwo.yy",
+    "name":"Buildings",
+    "path":"folders/Objects/Buildings.yy",
   },
   "parentObjectId":null,
   "persistent":false,

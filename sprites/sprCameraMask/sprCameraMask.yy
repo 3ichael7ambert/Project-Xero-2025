@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprCameraMask",
   "bboxMode":0,
   "bbox_bottom":219,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"22cb3b3f-95af-4a88-bda4-be20f1b2d2c1","name":"22cb3b3f-95af-4a88-bda4-be20f1b2d2c1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"22cb3b3f-95af-4a88-bda4-be20f1b2d2c1","name":"22cb3b3f-95af-4a88-bda4-be20f1b2d2c1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

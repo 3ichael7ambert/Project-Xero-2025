@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprWallJump",
   "bboxMode":0,
   "bbox_bottom":451,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"e72e9adb-7e8e-49a9-b710-b3e6a79dafce","name":"e72e9adb-7e8e-49a9-b710-b3e6a79dafce","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"e72e9adb-7e8e-49a9-b710-b3e6a79dafce","name":"e72e9adb-7e8e-49a9-b710-b3e6a79dafce","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

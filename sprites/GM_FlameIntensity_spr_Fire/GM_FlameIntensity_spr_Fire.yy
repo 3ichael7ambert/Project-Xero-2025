@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"GM_FlameIntensity_spr_Fire",
   "bboxMode":0,
   "bbox_bottom":62,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"99b670f1-db0c-4487-9f47-d3f17e2445bb","name":"99b670f1-db0c-4487-9f47-d3f17e2445bb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"99b670f1-db0c-4487-9f47-d3f17e2445bb","name":"99b670f1-db0c-4487-9f47-d3f17e2445bb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

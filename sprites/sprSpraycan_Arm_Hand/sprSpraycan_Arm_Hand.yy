@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprSpraycan_Arm_Hand",
   "bboxMode":0,
   "bbox_bottom":40,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"fd99ae12-3bee-4ef4-91a6-b131e6c1caac","name":"fd99ae12-3bee-4ef4-91a6-b131e6c1caac","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"fd99ae12-3bee-4ef4-91a6-b131e6c1caac","name":"fd99ae12-3bee-4ef4-91a6-b131e6c1caac","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

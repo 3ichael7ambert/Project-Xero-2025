@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprHeadSanta",
   "bboxMode":0,
   "bbox_bottom":227,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"79d61ba4-5e5c-4f3f-aab8-3515b9ece16a","name":"79d61ba4-5e5c-4f3f-aab8-3515b9ece16a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"79d61ba4-5e5c-4f3f-aab8-3515b9ece16a","name":"79d61ba4-5e5c-4f3f-aab8-3515b9ece16a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

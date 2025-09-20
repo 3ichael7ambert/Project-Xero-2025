@@ -1,1 +1,0 @@
-if !hit phy_speed_y -= .2;

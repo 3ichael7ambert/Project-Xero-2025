@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprHuman_Head_Eyelids",
   "bboxMode":0,
   "bbox_bottom":54,
@@ -12,9 +12,9 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"2eb86cab-d582-4a97-aa62-e24cdf02f485","name":"2eb86cab-d582-4a97-aa62-e24cdf02f485","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"14e73f10-6cc7-443b-a8f1-7593c949f4ea","name":"14e73f10-6cc7-443b-a8f1-7593c949f4ea","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"6b9c2125-01c1-4a23-a3e7-fa4d2f170112","name":"6b9c2125-01c1-4a23-a3e7-fa4d2f170112","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"2eb86cab-d582-4a97-aa62-e24cdf02f485","name":"2eb86cab-d582-4a97-aa62-e24cdf02f485","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"14e73f10-6cc7-443b-a8f1-7593c949f4ea","name":"14e73f10-6cc7-443b-a8f1-7593c949f4ea","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"6b9c2125-01c1-4a23-a3e7-fa4d2f170112","name":"6b9c2125-01c1-4a23-a3e7-fa4d2f170112","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprBirdWingGround",
   "bboxMode":0,
   "bbox_bottom":64,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"3f9b2da8-aaa0-4bfa-9971-094f633e6d3f","name":"3f9b2da8-aaa0-4bfa-9971-094f633e6d3f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"3f9b2da8-aaa0-4bfa-9971-094f633e6d3f","name":"3f9b2da8-aaa0-4bfa-9971-094f633e6d3f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

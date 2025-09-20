@@ -1,5 +1,5 @@
 {
-  "$GMSound":"v1",
+  "$GMSound":"",
   "%Name":"snd_cymbal",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,7 +10,6 @@
   "compression":0,
   "conversionMode":0,
   "duration":2.0,
-  "exportDir":"",
   "name":"snd_cymbal",
   "parent":{
     "name":"gms_drums_pack",

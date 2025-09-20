@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"spr_block_snow_side",
   "bboxMode":0,
   "bbox_bottom":127,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"82be536b-f5b4-42b3-ac6b-e6b7ce3645b2","name":"82be536b-f5b4-42b3-ac6b-e6b7ce3645b2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"82be536b-f5b4-42b3-ac6b-e6b7ce3645b2","name":"82be536b-f5b4-42b3-ac6b-e6b7ce3645b2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -11,8 +11,8 @@
   "name":"objIntersection",
   "overriddenProperties":[],
   "parent":{
-    "name":"RoomTwo",
-    "path":"folders/Objects/RoomTwo.yy",
+    "name":"Buildings",
+    "path":"folders/Objects/Buildings.yy",
   },
   "parentObjectId":{
     "name":"objCityParent_Skyline",

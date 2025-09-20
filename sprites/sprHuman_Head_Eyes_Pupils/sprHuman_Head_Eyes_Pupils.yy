@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprHuman_Head_Eyes_Pupils",
   "bboxMode":0,
   "bbox_bottom":17,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"edf19f7d-9294-4b53-8dc2-beda4e410889","name":"edf19f7d-9294-4b53-8dc2-beda4e410889","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"3aca6837-a01a-446b-aa37-8cd79cd5297f","name":"3aca6837-a01a-446b-aa37-8cd79cd5297f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"edf19f7d-9294-4b53-8dc2-beda4e410889","name":"edf19f7d-9294-4b53-8dc2-beda4e410889","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"3aca6837-a01a-446b-aa37-8cd79cd5297f","name":"3aca6837-a01a-446b-aa37-8cd79cd5297f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

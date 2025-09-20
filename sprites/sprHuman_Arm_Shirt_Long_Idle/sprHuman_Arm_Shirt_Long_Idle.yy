@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"v2",
+  "$GMSprite":"",
   "%Name":"sprHuman_Arm_Shirt_Long_Idle",
   "bboxMode":0,
   "bbox_bottom":42,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"fb47b9b2-7fa7-40e9-97c4-6380372e4f9a","name":"fb47b9b2-7fa7-40e9-97c4-6380372e4f9a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"fb47b9b2-7fa7-40e9-97c4-6380372e4f9a","name":"fb47b9b2-7fa7-40e9-97c4-6380372e4f9a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
