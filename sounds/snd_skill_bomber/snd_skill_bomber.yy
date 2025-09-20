@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_skill_bomber",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":0.337245,
+  "exportDir":"",
   "name":"snd_skill_bomber",
   "parent":{
     "name":"SFX",

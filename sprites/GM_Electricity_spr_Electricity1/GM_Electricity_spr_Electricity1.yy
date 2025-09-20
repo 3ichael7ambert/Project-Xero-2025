@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"GM_Electricity_spr_Electricity1",
   "bboxMode":0,
   "bbox_bottom":124,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"4621866b-07db-41ad-bd0c-b767c6e283f0","name":"4621866b-07db-41ad-bd0c-b767c6e283f0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"4621866b-07db-41ad-bd0c-b767c6e283f0","name":"4621866b-07db-41ad-bd0c-b767c6e283f0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_NeonBike_bike",
   "bboxMode":0,
   "bbox_bottom":117,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"bcdc925a-6e02-440d-a74a-360fb0209aa6","name":"bcdc925a-6e02-440d-a74a-360fb0209aa6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"bcdc925a-6e02-440d-a74a-360fb0209aa6","name":"bcdc925a-6e02-440d-a74a-360fb0209aa6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

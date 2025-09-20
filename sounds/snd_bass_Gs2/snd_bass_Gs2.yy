@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_bass_Gs2",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":5.0,
+  "exportDir":"",
   "name":"snd_bass_Gs2",
   "parent":{
     "name":"gms_bass_pack",

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprHuman_Head",
   "bboxMode":0,
   "bbox_bottom":131,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"55e831e7-efcd-45fa-babb-87382a75f579","name":"55e831e7-efcd-45fa-babb-87382a75f579","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"55e831e7-efcd-45fa-babb-87382a75f579","name":"55e831e7-efcd-45fa-babb-87382a75f579","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

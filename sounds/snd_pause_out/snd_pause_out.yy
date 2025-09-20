@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_pause_out",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":0.265136,
+  "exportDir":"",
   "name":"snd_pause_out",
   "parent":{
     "name":"SFX",

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_Sky_bike",
   "bboxMode":0,
   "bbox_bottom":511,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"835f9e8f-5399-48df-82cd-e2ee38c62a21","name":"835f9e8f-5399-48df-82cd-e2ee38c62a21","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"835f9e8f-5399-48df-82cd-e2ee38c62a21","name":"835f9e8f-5399-48df-82cd-e2ee38c62a21","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

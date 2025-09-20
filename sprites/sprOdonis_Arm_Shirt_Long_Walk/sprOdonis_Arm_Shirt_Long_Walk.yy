@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprOdonis_Arm_Shirt_Long_Walk",
   "bboxMode":0,
   "bbox_bottom":194,
@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"96ef096d-be69-4bd9-ba3a-0be7743572e8","name":"96ef096d-be69-4bd9-ba3a-0be7743572e8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"4d87edd8-d03c-4c5a-bce2-53aa4ca494cd","name":"4d87edd8-d03c-4c5a-bce2-53aa4ca494cd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"9090af72-dc90-49dd-8d64-fa0e7bdb510e","name":"9090af72-dc90-49dd-8d64-fa0e7bdb510e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"96efd6fe-8c1b-438e-b757-0bf450137292","name":"96efd6fe-8c1b-438e-b757-0bf450137292","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"a98a17d9-387c-42f9-8127-9a4ed600ef97","name":"a98a17d9-387c-42f9-8127-9a4ed600ef97","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"c2065a39-eab2-44b1-8275-c3d274b92848","name":"c2065a39-eab2-44b1-8275-c3d274b92848","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"5b27788e-bc21-41fe-a92a-c0fdaaf9a2d8","name":"5b27788e-bc21-41fe-a92a-c0fdaaf9a2d8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"ac427027-1a0a-4142-b92b-8a0d9725f67d","name":"ac427027-1a0a-4142-b92b-8a0d9725f67d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"96ef096d-be69-4bd9-ba3a-0be7743572e8","name":"96ef096d-be69-4bd9-ba3a-0be7743572e8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"4d87edd8-d03c-4c5a-bce2-53aa4ca494cd","name":"4d87edd8-d03c-4c5a-bce2-53aa4ca494cd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"9090af72-dc90-49dd-8d64-fa0e7bdb510e","name":"9090af72-dc90-49dd-8d64-fa0e7bdb510e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"96efd6fe-8c1b-438e-b757-0bf450137292","name":"96efd6fe-8c1b-438e-b757-0bf450137292","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"a98a17d9-387c-42f9-8127-9a4ed600ef97","name":"a98a17d9-387c-42f9-8127-9a4ed600ef97","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c2065a39-eab2-44b1-8275-c3d274b92848","name":"c2065a39-eab2-44b1-8275-c3d274b92848","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5b27788e-bc21-41fe-a92a-c0fdaaf9a2d8","name":"5b27788e-bc21-41fe-a92a-c0fdaaf9a2d8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ac427027-1a0a-4142-b92b-8a0d9725f67d","name":"ac427027-1a0a-4142-b92b-8a0d9725f67d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -77,30 +77,14 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"96ef096d-be69-4bd9-ba3a-0be7743572e8","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"20a041c2-ebb2-43a4-8e03-9bc5638950e9","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4d87edd8-d03c-4c5a-bce2-53aa4ca494cd","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"cbf4bc75-d643-4542-82ef-f11559f50b85","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9090af72-dc90-49dd-8d64-fa0e7bdb510e","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"3bb42bc6-8d0d-492b-9c58-e7d2ac2863f6","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"96efd6fe-8c1b-438e-b757-0bf450137292","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"ef897e19-3cba-46ab-9c4c-d486b6cf42aa","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a98a17d9-387c-42f9-8127-9a4ed600ef97","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"2fea0f92-d963-4a5f-9a3b-eafb407276fc","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c2065a39-eab2-44b1-8275-c3d274b92848","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"7d5dfd86-c296-47bf-9754-c7167de0e052","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5b27788e-bc21-41fe-a92a-c0fdaaf9a2d8","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"d318c5e0-8feb-4774-a823-f4d85c9d5868","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ac427027-1a0a-4142-b92b-8a0d9725f67d","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"781061a5-8837-4baf-8edc-5ab6c5c0dcff","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"96ef096d-be69-4bd9-ba3a-0be7743572e8","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"20a041c2-ebb2-43a4-8e03-9bc5638950e9","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"4d87edd8-d03c-4c5a-bce2-53aa4ca494cd","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"cbf4bc75-d643-4542-82ef-f11559f50b85","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"9090af72-dc90-49dd-8d64-fa0e7bdb510e","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"3bb42bc6-8d0d-492b-9c58-e7d2ac2863f6","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"96efd6fe-8c1b-438e-b757-0bf450137292","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"ef897e19-3cba-46ab-9c4c-d486b6cf42aa","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"a98a17d9-387c-42f9-8127-9a4ed600ef97","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"2fea0f92-d963-4a5f-9a3b-eafb407276fc","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"c2065a39-eab2-44b1-8275-c3d274b92848","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"7d5dfd86-c296-47bf-9754-c7167de0e052","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"5b27788e-bc21-41fe-a92a-c0fdaaf9a2d8","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"d318c5e0-8feb-4774-a823-f4d85c9d5868","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"ac427027-1a0a-4142-b92b-8a0d9725f67d","path":"sprites/sprOdonis_Arm_Shirt_Long_Walk/sprOdonis_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"781061a5-8837-4baf-8edc-5ab6c5c0dcff","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

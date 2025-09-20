@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprHuman_Shirt",
   "bboxMode":0,
   "bbox_bottom":109,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"d04523d8-adf0-43fc-a771-e826692f5a92","name":"d04523d8-adf0-43fc-a771-e826692f5a92","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"2afefdd6-4c3a-4de0-b370-426459ef6295","name":"2afefdd6-4c3a-4de0-b370-426459ef6295","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d04523d8-adf0-43fc-a771-e826692f5a92","name":"d04523d8-adf0-43fc-a771-e826692f5a92","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"2afefdd6-4c3a-4de0-b370-426459ef6295","name":"2afefdd6-4c3a-4de0-b370-426459ef6295","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

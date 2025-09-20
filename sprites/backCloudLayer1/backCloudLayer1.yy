@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"backCloudLayer1",
   "bboxMode":0,
   "bbox_bottom":660,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"07864be9-c704-497e-b366-7573aa03fc5a","name":"07864be9-c704-497e-b366-7573aa03fc5a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"07864be9-c704-497e-b366-7573aa03fc5a","name":"07864be9-c704-497e-b366-7573aa03fc5a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprArmLegWalljump",
   "bboxMode":0,
   "bbox_bottom":263,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"d3800898-584c-405c-b351-ba6a33ed8cc4","name":"d3800898-584c-405c-b351-ba6a33ed8cc4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d3800898-584c-405c-b351-ba6a33ed8cc4","name":"d3800898-584c-405c-b351-ba6a33ed8cc4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

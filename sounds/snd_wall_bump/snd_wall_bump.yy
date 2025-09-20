@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_wall_bump",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":0.183957,
+  "exportDir":"",
   "name":"snd_wall_bump",
   "parent":{
     "name":"SFX",

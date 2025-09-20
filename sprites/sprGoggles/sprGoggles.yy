@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprGoggles",
   "bboxMode":0,
   "bbox_bottom":45,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"1f810546-73de-458c-a35d-c50e83c2a1c2","name":"1f810546-73de-458c-a35d-c50e83c2a1c2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"1f810546-73de-458c-a35d-c50e83c2a1c2","name":"1f810546-73de-458c-a35d-c50e83c2a1c2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

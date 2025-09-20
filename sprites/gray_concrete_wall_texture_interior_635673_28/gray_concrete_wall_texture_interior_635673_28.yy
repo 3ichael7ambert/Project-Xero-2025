@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"gray_concrete_wall_texture_interior_635673_28",
   "bboxMode":0,
   "bbox_bottom":416,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"abe34d93-6e95-45df-8b99-c3cd35aae474","name":"abe34d93-6e95-45df-8b99-c3cd35aae474","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"abe34d93-6e95-45df-8b99-c3cd35aae474","name":"abe34d93-6e95-45df-8b99-c3cd35aae474","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

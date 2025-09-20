@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprHead_Eyes_Accent",
   "bboxMode":0,
   "bbox_bottom":97,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"56e702db-68b7-4df8-b3b2-2394ca3cb949","name":"56e702db-68b7-4df8-b3b2-2394ca3cb949","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"56e702db-68b7-4df8-b3b2-2394ca3cb949","name":"56e702db-68b7-4df8-b3b2-2394ca3cb949","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

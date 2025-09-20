@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"pt_fireball",
   "bboxMode":0,
   "bbox_bottom":94,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c34bf959-7f9b-4eab-b389-1459b6d750f8","name":"c34bf959-7f9b-4eab-b389-1459b6d750f8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c34bf959-7f9b-4eab-b389-1459b6d750f8","name":"c34bf959-7f9b-4eab-b389-1459b6d750f8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

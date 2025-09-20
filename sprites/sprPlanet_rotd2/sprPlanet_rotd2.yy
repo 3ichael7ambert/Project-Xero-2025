@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprPlanet_rotd2",
   "bboxMode":0,
   "bbox_bottom":109,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"db5ffaa4-7142-4697-ac29-4a6295dc431d","name":"db5ffaa4-7142-4697-ac29-4a6295dc431d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"db5ffaa4-7142-4697-ac29-4a6295dc431d","name":"db5ffaa4-7142-4697-ac29-4a6295dc431d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprHouseRoof",
   "bboxMode":0,
   "bbox_bottom":127,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"938a0559-443e-4437-98dd-770121799d01","name":"938a0559-443e-4437-98dd-770121799d01","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"938a0559-443e-4437-98dd-770121799d01","name":"938a0559-443e-4437-98dd-770121799d01","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

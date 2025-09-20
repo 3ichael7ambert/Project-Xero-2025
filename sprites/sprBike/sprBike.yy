@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprBike",
   "bboxMode":0,
   "bbox_bottom":82,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"6264a471-7de1-4b29-8327-bd9d2dfcbf88","name":"6264a471-7de1-4b29-8327-bd9d2dfcbf88","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6264a471-7de1-4b29-8327-bd9d2dfcbf88","name":"6264a471-7de1-4b29-8327-bd9d2dfcbf88","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

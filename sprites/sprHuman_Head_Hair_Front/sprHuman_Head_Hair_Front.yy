@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprHuman_Head_Hair_Front",
   "bboxMode":0,
   "bbox_bottom":270,
@@ -12,10 +12,10 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"7ae0881f-d694-4470-b2f2-61488333e039","name":"7ae0881f-d694-4470-b2f2-61488333e039","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"07fc8f7a-70dc-4694-b6dc-42842a58eb86","name":"07fc8f7a-70dc-4694-b6dc-42842a58eb86","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"fafacab8-ff1c-4278-b07b-579dc3c705ff","name":"fafacab8-ff1c-4278-b07b-579dc3c705ff","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"dd7a7a44-d570-4967-a1fb-f6b8d24c74c9","name":"dd7a7a44-d570-4967-a1fb-f6b8d24c74c9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"7ae0881f-d694-4470-b2f2-61488333e039","name":"7ae0881f-d694-4470-b2f2-61488333e039","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"07fc8f7a-70dc-4694-b6dc-42842a58eb86","name":"07fc8f7a-70dc-4694-b6dc-42842a58eb86","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"fafacab8-ff1c-4278-b07b-579dc3c705ff","name":"fafacab8-ff1c-4278-b07b-579dc3c705ff","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"dd7a7a44-d570-4967-a1fb-f6b8d24c74c9","name":"dd7a7a44-d570-4967-a1fb-f6b8d24c74c9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

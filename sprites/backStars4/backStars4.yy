@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"backStars4",
   "bboxMode":0,
   "bbox_bottom":446,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"8f8a2f9f-1fd2-4a0f-ae3b-97fd158289ff","name":"8f8a2f9f-1fd2-4a0f-ae3b-97fd158289ff","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8f8a2f9f-1fd2-4a0f-ae3b-97fd158289ff","name":"8f8a2f9f-1fd2-4a0f-ae3b-97fd158289ff","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

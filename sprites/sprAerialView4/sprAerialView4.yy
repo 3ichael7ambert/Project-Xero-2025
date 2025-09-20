@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprAerialView4",
   "bboxMode":0,
   "bbox_bottom":1859,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"523a490b-c9d6-4516-bd54-5d2fd3e9a702","name":"523a490b-c9d6-4516-bd54-5d2fd3e9a702","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"523a490b-c9d6-4516-bd54-5d2fd3e9a702","name":"523a490b-c9d6-4516-bd54-5d2fd3e9a702","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

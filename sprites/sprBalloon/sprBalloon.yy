@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprBalloon",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"e9e90b73-55c7-489e-87a2-51ed08f4e6c7","name":"e9e90b73-55c7-489e-87a2-51ed08f4e6c7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e9e90b73-55c7-489e-87a2-51ed08f4e6c7","name":"e9e90b73-55c7-489e-87a2-51ed08f4e6c7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"Kaiju",
+    "path":"folders/Kaiju.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

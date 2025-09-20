@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"suelo_arena",
   "bboxMode":0,
   "bbox_bottom":249,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c8585882-5ea7-4ca2-ae33-463887a607c2","name":"c8585882-5ea7-4ca2-ae33-463887a607c2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c8585882-5ea7-4ca2-ae33-463887a607c2","name":"c8585882-5ea7-4ca2-ae33-463887a607c2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

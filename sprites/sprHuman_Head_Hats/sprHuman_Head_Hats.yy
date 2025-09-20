@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprHuman_Head_Hats",
   "bboxMode":0,
   "bbox_bottom":166,
@@ -12,9 +12,9 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"733e3519-edc2-486d-b063-0e0e58c850a4","name":"733e3519-edc2-486d-b063-0e0e58c850a4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"4c7ddde4-651c-4e00-8f82-ef04d73d7296","name":"4c7ddde4-651c-4e00-8f82-ef04d73d7296","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"08fb8c5d-6290-4e01-9641-09cdd714b150","name":"08fb8c5d-6290-4e01-9641-09cdd714b150","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"733e3519-edc2-486d-b063-0e0e58c850a4","name":"733e3519-edc2-486d-b063-0e0e58c850a4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"4c7ddde4-651c-4e00-8f82-ef04d73d7296","name":"4c7ddde4-651c-4e00-8f82-ef04d73d7296","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"08fb8c5d-6290-4e01-9641-09cdd714b150","name":"08fb8c5d-6290-4e01-9641-09cdd714b150","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -72,15 +72,9 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"733e3519-edc2-486d-b063-0e0e58c850a4","path":"sprites/sprHuman_Head_Hats/sprHuman_Head_Hats.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"ea121a2c-9123-4983-8977-2b5b9ce20fdb","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4c7ddde4-651c-4e00-8f82-ef04d73d7296","path":"sprites/sprHuman_Head_Hats/sprHuman_Head_Hats.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"f94d5efa-4e43-4c01-890d-6639108fbb0b","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"08fb8c5d-6290-4e01-9641-09cdd714b150","path":"sprites/sprHuman_Head_Hats/sprHuman_Head_Hats.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"195dd8b5-9e0d-41fd-bf03-500999df2ae2","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"733e3519-edc2-486d-b063-0e0e58c850a4","path":"sprites/sprHuman_Head_Hats/sprHuman_Head_Hats.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"ea121a2c-9123-4983-8977-2b5b9ce20fdb","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"4c7ddde4-651c-4e00-8f82-ef04d73d7296","path":"sprites/sprHuman_Head_Hats/sprHuman_Head_Hats.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"f94d5efa-4e43-4c01-890d-6639108fbb0b","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"08fb8c5d-6290-4e01-9641-09cdd714b150","path":"sprites/sprHuman_Head_Hats/sprHuman_Head_Hats.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"195dd8b5-9e0d-41fd-bf03-500999df2ae2","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprGrenadeLauncher",
   "bboxMode":0,
   "bbox_bottom":76,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"ff96ad70-37a4-410f-bc89-210f52b012e6","name":"ff96ad70-37a4-410f-bc89-210f52b012e6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ff96ad70-37a4-410f-bc89-210f52b012e6","name":"ff96ad70-37a4-410f-bc89-210f52b012e6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

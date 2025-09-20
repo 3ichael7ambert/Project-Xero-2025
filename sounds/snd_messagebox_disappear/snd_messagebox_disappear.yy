@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_messagebox_disappear",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":1.258265,
+  "exportDir":"",
   "name":"snd_messagebox_disappear",
   "parent":{
     "name":"SFX",

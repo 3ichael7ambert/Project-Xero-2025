@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprHuman_Leg_Idle",
   "bboxMode":0,
   "bbox_bottom":194,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"365064dd-ce10-4208-9b06-8b0a82ca7480","name":"365064dd-ce10-4208-9b06-8b0a82ca7480","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"365064dd-ce10-4208-9b06-8b0a82ca7480","name":"365064dd-ce10-4208-9b06-8b0a82ca7480","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_arrow_l",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":0.012494331,
+  "exportDir":"",
   "name":"snd_arrow_l",
   "parent":{
     "name":"Sounds",

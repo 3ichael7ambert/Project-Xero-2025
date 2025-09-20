@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprAlien_Head_Eyes",
   "bboxMode":0,
   "bbox_bottom":104,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"fb14721a-badf-45cb-93fc-90a4d6ceddf2","name":"fb14721a-badf-45cb-93fc-90a4d6ceddf2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"fb14721a-badf-45cb-93fc-90a4d6ceddf2","name":"fb14721a-badf-45cb-93fc-90a4d6ceddf2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

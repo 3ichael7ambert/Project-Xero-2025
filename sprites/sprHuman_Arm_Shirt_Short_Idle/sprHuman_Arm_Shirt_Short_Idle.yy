@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprHuman_Arm_Shirt_Short_Idle",
   "bboxMode":0,
   "bbox_bottom":44,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"bb99bcb0-2398-49b7-9166-7225d2412964","name":"bb99bcb0-2398-49b7-9166-7225d2412964","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"bb99bcb0-2398-49b7-9166-7225d2412964","name":"bb99bcb0-2398-49b7-9166-7225d2412964","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
