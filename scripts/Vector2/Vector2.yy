@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"Vector2",
   "parent":{
-    "name":"DEMO",
-    "path":"folders/DEMO.yy",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

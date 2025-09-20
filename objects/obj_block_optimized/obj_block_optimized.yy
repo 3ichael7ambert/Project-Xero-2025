@@ -33,10 +33,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_block_top",
-    "path":"sprites/spr_block_top/spr_block_top.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }
