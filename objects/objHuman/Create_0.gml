@@ -18,7 +18,8 @@ jp_idle_drift = 0.75; // small wander speed when no target
  //odonis=choose(true,false);
  hero=false;
  
-  race=choose("human","alien","odonis","spraycan");
+  //race=choose("human","alien","odonis","spraycan","skeleton","zombie");
+  race=choose("human","alien","skeleton","zombie");
 //race=choose("odonis","spraycan");
  species=race;
  
@@ -150,11 +151,18 @@ image_yscale=scale;
  
  if (race=="alien") {
 	 eye_color_bg = eye_color;
+ } else if (race=="zombie") {
+	var h = irandom_range(45, 65);          // hue ~orange/brown range
+	var s = irandom_range(128, 210);          // saturation (pale to deep tones)
+	var v = irandom_range(192, 255);         // brightness (light to dark)
+	eye_color_bg = make_color_hsv(h, s, v);
  } else {
 	 eye_color_bg = c_white;
  }
  
-  if (race=="human") {
+ 
+ 
+ if (race=="human") {
 	// Hue around orange (15–35), low saturation for lighter skin, higher for darker
 	var h = irandom_range(15, 35);          // hue ~orange/brown range
 	var s = irandom_range(20, 80);          // saturation (pale to deep tones)
@@ -166,6 +174,18 @@ image_yscale=scale;
 		 skin_color=make_color_hsv(irandom(255),255,255);
  } else if (race=="odonis") {
 		 skin_color=c_yellow;
+ } else if (race=="skeleton") {
+		 var h = irandom_range(25, 75);          // hue ~orange/brown range
+		var s = irandom_range(0, 80);          // saturation (pale to deep tones)
+		var v = irandom_range(200, 255);         // brightness (light to dark)
+
+		skin_color = make_color_hsv(h, s, v);
+ } else if (race=="zombie") {
+		var h = irandom_range(15, 135);          // hue ~orange/brown range
+		var s = irandom_range(128, 192);          // saturation (pale to deep tones)
+		var v = irandom_range(510, 255);         // brightness (light to dark)
+
+		skin_color = make_color_hsv(h, s, v);
  }
 	 else {
 	 
@@ -189,6 +209,8 @@ image_yscale=scale;
 		sunglasses=choose(true,false);
 	}
 	
+	
+	
 gender=choose("male","female");
 
 if (shirtless>15) {
@@ -197,6 +219,17 @@ if (shirtless>15) {
 	shirt_style=choose("long","short","none");
 }
 
+if (race=="human" && gender="male") {
+facial_chance = random(100);
+
+	if (facial_chance<15) {
+		facial_hair=false;
+	} else {
+		facial_hair=choose(true,false);
+	}
+} else {
+		facial_hair=false;
+}
 
 	
 
@@ -226,6 +259,10 @@ if ((hair_style=="short") || (hair_style=="long")) && (hat_chance<15) {
 
 }
 
+
+if (race=="zombie") {	
+	hair_style=choose("long","short","bald","braids","long2","short2","brain");
+}
 // Reset Styles
 if (race="odonis" || race=="spraycan") {
 	hat_style="none";
@@ -252,12 +289,19 @@ img_idx_shirt_sleeves=image_index;
  img_idx_shoes=image_index;
  img_idx_head=0;
  img_idx_nose=0;
- img_idx_eyes=0;
+ 
+ if (race=="zombie") {
+	img_idx_eyes=irandom_range(0,3);
+ } else {
+	 img_idx_eyes=0;
+ }
  img_idx_eyelids=0;
  img_idx_eyebrows=0;
  img_idx_nose=0;
  img_idx_hair=0;
  img_idx_mouth=0;
+ 
+ img_idx_facial= irandom_range(0,6);
  
   arm_dir=270;
   armB_dir=270;
@@ -404,6 +448,9 @@ spr_sunglasses = sprHuman_eyes_sunglasses;
 spr_hair_front = sprHuman_Head_Hair_Front;
 spr_hair_back = sprHuman_Head_Hair_Back;
 
+spr_facial_hair = sprHuman_Head_Facial;
+
+
 spr_hat = sprHuman_Head_Hats;
 
 
@@ -467,6 +514,8 @@ spr_sunglasses = sprHuman_eyes_sunglasses;
 spr_hair_front = sprBlank; ///
 spr_hair_back = sprBlank; ///
 
+spr_facial_hair = sprHuman_Head_Facial;
+
 spr_hat = sprAlien_Head_Hats; ///
 
 
@@ -529,6 +578,9 @@ spr_eyebrows = sprBlank;///
 spr_sunglasses = sprHuman_eyes_sunglasses;
 spr_hair_front = sprOdonis_Head_Hair_Back; ///
 spr_hair_back = sprOdonis_Head_Hair_Back; ///
+
+spr_facial_hair = sprHuman_Head_Facial;
+
 spr_hat = sprBlank; ///
 
 
@@ -579,6 +631,8 @@ spr_sunglasses = sprBlank;
 spr_hair_front = sprBlank; ///
 spr_hair_back = sprBlank; ///
 
+spr_facial_hair = sprHuman_Head_Facial;
+
 spr_hat = sprBlank; ///
 
 spr_jetpack = sprSpraycan_Jetpack;
@@ -608,6 +662,137 @@ if dir="right" {
 }
 
 
+
+if (race=="skeleton") {
+//arm
+spr_walk_arms_skin = sprSkeleton_Arm_Walk_Arms;
+spr_idle_arms_skin = sprSkeleton_Arm_Idle_Arms;
+
+spr_walk_arms_shirt = sprBlank;
+spr_idle_arms_shirt = sprBlank;
+
+if (shirt_style=="short") {
+	spr_walk_arms_shirt = sprHuman_Arm_Shirt_Short_Walk;
+	spr_idle_arms_shirt = sprHuman_Arm_Shirt_Short_Idle;
+} 
+if (shirt_style=="long") {
+	spr_walk_arms_shirt = sprHuman_Arm_Shirt_Long_Walk;
+	spr_idle_arms_shirt = sprHuman_Arm_Shirt_Long_Idle;
+}
+spr_walk_arms_hand = sprSkeleton_Arm_Walk_Hand;
+spr_idle_arms_hand = sprSkeleton_Arm_Idle_Hand;
+//leg
+spr_walk_legs_skin = sprSkeleton_Leg_Walk;
+spr_walk_legs_pants = sprBlank;
+spr_idle_legs_pants = sprBlank;
+
+
+if (pants_style=="shorts") {
+	spr_walk_legs_pants = sprHuman_Pants_Walk_Shorts;
+	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
+}
+if (pants_style=="long") {
+	spr_walk_legs_pants = sprHuman_Pants_Walk_Pants;
+	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
+} 
+spr_walk_legs_feet = sprSkeleton_Pants_Walk_Feet;
+spr_idle_legs_feet = sprSkeleton_Pants_Idle_Feet;
+spr_walk_legs_skin = sprSkeleton_Leg_Walk;
+spr_idle_legs_skin = sprSkeleton_Leg_Idle;
+
+spr_walk_legs_shoes = sprHuman_Pants_Walk_Shoes;
+spr_idle_legs_shoes = sprHuman_Pants_Idle_Shoes;
+spr_body = sprSkeleton_Body;
+spr_shirt = sprHuman_Shirt;
+spr_skirt = sprHuman_Pants_Walk_Skirt;
+spr_skirt_idle = sprHuman_Pants_Idle_Skirt;
+
+spr_head = sprSkeleton_Head;
+spr_eyes = sprBlank;
+spr_eyes_pupils = sprBlank;
+spr_eye_eyelids = sprBlank;
+spr_mouth = sprBlank;
+spr_eyebrows = sprBlank;
+spr_sunglasses = sprHuman_eyes_sunglasses;
+spr_hair_front = sprBlank;
+spr_hair_back = sprBlank;
+
+spr_facial_hair = sprBlank;
+
+
+spr_hat = sprHuman_Head_Hats;
+
+
+spr_jetpack = sprSpraycan_Jetpack;
+
+spr_scarf = sprBlank;
+}
+
+
+if (race=="zombie") {
+//arm
+spr_walk_arms_skin = sprZombie_Arm_Walk_Arms;
+spr_idle_arms_skin = sprZombie_Arm_Idle_Arms;
+
+spr_walk_arms_shirt = sprBlank;
+spr_idle_arms_shirt = sprBlank;
+
+if (shirt_style=="short") {
+	spr_walk_arms_shirt = sprHuman_Arm_Shirt_Short_Walk;
+	spr_idle_arms_shirt = sprHuman_Arm_Shirt_Short_Idle;
+} 
+if (shirt_style=="long") {
+	spr_walk_arms_shirt = sprHuman_Arm_Shirt_Long_Walk;
+	spr_idle_arms_shirt = sprHuman_Arm_Shirt_Long_Idle;
+}
+spr_walk_arms_hand = sprZombie_Arm_Walk_Hand;
+spr_idle_arms_hand = sprZombie_Arm_Idle_Hand;
+//leg
+spr_walk_legs_skin = sprZombie_Leg_Walk;
+
+spr_walk_legs_pants = sprBlank;
+spr_idle_legs_pants = sprBlank;
+if (pants_style=="shorts") {
+	spr_walk_legs_pants = sprHuman_Pants_Walk_Shorts;
+	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
+}
+if (pants_style=="long") {
+	spr_walk_legs_pants = sprHuman_Pants_Walk_Pants;
+	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
+} 
+
+spr_walk_legs_feet = sprZombie_Pants_Walk_Feet;
+spr_idle_legs_feet = sprZombie_Pants_Idle_Feet;
+spr_walk_legs_skin = sprZombie_Leg_Walk;
+spr_idle_legs_skin = sprZombie_Leg_Idle;
+
+spr_walk_legs_shoes = sprHuman_Pants_Walk_Shoes;
+spr_idle_legs_shoes = sprHuman_Pants_Idle_Shoes;
+spr_body = sprZombie_Body;
+spr_shirt = sprHuman_Shirt;
+spr_skirt = sprHuman_Pants_Walk_Skirt;
+spr_skirt_idle = sprHuman_Pants_Idle_Skirt;
+
+spr_head = sprZombie_Head;
+spr_eyes = sprZombie_Head_Eyes;
+spr_eyes_pupils = sprZombie_Head_Eyes_Pupils;
+spr_eye_eyelids = sprZombie_Head_Eyelids;
+spr_mouth = sprHuman_Head_Mouths;
+spr_eyebrows = sprHuman_Head_Eyebrows;
+spr_sunglasses = sprHuman_eyes_sunglasses;
+spr_hair_front = sprZombie_Head_Hair_Front;
+spr_hair_back = sprZombie_Head_Hair_Back;
+
+spr_facial_hair = sprHuman_Head_Facial;
+
+
+spr_hat = sprHuman_Head_Hats;
+
+
+spr_jetpack = sprSpraycan_Jetpack;
+
+spr_scarf = sprBlank;
+}
 
 
 

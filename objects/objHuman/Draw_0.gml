@@ -57,9 +57,9 @@ switch (state) {
 		}
 		if (state=="idle") {
 			//back arm
-			draw_sprite_ext(spr_walk_arms_skin,0,arm_back_x,arm_back_y,image_xscale,image_yscale,arm_img_angle,skin_color,1);
-			draw_sprite_ext(spr_walk_arms_shirt,0,arm_back_x,arm_back_y,image_xscale,image_yscale,0, shirt_color,1);
-			draw_sprite_ext(spr_walk_arms_hand,0,arm_back_x,arm_back_y,image_xscale,image_yscale,0,skin_color,1);
+			draw_sprite_ext(spr_idle_arms_skin,0,arm_back_x,arm_back_y,image_xscale,image_yscale,arm_img_angle,skin_color,1);
+			draw_sprite_ext(spr_idle_arms_shirt,0,arm_back_x,arm_back_y,image_xscale,image_yscale,0, shirt_color,1);
+			draw_sprite_ext(spr_idle_arms_hand,0,arm_back_x,arm_back_y,image_xscale,image_yscale,0,skin_color,1);
 			//backleg
 			draw_sprite_ext(spr_walk_legs_feet,0,foot_back_x,foot_back_y,image_xscale,image_yscale,0,skin_color,1);
 			draw_sprite_ext(spr_walk_legs_skin,0,leg_back_x,leg_back_y,image_xscale,image_yscale,0,skin_color,1);
@@ -169,19 +169,40 @@ switch (state) {
 		
 		draw_sprite_ext(spr_head,img_idx_head,head_x,head_y,image_xscale,image_yscale,0,skin_color,1);
         draw_sprite_ext(spr_eyes,img_idx_eyes,eyes_x,eyes_y,image_xscale,image_yscale,0,eye_color_bg,1);
-        draw_sprite_ext(spr_eyes_pupils,1,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,eye_color,1);
-		draw_sprite_ext(spr_eyes_pupils,0,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,c_white,1);
+		
+        draw_sprite_ext(spr_eyes_pupils,1+img_idx_eyes,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,eye_color,1);
+		draw_sprite_ext(spr_eyes_pupils,0+img_idx_eyes,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,c_white,1);
         
-		switch (eyes_mood) {
-			case "calm": 
-				draw_sprite_ext(spr_eye_eyelids,0,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color_eyelids,1);
-				break;
-			case "panic": 
-				//draw_sprite_ext(sprHuman_Head_Eyelids,img_idx_eyelids,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
-				break;
-			case "blink":
-				draw_sprite_ext(spr_eye_eyelids,1,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color_eyelids,1);
-				break;
+	//	if (race=="zombie") {
+			switch (eyes_mood) {
+				case "calm": 
+					draw_sprite_ext(spr_eye_eyelids,0+img_idx_eyes,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color_eyelids,1);
+					break;
+				case "panic": 
+					//draw_sprite_ext(sprHuman_Head_Eyelids,img_idx_eyelids,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
+					break;
+				case "blink":
+					draw_sprite_ext(spr_eye_eyelids,1+img_idx_eyes,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color_eyelids,1);
+					break;
+			}
+		/*
+		} else {
+			switch (eyes_mood) {
+				case "calm": 
+					draw_sprite_ext(spr_eye_eyelids,0,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color_eyelids,1);
+					break;
+				case "panic": 
+					//draw_sprite_ext(sprHuman_Head_Eyelids,img_idx_eyelids,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
+					break;
+				case "blink":
+					draw_sprite_ext(spr_eye_eyelids,1,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color_eyelids,1);
+					break;
+		}
+		*/
+		
+		if (facial_hair) {
+			draw_sprite_ext(spr_facial_hair,img_idx_facial,head_x,head_y,image_xscale,image_yscale,0,hair_color_2,1);
+       
 		}
 		
 		switch (mouth_mood) {
@@ -227,6 +248,10 @@ switch (state) {
 			case "short2": 
 				draw_sprite_ext(spr_hair_back,2,hair_x,hair_y,image_xscale,image_yscale,0,hair_color,1);
 				draw_sprite_ext(spr_hair_front,2,hair_x,hair_y,image_xscale,image_yscale,0,hair_color_2,1);
+				break;
+			case "brain": 
+				draw_sprite_ext(spr_hair_back,4,hair_x,hair_y,image_xscale,image_yscale,0,c_white,1);
+				draw_sprite_ext(spr_hair_front,4,hair_x,hair_y,image_xscale,image_yscale,0,c_white,1);
 				break;
 	}
 	
