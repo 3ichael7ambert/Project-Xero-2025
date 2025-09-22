@@ -6,7 +6,8 @@ if (is_root) exit;
 // -------------------------------------------------
 // Generic part drawing (mech & dragon segments/head)
 // -------------------------------------------------
-
+image_xscale=scale;
+image_yscale=scale;
 // Basic sprite
 if (sprite_index >= 0) {
     draw_sprite_ext(

@@ -58,8 +58,8 @@ switch (state) {
 		if (state=="idle") {
 			//back arm
 			draw_sprite_ext(spr_idle_arms_skin,0,arm_back_x,arm_back_y,image_xscale,image_yscale,arm_img_angle,skin_color,1);
-			draw_sprite_ext(spr_idle_arms_shirt,0,arm_back_x,arm_back_y,image_xscale,image_yscale,0, shirt_color,1);
-			draw_sprite_ext(spr_idle_arms_hand,0,arm_back_x,arm_back_y,image_xscale,image_yscale,0,skin_color,1);
+			draw_sprite_ext(spr_idle_arms_shirt,0,arm_back_x,arm_back_y,image_xscale,image_yscale,arm_img_angle, shirt_color,1);
+			draw_sprite_ext(spr_idle_arms_hand,0,arm_back_x,arm_back_y,image_xscale,image_yscale,arm_img_angle,skin_color,1);
 			//backleg
 			draw_sprite_ext(spr_walk_legs_feet,0,foot_back_x,foot_back_y,image_xscale,image_yscale,0,skin_color,1);
 			draw_sprite_ext(spr_walk_legs_skin,0,leg_back_x,leg_back_y,image_xscale,image_yscale,0,skin_color,1);

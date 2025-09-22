@@ -18,6 +18,7 @@ function _ang_move_to(cur, target, maxstep) {
 }
 
 
+scale = 1;
 target=noone;
 
 // ---------- FACTORY GATE (FIRST!) ----------
@@ -53,7 +54,8 @@ var root_id = id;
 if (kaiju_mode == "mech") {
     var bp = [
         ["core",   KaijuRole.CORE,       sprMech_Core,    3000, 4, "",       0,   0,   0,  true,  true ],
-        ["head",   KaijuRole.HEAD,       sprMech_Head,    1200, 2, "core",   0,  -56,  0,  true,  true ],
+        ["head",   KaijuRole.HEAD,       sprMech_Head,    1200, 2, "core",   0,  -800,  0,  true,  true ]
+		/*,
         ["torsoU", KaijuRole.TORSO_U,    sprMech_TorsoU,  1800, 3, "core",   0,  -16,  0,  true,  false],
         ["torsoL", KaijuRole.TORSO_L,    sprMech_TorsoL,  2000, 5, "core",   0,   16,  0,  true,  false],
         ["armU_L", KaijuRole.ARM_U_L,    sprMech_ArmU,    1100, 2, "torsoU",-42,  -8, -8,  true,  true ],
@@ -70,6 +72,7 @@ if (kaiju_mode == "mech") {
         ["footR",  KaijuRole.FOOT_R,     sprMech_Foot,     900, 1, "calfR",   0,  16,  0,  true,  true ],
         ["wingL",  KaijuRole.WING_L,     sprMech_Wing,    1000, 1, "torsoU",-36, -20, -4,  true,  false],
         ["wingR",  KaijuRole.WING_R,     sprMech_Wing,    1000, 1, "torsoU", 36, -20,  4,  true,  false]
+		*/
     ];
 
     global.__kaiju_spawn_depth++;
