@@ -21,6 +21,34 @@ if (sprite_index >= 0) {
     );
 }
 
+/*
+/// objKaiju : Draw
+if (is_root) {
+    // Example mech order: back parts first → core → front parts
+    var order = [
+        "wingL", "wingR",
+        "thighL", "calfL", "footL",
+        "thighR", "calfR", "footR",
+        "torsoL", "torsoU",
+        "armU_L", "armL_L", "handL",
+        "armU_R", "armL_R", "handR",
+        "head"
+    ];
+
+    for (var i = 0; i < array_length(order); i++) {
+        var nm = order[i];
+        if (ds_map_exists(parts_by_name, nm)) {
+            var prt = parts_by_name[? nm];
+            if (instance_exists(prt)) with (prt) {
+                if (sprite_index >= 0) {
+                    draw_sprite_ext(sprite_index, 0, x, y, 1, 1, image_angle, c_white, 1);
+                }
+            }
+        }
+    }
+}
+
+
 // -------------------------------------------------
 // Optional: hit flash when damaged
 // -------------------------------------------------

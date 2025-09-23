@@ -51,26 +51,44 @@ var root_id = id;
 // ===========================
 // MECH SPAWN
 // ===========================
+// name, role, sprite, hp, armor, parent_name,  lx,   ly,  lang, followAng, required
+/*
+//lx, ly = the part’s local position relative to its parent’s origin (in pixels).
+These are rotated by the parent’s image_angle in the Step “bone follow” code.
+lang = the part’s local rotation (degrees) added after the parent’s rotation.
+parent_name = which part this part attaches to (must match a name in the same array).
+follow_parent_ang = if true, the child inherits the parent’s angle (then adds lang).
+*/
+
+//["name", role, sprite, hp, armor, parent_name, lx, ly, lang, followAng, required, depth]
+
 if (kaiju_mode == "mech") {
     var bp = [
-        ["core",   KaijuRole.CORE,       sprMech_Core,    3000, 4, "",       0,   0,   0,  true,  true ],
-        ["head",   KaijuRole.HEAD,       sprMech_Head,    1200, 2, "core",   0,  -800,  0,  true,  true ]
-		/*,
-        ["torsoU", KaijuRole.TORSO_U,    sprMech_TorsoU,  1800, 3, "core",   0,  -16,  0,  true,  false],
-        ["torsoL", KaijuRole.TORSO_L,    sprMech_TorsoL,  2000, 5, "core",   0,   16,  0,  true,  false],
-        ["armU_L", KaijuRole.ARM_U_L,    sprMech_ArmU,    1100, 2, "torsoU",-42,  -8, -8,  true,  true ],
-        ["armL_L", KaijuRole.ARM_L_L,    sprMech_ArmL,     900, 1, "armU_L",-24,   8, 12,  true,  true ],
-        ["handL",  KaijuRole.HAND_L,     sprMech_Hand,     700, 1, "armL_L",-18,  12, 30,  true,  true ],
-        ["armU_R", KaijuRole.ARM_U_R,    sprMech_ArmU,    1100, 2, "torsoU", 42,  -8,  8,  true,  true ],
-        ["armL_R", KaijuRole.ARM_L_R,    sprMech_ArmL,     900, 1, "armU_R", 24,   8,-12,  true,  true ],
-        ["handR",  KaijuRole.HAND_R,     sprMech_Hand,     700, 1, "armL_R", 18,  12,-30,  true,  true ],
-        ["thighL", KaijuRole.THIGH_L,    sprMech_Thigh,   1300, 2, "torsoL",-18,  16,  0,  true,  true ],
-        ["calfL",  KaijuRole.CALF_L,     sprMech_Calf,    1100, 2, "thighL",  0,  20,  0,  true,  true ],
-        ["footL",  KaijuRole.FOOT_L,     sprMech_Foot,     900, 1, "calfL",   0,  16,  0,  true,  true ],
-        ["thighR", KaijuRole.THIGH_R,    sprMech_Thigh,   1300, 2, "torsoL", 18,  16,  0,  true,  true ],
-        ["calfR",  KaijuRole.CALF_R,     sprMech_Calf,    1100, 2, "thighR",  0,  20,  0,  true,  true ],
-        ["footR",  KaijuRole.FOOT_R,     sprMech_Foot,     900, 1, "calfR",   0,  16,  0,  true,  true ],
-        ["wingL",  KaijuRole.WING_L,     sprMech_Wing,    1000, 1, "torsoU",-36, -20, -4,  true,  false],
+        ["core",   KaijuRole.CORE,       sprMech_Core,    3000, 4, "",       0,   0,   0,  true,  true ,0],
+        ["head",   KaijuRole.HEAD,       sprMech_Head,    1200, 2, "torsoU",   -40,  -350,  0,  true,  true,-3 ],
+        ["torsoU", KaijuRole.TORSO_U,    sprMech_TorsoU,  1800, 3, "core",   0,  -80,  0,  true,  false,-2],
+        ["torsoL", KaijuRole.TORSO_L,    sprMech_TorsoL,  2000, 5, "core",   0,   80,  0,  true,  false,-1],
+		
+        ["armU_L", KaijuRole.ARM_U_L,    sprMech_ArmU,    1100, 2, "torsoU",-152,  -150, 0,  true,  true,-4 ],
+		
+	   ["armL_L", KaijuRole.ARM_L_L,    sprMech_ArmL,     900, 1, "armU_L",250,   8, 0,  true,  true,-5],
+       ["handL",  KaijuRole.HAND_L,     sprMech_Hand,     700, 1, "armL_L",250,  12, 0,  true,  true,-6 ],
+        
+		["armU_R", KaijuRole.ARM_U_R,    sprMech_ArmU,    1100, 2, "torsoU", 0,  -180,  0,  true,  true, -1],
+        ["armL_R", KaijuRole.ARM_L_R,    sprMech_ArmL,     900, 1, "armU_R", 250,   8,0,  true,  true, -2],
+        ["handR",  KaijuRole.HAND_R,     sprMech_Hand,     700, 1, "armL_R", 250,  12,0,  true,  true, -3],
+       
+	   
+	 
+	   ["thighL", KaijuRole.THIGH_L,    sprMech_Thigh,   1300, 2, "torsoL",-150,  150,  270,  true,  true, -6],
+        ["calfL",  KaijuRole.CALF_L,     sprMech_Calf,    1100, 2, "thighL",  250,  0,  0,  true,  true, -5 ],
+        ["footL",  KaijuRole.FOOT_L,     sprMech_Foot,     900, 1, "calfL",   150,  0,  0,  false,  true,  -4],
+         
+	   ["thighR", KaijuRole.THIGH_R,    sprMech_Thigh,   1300, 2, "torsoL", 100,  130,  270,  true,  true, 1],
+        ["calfR",  KaijuRole.CALF_R,     sprMech_Calf,    1100, 2, "thighR",  250,  20,  0,  true,  true, 2],
+        ["footR",  KaijuRole.FOOT_R,     sprMech_Foot,     900, 1, "calfR",   150,  16,  0,  false,  true, 3],
+       /*
+	   ["wingL",  KaijuRole.WING_L,     sprMech_Wing,    1000, 1, "torsoU",-36, -20, -4,  true,  false],
         ["wingR",  KaijuRole.WING_R,     sprMech_Wing,    1000, 1, "torsoU", 36, -20,  4,  true,  false]
 		*/
     ];
@@ -90,6 +108,7 @@ if (kaiju_mode == "mech") {
             follow_parent_ang = r[9];
             required_to_kill  = r[10];
             core_root = root_id;
+			 depth = r[11];
         }
         ds_map_add(parts_by_name, r[0], inst);
         ds_list_add(children, inst);
