@@ -115,48 +115,57 @@ switch (role) {
 
 
     // -------------------- HANDS: place at wrist + aim + shoot --------------------
-    case KaijuRole.HAND_L:
-    case KaijuRole.HAND_R:
-    {
-        if (!instance_exists(parent_ref)) { instance_destroy(); break; } // parent_ref = lower arm
-        var lower = parent_ref;
+    // -------------------- HANDS: place at wrist + aim with wrist clamp + shoot --------------------
+case KaijuRole.HAND_L:
+case KaijuRole.HAND_R:
+{
+    if (!instance_exists(parent_ref)) { instance_destroy(); break; } // parent_ref = LOWER ARM
+    var lower = parent_ref;
 
-        // elbow->wrist length (same L2 as used above)
-        var L2 = 48;
-        if (variable_instance_exists(lower, "L2")) L2 = max(1, lower.L2);
+    // --- Place the hand using its actual local offset relative to LOWER ---
+    // (This preserves any sideways offset you set in the blueprint.)
+    var r_hand  = point_distance(0, 0, local_x, local_y);
+    var a_hand  = point_direction(0, 0, local_x, local_y);
+    x = lower.x + lengthdir_x(r_hand, lower.image_angle + a_hand);
+    y = lower.y + lengthdir_y(r_hand, lower.image_angle + a_hand);
 
-        // Wrist world position = end of lower arm
-        var wx = lower.x + lengthdir_x(L2, lower.image_angle);
-        var wy = lower.y + lengthdir_y(L2, lower.image_angle);
+    // --- Aim with a wrist constraint (prevents "breaking") ---
+    var pl = instance_nearest(x, y, core_root.target_obj);
+    var aim_dir;
+    if (instance_exists(pl)) aim_dir = point_direction(x, y, pl.x, pl.y); else aim_dir = lower.image_angle;
 
-        // Place hand
-        x = wx; y = wy;
+    // how far the wrist *wants* to twist away from the forearm
+    var rel = angle_difference(lower.image_angle, aim_dir);
 
-        // Aim independently at target
-        var pl = instance_nearest(x, y, core_root.target_obj);
-        if (instance_exists(pl)) {
-            var dir = point_direction(x, y, pl.x, pl.y);
-            image_angle = dir;            // RIGHT-facing art
-            // image_angle = dir - 90;    // <-- if your sprites face UP at 0°
-        } else {
-            // fallback: align with lower
-            image_angle = lower.image_angle;
+    // clamp wrist twist to a sensible cone around the forearm
+    // tweak these per taste (e.g., 40..70)
+    var max_wrist_twist = 55;
+
+    // optionally smooth the twist so it doesn't snap
+    var target_rel = clamp(rel, -max_wrist_twist, max_wrist_twist);
+    var cur_rel    = angle_difference(lower.image_angle, image_angle);
+    var step_rel   = clamp(target_rel - cur_rel, -6, 6); // max 6°/step change
+    var new_rel    = cur_rel + step_rel;
+
+    // RIGHT-facing art (0° = east). If your hand sprite faces UP at 0°, subtract 90.
+    image_angle = lower.image_angle + new_rel;
+    // image_angle = lower.image_angle + new_rel - 90; // <-- use this if your sprites are UP-facing
+
+    // --- Fire straight along the hand's final aim ---
+    if (fire_cd > 0) fire_cd--;
+    if (fire_cd <= 0 && instance_exists(pl)) {
+        var b = instance_create_layer(x, y, core_root.bullet_layer, objBullet_Kaiju);
+        with (b) {
+            direction   = other.image_angle;
+            speed       = 8;
+            damage      = 10;
+            image_angle = direction;
         }
-
-        // Shoot
-        if (fire_cd > 0) fire_cd--;
-        if (fire_cd <= 0 && instance_exists(pl)) {
-            var b = instance_create_layer(x, y, core_root.bullet_layer, objBullet_Kaiju);
-            with (b) {
-                direction   = other.image_angle;
-                speed       = 8;
-                damage      = 10;
-                image_angle = direction;
-            }
-            fire_cd = max(6, fire_cd_max);
-        }
+        fire_cd = max(6, fire_cd_max);
     }
-    break;
+}
+break;
+
 
 
     // --------------------- HEAD: follow + aim + shoot --------------------
