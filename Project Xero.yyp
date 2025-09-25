@@ -221,6 +221,7 @@
     {"id":{"name":"objIntersection","path":"objects/objIntersection/objIntersection.yy",},},
     {"id":{"name":"objJetz","path":"objects/objJetz/objJetz.yy",},},
     {"id":{"name":"objKaiju","path":"objects/objKaiju/objKaiju.yy",},},
+    {"id":{"name":"objKaijuDragon","path":"objects/objKaijuDragon/objKaijuDragon.yy",},},
     {"id":{"name":"objLevel_1","path":"objects/objLevel_1/objLevel_1.yy",},},
     {"id":{"name":"objLevel_infinite","path":"objects/objLevel_infinite/objLevel_infinite.yy",},},
     {"id":{"name":"objLevelSide","path":"objects/objLevelSide/objLevelSide.yy",},},
@@ -948,7 +949,6 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rm_Neonx1080_bike","path":"rooms/rm_Neonx1080_bike/rm_Neonx1080_bike.yy",},},
     {"roomId":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"roomId":{"name":"rmCity","path":"rooms/rmCity/rmCity.yy",},},
@@ -965,6 +965,7 @@
         {"roomId":{"name":"rm_Runnerx1080_bike","path":"rooms/rm_Runnerx1080_bike/rm_Runnerx1080_bike.yy",},},
         {"roomId":{"name":"rm_space","path":"rooms/rm_space/rm_space.yy",},},
       ],"groupName":"Levels",},
+    {"roomId":{"name":"rm_Neonx1080_bike","path":"rooms/rm_Neonx1080_bike/rm_Neonx1080_bike.yy",},},
     {"children":[],"groupName":"bike",},
     {"roomId":{"name":"rmGPT","path":"rooms/rmGPT/rmGPT.yy",},},
     {"roomId":{"name":"room0b","path":"rooms/room0b/room0b.yy",},},
