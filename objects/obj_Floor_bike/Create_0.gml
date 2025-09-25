@@ -7,3 +7,4 @@ FloorOffset = -1;
 // Surface
 SurfaceID = -1;
 
+_level="";

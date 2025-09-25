@@ -3,6 +3,19 @@
 
 randomize();
 
+_level=choose("desert","forest","jungle");
+switch (_level) {
+	case "desert":
+		spr_floor = spr_Floor_bike_Desert;
+	break;
+	case "forest":
+		spr_floor = spr_Floor_bike_Forest;
+	break;
+	case "jungle":
+		spr_floor = spr_Floor_bike_Jungle;
+	break;
+}
+
 LineWidth = 2;  // How thick to render line for view on surface
 Fill = true;
 
@@ -24,6 +37,7 @@ FloorStep = sprite_get_width(spr_Floor_bike);                        // The leng
 FloorLength = (__view_get( e__VW.WView, view_current ) / 2) div FloorStep;     // Initialize first floor chunk to approximately half the view
 FloorLast = x;                                                  // For obj_Player view & obj_Boundary phy_y position
 
+
 SkyTexture = sprite_get_texture(spr_Sky_bike, 0);                    // Define textures for drawing sky (for Neon Rider demo), floor, and subfloor respectively
 
 //BG
@@ -32,8 +46,8 @@ SkyTextureHeight = sprite_get_height(spr_Sky_bike);
 
 
 //FloorTexture = sprite_get_texture(spr_Floor, 0);                // For ball demo
-FloorTexture = sprite_get_texture(spr_Floor_bike, 2);                // For Neon Rider demo
-FloorTextureHeight = sprite_get_height(spr_Floor_bike);
+FloorTexture = sprite_get_texture(spr_floor, 2);                // For Neon Rider demo
+FloorTextureHeight = sprite_get_height(spr_floor);
 
 VoidTexture = sprite_get_texture(spr_Void_bike, 0);                  // For ball demo
 //VoidTexture = sprite_get_texture(spr_Void, 1);                  // For Neon Rider demo
@@ -45,6 +59,7 @@ FloorID.FloorHeight = FloorHeight;
 FloorID.ControllerID = id;
 FloorID.SurfaceID = surface_create(FloorLength * FloorStep, 4 * room_height);   // Create surface to draw floor on
 FloorID.FloorOffset = surface_get_height(FloorID.SurfaceID) / 4;
+FloorID._level = _level;
 
 var Fixture = physics_fixture_create(),
     Group = 0,
@@ -139,4 +154,9 @@ scr_GenerateFloor_bike(id);
 
 /*  */
 
-instance_create(x,y,obj_bike_parralax);
+var a = instance_create(x,y,obj_bike_parralax);
+
+a._level=_level;
+
+//draw_set_color(c_white);
+

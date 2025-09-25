@@ -1,7 +1,7 @@
 // Draw heads up to assist new players
 
 draw_set_font(fnt_Debug_s14_bike);
-draw_set_color(c_black);
+draw_set_color(c_white);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_text(8, 8, string_hash_to_newline(@"Press [D] to enter debug
