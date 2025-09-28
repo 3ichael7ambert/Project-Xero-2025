@@ -1,9 +1,9 @@
 /// objKaijuDragon : Create
 
 // --- Sprites (replace with your assets) ---
-spr_head = sprDragonHead;
-spr_seg  = sprDragonHead;//sprDragonSegment;  // mid body tile segment (looping)
-spr_tail = sprDragonHead;//sprDragonTail;
+spr_head = sprKaiju_Dragon_Head;
+spr_seg  = sprKaiju_Dragon_Body;//sprDragonSegment;  // mid body tile segment (looping)
+spr_tail = sprKaiju_Dragon_Tail;//sprDragonTail;
 
 // --- Boss basics ---
 hp        = 5000;
@@ -13,7 +13,7 @@ target    = noone;
 
 // --- Serpentine chain settings ---
 seg_count   = 32;      // total pieces including head+tail
-seg_spacing = 18;      // desired distance between knots
+seg_spacing = 200;      // desired distance between knots
 und_amp     = 10;      // lateral wave amplitude
 und_speed   = 0.035;   // phase speed
 und_step    = 12;      // phase offset per segment
