@@ -18,7 +18,7 @@ function _ang_move_to(cur, target, maxstep) {
 }
 
 
-scale = .2;
+scale = 1.2;
 target=noone;
 
 // ---------- FACTORY GATE (FIRST!) ----------
