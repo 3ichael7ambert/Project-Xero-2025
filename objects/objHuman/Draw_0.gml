@@ -268,6 +268,9 @@ switch (state) {
 		case "bandana":
 			draw_sprite_ext(spr_hat,2,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
 			break;
+		case "santa":
+			draw_sprite_ext(spr_hat,0,hair_x,hair_y,image_xscale,image_yscale,0,hat_color,1);
+			break;
 			
 	}
 //hat_style=choose("none","backwards","beanie","forwards","bandana");

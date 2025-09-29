@@ -1,45 +1,65 @@
 function scr_bird_create(){
 	
+	species="bird";
+	/*
 	 if (current_month==10) {
 		 species="bat";
 	 } else {
 		 species="bird";
-	}
+	}*/
+	// Roll the dice and set species
+var p = undead_chance_autumn();      // 0..1
+if (random(1) < p) {
+    species = "bat";
+}
     
-	if (current_month!=10) {
+	if (species="bird") {
 		color_body = make_color_hsv(irandom(255),irandom(255),irandom(255));
 		color_body_2 = make_color_hsv(irandom(255),irandom(255),irandom(255));
 		color_body_3 = make_color_hsv(irandom(255),irandom(255),irandom(255));
 		color_eye = make_color_hsv(irandom(255),irandom(255),irandom(255));
 		color_beak = make_color_hsv(irandom(255),irandom(255),irandom(255));
-	} else {
+	} else if (species="bat"){
 		color_body = make_color_rgb(irandom(255),irandom(64),irandom(64));
 		color_body_2 = make_color_rgb(irandom(255),irandom(64),irandom(64));
 		color_body_3 = make_color_rgb(irandom(255),irandom(64),irandom(64));
 		color_eye = make_color_rgb(irandom_range(128,255),irandom(32),irandom(32));
 		color_beak = make_color_rgb(irandom(32),irandom(32),irandom(32));
-	}
+	} else {
 	
+		color_body = make_color_hsv(irandom(255),irandom(255),irandom(255));
+		color_body_2 = make_color_hsv(irandom(255),irandom(255),irandom(255));
+		color_body_3 = make_color_hsv(irandom(255),irandom(255),irandom(255));
+		color_eye = make_color_hsv(irandom(255),irandom(255),irandom(255));
+		color_beak = make_color_hsv(irandom(255),irandom(255),irandom(255));
+}
 // Sprites
     spr_head       = sprBirdHead;
     spr_body       = sprBirdBody;
-	if (species!="bat") {
+	if (species=="bird") {
 		spr_wing_front = sprBirdWingFront;
 		spr_wing_back  = sprBirdWingBack;
 		spr_wing_ground = sprBirdWingGround;
-	} else {
+	} else if species=="bat" {
 		spr_wing_front = sprBirdWingBat;
 		spr_wing_back  = sprBirdWingBat;
 		spr_wing_ground = sprBirdWingGround;
-	}
+	} else {
+		
+		spr_wing_front = sprBirdWingFront;
+		spr_wing_back  = sprBirdWingBack;
+		spr_wing_ground = sprBirdWingGround;
+		}
     spr_eye        = sprBirdEye;
     spr_tail       = sprBirdTail;
     spr_beak_top   = sprBirdBeakTop;
     spr_beak_btm   = sprBirdBeakBtm;
-	if (current_month!=10) {
+	if (species=="bird") {
 		idx_head	   = choose(0,1);
-	} else {
+	} else if (species=="bat"){
 		idx_head	   = choose(0,2);
+	} else {
+		idx_head	   = choose(0,1);
 	}
 	
 

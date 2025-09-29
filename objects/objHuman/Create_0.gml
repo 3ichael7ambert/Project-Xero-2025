@@ -18,9 +18,23 @@ jp_idle_drift = 0.75; // small wander speed when no target
  //odonis=choose(true,false);
  hero=false;
  
+ christmas=false;
+ 
   //race=choose("human","alien","odonis","spraycan","skeleton","zombie");
-  race=choose("human","alien","skeleton","zombie");
+  race=choose("human","alien");
 //race=choose("odonis","spraycan");
+/// Create Event (or wherever you assign species)
+
+//HOLIDAYS
+// Roll the dice and set species
+var p = undead_chance_autumn();      // 0..1
+if (random(1) < p) {
+    species = choose("zombie", "skeleton");
+}
+// -------- Apply the seasonal probability --------
+var p_christmas = __chr_prob_now();   // 0..1
+christmas = (random(1) < p_christmas) ? "true" : "false";
+
  species=race;
  
  // Create Event
@@ -792,6 +806,15 @@ spr_hat = sprHuman_Head_Hats;
 spr_jetpack = sprSpraycan_Jetpack;
 
 spr_scarf = sprBlank;
+}
+
+
+// HOLIDAYS 
+
+if (christmas==true) {
+	hat_style="santa";
+	hat_color=c_white;
+	spr_hat=sprHuman_Hat_Santa;
 }
 
 
