@@ -928,6 +928,7 @@
     {"id":{"name":"sprUFO_bttm","path":"sprites/sprUFO_bttm/sprUFO_bttm.yy",},},
     {"id":{"name":"sprUFO_glass","path":"sprites/sprUFO_glass/sprUFO_glass.yy",},},
     {"id":{"name":"sprUFO_lights","path":"sprites/sprUFO_lights/sprUFO_lights.yy",},},
+    {"id":{"name":"sprUFO_top_white","path":"sprites/sprUFO_top_white/sprUFO_top_white.yy",},},
     {"id":{"name":"sprUFO_top","path":"sprites/sprUFO_top/sprUFO_top.yy",},},
     {"id":{"name":"sprWall","path":"sprites/sprWall/sprWall.yy",},},
     {"id":{"name":"sprWallJump","path":"sprites/sprWallJump/sprWallJump.yy",},},

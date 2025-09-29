@@ -17,8 +17,10 @@ jp_idle_drift = 0.75; // small wander speed when no target
  
  //odonis=choose(true,false);
  hero=false;
- 
  christmas=false;
+ ufo=true;
+ ufo_idx=0;
+ ufo_idx_lights=0;
  
   //race=choose("human","alien","odonis","spraycan","skeleton","zombie");
   race=choose("human","alien");

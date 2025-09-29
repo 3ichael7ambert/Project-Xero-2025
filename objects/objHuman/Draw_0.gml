@@ -1322,3 +1322,26 @@ if instance_exists(target) {
 	if (target.x > x) {dir = "right";}
 	if (target.x < x) {dir = "left";}
 }
+
+//UFO
+
+if (ufo==true){
+	var rot=hsp;
+	var ufo_scale = scale * 2;
+	ufo_idx=hsp;
+	ufo_idx_lights=-hsp;
+	var top_x = x + lengthdir_x(10 * ufo_scale, 90+rot);
+	var top_y = y + lengthdir_y(10 * ufo_scale, 90+rot);
+	var lite_x = top_x + lengthdir_x(0 * ufo_scale, 90+rot);
+	var lite_y = top_y + lengthdir_y(0 * ufo_scale, 90+rot);
+	var glass_x = top_x + lengthdir_x(40 * ufo_scale, 90+rot);
+	var glass_y = top_y + lengthdir_y(40 * ufo_scale, 90+rot);
+	var bttm_x = top_x + lengthdir_x(30 * ufo_scale, 270+rot);
+	var bttm_y = top_y + lengthdir_y(30 * ufo_scale, 270+rot);
+	
+draw_sprite_ext(sprUFO_glass,0,glass_x,glass_y,ufo_scale,ufo_scale,rot,c_white,1);
+draw_sprite_ext(sprUFO_bttm,ufo_idx,bttm_x,bttm_y,ufo_scale,ufo_scale,rot,hair_color,1);
+draw_sprite_ext(sprUFO_top,0,top_x,top_y,ufo_scale,ufo_scale,rot,hair_color,1);
+draw_sprite_ext(sprUFO_top_white,ufo_idx,top_x,top_y,ufo_scale,ufo_scale,rot,c_white,1);
+draw_sprite_ext(sprUFO_lights,-ufo_idx,lite_x,lite_y,ufo_scale,ufo_scale,rot,hair_color_2,1);
+}

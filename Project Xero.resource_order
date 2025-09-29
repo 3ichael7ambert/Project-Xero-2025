@@ -826,6 +826,7 @@
     {"name":"sprUFO_bttm","order":1,"path":"sprites/sprUFO_bttm/sprUFO_bttm.yy",},
     {"name":"sprUFO_glass","order":3,"path":"sprites/sprUFO_glass/sprUFO_glass.yy",},
     {"name":"sprUFO_lights","order":2,"path":"sprites/sprUFO_lights/sprUFO_lights.yy",},
+    {"name":"sprUFO_top_white","order":4,"path":"sprites/sprUFO_top_white/sprUFO_top_white.yy",},
     {"name":"sprWall","order":53,"path":"sprites/sprWall/sprWall.yy",},
     {"name":"sprWallJump","order":21,"path":"sprites/sprWallJump/sprWallJump.yy",},
     {"name":"sprXeroBG","order":54,"path":"sprites/sprXeroBG/sprXeroBG.yy",},
