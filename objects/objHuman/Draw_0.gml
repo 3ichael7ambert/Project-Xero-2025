@@ -1340,8 +1340,8 @@ if (ufo==true){
 	var bttm_y = top_y + lengthdir_y(30 * ufo_scale, 270+rot);
 	
 draw_sprite_ext(sprUFO_glass,0,glass_x,glass_y,ufo_scale,ufo_scale,rot,c_white,1);
-draw_sprite_ext(sprUFO_bttm,ufo_idx,bttm_x,bttm_y,ufo_scale,ufo_scale,rot,hair_color,1);
+draw_sprite_ext(sprUFO_bttm,-ufo_idx,bttm_x,bttm_y,ufo_scale,ufo_scale,rot,hair_color,1);
 draw_sprite_ext(sprUFO_top,0,top_x,top_y,ufo_scale,ufo_scale,rot,hair_color,1);
 draw_sprite_ext(sprUFO_top_white,ufo_idx,top_x,top_y,ufo_scale,ufo_scale,rot,c_white,1);
-draw_sprite_ext(sprUFO_lights,-ufo_idx,lite_x,lite_y,ufo_scale,ufo_scale,rot,hair_color_2,1);
+draw_sprite_ext(sprUFO_lights,-ufo_idx_lights,lite_x,lite_y,ufo_scale,ufo_scale,rot,hair_color_2,1);
 }

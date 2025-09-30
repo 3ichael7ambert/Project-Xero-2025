@@ -11,9 +11,15 @@ dead      = false;
 aggro_rad = 640;     // wakes when player close
 target    = noone;
 
+scale=.2;
+
 // --- Serpentine chain settings ---
 seg_count   = 32;      // total pieces including head+tail
-seg_spacing = 200;      // desired distance between knots
+
+// After you define spr_seg and scale
+var seg_w = (sprite_get_width(spr_seg)/2) * scale;
+seg_spacing = max(1, seg_w * 0.92); // slight overlap to hide any tex bleeding
+
 und_amp     = 10;      // lateral wave amplitude
 und_speed   = 0.035;   // phase speed
 und_step    = 12;      // phase offset per segment
@@ -29,6 +35,8 @@ city_min_x  =  -2000;  // soft bounds so it loops/bounces
 city_max_x  =   2000;
 city_min_y  =   -400;
 city_max_y  =    900;
+
+
 
 // --- Head state ---
 dir_deg   = irandom(359);     // facing angle
@@ -56,3 +64,29 @@ provoked = false;   // set true when player seen/hit
 
 // --- Effects ---
 shadow_alpha = 0.25;
+
+
+
+// --- SPRITES (add belly) ---
+spr_belly = sprKaiju_Dragon_Belly;     // 80 frames
+belly_frames = sprite_get_number(spr_belly); // expect 80
+
+// --- Per-segment roll/twist state ---
+seg_roll = [];          // degrees, “roll” around forward axis (fake)
+seg_a_prev = [];        // previous step’s segment facing (for curvature)
+array_resize(seg_roll, seg_count);
+array_resize(seg_a_prev, seg_count);
+for (var i = 0; i < seg_count; i++) {
+    seg_roll[i] = 0;
+    seg_a_prev[i] = seg_a[i]; // from your init loop
+}
+
+// --- Roll controls (tune to taste) ---
+roll_follow     = 0.28;   // how much a segment adopts parent’s roll per step
+roll_from_turn  = 0.65;   // how much local turning injects roll (deg -> roll deg)
+roll_decay      = 0.96;   // damping to keep it bounded (0..1)
+roll_noise_amp  = 6.0;    // gentle wiggle on top so it’s alive
+roll_noise_freq = 0.012;  // per-step noise frequency
+
+// keep a head angle history to capture turning energy
+dir_deg_prev = dir_deg;

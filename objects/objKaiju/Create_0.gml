@@ -18,7 +18,7 @@ function _ang_move_to(cur, target, maxstep) {
 }
 
 
-scale = 1.2;
+scale = 1;
 target=noone;
 
 // ---------- FACTORY GATE (FIRST!) ----------
@@ -201,3 +201,49 @@ else if (kaiju_mode == "dragon") {
     global.__kaiju_spawn_depth--;
 }
 */
+
+
+// ------- Root locomotion & proximity behavior -------
+target_obj        = obj_Player1; // your player object
+root_move_speed   = 2.0;         // baseline
+chase_speed       = 2.8;         // when closing in
+repel_speed       = 3.2;         // when too close (push-back)
+dash_speed        = 4.6;         // brief burst toward player
+dash_time_max     = 18;          // frames per dash
+dash_time         = 0;
+
+repel_radius      = 220;         // "too close" bubble
+chase_radius      = 520;         // start engaging here
+
+// strafing (switch directions)
+orbit_dir         = choose(-1, 1); // -1=left, +1=right
+orbit_switch_cd   = 0;
+orbit_switch_max  = 30;            // how often we allow switching when close
+
+// ------- Ground / Air state -------
+state             = "ground";   // "ground" or "air"
+can_fly           = true;
+hsp               = 0;          // horizontal speed (ground)
+vsp               = 0;          // vertical speed (ground)
+grav              = 0.6;        // gravity when on ground
+fric              = 0.85;       // friction
+ground_speed      = 2.2;        // ground walk speed
+ground_step_up    = 6;          // simple step-up pixels for tiny ledges
+
+// flying
+air_speed         = 2.6;
+air_turn_rate     = 3.0;
+altitude          = 0;          // purely visual/logic; we just move y for now
+target_altitude   = 0;
+ascend_rate       = 2.0;
+descend_rate      = 2.0;
+
+// timers to alternate between flying and landing
+fly_cd            = irandom_range(240, 360); // when to try taking off
+land_cd           = 0;
+
+// feet probe for ground checks (half-width in pixels)
+feet_half_w       = 40;
+
+// ensure dragon mode is OFF for this kaiju
+kaiju_mode        = "mech";

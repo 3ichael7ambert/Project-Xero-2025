@@ -18,9 +18,35 @@ jp_idle_drift = 0.75; // small wander speed when no target
  //odonis=choose(true,false);
  hero=false;
  christmas=false;
+ 
+ // UFO 
  ufo=true;
  ufo_idx=0;
  ufo_idx_lights=0;
+ // --- UFO flight + fire tunables ---
+ufo_hover_h        = 160;               // stay ~this many pixels above the target
+ufo_patrol_r       = 180;               // wander radius when no target
+ufo_accel          = 0.25;              // steering lerp
+ufo_max_spd        = 7.0;               // cap for UFO motion
+ufo_drag_flight    = 0.03;              // air drag
+ufo_idle_drift     = 0.8;               // slow wander speed out of combat
+
+ufo_muzzle_ofs     = 36;                // how far below the UFO center to emit bullets
+ufo_fire_width     = 28;                // horizontal alignment tolerance to shoot
+ufo_fire_interval  = room_speed/6;      // ~0.166s
+ufo_fire_cd        = irandom(ufo_fire_interval); // stagger shots across UFOs
+// --- UFO altitude limits ---
+ufo_ground_clearance = 120;     // stay at least this far above the ground under the UFO
+ufo_ceiling_margin   = 64;      // don't go above this y from the top of the room (smaller y = higher)
+ufo_floor_probe_max  = room_height + 8; // how far down we raycast to find ground
+
+
+// If you want UFOs to NOT use the arm/gun logic at all:
+if (ufo) {
+    has_weapon = false;   // hide arm gun behavior; UFO uses its own fire
+}
+
+
  
   //race=choose("human","alien","odonis","spraycan","skeleton","zombie");
   race=choose("human","alien");
@@ -90,7 +116,7 @@ threat_map = ds_map_create();
 	
 	
 if room==rmCity {
-	scale=.5;
+	scale=.2;
 } else {
 	scale=1;
 }

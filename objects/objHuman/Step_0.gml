@@ -32,7 +32,8 @@ if (!variable_instance_exists(self,"fly_goal_x")) {
 }
 
 // Jetpack runtime flag
-var using_jetpack = jetpack;
+var using_jetpack = jetpack || ufo; // UFOs always fly
+
 
 // ---------------------
 // 2) Threat / target system (yours)
@@ -85,6 +86,108 @@ if (ds_exists(threat_map, ds_type_map) && ds_map_size(threat_map) > 0) {
     }
 }
 
+
+/// --- UFO-specific behavior: hover over targets + shoot down ---
+if (ufo) {
+    // --- Movement ---
+   // var want_vx = 0;
+   // var want_vy = 0;
+   
+	   // --- Altitude bounds (room-aware & ground-aware) ---
+	var ceiling_y = ufo_ceiling_margin;
+
+	// Probe straight down to find the ground directly beneath the UFO.
+	// If your ground uses a different object, swap objSidewalk.
+	var ginst = collision_line(x, y, x, ufo_floor_probe_max, objSidewalk, false, true);
+	var floor_y = (ginst != noone) ? ginst.bbox_top : room_height;
+
+	// The lowest y the UFO is allowed to be:
+	var lower_y = floor_y - ufo_ground_clearance;
+
+	// Safety: if level has no sidewalk under us (rare), still keep some room margin
+	if (ginst == noone) lower_y = room_height - ufo_ground_clearance;
+
+
+    if (instance_exists(target)) {
+    var tx = target.x;
+    var ty = target.y - ufo_hover_h;
+
+    // Keep the desired hover point inside allowed altitude
+    ty = clamp(ty, ceiling_y, lower_y);
+
+    var dist_to_perch = point_distance(x, y, tx, ty);
+    var a             = point_direction(x, y, tx, ty);
+    var approach_spd  = min(ufo_max_spd, max(1, dist_to_perch * 0.08));
+
+    want_vx = lengthdir_x(approach_spd, a);
+    want_vy = lengthdir_y(approach_spd, a);
+}  else {
+        // No target → gentle wander/idle drift
+        if (fly_goal_timer <= 0) {
+            var r   = irandom_range(64, ufo_patrol_r);
+            var ang = irandom(359);
+            fly_goal_x = x + lengthdir_x(r, ang);
+            fly_goal_y = y + lengthdir_y(r, ang);
+            fly_goal_timer = irandom_range(room_speed, room_speed * 2);
+        } else {
+            fly_goal_timer--;
+        }
+        var a2 = point_direction(x, y, fly_goal_x, fly_goal_y);
+        want_vx = lengthdir_x(ufo_idle_drift, a2);
+        want_vy = lengthdir_y(ufo_idle_drift, a2);
+    }
+
+    // Steer and apply extra drag so it feels floaty
+    hsp = lerp(hsp, want_vx, ufo_accel);
+    vsp = lerp(vsp, want_vy, ufo_accel);
+	// Soft push back into band
+if (y < ceiling_y) vsp = max(vsp, 0) + 0.6;   // push down
+if (y > lower_y)   vsp = min(vsp, 0) - 0.6;   // push up
+
+
+    hsp *= (1.0 - ufo_drag_flight);
+    vsp *= (1.0 - ufo_drag_flight);
+	
+if (ufo) {
+    var ginst2 = collision_line(x, y, x, ufo_floor_probe_max, objSidewalk, false, true);
+    var floor2 = (ginst2 != noone) ? ginst2.bbox_top : room_height;
+    var lower2 = floor2 - ufo_ground_clearance;
+    y = clamp(y, ufo_ceiling_margin, lower2);
+}
+
+
+    // --- Downward fire (beam/bullets) ---
+    if (instance_exists(target)) {
+        var under     = (target.y > y + 6);                  // must be below UFO
+        var aligned   = (abs(target.x - x) <= ufo_fire_width); // roughly centered
+        if (under && aligned) {
+            if (ufo_fire_cd <= 0) {
+                // Emit from bottom of UFO (use your UFO scale if desired)
+                var bx = x;
+                var by = y + ufo_muzzle_ofs * max(1, scale);
+
+                // Use your existing bullet object; straight down
+                var b = instance_create(bx, by, objBullet_Human);
+				b.depth = depth;
+                b.owner       = id;
+                b.team        = team;
+                b.damage      = 8;
+                b.direction   = 270;     // straight down
+                b.speed       = bullet_speed; // you already set this
+                b.image_angle = 270;
+                b.scale       = max(0.5, scale * 0.6);
+                b.species     = species;
+
+                ufo_fire_cd = ufo_fire_interval;
+            }
+        }
+    }
+
+    if (ufo_fire_cd > 0) ufo_fire_cd--;
+}
+
+
+
 // ---------------------
 // 3) Misc (yours)
 spin_angle += 4; if (spin_angle >= 360) spin_angle -= 360;
@@ -133,7 +236,8 @@ if (using_jetpack && (!provoked || !instance_exists(target))) {
 
 // ---------------------
 // 5) Combat movement intent ONLY (no x/y integration here)
-if (provoked && instance_exists(target)) {
+if (!ufo && provoked && instance_exists(target)) {
+
     var dist = point_distance(x, y, target.x, target.y);
     dir = (x < target.x) ? "right" : "left";
 
