@@ -52,7 +52,7 @@ var Fixture = physics_fixture_create(),
     Friction = 1,
     LinearDamp = 0.1,
     AngularDamp = 0.2;
-    
+	
 physics_fixture_set_polygon_shape(Fixture);
 
 physics_fixture_add_point(Fixture, -80, 0);

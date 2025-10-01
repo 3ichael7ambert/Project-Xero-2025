@@ -3,7 +3,8 @@
 
 randomize();
 
-_level=choose("desert","forest","jungle");
+_level=choose("desert");
+//_level=choose("desert","forest","jungle");
 switch (_level) {
 	case "desert":
 		spr_floor = spr_Floor_bike_Desert;
