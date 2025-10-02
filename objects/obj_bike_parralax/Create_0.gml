@@ -1,7 +1,8 @@
 /// Parallax BG: Create
 layers = []; // array of layer structs
 depth=100;
-_level=choose("desert","forest","jungle");
+//_level=choose("desert","forest","jungle");
+_level="desert";
 
 
 fg_bg="background";

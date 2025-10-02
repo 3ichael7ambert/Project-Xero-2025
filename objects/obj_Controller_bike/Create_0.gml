@@ -144,6 +144,12 @@ PlayerID.ControllerID = id;
 BoundaryID = instance_create(x, y, obj_Boundary_bike);
 BoundaryID.ControllerID = id;
 
+UfoID = instance_create(__view_get( e__VW.WView, view_current ) / 2, FloorHeight - 132, objUFOPhys);
+UfoID.ControllerID = id;
+
+//HumanID = instance_create(__view_get( e__VW.WView, view_current ) / 3, FloorHeight - 132, objHumanPhys);
+//HumanID.ControllerID = id;
+
 // Associate Floor to Boundary and Player
 FloorID.BoundaryID = BoundaryID;
 FloorID.PlayerID = PlayerID;

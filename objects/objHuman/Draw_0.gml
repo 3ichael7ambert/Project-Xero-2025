@@ -168,10 +168,17 @@ switch (state) {
 		}
 		
 		draw_sprite_ext(spr_head,img_idx_head,head_x,head_y,image_xscale,image_yscale,0,skin_color,1);
+		/*
         draw_sprite_ext(spr_eyes,img_idx_eyes,eyes_x,eyes_y,image_xscale,image_yscale,0,eye_color_bg,1);
 		
         draw_sprite_ext(spr_eyes_pupils,1+img_idx_eyes,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,eye_color,1);
 		draw_sprite_ext(spr_eyes_pupils,0+img_idx_eyes,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,c_white,1);
+		*/
+		
+        draw_sprite_ext(spr_eyes,img_idx_eyes,eyes_x,eyes_y,image_xscale,image_yscale,0,eye_color_bg,1);
+		
+        draw_sprite_ext(spr_eyes_pupils,2*img_idx_eyes+1,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,eye_color,1);
+		draw_sprite_ext(spr_eyes_pupils,2*img_idx_eyes,eyes_pupils_x,eyes_pupils_y,image_xscale,image_yscale,0,c_white,1);
         
 	//	if (race=="zombie") {
 			switch (eyes_mood) {

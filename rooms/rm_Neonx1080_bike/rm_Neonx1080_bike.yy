@@ -7,8 +7,8 @@
   "inheritLayers":false,
   "instanceCreationOrder":[
     {"name":"inst_FFF28613","path":"rooms/rm_Neonx1080_bike/rm_Neonx1080_bike.yy",},
-    {"name":"inst_72BD7AD0","path":"rooms/rm_Neonx1080_bike/rm_Neonx1080_bike.yy",},
     {"name":"inst_5B92046C","path":"rooms/rm_Neonx1080_bike/rm_Neonx1080_bike.yy",},
+    {"name":"inst_72BD7AD0","path":"rooms/rm_Neonx1080_bike/rm_Neonx1080_bike.yy",},
   ],
   "isDnd":false,
   "layers":[

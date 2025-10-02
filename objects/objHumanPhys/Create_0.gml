@@ -100,33 +100,6 @@ jp_idle_drift = 0.75; // small wander speed when no target
  hero=false;
  christmas=false;
  
- // UFO 
- ufo=true;
- ufo_idx=0;
- ufo_idx_lights=0;
- // --- UFO flight + fire tunables ---
-ufo_hover_h        = 160;               // stay ~this many pixels above the target
-ufo_patrol_r       = 180;               // wander radius when no target
-ufo_accel          = 0.25;              // steering lerp
-ufo_max_spd        = 7.0;               // cap for UFO motion
-ufo_drag_flight    = 0.03;              // air drag
-ufo_idle_drift     = 0.8;               // slow wander speed out of combat
-
-ufo_muzzle_ofs     = 36;                // how far below the UFO center to emit bullets
-ufo_fire_width     = 28;                // horizontal alignment tolerance to shoot
-ufo_fire_interval  = room_speed/6;      // ~0.166s
-ufo_fire_cd        = irandom(ufo_fire_interval); // stagger shots across UFOs
-// --- UFO altitude limits ---
-ufo_ground_clearance = 120;     // stay at least this far above the ground under the UFO
-ufo_ceiling_margin   = 64;      // don't go above this y from the top of the room (smaller y = higher)
-ufo_floor_probe_max  = room_height + 8; // how far down we raycast to find ground
-
-
-// If you want UFOs to NOT use the arm/gun logic at all:
-if (ufo) {
-    has_weapon = false;   // hide arm gun behavior; UFO uses its own fire
-}
-
 
  
   //race=choose("human","alien","odonis","spraycan","skeleton","zombie");
@@ -434,6 +407,8 @@ img_idx_shirt_sleeves=image_index;
  head_y=y+lengthdir_y(100,85)*scale;
  eyes_x=head_x+lengthdir_x(100,75)*scale;
  eyes_y=head_y+lengthdir_y(100,75)*scale;
+ eyes_pupils_x = eyes_x;
+eyes_pupils_y = eyes_y;
  eyelids_x=eyes_x+lengthdir_x(50,75)*scale;
  eyelids_y=eyes_y+lengthdir_y(50,75)*scale;
  mouth_x=head_x+lengthdir_x(50,75)*scale;
@@ -446,6 +421,8 @@ head_y = y;
  eyes_y=y+lengthdir_y(170,75)*scale;
  eyelids_x=eyes_x+lengthdir_x(50,75)*scale;
  eyelids_y=eyes_y+lengthdir_y(50,75)*scale;
+ eyes_pupils_x = eyes_x;
+eyes_pupils_y = eyes_y;
  mouth_x=head_x+lengthdir_x(10,75)*scale;
  mouth_y=head_y+lengthdir_y(10,75)*scale;
  skin_color_eyelids=c_red;
@@ -457,6 +434,7 @@ head_y = y;
  shirt_x=x+lengthdir_x(50,85)*scale;
  shirt_y=y+lengthdir_y(50,85)*scale;
  pants_x=x+lengthdir_x(40,85)*scale;
+
  pants_y=y+lengthdir_y(40,85)*scale;
  shoes_x=x+lengthdir_x(50,75)*scale;
  shoes_y=y+lengthdir_y(50,75)*scale;
@@ -926,5 +904,8 @@ if (christmas==true) {
 	spr_hat=sprHuman_Hat_Santa;
 }
 
+
+skirt_x = pants_x;
+skirt_y = pants_y;
 
 

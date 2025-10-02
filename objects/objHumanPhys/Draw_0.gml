@@ -1337,31 +1337,6 @@ if (has_mission)
 }
 
 
-if instance_exists(oMissionManager) {
-	
-//mission
-
-if (array_length(oMissionManager.active_missions) == 0) {
-    
-
-	if (distance_to_object(player_nearest)<100*scale) && (has_mission==true) {
-		state = "idle";
-		if (mission_active==false) {
-			mission_indicator_color=c_fuchsia;
-		}
-		/*
-		if (player_nearest.talk_button) {
-			mission_active=true;
-		}*/
-	} else if (has_mission==true) && (distance_to_object(player_nearest)>100*scale) {
-		mission_indicator_color=c_aqua;
-	}
-}
-if (mission_active==true) {
-		mission_indicator_color=c_yellow;
-	}
-}
-
 /*
 if (has_mission) {
 	if (mission_active) {
@@ -1395,25 +1370,3 @@ if instance_exists(target) {
 	if (target.x < x) {dir = "left";}
 }
 
-//UFO
-
-if (ufo==true){
-	var rot=hsp;
-	var ufo_scale = scale * 2;
-	ufo_idx=hsp;
-	ufo_idx_lights=-hsp;
-	var top_x = x + lengthdir_x(10 * ufo_scale, 90+rot);
-	var top_y = y + lengthdir_y(10 * ufo_scale, 90+rot);
-	var lite_x = top_x + lengthdir_x(0 * ufo_scale, 90+rot);
-	var lite_y = top_y + lengthdir_y(0 * ufo_scale, 90+rot);
-	var glass_x = top_x + lengthdir_x(40 * ufo_scale, 90+rot);
-	var glass_y = top_y + lengthdir_y(40 * ufo_scale, 90+rot);
-	var bttm_x = top_x + lengthdir_x(30 * ufo_scale, 270+rot);
-	var bttm_y = top_y + lengthdir_y(30 * ufo_scale, 270+rot);
-	
-draw_sprite_ext(sprUFO_glass,0,glass_x,glass_y,ufo_scale,ufo_scale,rot,c_white,1);
-draw_sprite_ext(sprUFO_bttm,-ufo_idx,bttm_x,bttm_y,ufo_scale,ufo_scale,rot,hair_color,1);
-draw_sprite_ext(sprUFO_top,0,top_x,top_y,ufo_scale,ufo_scale,rot,hair_color,1);
-draw_sprite_ext(sprUFO_top_white,ufo_idx,top_x,top_y,ufo_scale,ufo_scale,rot,c_white,1);
-draw_sprite_ext(sprUFO_lights,-ufo_idx_lights,lite_x,lite_y,ufo_scale,ufo_scale,rot,hair_color_2,1);
-}

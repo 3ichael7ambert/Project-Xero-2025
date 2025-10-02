@@ -1,958 +1,134 @@
-/// objUFOPhys.Create — hover UFO (kinematic), your layered draw
+/// objUFOPhys.Create — hover UFO with layered draw + occupant inside
 
-// movement / hover
-hover_height      = 160;
-patrol_radius     = 220;
-steer             = 0.35;
-max_spd           = 7.0;
-drag              = 0.06;
+randomize();
 
-// fire
-fire_interval     = room_speed / 6;
-fire_cd           = irandom(fire_interval);
-fire_width        = 28;
-muzzle_ofs        = 36;
+// ---------- MOVEMENT / AI ----------
+ufo_accel        = 0.20;          // how quickly we steer to goal vel (0..1)
+ufo_drag         = 0.04;          // air drag each step
+ufo_max_spd      = 7.0;           // speed cap
+ufo_idle_drift   = 0.7;           // slow wander when no target
+ufo_patrol_r     = 220;           // idle patrol radius
 
-// altitude band
-ceiling_y         = 64;
-ground_clearance  = 120;
-floor_probe_max   = room_height + 8;
+// altitude control
+ufo_hover_h          = 160;       // desired height above ground/target
+ufo_ceiling_margin   = 64;        // don't go above this from top
+ufo_ground_clearance = 120;       // minimum above ground right under UFO
+ufo_floor_probe_max  = room_height + 8; // how far we probe down
 
-// visuals
-scale             = 1;
-hair_color        = make_color_hsv(irandom(255), 180, 230);
-hair_color_2      = make_color_hsv(irandom(255), 180, 230);
-
-// sprites used by your layered draw
-_sprUFO_top        = sprUFO_top;
-_sprUFO_top_white  = sprUFO_top_white;
-_sprUFO_bttm       = sprUFO_bttm;
-_sprUFO_lights     = sprUFO_lights;
-_sprUFO_glass      = sprUFO_glass;
-
-// target & idle
-target            = noone;
-fly_goal_x        = x;
-fly_goal_y        = y;
-fly_goal_t        = 0;
+// soft combat
+ufo_fire_interval = room_speed / 6;         // ~6 shots/sec
+ufo_fire_cd       = irandom(ufo_fire_interval);
+ufo_muzzle_ofs    = 36;                      // below dome center
+ufo_fire_width    = 28;                      // need roughly aligned X to shoot
 
 // motion scratch
 hsp = 0;
 vsp = 0;
+fly_goal_x = x;
+fly_goal_y = y;
 
-//===== physics fixture (defer bind if controller creates world later) =====
+// preferred target types (first existing, nearest used)
+target = noone;
+var _types = ["obj_Player1","objHumanPhys","obj_NeonBike_bike"];
+for (var i = 0; i < array_length(_types); i++) {
+    var t = asset_get_index(_types[i]);
+    if (t != -1) {
+        var who = instance_nearest(x, y, t);
+        if (instance_exists(who)) { target = who; break; }
+    }
+}
+
+// ground object (for altitude ray)
+ground_obj = -1;
+var _grounds = ["objSidewalk","obj_Floor_bike","objSolidGround","objFloor","obj_Floor"];
+for (var g = 0; g < array_length(_grounds); g++) {
+    var gi = asset_get_index(_grounds[g]);
+    if (gi != -1) { ground_obj = gi; break; }
+}
+
+// ---------- VISUALS ----------
+scale = 1;              // overall saucer scale
+spin_angle = 0;         // for animating rings
+
+// saucer sprite handles (use fallbacks if not present)
+_sprUFO_top        = (asset_get_index("sprUFO_top")       >= 0) ? sprUFO_top       : -1;
+_sprUFO_top_white  = (asset_get_index("sprUFO_top_white") >= 0) ? sprUFO_top_white : -1;
+_sprUFO_bttm       = (asset_get_index("sprUFO_bttm")      >= 0) ? sprUFO_bttm      : -1;
+_sprUFO_lights     = (asset_get_index("sprUFO_lights")    >= 0) ? sprUFO_lights    : -1;
+_sprUFO_glass      = (asset_get_index("sprUFO_glass")     >= 0) ? sprUFO_glass     : -1;
+
+// ring palette
+ring_col_1 = make_color_hsv(irandom(255), 180, 230);
+ring_col_2 = make_color_hsv(irandom(255), 180, 230);
+
+// ---------- OCCUPANT (human/alien/zombie) ----------
+occ_species = choose("human","alien","zombie");
+occ_scale   = 0.55;               // occupant size inside dome
+occ_dir     = 1;                  // 1 = facing right (art 0° → right)
+occ_y_ofs   = 6;                 // nudge up/down inside glass
+occ_x_ofs   = 0;                  // nudge left/right
+
+
+// basic palette
+switch (occ_species) {
+	case "alien": occ_skin = make_color_hsv(irandom(255), 240, 255); break;
+	case "zombie": occ_skin = make_color_hsv(irandom_range(60,120), 180, 200); break;
+	default: occ_skin = make_color_hsv(irandom_range(15,35), irandom_range(20,80), irandom_range(180,255)); break;
+	
+}
+
+
+occ_hair_1 = make_color_hsv(irandom(255), irandom_range(120,220), 230);
+occ_hair_2 = make_color_hsv(irandom(255), irandom_range(120,220), 255);
+occ_eye    = c_white;
+occ_eye_p  = make_color_hsv(irandom(255), 200, 255);
+
+
+// occupant sprite references (fallback to -1 if you’re missing any)
+// --- Human set ---
+
+var a;
+
+a = asset_get_index("sprHuman_Head");
+if (a != -1) spr_head_human = a; else spr_head_human = -1;
+
+a = asset_get_index("sprHuman_Head_Eyes");
+if (a != -1) spr_eyes_human = a; else spr_eyes_human = -1;
+
+a = asset_get_index("sprHuman_Head_Eyes_Pupils");
+if (a != -1) spr_pupil_human = a; else spr_pupil_human = -1;
+
+a = asset_get_index("sprHuman_Head_Hair_Front");
+if (a != -1) spr_hairF_human = a; else spr_hairF_human = -1;
+
+a = asset_get_index("sprHuman_Head_Hair_Back");
+if (a != -1) spr_hairB_human = a; else spr_hairB_human = -1;
+
+// --- Alien set (fallbacks to human where missing) ---
+a = asset_get_index("sprAlien_Head");
+if (a != -1) spr_head_alien = a; else spr_head_alien = spr_head_human;
+
+a = asset_get_index("sprAlien_Head_Eyes");
+if (a != -1) spr_eyes_alien = a; else spr_eyes_alien = spr_eyes_human;
+
+// --- Zombie set (fallbacks to human where missing) ---
+a = asset_get_index("sprZombie_Head");
+if (a != -1) spr_head_zombie = a; else spr_head_zombie = spr_head_human;
+
+a = asset_get_index("sprZombie_Head_Eyes");
+if (a != -1) spr_eyes_zombie = a; else spr_eyes_zombie = spr_eyes_human;
+
+a = asset_get_index("sprZombie_Head_Eyes_Pupils");
+if (a != -1) spr_pupil_zombie = a; else spr_pupil_zombie = spr_pupil_human;
+eye_zombie_idx=irandom_range(0,3);
+
+// choose which set we’ll actually use at draw time (we’ll branch in Draw)
+
+
+// ---- Create: make a kinematic fixture (do NOT bind here) ----
 fixture_idx = physics_fixture_create();
-
 physics_fixture_set_circle_shape(fixture_idx, 22);
 physics_fixture_set_density(fixture_idx, 0);
-physics_fixture_set_restitution(fixture_idx, 0);
 physics_fixture_set_friction(fixture_idx, 0);
-/*
-physics_fixture_set_kinematic(fixture_idx, true);
-*/
-
-// Physics
-/*
-var Fixture = physics_fixture_create(),
-    Group = 0,
-    Density = 0.2,
-    Restitution = 0.2,
-    Friction = 1,
-    LinearDamp = 0.1,
-    AngularDamp = 0.2;
-	
-physics_fixture_set_polygon_shape(Fixture);
-
-physics_fixture_add_point(Fixture, -80, 0);
-physics_fixture_add_point(Fixture, -80, -48);
-physics_fixture_add_point(Fixture, 80, -60);
-physics_fixture_add_point(Fixture, 80, 0);
-
-physics_fixture_set_collision_group(Fixture, Group);
-physics_fixture_set_density(Fixture, Density);
-physics_fixture_set_restitution(Fixture, Restitution);
-physics_fixture_set_friction(Fixture, Friction);
-physics_fixture_set_linear_damping(Fixture, LinearDamp);
-physics_fixture_set_angular_damping(Fixture, AngularDamp);
-
-physics_fixture_bind(Fixture, id);
-physics_fixture_delete(Fixture);
-*/
-
-//waiting_bind = !physics_world_exists();
-waiting_bind = false;
-if (!waiting_bind) {
-    physics_fixture_bind(fixture_idx, id);
-    physics_fixture_delete(fixture_idx);
-    phy_bullet    = true;
-    //phy_kinematic = true;
-}
-
-// resolve floor object (prefer your bike floor)
-ground_obj = -1;
-var _cands = ["obj_Floor_bike","objSidewalk","obj_floor_bike","objSolidGround","objFloor","obj_Floor"];
-for (var i = 0; i < array_length(_cands); i++) {
-    var a = asset_get_index(_cands[i]); if (a != -1) { ground_obj = a; break; }
-}
-
-// cache possible target types (pick the closest that exists)
-target_types = [];
-var _opts = ["obj_Player1","objHumanPhys","obj_NeonBike_bike"];
-for (var j = 0; j < array_length(_opts); j++) {
-    var t = asset_get_index(_opts[j]); if (t != -1) array_push(target_types, t);
-}
-
-
-
-
-//===//
-
-/// @description Insert description here
-// You can write your code in this editor
- randomize();
- 
- jetpack=choose(true,false);
- 
- // Flight feel
-jp_speed   = 13.5;   // cruise speed
-jp_boost   = 5.5;   // used when we need a quick burst (closing gaps)
-jp_accel   = 0.18;  // how quickly we steer toward desired velocity (0..1)
-jp_drag    = 0.04;  // air drag per step (0..0.2)
-jp_orbit_h = 96;    // preferred horizontal ring radius around target
-jp_orbit_v = 24;    // small vertical offset so we don't sit perfectly level
-jp_idle_drift = 0.75; // small wander speed when no target
- 
- hp=100;
- 
- //odonis=choose(true,false);
- hero=false;
- christmas=false;
- 
- // UFO 
- ufo=true;
- ufo_idx=0;
- ufo_idx_lights=0;
- // --- UFO flight + fire tunables ---
-ufo_hover_h        = 160;               // stay ~this many pixels above the target
-ufo_patrol_r       = 180;               // wander radius when no target
-ufo_accel          = 0.25;              // steering lerp
-ufo_max_spd        = 7.0;               // cap for UFO motion
-ufo_drag_flight    = 0.03;              // air drag
-ufo_idle_drift     = 0.8;               // slow wander speed out of combat
-
-ufo_muzzle_ofs     = 36;                // how far below the UFO center to emit bullets
-ufo_fire_width     = 28;                // horizontal alignment tolerance to shoot
-ufo_fire_interval  = room_speed/6;      // ~0.166s
-ufo_fire_cd        = irandom(ufo_fire_interval); // stagger shots across UFOs
-// --- UFO altitude limits ---
-ufo_ground_clearance = 120;     // stay at least this far above the ground under the UFO
-ufo_ceiling_margin   = 64;      // don't go above this y from the top of the room (smaller y = higher)
-ufo_floor_probe_max  = room_height + 8; // how far down we raycast to find ground
-
-
-// If you want UFOs to NOT use the arm/gun logic at all:
-if (ufo) {
-    has_weapon = false;   // hide arm gun behavior; UFO uses its own fire
-}
-
-
- 
-  //race=choose("human","alien","odonis","spraycan","skeleton","zombie");
-  race=choose("human","alien");
-//race=choose("odonis","spraycan");
-/// Create Event (or wherever you assign species)
-
-//HOLIDAYS
-// Roll the dice and set species
-var p = undead_chance_autumn();      // 0..1
-if (random(1) < p) {
-    species = choose("zombie", "skeleton");
-}
-// -------- Apply the seasonal probability --------
-var p_christmas = __chr_prob_now();   // 0..1
-christmas = (random(1) < p_christmas) ? "true" : "false";
-
- species=race;
- 
- // Create Event
-grav = 0.5; // Gravity strength
-vsp = 0; // Vertical speed
-is_on_ground = false; // Is the NPC standing on the ground?
-
-target=noone;
-poi=noone;
-
-mission_indicator_color=c_aqua;
-
-threat_map = ds_map_create();
-
-//skin_color=c_white;
-	
-	has_weapon=true;
-	weapon = choose("gun","raygun","shotgun");
-	attacking=false;
-	wpn_dir=270;
-	arm_img_angle=270;// objHuman Create (add these)
-	provoked     = false;            // only true after being attacked
-	alert_timer  = 0;                // counts down; while >0 stay provoked
-	//team         = TEAM_HUMAN;       // use a numeric constant, not ""
-			
-	team          = "";       // make sure TEAM_* constants exist
-	attack_range  = 600;
-	fire_cd       = 0;
-	fire_cd_max   = room_speed / 5;   // 0.2s, tune as you like
-	bullet_speed  = 12;
-
-	
-	switch (weapon) {
-		case "gun":
-			sprite_gun=sprGrenadeLauncher;
-			gun_idx=0;
-			break;
-		case "raygun":
-			sprite_gun=sprRayGun;
-			gun_idx=2;
-			break;
-		case "shotgun":
-			sprite_gun=sprShotgun;
-			gun_idx=0;
-			break;
-		case default:
-			sprite_gun=sprGrenadeLauncher;
-			gun_idx=0;
-			break;
-	}
-	
-	
-if room==rmCity {
-	scale=.2;
-} else {
-	scale=1;
-}
-
-mood="calm";
-eyes_mood="calm";
-mouth_mood="calm";
-angle=0;
-
-
-hsp=0;
-
-player_target=noone;
-player_nearest=noone;
-robot_nearest=noone;
-human_nearest=noone;
-
-
-
-//mission
-has_mission=choose(true,false);
-spin_angle = 0;
-
-interaction_range = 48;
-mission_active = false;
-// old mission
-/*
-mission_num=0;
-
-mission_id = "collect_10_parts";
-mission_text = "Collect 10 parts scattered around the map.";
-mission_active = false;
-mission_completed = false;
-
-interaction_range = 48;
-show_msg = false;
-*/
-// Support multiple control types
-
-
-//end mission
-
-image_xscale=scale;
-image_yscale=scale;
-
- dir=choose("left","right");
- 
-
-	 
- 
-
- 
-
- 
-  if (race=="human" || race=="alien") {
-	 hair_color=(make_color_rgb(random(255),random(255),random(255)));
-	 hair_color_2=(make_color_rgb(random(255),random(255),random(255)));
-	 shirt_color=(make_color_rgb(random(255),random(255),random(255)));
-	 shirt_color_2=(make_color_rgb(random(255),random(255),random(255)));
-	 pants_color=(make_color_rgb(random(255),random(255),random(255)));
-	 shoes_color=(make_color_rgb(random(255),random(255),random(255)));
-	 eye_color=(make_color_rgb(random(255),random(255),random(255)));
-	 hat_color=(make_color_rgb(random(255),random(255),random(255)));
- } else {
-	  hair_color=c_white;
-	 hair_color_2=c_white;
-	 shirt_color=c_white;
-	 shirt_color_2=c_white;
-	 pants_color=c_white;
-	 shoes_color=c_white;
-	 eye_color=c_white;
-	 hat_color=c_white;
- }
- 
- if (race=="alien") {
-	 eye_color_bg = eye_color;
- } else if (race=="zombie") {
-	var h = irandom_range(45, 65);          // hue ~orange/brown range
-	var s = irandom_range(128, 210);          // saturation (pale to deep tones)
-	var v = irandom_range(192, 255);         // brightness (light to dark)
-	eye_color_bg = make_color_hsv(h, s, v);
- } else {
-	 eye_color_bg = c_white;
- }
- 
- 
- 
- if (race=="human") {
-	// Hue around orange (15–35), low saturation for lighter skin, higher for darker
-	var h = irandom_range(15, 35);          // hue ~orange/brown range
-	var s = irandom_range(20, 80);          // saturation (pale to deep tones)
-	var v = irandom_range(70, 255);         // brightness (light to dark)
-
-		skin_color = make_color_hsv(h, s, v);
-
- } else if (race=="alien") {
-		 skin_color=make_color_hsv(irandom(255),255,255);
- } else if (race=="odonis") {
-		 skin_color=c_yellow;
- } else if (race=="skeleton") {
-		 var h = irandom_range(25, 75);          // hue ~orange/brown range
-		var s = irandom_range(0, 80);          // saturation (pale to deep tones)
-		var v = irandom_range(200, 255);         // brightness (light to dark)
-
-		skin_color = make_color_hsv(h, s, v);
- } else if (race=="zombie") {
-		var h = irandom_range(15, 135);          // hue ~orange/brown range
-		var s = irandom_range(128, 192);          // saturation (pale to deep tones)
-		var v = irandom_range(510, 255);         // brightness (light to dark)
-
-		skin_color = make_color_hsv(h, s, v);
- }
-	 else {
-	 
-		 skin_color= c_white;
-	 }
-	 
-	 skin_color_eyelids = skin_color;
-
-
- 
-	
-	
-	shirtless = random(100);
-	pantsless = random(100);
-	hat_chance = random(100);
-	
-	sunglasses_chance = random(100);
-	if (sunglasses_chance>15) {
-		sunglasses=false;
-	} else {
-		sunglasses=choose(true,false);
-	}
-	
-	
-	
-gender=choose("male","female");
-
-if (shirtless>15) {
-	shirt_style=choose("long","short");
-} else {	
-	shirt_style=choose("long","short","none");
-}
-
-if (race=="human" && gender="male") {
-facial_chance = random(100);
-
-	if (facial_chance<15) {
-		facial_hair=false;
-	} else {
-		facial_hair=choose(true,false);
-	}
-} else {
-		facial_hair=false;
-}
-
-	
-
-shoes_style=choose("none","sneakers");
-
-if (gender=="male") {
-	if (shirt_style="none" && pantsless<15) {
-		pants_style=choose("long","shorts","none");
-	} else {
-		pants_style=choose("long","shorts");
-	}
-	hair_style=choose("long","short","bald","braids","long2","short2");
-}
-if (gender=="female") {
-	if (shirt_style="none" && pantsless<15) {
-		pants_style=choose("long","shorts","skirt","none");
-	} else {
-		pants_style=choose("long","shorts","skirt","none");
-		}	
-	hair_style=choose("long","short","braids","long2","short2");
-}
-
-if ((hair_style=="short") || (hair_style=="long")) && (hat_chance<15) {
-	hat_style=choose("none","backwards","beanie","forwards","bandana");
-} else {
-	hat_style="none";
-
-}
-
-
-if (race=="zombie") {	
-	hair_style=choose("long","short","bald","braids","long2","short2","brain");
-}
-// Reset Styles
-if (race="odonis" || race=="spraycan") {
-	hat_style="none";
-	pants_style="long";
-	shoes_style="sneakers";
-	hair_style="long";
-	shirt_style="long";
-}
-
-
- img_idx_body=image_index;
- img_idx_pants=image_index;
- 
- switch (gender) {
-	 case "male":
-		img_idx_shirt=0;
-	 case "female":
-		img_idx_shirt=1;
-	 default:
-		img_idx_shirt=0;
- }
- 
-img_idx_shirt_sleeves=image_index;
- img_idx_shoes=image_index;
- img_idx_head=0;
- img_idx_nose=0;
- 
- if (race=="zombie") {
-	img_idx_eyes=irandom_range(0,3);
- } else {
-	 img_idx_eyes=0;
- }
- img_idx_eyelids=0;
- img_idx_eyebrows=0;
- img_idx_nose=0;
- img_idx_hair=0;
- img_idx_mouth=0;
- 
- img_idx_facial= irandom_range(0,6);
- 
-  arm_dir=270;
-  armB_dir=270;
- 
- if (race!="spraycan") {
- head_x=x+lengthdir_x(100,85)*scale;
- head_y=y+lengthdir_y(100,85)*scale;
- eyes_x=head_x+lengthdir_x(100,75)*scale;
- eyes_y=head_y+lengthdir_y(100,75)*scale;
- eyelids_x=eyes_x+lengthdir_x(50,75)*scale;
- eyelids_y=eyes_y+lengthdir_y(50,75)*scale;
- mouth_x=head_x+lengthdir_x(50,75)*scale;
- mouth_y=head_y+lengthdir_y(50,75)*scale;
- 
- } else {
-	 head_x = x;
-head_y = y;
- eyes_x=x+lengthdir_x(170,75)*scale;
- eyes_y=y+lengthdir_y(170,75)*scale;
- eyelids_x=eyes_x+lengthdir_x(50,75)*scale;
- eyelids_y=eyes_y+lengthdir_y(50,75)*scale;
- mouth_x=head_x+lengthdir_x(10,75)*scale;
- mouth_y=head_y+lengthdir_y(10,75)*scale;
- skin_color_eyelids=c_red;
- }
- nose_x=head_x+lengthdir_x(50,75)*scale;
- nose_y=head_y+lengthdir_y(50,75)*scale;
- eyebrows_x=eyes_x+lengthdir_x(50,75)*scale;
- eyebrows_y=eyes_y+lengthdir_y(50,75)*scale;
- shirt_x=x+lengthdir_x(50,85)*scale;
- shirt_y=y+lengthdir_y(50,85)*scale;
- pants_x=x+lengthdir_x(40,85)*scale;
- pants_y=y+lengthdir_y(40,85)*scale;
- shoes_x=x+lengthdir_x(50,75)*scale;
- shoes_y=y+lengthdir_y(50,75)*scale;
- hair_x=head_x+lengthdir_x(50,75)*scale;
- hair_y=head_y+lengthdir_y(50,75)*scale;
- 
- 
- 
-arm_back_x = x + lengthdir_x(20 * scale, 75);
-arm_back_y = y + lengthdir_y(20 * scale, 75);
-arm_front_x = x + lengthdir_x(20 * scale, 105);
-arm_front_y = y + lengthdir_y(20 * scale, 105);
-fist_back_x = arm_back_x + lengthdir_x(70,arm_dir);
-fist_back_y = arm_back_y + lengthdir_y(70,arm_dir);
-fist_front_x = arm_front_x + lengthdir_x(70,arm_dir);
-fist_front_y = arm_front_y + lengthdir_y(70,arm_dir);
-
-
-leg_back_x = x + lengthdir_x(50 * scale, 280);
-leg_back_y = y + lengthdir_y(50 * scale, 280);
-leg_front_x = x + lengthdir_x(50 * scale, 220);
-leg_front_y = y + lengthdir_y(50 * scale, 220);
-foot_back_x = leg_back_x + lengthdir_x(65,270);
-foot_back_y = leg_back_y + lengthdir_y(65,270);
-foot_front_x = leg_front_x + lengthdir_x(65,270);
-foot_front_y = leg_front_y + lengthdir_y(65,270);
- 
- // Create Event
-state = "idle"; // Start in the idle state
-speed = 0; // Start stationary
-
-alarm[0]=10;
-spr_dir=1;
-
- if direction == "left" {
-    spr_dir=-1;
-	image_xscale = -1*scale; // Flip the sprite horizontally
-} else {
-	spr_dir=1;
-	image_xscale = 1*scale;  // Default orientation
-}
-
-
-panic_cooldown = 100; 
-
-/*
-if instance_exists(obj_Player1) {
-	target=obj_Player1;
-	scale=obj_Player1.scale;}
-		else  {
-			target=undefined;
-		}
-	*/	
-		
-
-
-
-// INIT SPRITES
-
-
-if (race="human") {
-//arm
-spr_walk_arms_skin = sprHuman_Arm_Walk_Arms;
-spr_idle_arms_skin = sprHuman_Arm_Idle;
-
-spr_walk_arms_shirt = sprBlank;
-spr_idle_arms_shirt = sprBlank;
-
-if (shirt_style=="short") {
-	spr_walk_arms_shirt = sprHuman_Arm_Shirt_Short_Walk;
-	spr_idle_arms_shirt = sprHuman_Arm_Shirt_Short_Idle;
-} 
-if (shirt_style=="long") {
-	spr_walk_arms_shirt = sprHuman_Arm_Shirt_Long_Walk;
-	spr_idle_arms_shirt = sprHuman_Arm_Shirt_Long_Idle;
-}
-spr_walk_arms_hand = sprHuman_Arm_Walk_Hand;
-spr_idle_arms_hand = sprHuman_Arm_Hand;
-//leg
-spr_walk_legs_skin = sprHuman_Leg_Idle;
-spr_walk_legs_pants = sprBlank;
-spr_idle_legs_pants = sprBlank;
-
-
-if (pants_style=="shorts") {
-	spr_walk_legs_pants = sprHuman_Pants_Walk_Shorts;
-	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
-}
-if (pants_style=="long") {
-	spr_walk_legs_pants = sprHuman_Pants_Walk_Pants;
-	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
-} 
-spr_walk_legs_feet = sprHuman_Pants_Walk_Feet;
-spr_idle_legs_feet = sprHuman_Pants_Idle_Feet;
-spr_walk_legs_skin = sprHuman_Leg_Walk;
-spr_idle_legs_skin = sprHuman_Leg_Idle;
-
-spr_walk_legs_shoes = sprHuman_Pants_Walk_Shoes;
-spr_idle_legs_shoes = sprHuman_Pants_Idle_Shoes;
-spr_body = sprHuman_Body;
-spr_shirt = sprHuman_Shirt;
-spr_skirt = sprHuman_Pants_Walk_Skirt;
-spr_skirt_idle = sprHuman_Pants_Idle_Skirt;
-
-spr_head = sprHuman_Head;
-spr_eyes = sprHuman_Head_Eyes;
-spr_eyes_pupils = sprHuman_Head_Eyes_Pupils;
-spr_eye_eyelids = sprHuman_Head_Eyelids;
-spr_mouth = sprHuman_Head_Mouths;
-spr_eyebrows = sprHuman_Head_Eyebrows;
-spr_sunglasses = sprHuman_eyes_sunglasses;
-spr_hair_front = sprHuman_Head_Hair_Front;
-spr_hair_back = sprHuman_Head_Hair_Back;
-
-spr_facial_hair = sprHuman_Head_Facial;
-
-
-spr_hat = sprHuman_Head_Hats;
-
-
-spr_jetpack = sprSpraycan_Jetpack;
-
-spr_scarf = sprBlank;
-}
-
-
-if (race="alien") {
-//arm
-spr_walk_arms_skin = sprHuman_Arm_Walk_Arms;
-spr_idle_arms_skin = sprHuman_Arm_Idle;
-
-spr_walk_arms_shirt = sprBlank;
-spr_idle_arms_shirt = sprBlank;
-if (shirt_style=="short") {
-	spr_walk_arms_shirt = sprHuman_Arm_Shirt_Short_Walk;
-	spr_idle_arms_shirt = sprHuman_Arm_Shirt_Short_Idle;
-} 
-if (shirt_style=="long") {
-	spr_walk_arms_shirt = sprHuman_Arm_Shirt_Long_Walk;
-	spr_idle_arms_shirt = sprHuman_Arm_Shirt_Long_Idle;
-}
-spr_walk_arms_hand = sprHuman_Arm_Walk_Hand;
-spr_idle_arms_hand = sprHuman_Arm_Hand;
-//leg
-spr_walk_legs_skin = sprHuman_Leg_Idle;
-spr_walk_legs_pants = sprBlank;
-spr_idle_legs_pants = sprBlank;
-
-
-if (pants_style=="shorts") {
-	spr_walk_legs_pants = sprHuman_Pants_Walk_Shorts;
-	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
-}
-if (pants_style=="long") {
-	spr_walk_legs_pants = sprHuman_Pants_Walk_Pants;
-	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
-} 
-spr_walk_legs_feet = sprHuman_Pants_Walk_Feet;
-spr_idle_legs_feet = sprHuman_Pants_Idle_Feet;
-spr_walk_legs_skin = sprHuman_Leg_Walk;
-spr_idle_legs_skin = sprHuman_Leg_Idle;
-
-spr_walk_legs_shoes = sprHuman_Pants_Walk_Shoes;
-spr_idle_legs_shoes = sprHuman_Pants_Idle_Shoes;
-spr_body = sprHuman_Body;
-spr_shirt = sprHuman_Shirt;
-spr_skirt = sprHuman_Pants_Walk_Skirt;
-spr_skirt_idle = sprHuman_Pants_Idle_Skirt;
-
-
-spr_head = sprAlien_Head; ///
-spr_eyes = sprAlien_Head_Eyes; ///
-spr_eyes_pupils = sprBlank; ///
-spr_eye_eyelids = sprAlien_Head_Eyelids; ///
-spr_mouth = sprBlank; ///
-spr_eyebrows = sprBlank;///
-spr_sunglasses = sprHuman_eyes_sunglasses;
-spr_hair_front = sprBlank; ///
-spr_hair_back = sprBlank; ///
-
-spr_facial_hair = sprHuman_Head_Facial;
-
-spr_hat = sprAlien_Head_Hats; ///
-
-
-spr_jetpack = sprSpraycan_Jetpack;
-
-
-spr_scarf = sprBlank;
-}
-
-
-
-
-if (race="odonis") {
-//arm
-spr_walk_arms_skin = sprHuman_Arm_Walk_Arms;
-spr_idle_arms_skin = sprHuman_Arm_Idle;
-
-spr_walk_arms_shirt = sprBlank;
-spr_idle_arms_shirt = sprBlank;
-
-if (shirt_style=="long" || shirt_style=="short") {
-	spr_walk_arms_shirt = sprOdonis_Arm_Shirt_Long_Walk;
-	spr_idle_arms_shirt = sprOdonis_Arm_Idle;
-}
-spr_walk_arms_hand = sprHuman_Arm_Walk_Hand;
-spr_idle_arms_hand = sprHuman_Arm_Hand;
-//leg
-spr_walk_legs_skin = sprHuman_Leg_Idle;
-spr_walk_legs_pants = sprBlank;
-spr_idle_legs_pants = sprBlank;
-
-
-if (pants_style=="shorts") {
-	spr_walk_legs_pants = sprHuman_Pants_Walk_Shorts;
-	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
-}
-if (pants_style=="long" || pants_style=="shorts") {
-	spr_walk_legs_pants = sprOdonis_Pants_Walk_Pants;
-	spr_idle_legs_pants = sprOdonis_Pants_Idle_Pants;
-} 
-spr_walk_legs_feet = sprHuman_Pants_Walk_Feet;
-spr_idle_legs_feet = sprHuman_Pants_Idle_Feet;
-spr_walk_legs_skin = sprHuman_Leg_Walk;
-spr_idle_legs_skin = sprHuman_Leg_Idle;
-
-spr_walk_legs_shoes = sprHuman_Pants_Walk_Shoes;
-spr_idle_legs_shoes = sprHuman_Pants_Idle_Shoes;
-spr_body = sprOdonis_Body;
-spr_shirt = sprBlank;
-spr_skirt = sprBlank;
-spr_skirt_idle = sprBlank;
-
-
-spr_head = sprOdonis_Head; ///
-spr_eyes = sprOdonis_Head_Eyes; ///
-spr_eyes_pupils = sprBlank; ///
-spr_eye_eyelids = sprBlank; ///
-spr_mouth = sprBlank; ///
-spr_eyebrows = sprBlank;///
-spr_sunglasses = sprHuman_eyes_sunglasses;
-spr_hair_front = sprOdonis_Head_Hair_Back; ///
-spr_hair_back = sprOdonis_Head_Hair_Back; ///
-
-spr_facial_hair = sprHuman_Head_Facial;
-
-spr_hat = sprBlank; ///
-
-
-spr_jetpack = sprSpraycan_Jetpack;
-
-spr_scarf = sprOdonis_Scarf;
-}
-
-
-
-if (race="spraycan") {
-//arm
-spr_walk_arms_skin = sprBlank;
-spr_idle_arms_skin = sprSpraycan_Arm_Idle; ///
-
-spr_walk_arms_shirt = sprSpraycan_Arm_Shirt_Long_Walk; ///
-spr_idle_arms_shirt = sprBlank;
-
-spr_walk_arms_hand = sprSpraycan_Arm_Walk_Hand; ///
-spr_idle_arms_hand = sprSpraycan_Arm_Hand; ///
-//leg
-spr_walk_legs_skin = sprSpraycan_Leg_Idle; ///
-spr_walk_legs_pants = sprSpraycan_Leg_Walk; ///
-spr_idle_legs_pants = sprSpraycan_Leg_Idle; ///
-
-
-spr_walk_legs_feet = sprHuman_Pants_Walk_Feet;
-spr_idle_legs_feet = sprHuman_Pants_Idle_Feet;
-spr_walk_legs_skin = sprSpraycan_Leg_Idle; ///
-spr_idle_legs_skin = sprSpraycan_Leg_Idle; ///
-
-spr_walk_legs_shoes = sprHuman_Pants_Walk_Shoes;
-spr_idle_legs_shoes = sprHuman_Pants_Idle_Shoes;
-
-spr_body = sprSpraycan_Body; ///
-spr_shirt = sprBlank; ///
-spr_skirt = sprBlank;
-spr_skirt_idle = sprBlank;
-
-
-spr_head = sprBlank; ///
-spr_eyes = sprSpraycan_Head_Eyes; ///
-spr_eyes_pupils = sprHuman_Head_Eyes_Pupils; ///
-spr_eye_eyelids = sprHuman_Head_Eyelids; ///
-spr_mouth = sprHuman_Head_Mouths; ///
-spr_eyebrows = sprBlank;///
-spr_sunglasses = sprBlank;
-spr_hair_front = sprBlank; ///
-spr_hair_back = sprBlank; ///
-
-spr_facial_hair = sprHuman_Head_Facial;
-
-spr_hat = sprBlank; ///
-
-spr_jetpack = sprSpraycan_Jetpack;
-
-spr_scarf = sprBlank;
-
-
- /*
-if dir="right" {
-			var spray_eyes_x = eyes_x - (17*scale);;
-			var spray_eyes_y = eyes_y + (90*scale);
-			var spray_eyes_pupils_x = eyes_pupils_x  - (17*scale);;
-			var spray_eyes_pupils_y = eyes_pupils_y + (100*scale);		
-			var spray_mouth_x = mouth_x;
-			var spray_mouth_y = mouth_y + (100*scale);
-		}
-		if dir="left" {
-			var spray_eyes_x = eyes_x + (17*scale);
-			var spray_eyes_y = eyes_y + (90*scale);
-			var spray_eyes_pupils_x = eyes_pupils_x  + (17*scale);
-			var spray_eyes_pupils_y = eyes_pupils_y + (100*scale);		
-			var spray_mouth_x = mouth_x;
-			var spray_mouth_y = mouth_y + (100*scale);
-		}
-		*/
-
-}
-
-
-
-if (race=="skeleton") {
-//arm
-spr_walk_arms_skin = sprSkeleton_Arm_Walk_Arms;
-spr_idle_arms_skin = sprSkeleton_Arm_Idle_Arms;
-
-spr_walk_arms_shirt = sprBlank;
-spr_idle_arms_shirt = sprBlank;
-
-if (shirt_style=="short") {
-	spr_walk_arms_shirt = sprHuman_Arm_Shirt_Short_Walk;
-	spr_idle_arms_shirt = sprHuman_Arm_Shirt_Short_Idle;
-} 
-if (shirt_style=="long") {
-	spr_walk_arms_shirt = sprHuman_Arm_Shirt_Long_Walk;
-	spr_idle_arms_shirt = sprHuman_Arm_Shirt_Long_Idle;
-}
-spr_walk_arms_hand = sprSkeleton_Arm_Walk_Hand;
-spr_idle_arms_hand = sprSkeleton_Arm_Idle_Hand;
-//leg
-spr_walk_legs_skin = sprSkeleton_Leg_Walk;
-spr_walk_legs_pants = sprBlank;
-spr_idle_legs_pants = sprBlank;
-
-
-if (pants_style=="shorts") {
-	spr_walk_legs_pants = sprHuman_Pants_Walk_Shorts;
-	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
-}
-if (pants_style=="long") {
-	spr_walk_legs_pants = sprHuman_Pants_Walk_Pants;
-	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
-} 
-spr_walk_legs_feet = sprSkeleton_Pants_Walk_Feet;
-spr_idle_legs_feet = sprSkeleton_Pants_Idle_Feet;
-spr_walk_legs_skin = sprSkeleton_Leg_Walk;
-spr_idle_legs_skin = sprSkeleton_Leg_Idle;
-
-spr_walk_legs_shoes = sprHuman_Pants_Walk_Shoes;
-spr_idle_legs_shoes = sprHuman_Pants_Idle_Shoes;
-spr_body = sprSkeleton_Body;
-spr_shirt = sprHuman_Shirt;
-spr_skirt = sprHuman_Pants_Walk_Skirt;
-spr_skirt_idle = sprHuman_Pants_Idle_Skirt;
-
-spr_head = sprSkeleton_Head;
-spr_eyes = sprBlank;
-spr_eyes_pupils = sprBlank;
-spr_eye_eyelids = sprBlank;
-spr_mouth = sprBlank;
-spr_eyebrows = sprBlank;
-spr_sunglasses = sprHuman_eyes_sunglasses;
-spr_hair_front = sprBlank;
-spr_hair_back = sprBlank;
-
-spr_facial_hair = sprBlank;
-
-
-spr_hat = sprHuman_Head_Hats;
-
-
-spr_jetpack = sprSpraycan_Jetpack;
-
-spr_scarf = sprBlank;
-}
-
-
-if (race=="zombie") {
-//arm
-spr_walk_arms_skin = sprZombie_Arm_Walk_Arms;
-spr_idle_arms_skin = sprZombie_Arm_Idle_Arms;
-
-spr_walk_arms_shirt = sprBlank;
-spr_idle_arms_shirt = sprBlank;
-
-if (shirt_style=="short") {
-	spr_walk_arms_shirt = sprHuman_Arm_Shirt_Short_Walk;
-	spr_idle_arms_shirt = sprHuman_Arm_Shirt_Short_Idle;
-} 
-if (shirt_style=="long") {
-	spr_walk_arms_shirt = sprHuman_Arm_Shirt_Long_Walk;
-	spr_idle_arms_shirt = sprHuman_Arm_Shirt_Long_Idle;
-}
-spr_walk_arms_hand = sprZombie_Arm_Walk_Hand;
-spr_idle_arms_hand = sprZombie_Arm_Idle_Hand;
-//leg
-spr_walk_legs_skin = sprZombie_Leg_Walk;
-
-spr_walk_legs_pants = sprBlank;
-spr_idle_legs_pants = sprBlank;
-if (pants_style=="shorts") {
-	spr_walk_legs_pants = sprHuman_Pants_Walk_Shorts;
-	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
-}
-if (pants_style=="long") {
-	spr_walk_legs_pants = sprHuman_Pants_Walk_Pants;
-	spr_idle_legs_pants = sprHuman_Pants_Idle_Pants;
-} 
-
-spr_walk_legs_feet = sprZombie_Pants_Walk_Feet;
-spr_idle_legs_feet = sprZombie_Pants_Idle_Feet;
-spr_walk_legs_skin = sprZombie_Leg_Walk;
-spr_idle_legs_skin = sprZombie_Leg_Idle;
-
-spr_walk_legs_shoes = sprHuman_Pants_Walk_Shoes;
-spr_idle_legs_shoes = sprHuman_Pants_Idle_Shoes;
-spr_body = sprZombie_Body;
-spr_shirt = sprHuman_Shirt;
-spr_skirt = sprHuman_Pants_Walk_Skirt;
-spr_skirt_idle = sprHuman_Pants_Idle_Skirt;
-
-spr_head = sprZombie_Head;
-spr_eyes = sprZombie_Head_Eyes;
-spr_eyes_pupils = sprZombie_Head_Eyes_Pupils;
-spr_eye_eyelids = sprZombie_Head_Eyelids;
-spr_mouth = sprHuman_Head_Mouths;
-spr_eyebrows = sprHuman_Head_Eyebrows;
-spr_sunglasses = sprHuman_eyes_sunglasses;
-spr_hair_front = sprZombie_Head_Hair_Front;
-spr_hair_back = sprZombie_Head_Hair_Back;
-
-spr_facial_hair = sprHuman_Head_Facial;
-
-
-spr_hat = sprHuman_Head_Hats;
-
-
-spr_jetpack = sprSpraycan_Jetpack;
-
-spr_scarf = sprBlank;
-}
-
-
-// HOLIDAYS 
-
-if (christmas==true) {
-	hat_style="santa";
-	hat_color=c_white;
-	spr_hat=sprHuman_Hat_Santa;
-}
-
-
-
+physics_fixture_set_restitution(fixture_idx, 0);
+physics_fixture_set_kinematic(fixture_idx);
