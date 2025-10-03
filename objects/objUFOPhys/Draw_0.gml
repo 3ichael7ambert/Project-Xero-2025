@@ -4,7 +4,7 @@
 // --------- ANIMATE RINGS (use hsp just for a subtle spin) ---------
 spin_angle += hsp * 0.5; // harmless if hsp=0
 
-var rot       = spin_angle;
+var rot       = 0;//spin_angle;
 var S         = scale * 2;          // saucer size
 var top_x     = x;
 var top_y     = y;

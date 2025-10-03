@@ -47,7 +47,7 @@ for (var g = 0; g < array_length(_grounds); g++) {
 }
 
 // ---------- VISUALS ----------
-scale = 1;              // overall saucer scale
+scale = .7;              // overall saucer scale
 spin_angle = 0;         // for animating rings
 
 // saucer sprite handles (use fallbacks if not present)
@@ -126,9 +126,19 @@ eye_zombie_idx=irandom_range(0,3);
 
 
 // ---- Create: make a kinematic fixture (do NOT bind here) ----
-fixture_idx = physics_fixture_create();
+var fixture_idx = physics_fixture_create();
 physics_fixture_set_circle_shape(fixture_idx, 22);
 physics_fixture_set_density(fixture_idx, 0);
 physics_fixture_set_friction(fixture_idx, 0);
 physics_fixture_set_restitution(fixture_idx, 0);
 physics_fixture_set_kinematic(fixture_idx);
+physics_fixture_set_linear_damping(fixture_idx, 1.6);
+physics_fixture_set_angular_damping(fixture_idx, 1000);
+physics_fixture_set_awake(fixture_idx, true);
+physics_fixture_bind(fixture_idx, id);
+physics_fixture_delete(fixture_idx);
+
+
+
+phy_fixed_rotation = true;
+phy_bullet = true; // continuous collision detection

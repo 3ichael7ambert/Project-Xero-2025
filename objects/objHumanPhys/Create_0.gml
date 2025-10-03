@@ -29,7 +29,7 @@ facing           = 1;      // 1 right, -1 left
 on_ground        = false;
 
 // limb rig (all drawn here, no sub-objects)
-scale            = 1;
+scale            = 0.7;
 shoulder_ofs     = {x: 8,  y:-10};
 elbow_len        = 12;
 hand_len         = 14;
@@ -52,12 +52,24 @@ spr_foot         = sprHuman_Pants_Walk_Feet;
 
 // colors
 col_skin         = make_color_hsv(25, 60, 220);
+
 col_shirt        = make_color_hsv(irandom(255), 140, 220);
 col_pants        = make_color_hsv(irandom(255), 120, 180);
 
+
+
+// Hover tunables (Create)
+ufo_hover_h         = 220;   // height above player
+ufo_ground_clearance= 140;   // min space above the floor
+ufo_ceiling_margin  = 72;    // keep off the top
+ufo_max_spd         = 12.0;  // base cruise speed
+ufo_accel           = 0.18;  // 0..1 – how quickly we steer to desired vel
+ufo_drag_flight     = 0.04;  // 0..0.2
+
+
 // physics body (capsule-ish: box + circles optional)
 var fx = physics_fixture_create();
-physics_fixture_set_box_shape(fx, 12, 22);
+physics_fixture_set_box_shape(fx, sprite_get_width(sprHuman_Body_bbox)*scale*.5, sprite_get_height(sprHuman_Body_bbox)*scale*.25);
 physics_fixture_set_density(fx, 1.0);
 physics_fixture_set_friction(fx, 0.7);
 physics_fixture_set_restitution(fx, 0.0);
@@ -169,11 +181,7 @@ threat_map = ds_map_create();
 	}
 	
 	
-if room==rmCity {
-	scale=.2;
-} else {
-	scale=1;
-}
+
 
 mood="calm";
 eyes_mood="calm";

@@ -1,7 +1,10 @@
 /// objHumanPhys.Draw  — layered draw of back arm -> legs -> body -> front arm/head
-var sx = facing;                    // x-scale sign
-var sy = 1;
+var sx = facing*scale;                    // x-scale sign
+var sy = 1*scale;
 var S  = scale;
+
+
+col_skin=skin_color;
 
 // shoulder anchor
 var shx = x + (shoulder_ofs.x * sx * S);
@@ -31,45 +34,137 @@ var ffx = kfx + lengthdir_x(foot_len * S, 270);
 var ffy = kfy + lengthdir_y(foot_len * S, 270);
 
 // --- BACK ARM (behind body)
-draw_sprite_ext(spr_arm, 0, shx, shy, sx, sy, aim_ang, col_skin, 1);
-draw_sprite_ext(spr_hand, 0, epx, epy, sx, sy, aim_ang, col_skin, 1);
+//draw_sprite_ext(spr_arm, 0, shx, shy, sx, sy, aim_ang, col_skin, 1);
+//draw_sprite_ext(spr_hand, 0, epx, epy, sx, sy, aim_ang, col_skin, 1);
+if (facing==1) {
+	var back_arm_x = x + (33*S) * sx;
+	var back_arm_y = y - (30*S);
+	var back_hand_x = back_arm_x  - (15*S) * sx;
+	var back_hand_y = back_arm_y + (75*S);
+draw_sprite_ext(spr_arm, 0, back_arm_x, back_arm_y, sx, sy, 270, col_skin, 1);
+draw_sprite_ext(spr_idle_arms_shirt, 0, back_arm_x, back_arm_y, sx, sy, 270, col_shirt, 1);
+draw_sprite_ext(spr_hand, 0, back_hand_x, back_hand_y, sx, sy, 270, col_skin, 1);
+} else {
+	var back_arm_x = x + (33*S) * sx;
+	var back_arm_y = y - (30*S);
+	var back_hand_x = back_arm_x  - (15*S) * sx;
+	var back_hand_y = back_arm_y + (75*S);
+draw_sprite_ext(spr_arm, 0, back_arm_x, back_arm_y, sx, sy, 90, col_skin, 1);
+draw_sprite_ext(spr_idle_arms_shirt, 0, back_arm_x, back_arm_y, sx, sy, 90, col_shirt, 1);
+draw_sprite_ext(spr_hand, 0, back_hand_x, back_hand_y, sx, sy, 90, col_skin, 1);
+	
+}
 
 // --- LEGS (behind body)
-draw_sprite_ext(spr_leg,  0, kbx, kby, sx, sy, 0, col_pants, 1);
-draw_sprite_ext(spr_foot, 0, fbx, fby, sx, sy, 0, col_skin, 1);
+	var back_leg_x = x - (5*S) * sx;
+	var back_leg_y = y + (58*S);
+	var back_foot_x = back_leg_x + (0*S) * sx;
+	var back_foot_y = back_leg_y + (0*S);
+draw_sprite_ext(spr_leg,  0, back_leg_x, back_leg_y, sx, sy, 0, col_skin, 1);
+draw_sprite_ext(spr_idle_legs_pants,  0, back_leg_x, back_leg_y, sx, sy, 0, col_pants, 1);
+draw_sprite_ext(spr_foot, 0, back_foot_x, back_foot_y, sx, sy, 0, col_skin, 1);
+draw_sprite_ext(spr_idle_legs_shoes, 0, back_foot_x, back_foot_y, sx, sy, 0, shoes_color, 1);
 
-// --- BODY
-draw_sprite_ext(spr_body, 0, x, y, sx, sy, 0, col_skin, 1);
-
-// --- FRONT LEG (over body but under arms)
-draw_sprite_ext(spr_leg,  0, kfx, kfy, sx, sy, 0, col_pants, 1);
-draw_sprite_ext(spr_foot, 0, ffx, ffy, sx, sy, 0, col_skin, 1);
-
+var jet_x = x+(20*S);
+var jet_y = y;
 // --- JETPACK FX (attached to back)
+var jx = x - 43 * sx * S;
+var jy = y + 8 * S;
 if (jet_on) {
-    var jx = x - 8 * sx * S;
-    var jy = y + 8 * S;
+   
     draw_set_alpha(0.75);
     draw_sprite_ext(spr_jetpack, 0, jx, jy, sx, sy, irandom_range(-6,6), c_white, 1);
     draw_set_alpha(1);
 } else {
-    draw_sprite_ext(spr_jetpack, 0, x - 8 * sx * S, y + 8 * S, sx, sy, 0, c_white, 1);
+    draw_sprite_ext(spr_jetpack, 0, jx, jy, sx, sy, 0, c_white, 1);
 }
 
-// --- FRONT ARM + GUN
-draw_sprite_ext(spr_arm,  0, shx, shy, sx, sy, aim_ang, col_skin, 1);
-draw_sprite_ext(spr_hand, 0, epx, epy, sx, sy, aim_ang, col_skin, 1);
-if (has_gun) {
-    draw_sprite_ext(spr_gun, 0, hx, hy, sx, sy, aim_ang, c_white, 1);
-}
+// --- BODY
+draw_sprite_ext(spr_body, 0, x, y, sx, sy, 0, col_skin, 1);
+draw_sprite_ext(spr_body, 3, x-(8*S)*sx, y, sx, sy, 0, col_pants, 1); //pants
+//draw_sprite_ext(spr_body, 4, x, y, sx, sy, 0, col_skin, 1); //skirt
+draw_sprite_ext(spr_shirt, 0, x+(8*S)*sx, y, sx, sy, 0, col_shirt, 1);
+
+
+	var frnt_leg_x = x - (46*S) * sx;
+	var frnt_leg_y = y + (60*S);
+	var frnt_foor_x = frnt_leg_x + (0*S) * sx;
+	var frnt_foot_y = frnt_leg_y + (0*S);
+// --- FRONT LEG (over body but under arms)
+draw_sprite_ext(spr_leg,  0, frnt_leg_x, frnt_leg_y, sx, sy, 0, col_skin, 1);
+draw_sprite_ext(spr_idle_legs_pants,  0, frnt_leg_x, frnt_leg_y, sx, sy, 0, col_pants, 1);
+draw_sprite_ext(spr_foot, 0, frnt_foor_x, frnt_foot_y, sx, sy, 0, col_skin, 1);
+draw_sprite_ext(spr_idle_legs_shoes, 0, frnt_foor_x, frnt_foot_y, sx, sy, 0, shoes_color, 1);
+
+
+
+
+
+var head_x = x+(10 * S)*sx;
+var head_y = y-(60 * S);
+var eyes_x = head_x+(33 * S*sx);
+var eyes_y = head_y-(46 * S);
+var eyes_pup_x = eyes_x+(13 * S)*sx;
+var eyes_pup_y = eyes_y;
+var eyesbrows_x = eyes_x+(0 * S)*sx;
+var eyesbrows_y = eyes_y-(13 * S);
+
+var hair_x = head_x+(10 * S)*sx;
+var hair_y = head_y-(46 * S);
+var facialhair_x = head_x+(0 * S)*sx;
+var facialhair_y = head_y+(0 * S);
+
 
 // --- HEAD (last)
-draw_sprite_ext(spr_head, 0, x + 0, y - 16 * S, sx, sy, 0, col_skin, 1);
+draw_sprite_ext(spr_head, 0, head_x, head_y, sx, sy, 0, col_skin, 1);
+draw_sprite_ext(spr_eyes, 0, eyes_x, eyes_y, sx, sy, 0, eye_color_bg, 1);
+draw_sprite_ext(spr_eyes_pupils, 1, eyes_pup_x, eyes_pup_y, sx, sy, 0, eye_color, 1);
+draw_sprite_ext(spr_eyes_pupils, 0, eyes_pup_x, eyes_pup_y, sx, sy, 0, eye_color, 1);
+draw_sprite_ext(spr_eyebrows, 1, eyesbrows_x, eyesbrows_y, sx, sy, 0, eye_color, 1);
+
+if (facial_hair) {
+	draw_sprite_ext(spr_facial_hair, 1, facialhair_x, facialhair_y, sx, sy, 0, eye_color, 1);
+}
+draw_sprite_ext(spr_hair_back, 1, hair_x, hair_y, sx, sy, 0, eye_color, 1);
+draw_sprite_ext(spr_hair_front, 1, hair_x, hair_y, sx, sy, 0, eye_color, 1);
+
+
+
+
+
+//var frnt_hand_x = frnt_arm_x + (80*S) * sx;
+//var frnt_hand_y = frnt_arm_y + (20*S);
+if (facing==1) {
+	var frnt_arm_x = x - (30*S) * sx;
+	var frnt_arm_y = y - (30*S);
+	var frnt_hand_x = frnt_arm_x + lengthdir_x(80*S,aim_ang-10);
+	var frnt_hand_y = frnt_arm_y + lengthdir_y(80*S,aim_ang-10);
+	// --- FRONT ARM + GUN
+	draw_sprite_ext(spr_arm,  0, frnt_arm_x, frnt_arm_y, sx, sy, aim_ang, col_skin, 1);
+	draw_sprite_ext(spr_hand, 0, frnt_hand_x, frnt_hand_y, sx, sy, aim_ang, col_skin, 1);
+	if (has_gun) {
+	    draw_sprite_ext(spr_gun, 2, frnt_hand_x, frnt_hand_y, sx, sy, aim_ang, c_white, 1);
+	}
+} else {
+	var frnt_arm_x = x - (30*S) * sx;
+	var frnt_arm_y = y - (30*S);
+	var frnt_hand_x = frnt_arm_x + lengthdir_x(80*S,aim_ang+10);
+	var frnt_hand_y = frnt_arm_y + lengthdir_y(80*S,aim_ang+10);
+	
+	// --- FRONT ARM + GUN
+	draw_sprite_ext(spr_arm,  0, frnt_arm_x, frnt_arm_y, -sx, -sy, aim_ang, col_skin, 1);
+	draw_sprite_ext(spr_hand, 0, frnt_hand_x, frnt_hand_y, -sx, -sy, aim_ang, col_skin, 1);
+	if (has_gun) {
+	    draw_sprite_ext(spr_gun, 2, frnt_hand_x, frnt_hand_y, -sx, -sy, aim_ang, c_white, 1);
+	}
+}
+
+
 
 
 
 ///===///
-
+/*
 /// @description Insert description here
 // You can write your code in this editor
 // Draw Event
@@ -257,20 +352,7 @@ switch (state) {
 					draw_sprite_ext(spr_eye_eyelids,1+img_idx_eyes,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color_eyelids,1);
 					break;
 			}
-		/*
-		} else {
-			switch (eyes_mood) {
-				case "calm": 
-					draw_sprite_ext(spr_eye_eyelids,0,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color_eyelids,1);
-					break;
-				case "panic": 
-					//draw_sprite_ext(sprHuman_Head_Eyelids,img_idx_eyelids,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color,1);
-					break;
-				case "blink":
-					draw_sprite_ext(spr_eye_eyelids,1,eyelids_x,eyelids_y,image_xscale,image_yscale,0,skin_color_eyelids,1);
-					break;
-		}
-		*/
+		
 		
 		if (facial_hair) {
 			draw_sprite_ext(spr_facial_hair,img_idx_facial,head_x,head_y,image_xscale,image_yscale,0,hair_color_2,1);
@@ -383,7 +465,7 @@ if (state=="walk" || state=="combat") {
 
 
 
-/*
+
 if (race=="human") {
 
 // Draw the sprite with flipping
@@ -1323,50 +1405,17 @@ if (has_mission)
     draw_set_color(mission_indicator_color);
     draw_triangle(x1, y1, x2, y2, x3, y3, true); // true = filled
 	
-	///
-	/*
-	if (show_msg && !global.mission_active && distance_to_object(target)<50) {
-    draw_text(x, y - 32, "Press [Enter] or (A) to accept mission");
-	}
-
-	if (mission_active) {
-	    draw_text(x, y - 48, "Mission Active");
-	}
-	*/
+	
 
 }
 
 
-/*
-if (has_mission) {
-	if (mission_active) {
-		draw_text(x,y,"ACTIVE");
-	} else {
-		draw_text(x,y,"INACTIVE");
-	}
-}
-*/
-
-
-
-//DEBUG
-
-//draw_text_outlined(x,y,"POI: " + string(poi),c_black,c_white);
-//draw_text_outlined(x,y+15,"Weapon: " + string(weapon),c_black,c_white);
-//draw_text_outlined(x,y+30,"Attacking: " + string(attacking),c_black,c_white);
-/*
-var _t = instance_exists(target) ? string(target.id) : "noone";
-draw_text(x+12, y-48, "state:"+string(state)
-    + "\nattacking:"+string(attacking)
-    + "\nfire_cd:"+string(fire_cd)
-    + "\ntarget:"+_t);
-
-draw_text(x+12, y+48, "target:" + (instance_exists(target)? string(target.id) : "noone"));
-
-*/
 
 if instance_exists(target) {
 	if (target.x > x) {dir = "right";}
 	if (target.x < x) {dir = "left";}
 }
 
+var distt = distance_to_object(obj_Boundary_bike);
+
+draw_text_outlined(x,y,"Dis: " + string(distt),c_black,c_white);
