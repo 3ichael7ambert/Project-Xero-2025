@@ -211,6 +211,7 @@
     {"id":{"name":"objControlBoss","path":"objects/objControlBoss/objControlBoss.yy",},},
     {"id":{"name":"objControlCity","path":"objects/objControlCity/objControlCity.yy",},},
     {"id":{"name":"objControlLava","path":"objects/objControlLava/objControlLava.yy",},},
+    {"id":{"name":"objControlMetroidvanua","path":"objects/objControlMetroidvanua/objControlMetroidvanua.yy",},},
     {"id":{"name":"objEffect","path":"objects/objEffect/objEffect.yy",},},
     {"id":{"name":"objEnemyParent","path":"objects/objEnemyParent/objEnemyParent.yy",},},
     {"id":{"name":"objEntity","path":"objects/objEntity/objEntity.yy",},},
@@ -284,6 +285,7 @@
     {"id":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"id":{"name":"rm_lava","path":"rooms/rm_lava/rm_lava.yy",},},
     {"id":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
+    {"id":{"name":"rm_metroidvania","path":"rooms/rm_metroidvania/rm_metroidvania.yy",},},
     {"id":{"name":"rm_Neonx1080_bike","path":"rooms/rm_Neonx1080_bike/rm_Neonx1080_bike.yy",},},
     {"id":{"name":"rm_Runnerx1080_bike","path":"rooms/rm_Runnerx1080_bike/rm_Runnerx1080_bike.yy",},},
     {"id":{"name":"rm_Runnerx720_bike","path":"rooms/rm_Runnerx720_bike/rm_Runnerx720_bike.yy",},},
@@ -972,6 +974,7 @@
     {"roomId":{"name":"rm_Infinite_beach","path":"rooms/rm_Infinite_beach/rm_Infinite_beach.yy",},},
     {"roomId":{"name":"r_levelSide_infinite","path":"rooms/r_levelSide_infinite/r_levelSide_infinite.yy",},},
     {"children":[
+        {"roomId":{"name":"rm_metroidvania","path":"rooms/rm_metroidvania/rm_metroidvania.yy",},},
         {"roomId":{"name":"rm_lava","path":"rooms/rm_lava/rm_lava.yy",},},
         {"roomId":{"name":"rm_boss","path":"rooms/rm_boss/rm_boss.yy",},},
         {"roomId":{"name":"rm360","path":"rooms/rm360/rm360.yy",},},
