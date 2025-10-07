@@ -25,8 +25,8 @@ scr_building_skyline_bg(3584,950,irandom_range(5, 7),irandom_range(7, 11),irando
 scr_hud_bubble_init();
 scr_infinite_hud_init();
 
-instance_create(x,y,oGameSystem);
-instance_create(x,y,oMissionManager);
+//instance_create(x,y,oGameSystem);
+//instance_create(x,y,oMissionManager);
 
 if (!variable_global_exists("players")) {global.players=1;}
 

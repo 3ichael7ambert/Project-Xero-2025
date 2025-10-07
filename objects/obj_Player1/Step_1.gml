@@ -1,4 +1,8 @@
 // step begin
+if !variable_global_exists("health") {global.health=100;}
+if !variable_global_exists("p2_health") {global.p2_health=100;}
+if !variable_global_exists("p3_health") {global.p3_health=100;}
+if !variable_global_exists("p4_health") {global.p4_health=100;}
 
 if (global.health<=0 && player==1) {
 	instance_destroy();
