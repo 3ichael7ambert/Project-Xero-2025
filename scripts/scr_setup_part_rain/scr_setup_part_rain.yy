@@ -6,7 +6,7 @@
   "name":"scr_setup_part_rain",
   "parent":{
     "name":"Weather Particles",
-    "path":"folders/Particle_System/Weather Particles.yy",
+    "path":"folders/Engines/Particle_System/Weather Particles.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

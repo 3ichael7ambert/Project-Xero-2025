@@ -19,7 +19,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"RoomTransition",
-    "path":"folders/RoomTransition.yy",
+    "path":"folders/Engines/RoomTransition.yy",
   },
   "parentObjectId":null,
   "persistent":true,

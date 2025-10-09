@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_metroidvania",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"City_",
+    "path":"folders/Scripts/City_.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

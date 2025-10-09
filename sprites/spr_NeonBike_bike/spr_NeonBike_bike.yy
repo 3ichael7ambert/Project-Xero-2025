@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Sprites_bike",
-    "path":"folders/Sprites/Sprites_bike.yy",
+    "name":"Motorcycle",
+    "path":"folders/Sprites/Motorcycle.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

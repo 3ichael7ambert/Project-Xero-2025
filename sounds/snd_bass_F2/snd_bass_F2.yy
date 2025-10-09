@@ -13,7 +13,7 @@
   "name":"snd_bass_F2",
   "parent":{
     "name":"gms_bass_pack",
-    "path":"folders/MusicEngine/Instrument_Sounds/gms_bass_pack.yy",
+    "path":"folders/Engines/MusicEngine/Instrument_Sounds/gms_bass_pack.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

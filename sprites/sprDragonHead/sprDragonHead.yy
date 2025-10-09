@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Kaiju",
-    "path":"folders/Kaiju.yy",
+    "path":"folders/Sprites/Creatures/Kaiju.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

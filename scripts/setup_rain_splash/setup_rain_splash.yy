@@ -6,7 +6,7 @@
   "name":"setup_rain_splash",
   "parent":{
     "name":"rain",
-    "path":"folders/Particle_System/Particles/Premade Particles/rain.yy",
+    "path":"folders/Engines/Particle_System/Particles/Premade Particles/rain.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

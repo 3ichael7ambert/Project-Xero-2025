@@ -6,7 +6,7 @@
   "name":"stp_stream",
   "parent":{
     "name":"Stream Object",
-    "path":"folders/Particle_System/Particles/Stream Object.yy",
+    "path":"folders/Engines/Particle_System/Particles/Stream Object.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

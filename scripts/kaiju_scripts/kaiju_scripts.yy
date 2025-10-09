@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"kaiju_scripts",
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"City_",
+    "path":"folders/Scripts/City_.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

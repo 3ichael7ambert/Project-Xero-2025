@@ -6,7 +6,7 @@
   "name":"partArray_add",
   "parent":{
     "name":"Particles",
-    "path":"folders/Particle_System/Particles.yy",
+    "path":"folders/Engines/Particle_System/Particles.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -10,8 +10,8 @@
   "name":"objInfWorld_mv",
   "overriddenProperties":[],
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"_mv Metroidvania",
+    "path":"folders/Objects/_mv Metroidvania.yy",
   },
   "parentObjectId":null,
   "persistent":false,

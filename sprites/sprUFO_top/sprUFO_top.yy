@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"UFO",
-    "path":"folders/UFO.yy",
+    "path":"folders/Sprites/Creatures/UFO.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

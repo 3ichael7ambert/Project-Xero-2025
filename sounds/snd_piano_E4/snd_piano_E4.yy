@@ -13,7 +13,7 @@
   "name":"snd_piano_E4",
   "parent":{
     "name":"gms_piano_pack",
-    "path":"folders/MusicEngine/Instrument_Sounds/gms_piano_pack.yy",
+    "path":"folders/Engines/MusicEngine/Instrument_Sounds/gms_piano_pack.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

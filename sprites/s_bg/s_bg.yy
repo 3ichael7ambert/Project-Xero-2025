@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"sbRagdoll",
-    "path":"folders/Sprites/sbRagdoll.yy",
+    "path":"folders/Sprites/_trash/sbRagdoll.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"MusicEngine",
-    "path":"folders/MusicEngine.yy",
+    "path":"folders/Engines/MusicEngine.yy",
   },
   "parentObjectId":null,
   "persistent":true,

@@ -4,7 +4,7 @@
   "name":"shd_distort",
   "parent":{
     "name":"RoomTransition",
-    "path":"folders/RoomTransition.yy",
+    "path":"folders/Engines/RoomTransition.yy",
   },
   "resourceType":"GMShader",
   "resourceVersion":"2.0",

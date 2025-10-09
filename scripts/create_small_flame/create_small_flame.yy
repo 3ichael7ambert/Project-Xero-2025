@@ -6,7 +6,7 @@
   "name":"create_small_flame",
   "parent":{
     "name":"Custom Particles",
-    "path":"folders/Particle_System/Particles/Custom Particles.yy",
+    "path":"folders/Engines/Particle_System/Particles/Custom Particles.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

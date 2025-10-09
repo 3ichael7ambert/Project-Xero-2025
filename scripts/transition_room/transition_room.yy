@@ -6,7 +6,7 @@
   "name":"transition_room",
   "parent":{
     "name":"RoomTransition",
-    "path":"folders/RoomTransition.yy",
+    "path":"folders/Engines/RoomTransition.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
