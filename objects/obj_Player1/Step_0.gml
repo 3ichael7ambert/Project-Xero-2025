@@ -297,40 +297,118 @@ if (move_up) {
 	
 	if jetpack_mode==1 || jetpack_mode==2 
 	{
-		if (!isJumping && !place_empty(x,y,floor_obj)) 
-		{
-        isJumping = true;
-        jumpSpeed = jumpHeight;
-		} 
 		
-		else 
-		{
-	 //isJumping = false;
-		}
-		if (isJumping=true) 
-		{
-			//WALLJUMP
-			if (place_meeting(bbox_left-20, y-40, floor_obj))
-			{
+		// _mv METROIDVANIA
+		if game_style=="mv" {
+			if grav_dir=="down" {
+				if (!isJumping && !place_empty(x,y,floor_obj)) 
+				{
+		        isJumping = true;
+				jump_timer=10;
+		        jumpSpeed = jumpHeight;
+				} 
+		
+				else 
+				{
+			 //isJumping = false;
+				}
+				if (isJumping=true) 
+				{
+					//WALLJUMP
+					if (place_meeting(bbox_left-20, y-40, floor_obj))
+					{
 				
+							//vsp = -jumpSpeed;
+							jumpSpeed = -jumpHeight;
+							wall_jumping = true;
+							wall_jump_force=20;
+							alarm[3] = 30;
+				
+					}
+					if (place_meeting(bbox_right+20, y-40, floor_obj))
+					{
+						//vsp = -jumpSpeed;
+							jumpSpeed = -jumpHeight;
+							wall_jumping = true;
+							wall_jump_force=-20;
+							alarm[3] = 30;
+					}
+				}
+			} else {
+				if (!isJumping && !place_empty(x,y-10,ceil_obj)) 
+				{
+		        isJumping = true;
+				jump_timer=10;
+		        jumpSpeed = -jumpHeight;
+				} 
+		
+				else 
+				{
+			 //isJumping = false;
+				}
+				if (isJumping=true) 
+				{
+					//WALLJUMP
+					if (place_meeting(bbox_left-20, y+40, ceil_obj))
+					{
+				
+							//vsp = -jumpSpeed;
+							jumpSpeed = jumpHeight;
+							wall_jumping = true;
+							wall_jump_force=20;
+							alarm[3] = 30;
+				
+					}
+					if (place_meeting(bbox_right+20, y+40, ceil_obj))
+					{
+						//vsp = -jumpSpeed;
+							jumpSpeed = jumpHeight;
+							wall_jumping = true;
+							wall_jump_force=-20;
+							alarm[3] = 30;
+					}
+				}
+				}
+// NORMAL GAME MODE ARCADE
+		} else {
+			
+			
+			if (!isJumping && !place_empty(x,y,floor_obj)) 
+			{
+	        isJumping = true;
+			jump_timer=10;
+	        jumpSpeed = jumpHeight;
+			} 
+		
+			else 
+			{
+		 //isJumping = false;
+			}
+			if (isJumping=true) 
+			{
+				//WALLJUMP
+				if (place_meeting(bbox_left-20, y-40, floor_obj))
+				{
+				
+						//vsp = -jumpSpeed;
+						jumpSpeed = jumpHeight;
+						wall_jumping = true;
+						wall_jump_force=20;
+						alarm[3] = 30;
+				
+				}
+				if (place_meeting(bbox_right+20, y-40, floor_obj))
+				{
 					//vsp = -jumpSpeed;
-					jumpSpeed = jumpHeight;
-					wall_jumping = true;
-					wall_jump_force=20;
-					alarm[3] = 30;
-				
+						jumpSpeed = jumpHeight;
+						wall_jumping = true;
+						wall_jump_force=-20;
+						alarm[3] = 30;
+				}
 			}
-			if (place_meeting(bbox_right+20, y-40, floor_obj))
-			{
-				//vsp = -jumpSpeed;
-					jumpSpeed = jumpHeight;
-					wall_jumping = true;
-					wall_jump_force=-20;
-					alarm[3] = 30;
-			}
-		}
 		
 
+		}
 	}
 }
 
@@ -342,9 +420,33 @@ if (move_up) {
 
 
 if (isJumping) {
+	if (grav_dir="up") {
+
     y -= jumpSpeed;
 	y-=10;
     jumpSpeed -= grav;
+	} else {
+    y -= jumpSpeed;
+	y-=10;
+    jumpSpeed -= grav;
+	}
+	
+}
+
+if (jump_timer>0) {jump_timer--;}
+if (isJumping) && (move_up || talk_button) && (jump_timer==0) && (game_style=="mv") {
+	if (grav_dir=="down") {
+		grav_dir="up"; 
+		jump_timer=10;
+		//jumpSpeed=-jumpSpeed;
+		//grav=-grav;
+		} else if (grav_dir=="up")
+	{
+		grav_dir="down";
+		jump_timer=10;
+		//jumpSpeed=-jumpSpeed;
+		//grav=-grav;
+		} 
 }
 
 ///JETPACK2 offsets
@@ -1067,6 +1169,14 @@ if (jetpack_mode == 4) {
 		idle=true;
 		wall_direction=0;
 	}
+	// _mv Metroidvania
+	if place_meeting(bbox_left-10+hsp,y-20,ceil_obj) || place_meeting(bbox_right+10+hsp,y-20,floor_obj) {
+		hsp = 0; // Stop horizontal movement when no key is pressed
+		hsp_walk=0;
+		walk=false;
+		idle=true;
+		wall_direction=0;
+	}
 	
 	
 if (place_meeting(x + hsp, y, obj_block_64)) {
@@ -1114,14 +1224,39 @@ if !place_empty(x,y,floor_obj) {
 
 // Jetpack modes 1 and 2 gravity
 if (jetpack_mode == 1 || jetpack_mode == 2) {
-	if  place_empty(x,y,floor_obj) {
-    grav = 0.5; // Adjust this value as needed
+	
+	if (game_style=="mv") {
+		
+		if  place_empty(x,y,floor_obj) && place_empty(x,y,ceil_obj) {
+			if grav_dir="up" {
+				grav = -0.5; // Adjust this value as needed
+			}else{
+				grav = 0.5;
+			}
+		} 
+		// end _mv
+		else {
+	    grav = 0;
+		vsp=0;
+		isJumping=false; // Reset gravity when on the sidewalk
+	   // y -= 10; // Adjust the vertical position to stay on the floor
+		}
+	
 	} else {
-    grav = 0;
-	vsp=0;
-	isJumping=false; // Reset gravity when on the sidewalk
-   // y -= 10; // Adjust the vertical position to stay on the floor
+		
+		if  place_empty(x,y,floor_obj) 	{
+				grav = 0.5;
+			} 
+		// end _mv
+		else {
+	    grav = 0;
+		vsp=0;
+		isJumping=false; // Reset gravity when on the sidewalk
+	   // y -= 10; // Adjust the vertical position to stay on the floor
+		}
+	
 	}
+	
 }
 
 

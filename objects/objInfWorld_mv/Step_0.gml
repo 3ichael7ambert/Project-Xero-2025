@@ -1,4 +1,6 @@
 /// objInfWorld_mv.Step
+
+
 if (!instance_exists(player)) exit;
 
 var cx = world_to_chunk_x(player.x);

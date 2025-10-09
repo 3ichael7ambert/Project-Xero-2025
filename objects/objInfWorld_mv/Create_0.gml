@@ -7,7 +7,8 @@ keep_range  = 3;          // how many chunks to keep on each side
 layer_name  = "Instances"; // layer to place blocks on
 
 // Your player object (change if needed)
-player = instance_find(objPlayer_mv, 0);
+//player = instance_find(obj_Player1, 0);
+player = obj_Player1;
 
 // Runtime state
 chunks   = ds_map_create();   // key: string(chunk_x) -> value: chunk instance id

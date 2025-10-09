@@ -1,6 +1,6 @@
 /// In obj_PostFX (Draw End event)
 //if (!surface_exists(application_surface)) exit;
-
+/*
 // --- Get/compute your sky color (from your init function) ---
 if instance_exists(objCityWeather){
 	var sky_col = scr_timeofday_color(objCityWeather.wmo);
