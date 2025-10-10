@@ -6,7 +6,7 @@
   "name":"kaiju_scripts",
   "parent":{
     "name":"City_",
-    "path":"folders/Scripts/City_.yy",
+    "path":"folders/Scripts/Levels/City_.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

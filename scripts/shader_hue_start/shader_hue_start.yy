@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"shader_hue_start",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Shaders",
+    "path":"folders/Scripts/Shaders.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

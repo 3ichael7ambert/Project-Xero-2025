@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_GenerateFloor_bike",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Bike",
+    "path":"folders/Scripts/Levels/Bike.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

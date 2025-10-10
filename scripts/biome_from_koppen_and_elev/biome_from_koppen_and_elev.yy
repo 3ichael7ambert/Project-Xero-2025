@@ -6,7 +6,7 @@
   "name":"biome_from_koppen_and_elev",
   "parent":{
     "name":"Weather",
-    "path":"folders/Objects/City/Weather.yy",
+    "path":"folders/Objects/Levels/City/Weather.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -29,7 +29,7 @@
   "origin":4,
   "parent":{
     "name":"Head",
-    "path":"folders/Sprites/Human sprites/Head.yy",
+    "path":"folders/Sprites/Creatures/Human sprites/Head.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

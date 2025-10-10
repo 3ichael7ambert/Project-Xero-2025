@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"_mv Metroidvania",
-    "path":"folders/Objects/_mv Metroidvania.yy",
+    "path":"folders/Objects/Levels/_mv Metroidvania.yy",
   },
   "parentObjectId":null,
   "persistent":false,

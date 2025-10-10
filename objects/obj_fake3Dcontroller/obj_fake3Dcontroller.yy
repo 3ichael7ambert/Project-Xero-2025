@@ -11,8 +11,8 @@
   "name":"obj_fake3Dcontroller",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Control objects",
+    "path":"folders/Objects/Levels/Control objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

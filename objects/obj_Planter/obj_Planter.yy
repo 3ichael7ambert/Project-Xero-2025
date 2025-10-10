@@ -8,8 +8,8 @@
   "name":"obj_Planter",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"City",
+    "path":"folders/Objects/Levels/City.yy",
   },
   "parentObjectId":{
     "name":"objCityParent_Skyline",

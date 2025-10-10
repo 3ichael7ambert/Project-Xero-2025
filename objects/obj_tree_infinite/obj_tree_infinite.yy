@@ -9,8 +9,8 @@
   "name":"obj_tree_infinite",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Beach",
+    "path":"folders/Objects/Levels/Beach.yy",
   },
   "parentObjectId":null,
   "persistent":false,

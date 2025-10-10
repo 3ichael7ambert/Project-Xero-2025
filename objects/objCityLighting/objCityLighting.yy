@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"City",
-    "path":"folders/Objects/City.yy",
+    "path":"folders/Objects/Levels/City.yy",
   },
   "parentObjectId":null,
   "persistent":false,

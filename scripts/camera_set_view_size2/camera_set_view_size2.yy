@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"camera_set_view_size2",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Helpers",
+    "path":"folders/Scripts/Helpers.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

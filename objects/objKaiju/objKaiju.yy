@@ -13,8 +13,8 @@
   "name":"objKaiju",
   "overriddenProperties":[],
   "parent":{
-    "name":"Kaiju",
-    "path":"folders/Sprites/Creatures/Kaiju.yy",
+    "name":"Creatures",
+    "path":"folders/Objects/Creatures.yy",
   },
   "parentObjectId":null,
   "persistent":false,

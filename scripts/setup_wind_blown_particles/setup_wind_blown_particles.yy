@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"setup_wind_blown_particles",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Particles",
+    "path":"folders/Scripts/Particles.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

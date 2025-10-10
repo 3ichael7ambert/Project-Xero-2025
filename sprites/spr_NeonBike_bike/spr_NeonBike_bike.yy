@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"Motorcycle",
-    "path":"folders/Sprites/Motorcycle.yy",
+    "path":"folders/Sprites/Player/Motorcycle.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

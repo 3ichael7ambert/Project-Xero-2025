@@ -14,8 +14,8 @@
   "name":"objControl_mv",
   "overriddenProperties":[],
   "parent":{
-    "name":"City",
-    "path":"folders/Objects/City.yy",
+    "name":"_mv Metroidvania",
+    "path":"folders/Objects/Levels/_mv Metroidvania.yy",
   },
   "parentObjectId":null,
   "persistent":false,

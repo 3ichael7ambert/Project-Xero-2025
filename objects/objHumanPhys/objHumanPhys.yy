@@ -12,7 +12,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Objects_bike",
-    "path":"folders/Objects/Objects_bike.yy",
+    "path":"folders/Objects/Levels/Objects_bike.yy",
   },
   "parentObjectId":{
     "name":"obj_CollisionParent_bike",

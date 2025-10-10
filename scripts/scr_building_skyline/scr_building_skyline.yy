@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_building_skyline",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"City_",
+    "path":"folders/Scripts/Levels/City_.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

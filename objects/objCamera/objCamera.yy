@@ -12,7 +12,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Control objects",
-    "path":"folders/Objects/Control objects.yy",
+    "path":"folders/Objects/Levels/Control objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

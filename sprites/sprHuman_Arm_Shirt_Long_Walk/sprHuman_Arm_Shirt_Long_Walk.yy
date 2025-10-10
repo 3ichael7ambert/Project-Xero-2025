@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Arms",
-    "path":"folders/Sprites/Human sprites/Arms.yy",
+    "path":"folders/Sprites/Creatures/Human sprites/Arms.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -77,14 +77,30 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"fb47b9b2-7fa7-40e9-97c4-6380372e4f9a","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"6b21e418-fa07-45c5-bd35-f8e7a1e815fd","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"bcb645c9-5a18-43cd-9382-7cbd35a9a8aa","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"97bfc026-dc5d-4ba4-b5b3-ab2a961f8132","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"690437b4-e0df-4cb9-b9ab-a8cc7565ff40","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"20c5d9c0-5600-4f92-a62a-03055b59198d","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"630adaf0-3674-4427-a76c-2d7daaefcf92","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"07b5e3fe-cd8a-41eb-85df-864c6dc214f1","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"0b3df532-74fd-46e6-b11f-05f17638426d","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"8ce84e69-f8f9-456c-8d78-bd0099c4dcbe","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"e0c643f0-9a6c-42c3-ae75-1d123d128441","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"641e1dfe-c874-47e8-ac3c-1b66c6175830","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"41081588-b272-4c14-a2e8-947e2b8622e3","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"bdd5ff81-45a2-44c7-87fe-94a1c220af8f","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"daabc914-3057-4da7-a37a-d70f216d5364","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"a9df5938-432e-4777-9471-b59350f6909b","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fb47b9b2-7fa7-40e9-97c4-6380372e4f9a","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"6b21e418-fa07-45c5-bd35-f8e7a1e815fd","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"bcb645c9-5a18-43cd-9382-7cbd35a9a8aa","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"97bfc026-dc5d-4ba4-b5b3-ab2a961f8132","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"690437b4-e0df-4cb9-b9ab-a8cc7565ff40","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"20c5d9c0-5600-4f92-a62a-03055b59198d","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"630adaf0-3674-4427-a76c-2d7daaefcf92","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"07b5e3fe-cd8a-41eb-85df-864c6dc214f1","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"0b3df532-74fd-46e6-b11f-05f17638426d","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"8ce84e69-f8f9-456c-8d78-bd0099c4dcbe","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e0c643f0-9a6c-42c3-ae75-1d123d128441","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"641e1dfe-c874-47e8-ac3c-1b66c6175830","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"41081588-b272-4c14-a2e8-947e2b8622e3","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"bdd5ff81-45a2-44c7-87fe-94a1c220af8f","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"daabc914-3057-4da7-a37a-d70f216d5364","path":"sprites/sprHuman_Arm_Shirt_Long_Walk/sprHuman_Arm_Shirt_Long_Walk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"a9df5938-432e-4777-9471-b59350f6909b","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

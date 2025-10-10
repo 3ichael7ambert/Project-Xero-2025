@@ -31,7 +31,7 @@
   "origin":9,
   "parent":{
     "name":"Idle",
-    "path":"folders/Sprites/Human sprites/Idle.yy",
+    "path":"folders/Sprites/Creatures/Human sprites/Idle.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

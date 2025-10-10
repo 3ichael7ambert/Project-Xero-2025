@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"_is_on_ground",
   "parent":{
-    "name":"Creatures",
-    "path":"folders/Objects/Creatures.yy",
+    "name":"bird",
+    "path":"folders/Objects/Creatures/bird.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

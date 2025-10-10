@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"Pants",
-    "path":"folders/Sprites/Human sprites/Pants.yy",
+    "path":"folders/Sprites/Creatures/Human sprites/Pants.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

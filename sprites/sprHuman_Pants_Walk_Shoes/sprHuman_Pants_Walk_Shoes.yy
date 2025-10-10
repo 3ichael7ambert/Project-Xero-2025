@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Pants",
-    "path":"folders/Sprites/Human sprites/Pants.yy",
+    "path":"folders/Sprites/Creatures/Human sprites/Pants.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -77,14 +77,30 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"ec1141a0-1cdc-4413-9dc2-0089396546eb","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"1bd953bb-abfb-4664-94bd-30f201885d67","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"2b96dc6c-580c-48be-8c68-356b5d77e673","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"d6001fce-ef22-4ab5-b94b-6412385f1ee5","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"a6cd2d15-e704-478d-b2de-5016de44b8ef","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"b1b18be3-d8b3-485f-b8f6-f55d0d93313e","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"e554c638-c8bb-43dc-9a50-24b0476553c9","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"8d096c8f-34e4-4f54-8335-433b9e48eb8d","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"744a9eb9-024c-4067-9bd5-53a2018aa76b","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"0a2824ae-a132-4ba3-a1a7-7d8a04dd7ef8","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"dd0f83e9-6251-4593-a02f-ea643cf0cf02","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"984fd716-5eeb-4bec-9a54-d30d60cc6c04","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"994bd60e-c5fa-44f5-876d-38239e21cc31","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"e7e7d906-c8a7-47e3-a37b-5af6ac1422c1","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"4a25d047-d3b1-4864-811a-7cf7640dcdfd","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"ad406534-ea49-4d48-89dc-57c2c5f70eae","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ec1141a0-1cdc-4413-9dc2-0089396546eb","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"1bd953bb-abfb-4664-94bd-30f201885d67","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2b96dc6c-580c-48be-8c68-356b5d77e673","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"d6001fce-ef22-4ab5-b94b-6412385f1ee5","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a6cd2d15-e704-478d-b2de-5016de44b8ef","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"b1b18be3-d8b3-485f-b8f6-f55d0d93313e","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e554c638-c8bb-43dc-9a50-24b0476553c9","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"8d096c8f-34e4-4f54-8335-433b9e48eb8d","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"744a9eb9-024c-4067-9bd5-53a2018aa76b","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"0a2824ae-a132-4ba3-a1a7-7d8a04dd7ef8","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"dd0f83e9-6251-4593-a02f-ea643cf0cf02","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"984fd716-5eeb-4bec-9a54-d30d60cc6c04","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"994bd60e-c5fa-44f5-876d-38239e21cc31","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"e7e7d906-c8a7-47e3-a37b-5af6ac1422c1","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4a25d047-d3b1-4864-811a-7cf7640dcdfd","path":"sprites/sprHuman_Pants_Walk_Shoes/sprHuman_Pants_Walk_Shoes.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"ad406534-ea49-4d48-89dc-57c2c5f70eae","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

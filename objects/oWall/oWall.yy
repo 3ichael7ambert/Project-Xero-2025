@@ -8,8 +8,8 @@
   "name":"oWall",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Relevant?",
+    "path":"folders/Objects/Relevant?.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Pants",
-    "path":"folders/Sprites/Human sprites/Pants.yy",
+    "path":"folders/Sprites/Creatures/Human sprites/Pants.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -77,14 +77,30 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"ba943c8e-dc94-4bb4-bec0-ae15aa7986e4","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"7ce89add-1c07-4698-ac17-3dbd25e3ee35","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"c6de9253-a38d-40a3-9762-fa314ab7ac6d","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"1fb9f892-c997-4afb-a63f-53950fd90d3d","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"78e56575-797d-4a5d-95d4-91cfd208f376","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"1774b59e-2762-4f34-a137-22c8600c6913","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"d7c90e73-26d3-42e8-a563-0cf1d05ded8f","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"9668cb1b-ff92-4c30-932a-e0267b6f814e","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"ca571513-6a86-403a-bdb2-20b57642773e","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"de62008f-de32-4692-8181-618e96c62905","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"379e95e7-8928-4cef-babb-49b593966ef6","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"6553496f-f9ff-493f-87f6-22348baafbd5","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"fdaab699-85b0-4694-8c87-d0e489897af5","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"694151b4-3f34-4aac-9ac7-40e5fc2c1eaa","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"519f7456-e0f3-4df9-8899-f8b1280d63c7","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"cdaf67a3-3983-4afc-bd5c-d3846aaabe04","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ba943c8e-dc94-4bb4-bec0-ae15aa7986e4","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"7ce89add-1c07-4698-ac17-3dbd25e3ee35","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c6de9253-a38d-40a3-9762-fa314ab7ac6d","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"1fb9f892-c997-4afb-a63f-53950fd90d3d","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"78e56575-797d-4a5d-95d4-91cfd208f376","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"1774b59e-2762-4f34-a137-22c8600c6913","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d7c90e73-26d3-42e8-a563-0cf1d05ded8f","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"9668cb1b-ff92-4c30-932a-e0267b6f814e","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ca571513-6a86-403a-bdb2-20b57642773e","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"de62008f-de32-4692-8181-618e96c62905","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"379e95e7-8928-4cef-babb-49b593966ef6","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"6553496f-f9ff-493f-87f6-22348baafbd5","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fdaab699-85b0-4694-8c87-d0e489897af5","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"694151b4-3f34-4aac-9ac7-40e5fc2c1eaa","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"519f7456-e0f3-4df9-8899-f8b1280d63c7","path":"sprites/sprSpraycan_Pants_Walk_Pantsd/sprSpraycan_Pants_Walk_Pantsd.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"cdaf67a3-3983-4afc-bd5c-d3846aaabe04","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

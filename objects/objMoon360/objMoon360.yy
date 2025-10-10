@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"360",
-    "path":"folders/Objects/360.yy",
+    "path":"folders/Objects/Levels/360.yy",
   },
   "parentObjectId":{
     "name":"par_planet",

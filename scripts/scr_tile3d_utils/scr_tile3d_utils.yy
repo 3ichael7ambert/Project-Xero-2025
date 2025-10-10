@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_tile3d_utils",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Tile3D",
+    "path":"folders/Scripts/Tile3D.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

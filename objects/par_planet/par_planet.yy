@@ -7,7 +7,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"planets",
-    "path":"folders/Objects/360/planets.yy",
+    "path":"folders/Objects/Levels/360/planets.yy",
   },
   "parentObjectId":null,
   "persistent":false,

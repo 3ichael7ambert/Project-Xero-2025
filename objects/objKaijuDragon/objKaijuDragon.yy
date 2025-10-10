@@ -12,8 +12,8 @@
   "name":"objKaijuDragon",
   "overriddenProperties":[],
   "parent":{
-    "name":"Project Xero",
-    "path":"Project Xero.yyp",
+    "name":"Creatures",
+    "path":"folders/Objects/Creatures.yy",
   },
   "parentObjectId":null,
   "persistent":false,

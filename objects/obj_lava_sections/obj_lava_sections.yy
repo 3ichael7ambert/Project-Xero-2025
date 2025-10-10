@@ -9,8 +9,8 @@
   "name":"obj_lava_sections",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Lava",
+    "path":"folders/Objects/Levels/Lava.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Arms",
-    "path":"folders/Sprites/Human sprites/Arms.yy",
+    "path":"folders/Sprites/Creatures/Human sprites/Arms.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -77,14 +77,30 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"62b6ba78-13d6-48ac-a70d-42d316767476","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"52f35967-d431-4e01-baa2-11938640b1b9","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"db36ef48-2fb0-496d-8959-6e048f277e3a","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"678e5050-c6e4-4216-9cc8-c20cceda8c03","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"3b99a384-8a4d-47c0-bbdb-d23847e772d9","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"dfb5f6c0-e8ac-46df-aa56-b39d2578625a","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"7c770536-7d96-4730-a7bf-bde98022e6aa","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"e3ad3d69-70ac-459d-9db1-a9781a93b3fd","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"2403c4a6-06dd-489c-b5e8-1c8f6006b02a","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"a4dbd33f-e5ff-4827-b5ac-cff66c5eb3f5","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"928b49f3-b1b7-4a64-8b08-cb0048479fe2","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"87dbdb92-034f-4e2f-ab6f-c51de34eb440","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"583201ec-9336-4c81-a6ec-80a8a7816836","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"ac1fb537-994d-4d94-857b-36c74b681907","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"5db979b5-6bf8-4069-bc5f-d8174c7cca54","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"82b640e4-577e-44a2-9851-5328bda16bcd","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"62b6ba78-13d6-48ac-a70d-42d316767476","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"52f35967-d431-4e01-baa2-11938640b1b9","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"db36ef48-2fb0-496d-8959-6e048f277e3a","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"678e5050-c6e4-4216-9cc8-c20cceda8c03","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3b99a384-8a4d-47c0-bbdb-d23847e772d9","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"dfb5f6c0-e8ac-46df-aa56-b39d2578625a","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"7c770536-7d96-4730-a7bf-bde98022e6aa","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"e3ad3d69-70ac-459d-9db1-a9781a93b3fd","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2403c4a6-06dd-489c-b5e8-1c8f6006b02a","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"a4dbd33f-e5ff-4827-b5ac-cff66c5eb3f5","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"928b49f3-b1b7-4a64-8b08-cb0048479fe2","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"87dbdb92-034f-4e2f-ab6f-c51de34eb440","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"583201ec-9336-4c81-a6ec-80a8a7816836","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"ac1fb537-994d-4d94-857b-36c74b681907","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5db979b5-6bf8-4069-bc5f-d8174c7cca54","path":"sprites/sprSpraycan_Arm_Walk_Hand/sprSpraycan_Arm_Walk_Hand.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"82b640e4-577e-44a2-9851-5328bda16bcd","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

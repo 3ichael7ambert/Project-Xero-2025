@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"Arms",
-    "path":"folders/Sprites/Human sprites/Arms.yy",
+    "path":"folders/Sprites/Creatures/Human sprites/Arms.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

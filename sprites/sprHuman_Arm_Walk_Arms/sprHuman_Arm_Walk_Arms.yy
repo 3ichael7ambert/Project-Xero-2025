@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Arms",
-    "path":"folders/Sprites/Human sprites/Arms.yy",
+    "path":"folders/Sprites/Creatures/Human sprites/Arms.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -77,14 +77,30 @@
     "timeUnits":1,
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"41dafa40-a5c6-4a37-a033-73bb18748294","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"f31572cc-ad72-4f75-80a5-de2b891fc0ce","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"9347dee2-a361-4d90-bd8b-63ad5e191c28","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"cf899403-7bc4-44b0-8335-4062e30f6edf","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"f971ab74-5c1f-43d8-983f-92fca5d4accc","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"33ca3299-8791-4981-8378-83dc3c3df288","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"008c17b4-bb06-4664-ae28-8b3930512da6","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"4e42809c-bcf7-42f7-a964-58997a7810a5","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"2fde1241-6aa1-42c7-9cb6-cc6c3c84fe2b","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"c7d85019-6acd-40bc-98eb-5855c5872486","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"082657aa-02c1-447f-93dd-ec9a28793ce3","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"b0c2ca24-73a9-407b-958a-b28cebcd7e01","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"f331606e-c82b-4a3a-82f8-54e89bafe36e","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"4eb10b4f-a671-4ac6-bbf2-7a85e07aaf4a","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{"0":{"$SpriteFrameKeyframe":"","Id":{"name":"8946d562-71d4-411a-aee7-c82a70edff98","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},},"Disabled":false,"id":"7fd7a2fa-2ded-4f90-b491-6575abed6864","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"41dafa40-a5c6-4a37-a033-73bb18748294","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"f31572cc-ad72-4f75-80a5-de2b891fc0ce","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9347dee2-a361-4d90-bd8b-63ad5e191c28","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"cf899403-7bc4-44b0-8335-4062e30f6edf","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f971ab74-5c1f-43d8-983f-92fca5d4accc","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"33ca3299-8791-4981-8378-83dc3c3df288","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"008c17b4-bb06-4664-ae28-8b3930512da6","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"4e42809c-bcf7-42f7-a964-58997a7810a5","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2fde1241-6aa1-42c7-9cb6-cc6c3c84fe2b","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"c7d85019-6acd-40bc-98eb-5855c5872486","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"082657aa-02c1-447f-93dd-ec9a28793ce3","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"b0c2ca24-73a9-407b-958a-b28cebcd7e01","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f331606e-c82b-4a3a-82f8-54e89bafe36e","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"4eb10b4f-a671-4ac6-bbf2-7a85e07aaf4a","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8946d562-71d4-411a-aee7-c82a70edff98","path":"sprites/sprHuman_Arm_Walk_Arms/sprHuman_Arm_Walk_Arms.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"7fd7a2fa-2ded-4f90-b491-6575abed6864","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
