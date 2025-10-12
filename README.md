@@ -131,3 +131,10 @@ Designing a fluid and adaptable control system is critical for player experience
 
 - Developed by **Michael Lambert Jr.** and **Rick Sanchez*
 - Engine: **GameMaker**
+
+---
+
+Further developer documentation has been created in the `docs/` folder. See:
+- `docs/QUICKSTART.md` — how to open and run the project quickly.
+- `docs/CHANGELOG.md` — project changelog and documentation history.
+- `docs/` — full developer docs, systems overview, inventory CSV, and object snippets.
