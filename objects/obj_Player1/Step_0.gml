@@ -422,9 +422,9 @@ if (move_up) {
 if (isJumping) {
 	if (grav_dir="up") {
 
-    y -= jumpSpeed;
-	y-=10;
-    jumpSpeed -= grav;
+    y += jumpSpeed; //Mobile
+	y+=10; // Mobile
+    jumpSpeed += grav; // Mobile
 	} else {
     y -= jumpSpeed;
 	y-=10;
