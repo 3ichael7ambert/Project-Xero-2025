@@ -335,7 +335,7 @@ if (move_up) {
 					}
 				}
 			} else {
-				if (!isJumping && !place_empty(x,y-10,ceil_obj)) 
+				if (!isJumping && place_meeting(x,y,ceil_obj)) //edits
 				{
 		        isJumping = true;
 				jump_timer=10;
@@ -422,13 +422,13 @@ if (move_up) {
 if (isJumping) {
 	if (grav_dir="up") {
 
+    jumpSpeed += grav; // Mobile
     y += jumpSpeed; //Mobile
 	y+=10; // Mobile
-    jumpSpeed += grav; // Mobile
-	} else {
+	} else {	
+    jumpSpeed -= grav;
     y -= jumpSpeed;
 	y-=10;
-    jumpSpeed -= grav;
 	}
 	
 }
@@ -436,12 +436,16 @@ if (isJumping) {
 if (jump_timer>0) {jump_timer--;}
 if (isJumping) && (move_up || talk_button) && (jump_timer==0) && (game_style=="mv") {
 	if (grav_dir=="down") {
+		jumpSpeed=0;
+		jumpHeight=0;
 		grav_dir="up"; 
 		jump_timer=10;
 		//jumpSpeed=-jumpSpeed;
 		//grav=-grav;
 		} else if (grav_dir=="up")
 	{
+		jumpHeight=0;
+		jumpSpeed=0;
 		grav_dir="down";
 		jump_timer=10;
 		//jumpSpeed=-jumpSpeed;
