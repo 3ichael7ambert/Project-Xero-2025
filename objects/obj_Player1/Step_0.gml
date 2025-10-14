@@ -1152,22 +1152,25 @@ if (jetpack_mode == 4) {
 
 // Horizontal movement
 
-// Check for horizontal collisions
-	if place_meeting(bbox_left-10+hsp,y-20,floor_obj) || place_meeting(bbox_right+10+hsp,y-20,floor_obj) {
-		hsp = 0; // Stop horizontal movement when no key is pressed
-		hsp_walk=0;
-		walk=false;
-		idle=true;
-		wall_direction=0;
-	}
-	// _mv Metroidvania
-	if place_meeting(bbox_left-10+hsp,y-20,ceil_obj) || place_meeting(bbox_right+10+hsp,y-20,floor_obj) {
-		hsp = 0; // Stop horizontal movement when no key is pressed
-		hsp_walk=0;
-		walk=false;
-		idle=true;
-		wall_direction=0;
-	}
+// Check for horizontal collisions based on gravity direction
+if (grav_dir == "down") {
+    if place_meeting(bbox_left-10+hsp,y-20,floor_obj) || place_meeting(bbox_right+10+hsp,y-20,floor_obj) {
+        hsp = 0; // Stop horizontal movement when hitting wall
+        hsp_walk=0;
+        walk=false;
+        idle=true;
+        wall_direction=0;
+    }
+} else {
+    // When on ceiling, check ceiling collisions with reversed offset
+    if place_meeting(bbox_left-10+hsp,y+20,ceil_obj) || place_meeting(bbox_right+10+hsp,y+20,ceil_obj) {
+        hsp = 0; // Stop horizontal movement when hitting wall
+        hsp_walk=0;
+        walk=false;
+        idle=true;
+        wall_direction=0;
+    }
+}
 	
 	
 if (place_meeting(x + hsp, y, obj_block_64)) {
@@ -1233,22 +1236,28 @@ if !place_empty(x,y,floor_obj) {
 
 // Jetpack modes 1 and 2 gravity
 if (jetpack_mode == 1 || jetpack_mode == 2) {
-	
 	if (game_style=="mv") {
-		
-		if  place_empty(x,y,floor_obj) && place_empty(x,y,ceil_obj) {
-			if grav_dir="up" {
-				grav = -0.5; // Adjust this value as needed
-			}else{
+		if place_empty(x,y,floor_obj) && place_empty(x,y,ceil_obj) {
+			if grav_dir=="up" {
+				grav = -0.5; // Negative gravity when upside down
+				// Check for ceiling contact
+				if (place_meeting(x, y-1, ceil_obj)) {
+					grav = 0;
+					vsp = 0;
+					isJumping = false;
+					// Snap to ceiling
+					while (place_meeting(x, y, ceil_obj)) {
+						y += 1;
+					}
+					y -= 1;
+				}
+			} else {
 				grav = 0.5;
 			}
-		} 
-		// end _mv
-		else {
-	    grav = 0;
-		vsp=0;
-		isJumping=false; // Reset gravity when on the sidewalk
-	   // y -= 10; // Adjust the vertical position to stay on the floor
+		} else {
+			grav = 0;
+			vsp = 0;
+			isJumping = false;
 		}
 	
 	} else {
