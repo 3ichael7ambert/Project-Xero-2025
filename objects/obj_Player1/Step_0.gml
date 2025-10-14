@@ -1245,11 +1245,11 @@ if (jetpack_mode == 1 || jetpack_mode == 2) {
 					grav = 0;
 					vsp = 0;
 					isJumping = false;
-					// Snap to ceiling
-					while (place_meeting(x, y, ceil_obj)) {
-						y += 1;
+					// More precise ceiling snapping
+					y -= 1; // First move up one pixel
+					while (!place_meeting(x, y-1, ceil_obj)) {
+						y -= 1; // Keep moving up until we hit ceiling
 					}
-					y -= 1;
 				}
 			} else {
 				grav = 0.5;
