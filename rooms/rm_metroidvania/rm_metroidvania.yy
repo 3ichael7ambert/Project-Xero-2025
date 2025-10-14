@@ -7,11 +7,11 @@
   "inheritLayers":false,
   "instanceCreationOrder":[
     {"name":"inst_7F99830E","path":"rooms/rm_metroidvania/rm_metroidvania.yy",},
-    {"name":"inst_1E16DC18","path":"rooms/rm_metroidvania/rm_metroidvania.yy",},
     {"name":"inst_7167C637","path":"rooms/rm_metroidvania/rm_metroidvania.yy",},
     {"name":"inst_2EF1DC9B","path":"rooms/rm_metroidvania/rm_metroidvania.yy",},
     {"name":"inst_2E49EE53","path":"rooms/rm_metroidvania/rm_metroidvania.yy",},
     {"name":"inst_323CB88E","path":"rooms/rm_metroidvania/rm_metroidvania.yy",},
+    {"name":"inst_1E16DC18","path":"rooms/rm_metroidvania/rm_metroidvania.yy",},
   ],
   "isDnd":false,
   "layers":[

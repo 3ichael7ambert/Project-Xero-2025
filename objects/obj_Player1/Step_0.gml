@@ -234,40 +234,34 @@ if (jetpack_mode==1)
 }
 if jetpack_mode=2 || jetpack_mode==3 
 {
-    if (move_left) 
-	{   if place_empty(x-bbox_left+hsp,y-20,floor_obj) {
-        hsp -= 0.4;
-		} else 
-		if place_meeting(bbox_left-10+hsp,y-20,floor_obj) && wall_hold=false {
-        wall_hold=true;
-		//hsp=0;
-		} else {
-		hsp = 0;
-		}
-		if ((mouse_aim==false) && (gamepad==false)) {
-			facing_right = false;
-		}
+    // Regular movement using hsp directly
+    if (move_left) {
+        if (mouse_aim==false) {facing_right = false;}
+        if !place_meeting(bbox_left,y-30,floor_obj) 
+        {
+            hsp -= 1.4;
+            walk=true;
+            idle=false;
+            wall_direction = -1;
+        }
+    } 
+    else if (move_right) 
+    {
+        if (mouse_aim==false) {facing_right = true;}
+        if !place_meeting(bbox_right,y-20,floor_obj) 
+        {
+            hsp += 1.4;
+            walk=true;
+            idle=false;
+            wall_direction = 1;
+        }
     }
-    if (move_right) 
-	{
-        if place_empty(x+bbox_right,y,floor_obj)  {
-        hsp += 0.4;
-		} else 
-		if place_meeting(bbox_right+10+hsp,y-20,floor_obj) && wall_hold=false {
-        wall_hold=true;
-		//hsp=0;
-		}  else {
-		hsp = 0;
-		}
-		if ((mouse_aim==false) && (gamepad==false)) {
-			facing_right = true;
-		}
-		if place_meeting(bbox_left-10+hsp,y-20,floor_obj) || place_meeting(bbox_right+10+hsp,y-20,floor_obj) {
-		hsp = 0; // Stop horizontal movement when no key is pressed
-		walk=false;
-		idle=true;
-		wall_direction=0;
-	}
+    else 
+    {
+        hsp *= 0.9; // Add friction instead of immediate stop
+        walk = false;
+        idle = true;
+        wall_direction = 0;
     }
 }
 
@@ -297,78 +291,70 @@ if (move_up) {
 	
 	if jetpack_mode==1 || jetpack_mode==2 
 	{
-		
 		// _mv METROIDVANIA
 		if game_style=="mv" {
 			if grav_dir=="down" {
-				if (!isJumping && !place_empty(x,y,floor_obj)) 
-				{
-		        isJumping = true;
-				jump_timer=10;
-		        jumpSpeed = jumpHeight;
-				} 
-		
-				else 
-				{
-			 //isJumping = false;
-				}
-				if (isJumping=true) 
-				{
-					//WALLJUMP
-					if (place_meeting(bbox_left-20, y-40, floor_obj))
-					{
-				
-							//vsp = -jumpSpeed;
-							jumpSpeed = -jumpHeight;
-							wall_jumping = true;
-							wall_jump_force=20;
-							alarm[3] = 30;
-				
-					}
-					if (place_meeting(bbox_right+20, y-40, floor_obj))
-					{
-						//vsp = -jumpSpeed;
-							jumpSpeed = -jumpHeight;
-							wall_jumping = true;
-							wall_jump_force=-20;
-							alarm[3] = 30;
-					}
-				}
-			} else {
-				if (!isJumping && place_meeting(x,y,ceil_obj)) //edits
-				{
-		        isJumping = true;
-				jump_timer=10;
-		        jumpSpeed = -jumpHeight;
-				} 
-		
-				else 
-				{
-			 //isJumping = false;
-				}
-				if (isJumping=true) 
-				{
-					//WALLJUMP
-					if (place_meeting(bbox_left-20, y+40, ceil_obj))
-					{
-				
-							//vsp = -jumpSpeed;
-							jumpSpeed = jumpHeight;
-							wall_jumping = true;
-							wall_jump_force=20;
-							alarm[3] = 30;
-				
-					}
-					if (place_meeting(bbox_right+20, y+40, ceil_obj))
-					{
-						//vsp = -jumpSpeed;
-							jumpSpeed = jumpHeight;
-							wall_jumping = true;
-							wall_jump_force=-20;
-							alarm[3] = 30;
-					}
-				}
-				}
+				// Ground jump
+				if (!isJumping && !place_empty(x,y,floor_obj)) {
+                    isJumping = true;
+                    jump_timer=10;
+                    jumpSpeed = jumpHeight;
+                    vsp = -jumpSpeed; // Immediate velocity change
+                } 
+                
+                if (isJumping) {
+                    //WALLJUMP
+                    if (place_meeting(bbox_left-20, y-40, floor_obj)) {
+                        jumpSpeed = jumpHeight;
+                        wall_jumping = true;
+                        wall_jump_force=20;
+                        alarm[3] = 30;
+                    }
+                    if (place_meeting(bbox_right+20, y-40, floor_obj)) {
+                        jumpSpeed = jumpHeight;
+                        wall_jumping = true;
+                        wall_jump_force=-20;
+                        alarm[3] = 30;
+                    }
+                    // Only allow gravity switch at peak of jump
+                    if (jump_timer<=0 && vsp >= 0) {
+                        grav_dir="up";
+                        jump_timer=10;
+                        isJumping = false; // Reset jump state on gravity switch
+                    }
+                }
+            } else {
+                // Ceiling jump - when gravity is up
+                if (!isJumping && (place_meeting(x,y-1,ceil_obj) || place_meeting(x,y-1,floor_obj))) {
+                    isJumping = true;
+                    jump_timer=10;
+                    jumpSpeed = jumpHeight;
+                    vsp = -jumpSpeed; // Negative for upward movement in ceiling state
+                }
+                
+                if (isJumping) {
+                    //WALLJUMP from ceiling
+                    if (place_meeting(bbox_left-20, y+40, ceil_obj) || place_meeting(bbox_left-20, y+40, floor_obj)) {
+                        jumpSpeed = jumpHeight;
+                        wall_jumping = true;
+                        wall_jump_force=20;
+                        alarm[3] = 30;
+                    }
+                    if (place_meeting(bbox_right+20, y+40, ceil_obj) || place_meeting(bbox_right+20, y+40, floor_obj)) {
+                        jumpSpeed = jumpHeight;
+                        wall_jumping = true;
+                        wall_jump_force=-20;
+                        alarm[3] = 30;
+                    }
+                    // Allow double-jump to switch back to normal gravity
+                    if (move_up && jump_timer<=0) {
+                        grav_dir="down";
+                        jump_timer=10;
+                        isJumping = false;
+                        vsp = -jumpHeight; // Give an upward boost when switching back
+                    }
+                }
+            }
 // NORMAL GAME MODE ARCADE
 		} else {
 			
@@ -389,7 +375,7 @@ if (move_up) {
 				//WALLJUMP
 				if (place_meeting(bbox_left-20, y-40, floor_obj))
 				{
-				
+							  
 						//vsp = -jumpSpeed;
 						jumpSpeed = jumpHeight;
 						wall_jumping = true;
@@ -434,23 +420,24 @@ if (isJumping) {
 }
 
 if (jump_timer>0) {jump_timer--;}
-if (isJumping) && (move_up || talk_button) && (jump_timer==0) && (game_style=="mv") {
-	if (grav_dir=="down") {
-		jumpSpeed=0;
-		jumpHeight=0;
-		grav_dir="up"; 
-		jump_timer=10;
-		//jumpSpeed=-jumpSpeed;
-		//grav=-grav;
-		} else if (grav_dir=="up")
-	{
-		jumpHeight=0;
-		jumpSpeed=0;
-		grav_dir="down";
-		jump_timer=10;
-		//jumpSpeed=-jumpSpeed;
-		//grav=-grav;
-		} 
+// Handle gravity flip
+if (!isJumping && (move_up || talk_button) && (jump_timer==0) && (game_style=="mv")) {
+    // Can only flip gravity when touching a surface
+    if (grav_dir=="down" && !place_empty(x,y,floor_obj)) {
+        // Flip from ground to ceiling
+        jumpSpeed = 0;
+        vsp = 0; // Reset vertical speed
+        grav_dir = "up";
+        jump_timer = 10;
+        isJumping = false; // Don't count this as a jump
+    } else if (grav_dir=="up" && (place_meeting(x,y-1,ceil_obj) || place_meeting(x,y-1,floor_obj))) {
+        // Flip from ceiling to ground - check both ceil_obj and floor_obj  
+        jumpSpeed = 0;
+        vsp = 0; // Reset vertical speed
+        grav_dir = "down";
+        jump_timer = 10;
+        isJumping = false; // Don't count this as a jump
+    }
 }
 
 ///JETPACK2 offsets
@@ -1203,13 +1190,31 @@ y += vsp; // Apply vertical movement
 
 if (vsp > 10) vsp = 10; // Limit maximum fall speed
 
-// Check for vertical collisions
-if (place_meeting(x, y + modified_bbox_bottom, obj_block_64)) {
-    while (!place_meeting(x, y + sign(vsp), obj_block_64)) {
-        y += sign(vsp);
+// Check for vertical collisions with ground and ceiling
+if (grav_dir == "down") {
+    // Ground collision
+    if (place_meeting(x, y + modified_bbox_bottom, obj_block_64)) {
+        while (!place_meeting(x, y + sign(vsp), obj_block_64)) {
+            y += sign(vsp);
+        }
+        vsp = 0; // Stop vertical movement
+        isJumping = false;
+        jumpSpeed = 0;
     }
-    vsp = 0; // Stop vertical movement
-    isJumping = false;
+} else {
+    // Ceiling collision when gravity is up
+    if (place_meeting(x, y - modified_bbox_top, obj_block_64) || place_meeting(x, y - 1, ceil_obj) || place_meeting(x, y - 1, floor_obj)) {
+        while (!place_meeting(x, y - sign(vsp), obj_block_64) && !place_meeting(x, y - sign(vsp), ceil_obj) && !place_meeting(x, y - sign(vsp), floor_obj)) {
+            y -= sign(vsp);
+        }
+        vsp = 0; // Stop vertical movement
+        isJumping = false;
+        jumpSpeed = 0;
+        // Allow immediate jump from ceiling
+        if (move_up) {
+            jump_timer = 0;
+        }
+    }
 }
 
 

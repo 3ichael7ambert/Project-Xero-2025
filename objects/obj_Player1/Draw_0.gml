@@ -306,4 +306,4 @@ image_angle = ang;
 	draw_text_outlined(x,y,string(grav_dir),c_black,c_white);
 	draw_text_outlined(x,y+20,string(isJumping),c_black,c_white);
 	
-	draw_self();
+//	draw_self();
