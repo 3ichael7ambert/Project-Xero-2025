@@ -1,36 +1,42 @@
 /// @desc Create (Ground)
-/// Only call event_inherited() if you really have a parent that sets state.
-// event_inherited();
+// event_inherited(); // only if you actually have a parent
 
-sprite   = sprSand;
-spriteBG = sprMtnDist;
+// --- Tunables ---
+tile_step  = 64;      // tile size/progression
+reach      = 1024;    // how far in each direction
+sprite     = sprSand; // atlas for ground
+spriteBG   = sprMtnDist;
 
-/// --- TOP-ONLY ROW (extend by adding more matrices) ---
-fenceMatrix = build_drawing_matrix_scale(x, y, 256, 0,0,0, 1,1,1);
-
-var dx = [192, 236, 172, 128, 64, 0, -64, -128, -192]; // “about 10 forward/back” style
-var count = array_length(dx);
-
-var mats = array_create(1 + count);
-mats[0] = fenceMatrix;
-for (var i = 0; i < count; i++) {
-    mats[1 + i] = build_drawing_matrix(x, y, dx[i], 90, 0, 0);
+// Helper: make symmetric offsets [-reach..+reach] stepping by tile_step, with 0 included.
+function __make_offsets(_reach, _step) {
+    var arr = [];
+    // negative side
+    for (var d = -_reach; d <= _reach; d += _step) {
+        array_push(arr, d);
+    }
+    return arr;
 }
 
-// Provide to extractor
-transform_selections = mats;
+// 1) Build top row (flat) matrices
+dx_list = __make_offsets(reach, tile_step);   // <- we will also expose this to the extractor
+var n   = array_length(dx_list);
 
-// One frame per matrix (default 0), override particular indices as needed
-transform_index = array_create(array_length(transform_selections), 0);
-transform_index[0] = 6;   // fence frame
-// transform_index[last] = 12; // example if you want a street tile on the last one
+transform_selections = array_create(n);
+for (var i = 0; i < n; i++) {
+    // roll=90 makes the sprite plane lie flat
+    //transform_selections[i] = build_drawing_matrix(x, y, dx_list[i], 90, 0, 0);
+	// was: build_drawing_matrix(x, y, dx, 90, 0, 0)
+	transform_selections[i] = build_drawing_matrix_scale(x, y, dx_list[i], 90, 0, 0, -1, 1, 1);
 
-// Default: draw full quad from sprite unless overridden
-position_update = array_create(array_length(transform_selections), -1);
+}
 
-// Example of a custom 8-point quad for one slot (optional):
-// var k = array_length(position_update) - 1; // last
-// position_update[k] = [0,0, 64,0, 64,8, 0,8];
 
+// 2) Frames: default 0, override any you like
+transform_index = array_create(n, 0);
+
+// 3) Positions: -1 means "use full sprite"
+position_update = array_create(n, -1);
+
+// 4) Tell extractor to rebuild
 var ex = instance_find(obj_cave_extractor_mv, 0);
 if (ex != noone) ex.mesh_dirty = true;

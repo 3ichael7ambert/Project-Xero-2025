@@ -11,3 +11,6 @@ default_h   = 64;     // fallback height for sidewalk rects
 
 mesh_dirty = false;
 building_now = false;
+
+light_target_x=camera_get_view_x(0);
+light_target_y=camera_get_view_y(0);

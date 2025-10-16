@@ -1,4 +1,33 @@
 // Put this function in obj_building_extractor (top-level in the instance)
+
+
+// Build a transform for a vertical side wall placed at world (x0,y0),
+// shifted by +edge_dx relative to the provider's origin (x0,y0),
+// facing "side-on" (no 90° roll). You can tweak yaw to aim left/right.
+function __build_side_matrix(_prov, _edge_dx, _yaw_sign) {
+    // For a side face, we want the plane to be vertical, so roll=0.
+    // We'll face it by yaw (±90).
+    var m = build_drawing_matrix(_prov.x, _prov.y, _edge_dx, 0, 0, 90 * _yaw_sign);
+    return m;
+}
+
+// Quick neighbor check: is there a sibling object exactly one tile away?
+function __has_neighbor_x(_prov, _dx, _obj) {
+    // Look for any instance of _obj whose x is at prov.x + _dx (±tile_step) and ~same y.
+    var inst = instance_position(_prov.x + _dx, _prov.y, _obj);
+    return (inst != noone && inst != _prov);
+}
+
+// Emit one vertical side wall using the provider's sprite/frame.
+// Quad is sprite-space: (0,0)-(w,0)-(w,h)-(0,h)
+function __emit_side_wall(_builder, _M, _spr, _frm) {
+    var w = sprite_get_width(_spr);
+    var h = sprite_get_height(_spr);
+    _builder.add_tile_pos(_M, _spr, _frm,  0,0,  w,0,  w,h,  0,h);
+}
+
+
+
 function _rebuild_mesh_mv() {
    // if (building_now) return;
    // building_now = true;
