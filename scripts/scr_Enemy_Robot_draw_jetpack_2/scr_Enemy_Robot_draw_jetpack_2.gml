@@ -10,11 +10,19 @@ sprite_body_offsetX=22;
 sprite_body_offsetY=135;
 image_yscale=scale;
 
+//sprPlayer_mask
+var origin_mask_y=sprite_get_height(sprite_index);
+sprite_set_offset(sprite_index, sprite_body_offsetX, sprite_body_offsetY+(origin_mask_y*scale));
+
 } else {
 	
 sprite_body_offsetX=22;
 sprite_body_offsetY=135;
 image_yscale=-scale;
+
+var origin_mask_y=sprite_get_height(sprite_index)/2;
+sprite_set_offset(sprite_index, sprite_body_offsetX, sprite_body_offsetY-(origin_mask_y*scale));
+
 }
 
 

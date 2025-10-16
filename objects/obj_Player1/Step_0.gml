@@ -40,7 +40,7 @@ if (can_switch_jetpack) {
 }
 
 //mouse_aim
-if (room=rm_boss) || (room=rmCity) || (room=rm_Infinite_beach)  {
+if (room=rm_boss) || (room=rmCity) || (room=rm_Infinite_beach)  || (room=rm_metroidvania) {
 
 //mouse_aim
 xm=window_mouse_get_x();

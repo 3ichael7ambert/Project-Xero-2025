@@ -3,6 +3,9 @@
 
 if (!instance_exists(player)) exit;
 
+
+
+
 var cx = world_to_chunk_x(player.x);
 if (cx == _last_cx) exit;
 _last_cx = cx;
@@ -59,4 +62,6 @@ for (var i = 0; i < ds_list_size(to_delete); i++) {
     ds_map_delete(chunks, del_key);
 }
 ds_list_destroy(to_delete);
+
+
 

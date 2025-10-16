@@ -17,6 +17,7 @@ if (new_mapper != undefined) {
     var _player_y = room_height / 2;
     var _player_instance = instance_create_layer(_player_x, _player_y, "Instances", player);
     
+	
     // B. Assign the new mapper to the player instance. This is crucial.
     _player_instance.input_mapper = new_mapper;
     

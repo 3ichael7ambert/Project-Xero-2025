@@ -1,6 +1,10 @@
 /// objChunk_mv.Step
 if (init_done) exit;
 
+if instance_exists(obj_cave_extractor_mv) {
+	obj_cave_extractor_mv.mesh_dirty=true;
+}
+
 // -------------------------------------------------------------------------
 // Local references
 var s = tile_size;
@@ -15,7 +19,7 @@ if (!variable_instance_exists(self, "layer_enemies")) layer_enemies = "Instances
 // Build the solid ceiling and floor rows
 for (var tx = 0; tx < w; tx++) {
     var wx = chunk_left_x + tx * s;
-
+	
     // Ceiling block
     var c = instance_create_layer(wx, 0, layer_blocks, block_ceil);
     ds_list_add(blocks, c);
@@ -25,6 +29,7 @@ for (var tx = 0; tx < w; tx++) {
     var f = instance_create_layer(wx, fy, layer_blocks, block_floor);
     ds_list_add(blocks, f);
 }
+
 
 // -------------------------------------------------------------------------
 // Variant-based protrusions (longer, mountain-like runs)

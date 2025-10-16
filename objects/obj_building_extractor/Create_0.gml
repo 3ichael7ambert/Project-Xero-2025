@@ -8,6 +8,9 @@ mesh_dirty  = true;   // set this to true any time sidewalks/buildings change
 default_w   = 64;     // fallback width for sidewalk rects
 default_h   = 64;     // fallback height for sidewalk rects
 
+
+mesh_dirty = false;
+building_now = false;
 /*
 global.Lighting = {};
 with (global.Lighting) {

@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"objGround_mv",
+  "%Name":"objCamera_mv_2",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":72,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"objGround_mv",
+  "name":"objCamera_mv_2",
   "overriddenProperties":[],
   "parent":{
     "name":"_mv Metroidvania",
@@ -31,10 +31,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"sprSidewalk",
-    "path":"sprites/sprSidewalk/sprSidewalk.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

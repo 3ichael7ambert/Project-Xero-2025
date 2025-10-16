@@ -1,6 +1,7 @@
 /// objChunk_mv.Create
 // Expect the world to set: chunk_x, tile_size, chunk_w, chunk_h, layer_name, block_ceil, block_floor
 
+
 // Safe fallbacks (still no globals/macros)
 if (!variable_instance_exists(self,"tile_size"))  tile_size  = 64;
 if (!variable_instance_exists(self,"chunk_w"))    chunk_w    = 20;
@@ -51,3 +52,7 @@ if (!variable_instance_exists(self,"chunk_x")) {
 // Left pixel of this chunk
 chunk_left_x = chunk_x * chunk_w * tile_size;
 
+with (obj_cave_extractor_mv) {
+	//_rebuild_mesh_mv();
+	alarm[0]=10;
+}

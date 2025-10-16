@@ -6,6 +6,9 @@ chunk_h     = 12;         // tiles per chunk (height)
 keep_range  = 3;          // how many chunks to keep on each side
 layer_name  = "Instances"; // layer to place blocks on
 
+tile3d=false;
+tiled=false;
+
 // Your player object (change if needed)
 //player = instance_find(obj_Player1, 0);
 player = obj_Player1;

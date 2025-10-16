@@ -1,59 +1,36 @@
-/// @description Insert description here
-// You can write your code in this editor
+/// @desc Create (Ground)
+/// Only call event_inherited() if you really have a parent that sets state.
+// event_inherited();
 
+sprite   = sprSand;
+spriteBG = sprMtnDist;
 
+/// --- TOP-ONLY ROW (extend by adding more matrices) ---
+fenceMatrix = build_drawing_matrix_scale(x, y, 256, 0,0,0, 1,1,1);
 
+var dx = [192, 236, 172, 128, 64, 0, -64, -128, -192]; // “about 10 forward/back” style
+var count = array_length(dx);
 
+var mats = array_create(1 + count);
+mats[0] = fenceMatrix;
+for (var i = 0; i < count; i++) {
+    mats[1 + i] = build_drawing_matrix(x, y, dx[i], 90, 0, 0);
+}
 
-sprite=sprSand;
-spriteBG=sprMtnDist;
+// Provide to extractor
+transform_selections = mats;
 
-/*
-		draw_sprite_3d_matrix(sprite, 0, x, y, -64, -90, 0, 0);
-		draw_sprite_3d_matrix(sprite, 0, x, y, -128, -90, 0, 0);
-		draw_sprite_3d_matrix(sprite, 0, x, y, -192, -90, 0, 0);
-        draw_sprite_3d_matrix(sprite, 0, x, y, 0, -90, 0, 0);
-        
-        draw_sprite_3d_matrix(sprite, 0, x, y, 64, -90, 0, 0);
-		draw_sprite_3d_matrix(sprite, 0, x, y, 128, -90, 0, 0);
-		draw_sprite_3d_matrix(sprite, 0, x, y, 192, -90, 0, 0);
-		
-		*/
-		
+// One frame per matrix (default 0), override particular indices as needed
+transform_index = array_create(array_length(transform_selections), 0);
+transform_index[0] = 6;   // fence frame
+// transform_index[last] = 12; // example if you want a street tile on the last one
 
+// Default: draw full quad from sprite unless overridden
+position_update = array_create(array_length(transform_selections), -1);
 
-/// @description  SET UP VARIABLES
+// Example of a custom 8-point quad for one slot (optional):
+// var k = array_length(position_update) - 1; // last
+// position_update[k] = [0,0, 64,0, 64,8, 0,8];
 
-event_inherited();
-
-fenceMatrix = build_drawing_matrix_scale(x, y, 256,0,0,0,1,1,1); ///
-
-swMatrix1 = build_drawing_matrix(x, y, 192,90,0,0); ///
-swMatrix2 = build_drawing_matrix(x,y,236,90,0,0);
-swMatrix3 = build_drawing_matrix(x,y,172,90,0,0);
-swMatrix4 = build_drawing_matrix(x,y,128,90,0,0);
-swMatrix5 = build_drawing_matrix(x,y,64,90,0,0);
-swMatrix6 = build_drawing_matrix(x,y,0,90,0,0);
-swMatrix7 = build_drawing_matrix(x,y,-64,90,0,0);
-swMatrix8 = build_drawing_matrix(x,y,-128,90,0,0);
-swMatrix9 = build_drawing_matrix(x,y,-192,90,0,0);
-
-//swMatrixCurb = build_drawing_matrix(x,y,-128,0,0,0);
-//swMatrixCurb = build_drawing_matrix_scale(x-32,y,-96,0,0,0,1,1,1);
-
-//draw_sprite_3d_pos(sprSidewalk,0,swMatrixCurb,0,0,64,0,64,8,0,8);
-
-swMatrixStreet = build_drawing_matrix(x,y,-128,90,0,0);
-
-transform_selections = [
-	fenceMatrix,swMatrix1,swMatrix2,swMatrix3,swMatrix4,swMatrix5,swMatrix6,swMatrix7,/*swMatrix8,swMatrix9,*//*swMatrixCurb,*/swMatrixStreet
-];
-
-transform_index = array_create(10, 0);
-transform_index[0] = 6; //fence
-transform_index[8] = 0; //curb
-transform_index[9] = 12; //steet
-
-// draw_sprite_3d_pos(sprSidewalk,0,swMatrixCurb,0,0,64,0,64,8,0,8);
-position_update = array_create(9, -1);
-position_update[8] = [0,0,64,0,64,8,0,8];
+var ex = instance_find(obj_cave_extractor_mv, 0);
+if (ex != noone) ex.mesh_dirty = true;
