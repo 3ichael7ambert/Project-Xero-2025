@@ -2,11 +2,20 @@
 // You can write your code in this editor
 
 //__background_set_colour(c_black);
-scr_timeofday_background_init();
+//scr_timeofday_background_init();
 
 
 var date_time_of_day_color = scr_timeofday_color();
-	gpu_set_fog(true, date_time_of_day_color, 1000,2000); 
+var fog_color = merge_colour(date_time_of_day_color,c_black,.5);
+
+ __background_set_colour(fog_color);
+    var lay_id = layer_get_id("Colour");
+    if (lay_id != -1) {
+        var back_id = layer_background_get_id(lay_id);
+        if (back_id != -1) layer_background_blend(back_id, fog_color);
+    }
+	
+	gpu_set_fog(true, fog_color, 1000,2000); 
 	
 	
 	

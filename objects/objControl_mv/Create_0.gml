@@ -48,3 +48,18 @@ wind=true;
 
 
 	// var a = instance_create(x,y,objCityLighting);
+
+
+
+/// Enemy Code
+kill_counter = 0;
+enemy_count_robot = 0;
+// Optional: tweak defaults before update loop runs
+spawn_interval_base = 75;
+kills_per_tier      = 10;
+max_alive_base      = 3;
+max_alive_cap       = 30;
+spawn_batch_cap     = 4;
+enemy_spawn_radius  = 640;
+elite_every_n_tiers = 3;
+

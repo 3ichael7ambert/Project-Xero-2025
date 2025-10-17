@@ -33,4 +33,8 @@ shader_set_uniform_f(u_contrast, contrast);
 // Draw the scene through the shader
 draw_surface(application_surface, 0, 0);
 
+*/
+
+
+
 shader_reset();

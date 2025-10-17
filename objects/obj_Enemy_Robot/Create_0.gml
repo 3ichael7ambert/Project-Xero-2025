@@ -18,8 +18,7 @@ offsetX=-25*scale;
 }
 offsetY=75*scale;
 
-
-
+ceil_obj=noone;
 //FLOOR and WALL
 if room=rmCity {floor_obj=objSidewalk;}
 if room=rm_boss{floor_obj=obj_block3D;}
@@ -29,6 +28,7 @@ if room=rm360{floor_obj=noone;}
 if room=rm360 {player_init();} //360
 if room=r_level_infinite {floor_obj=noone;}
 if room=r_levelSide_infinite {floor_obj=noone;}
+if room=rm_metroidvania {floor_obj=objGround_mv; ceil_obj=objCeil_mv;}
 
 wall_direction = 0;
 wall_jump_force = 0;
@@ -480,3 +480,22 @@ part_type_life(_ptypeElec, 15*scale, 18*scale);
 //part_smoke_count = part_particles_count(global.partSysCharge);
 
 */
+
+
+// _mv Metroidvania
+/// --- Base combat stats the director will scale ---
+if (!variable_instance_exists(self,"hp"))         hp = 30;
+hp_base = hp;     // let director use hp_base if present
+
+if (!variable_instance_exists(self,"move_spd"))   move_spd = 3.0;
+move_spd_base = move_spd;
+
+if (!variable_instance_exists(self,"fire_delay")) fire_delay = 45; // frames
+fire_delay_base = fire_delay;
+
+if (!variable_instance_exists(self,"damage"))     damage = 4;
+damage_base = damage;
+
+/// --- Director compatibility flags/visuals ---
+elite       = false;      // director may flip this to true
+         // safety reset

@@ -7,6 +7,8 @@ reach      = 1024;    // how far in each direction
 sprite     = sprSand; // atlas for ground
 spriteBG   = sprMtnDist;
 
+
+
 // Helper: make symmetric offsets [-reach..+reach] stepping by tile_step, with 0 included.
 function __make_offsets(_reach, _step) {
     var arr = [];

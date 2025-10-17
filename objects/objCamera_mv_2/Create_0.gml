@@ -26,3 +26,7 @@ global.CameraManager.target = obj_Player1;
 
 
 
+//
+last_cam_x=0;
+
+
