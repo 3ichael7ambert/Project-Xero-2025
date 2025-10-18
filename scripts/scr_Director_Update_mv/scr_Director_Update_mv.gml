@@ -45,10 +45,13 @@ var _py = instance_exists(obj_Player1) ? obj_Player1.y : y;
 var _lay_name = layer_get_name(layer); // controller's current layer name
 
 repeat (_to_create) {
-    var _ang  = irandom_range(0, 359);
-    var _dist = irandom_range(enemy_spawn_radius * 0.6, enemy_spawn_radius);
-    var _sx   = _px + lengthdir_x(_dist, _ang);
-    var _sy   = _py + lengthdir_y(_dist, _ang);
+   // var _ang  = irandom_range(0, 359);
+   // var _dist = irandom_range(enemy_spawn_radius * 0.6, enemy_spawn_radius);
+   var cam = view_camera[0];
+	//var _sx   = _px + lengthdir_x(_dist, _ang);
+   // var _sy   = _py + lengthdir_y(_dist, _ang);
+	var _sx   = camera_get_view_x(cam) + camera_get_view_width(cam);
+    var _sy   = camera_get_view_y(cam) + irandom(camera_get_view_height(cam));
 
     var _e = instance_create(_sx, _sy, obj_Enemy_Robot);
 
