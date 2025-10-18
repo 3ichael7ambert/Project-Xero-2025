@@ -5,6 +5,7 @@ randomize();
 depth=-10000;
 /// @description Create objects
 
+game_start=false;
 grav_dir="down";
 
 //

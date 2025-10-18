@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_EnemyMV_apply_mode_vars",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_EnemyMV_apply_mode_vars",
+  "parent":{
+    "name":"control",
+    "path":"folders/Scripts/control.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

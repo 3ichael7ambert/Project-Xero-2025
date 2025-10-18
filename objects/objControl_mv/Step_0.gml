@@ -38,9 +38,9 @@ with(objCityParent_Skyline) {
 
 
 
-if object_exists(obj_Player1) {
+if instance_exists(obj_Player1) {
 	
-	
+	game_start=true;
 	
 }
 
