@@ -769,6 +769,9 @@
     {"id":{"name":"sprArmWalk","path":"sprites/sprArmWalk/sprArmWalk.yy",},},
     {"id":{"name":"sprArmWallJump","path":"sprites/sprArmWallJump/sprArmWallJump.yy",},},
     {"id":{"name":"sprBalloon","path":"sprites/sprBalloon/sprBalloon.yy",},},
+    {"id":{"name":"sprBanana_Body","path":"sprites/sprBanana_Body/sprBanana_Body.yy",},},
+    {"id":{"name":"sprBanana_Head_Eyelids","path":"sprites/sprBanana_Head_Eyelids/sprBanana_Head_Eyelids.yy",},},
+    {"id":{"name":"sprBanana_Head_Eyes","path":"sprites/sprBanana_Head_Eyes/sprBanana_Head_Eyes.yy",},},
     {"id":{"name":"sprBeach","path":"sprites/sprBeach/sprBeach.yy",},},
     {"id":{"name":"sprBike","path":"sprites/sprBike/sprBike.yy",},},
     {"id":{"name":"sprBirdBeakBtm","path":"sprites/sprBirdBeakBtm/sprBirdBeakBtm.yy",},},
@@ -1006,11 +1009,11 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"rmCity","path":"rooms/rmCity/rmCity.yy",},},
     {"roomId":{"name":"rm_metroidvania","path":"rooms/rm_metroidvania/rm_metroidvania.yy",},},
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"roomId":{"name":"rm_Neonx1080_bike","path":"rooms/rm_Neonx1080_bike/rm_Neonx1080_bike.yy",},},
     {"roomId":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
-    {"roomId":{"name":"rmCity","path":"rooms/rmCity/rmCity.yy",},},
     {"roomId":{"name":"r_level_infinite","path":"rooms/r_level_infinite/r_level_infinite.yy",},},
     {"roomId":{"name":"r_levelSide_infinite","path":"rooms/r_levelSide_infinite/r_levelSide_infinite.yy",},},
     {"children":[

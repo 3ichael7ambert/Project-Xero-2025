@@ -20,7 +20,7 @@ jp_idle_drift = 0.75; // small wander speed when no target
  christmas=false;
  
  // UFO 
- ufo=true;
+ ufo=false;
  ufo_idx=0;
  ufo_idx_lights=0;
  // --- UFO flight + fire tunables ---
@@ -49,7 +49,11 @@ if (ufo) {
 
  
   //race=choose("human","alien","odonis","spraycan","skeleton","zombie");
-  race=choose("human","alien");
+ 
+ race=choose("human","alien");
+// race="banana";
+
+
 //race=choose("odonis","spraycan");
 /// Create Event (or wherever you assign species)
 
@@ -348,7 +352,7 @@ img_idx_shirt_sleeves=image_index;
   arm_dir=270;
   armB_dir=270;
  
- if (race!="spraycan") {
+ if (race!="spraycan" && race!="banana") {
  head_x=x+lengthdir_x(100,85)*scale;
  head_y=y+lengthdir_y(100,85)*scale;
  eyes_x=head_x+lengthdir_x(100,75)*scale;
@@ -367,7 +371,9 @@ head_y = y;
  eyelids_y=eyes_y+lengthdir_y(50,75)*scale;
  mouth_x=head_x+lengthdir_x(10,75)*scale;
  mouth_y=head_y+lengthdir_y(10,75)*scale;
- skin_color_eyelids=c_red;
+ if (race=="spraycan") {
+ skin_color_eyelids=c_red;} else {
+	  skin_color_eyelids=c_white;}
  }
  nose_x=head_x+lengthdir_x(50,75)*scale;
  nose_y=head_y+lengthdir_y(50,75)*scale;
@@ -667,6 +673,77 @@ spr_head = sprBlank; ///
 spr_eyes = sprSpraycan_Head_Eyes; ///
 spr_eyes_pupils = sprHuman_Head_Eyes_Pupils; ///
 spr_eye_eyelids = sprHuman_Head_Eyelids; ///
+spr_mouth = sprHuman_Head_Mouths; ///
+spr_eyebrows = sprBlank;///
+spr_sunglasses = sprBlank;
+spr_hair_front = sprBlank; ///
+spr_hair_back = sprBlank; ///
+
+spr_facial_hair = sprHuman_Head_Facial;
+
+spr_hat = sprBlank; ///
+
+spr_jetpack = sprSpraycan_Jetpack;
+
+spr_scarf = sprBlank;
+
+
+ /*
+if dir="right" {
+			var spray_eyes_x = eyes_x - (17*scale);;
+			var spray_eyes_y = eyes_y + (90*scale);
+			var spray_eyes_pupils_x = eyes_pupils_x  - (17*scale);;
+			var spray_eyes_pupils_y = eyes_pupils_y + (100*scale);		
+			var spray_mouth_x = mouth_x;
+			var spray_mouth_y = mouth_y + (100*scale);
+		}
+		if dir="left" {
+			var spray_eyes_x = eyes_x + (17*scale);
+			var spray_eyes_y = eyes_y + (90*scale);
+			var spray_eyes_pupils_x = eyes_pupils_x  + (17*scale);
+			var spray_eyes_pupils_y = eyes_pupils_y + (100*scale);		
+			var spray_mouth_x = mouth_x;
+			var spray_mouth_y = mouth_y + (100*scale);
+		}
+		*/
+
+}
+
+
+if (race="banana") {
+//arm
+spr_walk_arms_skin = sprBlank;
+spr_idle_arms_skin = sprSpraycan_Arm_Idle; ///
+
+spr_walk_arms_shirt = sprSpraycan_Arm_Shirt_Long_Walk; ///
+spr_idle_arms_shirt = sprBlank;
+
+spr_walk_arms_hand = sprSpraycan_Arm_Walk_Hand; ///
+spr_idle_arms_hand = sprSpraycan_Arm_Hand; ///
+//leg
+spr_walk_legs_skin = sprSpraycan_Leg_Idle; ///
+spr_walk_legs_pants = sprSpraycan_Leg_Walk; ///
+spr_idle_legs_pants = sprSpraycan_Leg_Idle; ///
+
+
+spr_walk_legs_feet = sprHuman_Pants_Walk_Feet;
+spr_idle_legs_feet = sprHuman_Pants_Idle_Feet;
+spr_walk_legs_skin = sprSpraycan_Leg_Idle; ///
+spr_idle_legs_skin = sprSpraycan_Leg_Idle; ///
+
+spr_walk_legs_shoes = sprHuman_Pants_Walk_Shoes;
+spr_idle_legs_shoes = sprHuman_Pants_Idle_Shoes;
+
+spr_body = sprBanana_Body; ///
+spr_shirt = sprBlank; ///
+spr_skirt = sprBlank;
+spr_skirt_idle = sprBlank;
+
+
+spr_head = sprBlank; ///
+spr_eyes = sprBanana_Head_Eyes; ///
+spr_eyes_pupils = sprHuman_Head_Eyes_Pupils; ///
+spr_eye_eyelids = sprBanana_Head_Eyelids; ///
 spr_mouth = sprHuman_Head_Mouths; ///
 spr_eyebrows = sprBlank;///
 spr_sunglasses = sprBlank;

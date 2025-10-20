@@ -415,7 +415,7 @@ if (dir=="left") {
         } else { arm_dir=270; wpn_dir=90; }
     }
 
-    if (race!="spraycan") {
+    if (race!="spraycan" && race!="banana") {
         head_x = x + lengthdir_x(75 * scale, 90+angle);
         head_y = y + lengthdir_y(75 * scale, 90+angle);
         eyes_x = head_x + lengthdir_x(60 * scale, 122);
@@ -428,7 +428,7 @@ if (dir=="left") {
         mouth_y = head_y + lengthdir_y(30 * scale, 165);
         nose_x = head_x + lengthdir_x(50 * scale, 105);
         nose_y = head_y + lengthdir_y(50 * scale, 105);
-    } else {
+    } else if race=="spraycan" {
         head_x = x; head_y = y;
         eyes_x=x+lengthdir_x(85 * scale,115)*scale;
         eyes_y=y+lengthdir_y(85 * scale,115)*scale;
@@ -439,6 +439,17 @@ if (dir=="left") {
         mouth_x=head_x+lengthdir_x(10,75)*scale;
         mouth_y=head_y+lengthdir_y(10,75)*scale;
         skin_color_eyelids=c_red;
+    } else { //banana
+		head_x = x; head_y = y;
+        eyes_x=x+lengthdir_x(105 * scale,115)*scale;
+        eyes_y=y+lengthdir_y(105 * scale,115)*scale;
+        eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, 200);
+        eyes_pupils_y = eyes_y + lengthdir_y(15 * scale, 200);
+        eyelids_x=eyes_x+lengthdir_x(0,75)*scale;
+        eyelids_y=eyes_y+lengthdir_y(0,75)*scale;
+        mouth_x=head_x+lengthdir_x(10,75)*scale;
+        mouth_y=head_y+lengthdir_y(10,75)*scale;
+        skin_color_eyelids=c_white;
     }
 
     eyebrows_x = eyes_x + lengthdir_x(20 * scale, 80);
@@ -502,7 +513,7 @@ if (dir=="right") {
     eyes_x = head_x + lengthdir_x(60 * scale, 58);
     eyes_y = head_y + lengthdir_y(60 * scale, 58);
 
-    if (race!="spraycan") {
+    if (race!="spraycan" && race!="banana") {
         eyelids_x = eyes_x + lengthdir_x(0 * scale, 75);
         eyelids_y = eyes_y + lengthdir_y(0 * scale, 75);
         eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, -20);
@@ -511,7 +522,7 @@ if (dir=="right") {
         mouth_y = head_y + lengthdir_y(30 * scale, 15);
         nose_x = head_x + lengthdir_x(50 * scale, 75);
         nose_y = head_y + lengthdir_y(50 * scale, 75);
-    } else {
+    } else if race=="spraycan" {
         head_x = x; head_y = y;
         eyes_x=x+lengthdir_x(85 * scale,65)*scale;
         eyes_y=y+lengthdir_y(85 * scale,65)*scale;
@@ -522,7 +533,18 @@ if (dir=="right") {
         mouth_x=head_x+lengthdir_x(10,75)*scale;
         mouth_y=head_y+lengthdir_y(10,75)*scale;
         skin_color_eyelids=c_red;
-    }
+    } else  {//banana
+        head_x = x; head_y = y;
+        eyes_x=x+lengthdir_x(85 * scale,65)*scale;
+        eyes_y=y+lengthdir_y(85 * scale,65)*scale;
+        eyes_pupils_x = eyes_x + lengthdir_x(15 * scale, -20);
+        eyes_pupils_y = eyes_y + lengthdir_y(15 * scale, -20);
+        eyelids_x=eyes_x+lengthdir_x(0,75)*scale;
+        eyelids_y=eyes_y+lengthdir_y(0,75)*scale;
+        mouth_x=head_x+lengthdir_x(10,75)*scale;
+        mouth_y=head_y+lengthdir_y(10,75)*scale;
+        skin_color_eyelids=c_white;
+    } 
 
     eyebrows_x = eyes_x + lengthdir_x(20 * scale, 100);
     eyebrows_y = eyes_y + lengthdir_y(20 * scale, 100);
