@@ -11,6 +11,8 @@ build_now = function () {
         var w_t = irandom_range(5, 7);
         var h_t = irandom_range(7, 12);
         var d_t = irandom_range(3, 5);
+		d_t = max(d_t, 2); // at least 2 tiles deep
+
 
         var remaining = max(0, chunk_w - cur_t);
         if (w_t > remaining) {
@@ -21,16 +23,21 @@ build_now = function () {
         var cx = x_left + (cur_t + w_t * 0.5) * TILE;
         var cy = roofline_y;
 
-        var inst = instance_create_layer(cx, cy, layer_name, objBuilding_sky);
+        var inst = instance_create_layer(cx, cy+((12-h_t)*TILE), layer_name, objBuilding_sky);
         with (inst) {
-            TILE            = TILE;
-            building_width  = w_t;
-            building_height = h_t;
-            building_depth  = d_t;
-            building_z      = other.building_z; // from chunk
-            build_style     = other.build_style;
-            build_downward  = true;             // key for skyline platforms
-        }
+		    TILE            = TILE;
+		    building_width  = w_t;
+		    building_height = h_t;
+		    building_depth  = d_t;
+
+		    // MAKE building_z PIXELS HERE (one-time conversion)
+		    building_z      = other.building_z * TILE;
+
+		   // build_style     = 1;// other.build_style;
+		    build_downward  = true;
+		}
+
+		
 
         cur_t += w_t + irandom_range(1, 3);
     }

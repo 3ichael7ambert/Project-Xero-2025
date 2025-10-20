@@ -3,18 +3,30 @@ function _rebuild_mesh_sky() {
     // emit geometry from buildings
     // ----------------------------
   with (objBuilding_sky) {
+//building_z=100;
+//building_depth=100;
+
+// --- constants for protrusion
+var PROTRUDE_TILES = 2;
+var PROTRUDE_PX    = PROTRUDE_TILES * TILE;
+
+// building_z is your baseline “front plane”.
+// Move the actual front plane 2 TILEs toward camera:
+var z_front = building_z - PROTRUDE_PX;
+var z_doors = z_front - 1; // keep the tiny z-bias you already had
+
 
 if (build_style==1) {
     // --- params from instance
     var w        = building_width;
     var h        = building_height;
     var d        = building_depth;
-    var z_front  = building_z;
+   // var z_front  = building_z;
 	var z_doors  = z_front-1;
    // var TILE     = TILE; // assuming this exists on the instance
 
     // --- anchor (front face centered on x,y)
-    var x0 = x - (w - 1) * 0.5 * TILE;  // leftmost column X
+    var x0 = x ;//- (w - 1) * 0.5 * TILE;  // leftmost column X
     var y0 = y;                         // ground Y
 
 
@@ -220,7 +232,7 @@ if (build_style==2) {
     var w        = building_width;
     var h        = building_height;
     var d        = building_depth;
-    var z_front  = building_z;
+   // var z_front  = building_z;
 	var z_doors  = z_front-1;
    // var TILE     = TILE; // assuming this exists on the instance
 
@@ -474,7 +486,7 @@ if (build_style==3) {
     var w        = building_width;
     var h        = building_height;
     var d        = building_depth;
-    var z_front  = building_z;
+  //  var z_front  = building_z;
 	var z_doors  = z_front-1;
    // var TILE     = TILE; // assuming this exists on the instance
 

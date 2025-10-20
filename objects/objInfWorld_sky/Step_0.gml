@@ -20,8 +20,9 @@ for (var dx = -keep_range; dx <= keep_range; dx++) {
 
             // skyline flavor
             build_style = other.pick_style(need);
-            building_z  = other.pick_front_z_tiles(need); // in “tile units” (we’ll use as-is)
-        }
+			building_z  = other.pick_front_z_tiles(need); // <-- tiles count; conversion is done in chunk
+
+	 }
         ds_map_set(chunks, key, C);
     }
 }

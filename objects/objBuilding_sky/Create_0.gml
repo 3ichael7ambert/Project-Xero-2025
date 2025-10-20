@@ -8,10 +8,10 @@ TILE = 64;
 building_width  = irandom_range(5, 7);
 building_height = irandom_range(7, 11);
 building_depth  = irandom_range(3, 5);
-building_z      = 10;
+building_z      = -10;
 
 // choose façade set
-build_style = choose(1,2,3);
+build_style = 3;//choose(1,2,3);
 
 // frames/styles (replace with your atlases)
 building_style = irandom_range(0,13);
@@ -31,4 +31,7 @@ spr_store_glass = sprBuilding_windows; frm_store_glass = window_front_style;
 build_downward = false;
 
 image_xscale=building_width;
-image_yscale=building_height;
+image_yscale=-(building_height);
+image_indx=irandom(13);
+
+

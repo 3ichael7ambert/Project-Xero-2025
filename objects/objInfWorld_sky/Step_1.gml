@@ -1,3 +1,4 @@
+/*
 with (objGround_mv) {
 	if instance_exists(obj_Player1) {
 		if (x < obj_Player1.x-2000) {
@@ -15,4 +16,4 @@ with (objCeil_mv) {
 	}
 }
 	
-	
+	*/

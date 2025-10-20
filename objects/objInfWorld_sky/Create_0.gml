@@ -32,4 +32,4 @@ pick_style = function(cx) {
     }
 };
 
-pick_front_z_tiles = function(cx) { return irandom_range(6, 14); }; // shallow parallax
+pick_front_z_tiles = function(cx) { return irandom_range(0, 1); }; // shallow parallax
