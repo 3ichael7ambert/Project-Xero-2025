@@ -16,3 +16,4 @@ var projMat = matrix_build_projection_perspective_fov(camFov, camAsp, 3, 3000);
 camera_set_view_mat(camera, viewMat);
 camera_set_proj_mat(camera, projMat);
 // DO NOT call camera_apply() when using views; the engine uses the camera automatically.
+ 
