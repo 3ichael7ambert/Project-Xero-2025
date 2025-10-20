@@ -1,38 +1,35 @@
-/// objInfWorld_mv.Create
-// Local config (only lives on this instance)
-tile_size   = 64;         // size of your blocks
-chunk_w     = 20;         // tiles per chunk (width)
-chunk_h     = 12;         // tiles per chunk (height)
-keep_range  = 3;          // how many chunks to keep on each side
-layer_name  = "Instances"; // layer to place blocks on
+/// objInfWorld_sky.Create — skyline chunk manager
+tile_size  = 64;
+chunk_w    = 16;          // skyline span per chunk (columns)
+chunk_h    = 1;           // not used (buildings are vertical)
+keep_range = 3;           // chunks on each side
+layer_name = "Instances"; // where buildings/chunks live
 
-tile3d=false;
-tiled=false;
+// where rooftops sit in world Y (the “platform line”)
+roofline_y = 2048;        // tune for your camera
 
-// Your player object (change if needed)
-//player = instance_find(obj_Player1, 0);
+// which object represents “player”
 player = obj_Player1;
 
-// Runtime state
-chunks   = ds_map_create();   // key: string(chunk_x) -> value: chunk instance id
+// runtime
+chunks   = ds_map_create();
 _last_cx = undefined;
 
-// Tiny helpers scoped to this object
-world_to_chunk_x = function(px) {
-    return floor(px / (chunk_w * tile_size));
-};
-chunk_x_to_world = function(cx) {
-    return cx * chunk_w * tile_size;
+// helpers
+world_to_chunk_x = function(px) { return floor(px / (chunk_w * tile_size)); };
+chunk_x_to_world = function(cx) { return cx * chunk_w * tile_size; };
+
+// deterministic variety
+hashf = function(n) { return frac(sin(n*12.9898 + 78.233) * 43758.5453); };
+pick_style = function(cx) {
+    var t = hashf(cx);
+    if (t < 0.33) {
+        return 1;
+    } else if (t < 0.66) {
+        return 2;
+    } else {
+        return 3;
+    }
 };
 
-// Pick a chunk "variant" deterministically from chunk_x
-hashf = function(n) {
-    // stable 0..1
-    return frac(sin(n*12.9898 + 78.233) * 43758.5453);
-};
-  function pick_variant_for_cx(cx) {
-    var t = hashf(cx);         // 0..1
-    if (t < 0.35) return 0;    // normal
-    if (t < 0.70) return 1;    // underground (light)
-    return 2;                  // underground (heavy)
-};
+pick_front_z_tiles = function(cx) { return irandom_range(6, 14); }; // shallow parallax

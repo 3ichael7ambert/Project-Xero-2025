@@ -30,6 +30,8 @@ if room=r_level_infinite {floor_obj=noone;}
 if room=r_levelSide_infinite {floor_obj=noone;}
 if room=rm_metroidvania {floor_obj=objGround_mv; ceil_obj=objCeil_mv;}
 
+if room=rm_skyline {floor_obj=objBuilding_sky;}
+
 wall_direction = 0;
 wall_jump_force = 0;
 wall_jumping = false;

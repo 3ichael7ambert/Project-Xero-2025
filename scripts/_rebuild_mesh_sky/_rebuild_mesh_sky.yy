@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"_rebuild_mesh_sky",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_rebuild_mesh_sky",
+  "parent":{
+    "name":"skyline",
+    "path":"folders/Objects/Levels/skyline.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
