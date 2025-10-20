@@ -20,8 +20,8 @@
   ],
   "name":"r_level_infinite",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"levels",
+    "path":"folders/Rooms/levels.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

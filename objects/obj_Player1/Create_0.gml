@@ -61,7 +61,6 @@ if room=rmCity {floor_obj=objSidewalk;}
 if room=rm_boss{floor_obj=obj_block3D;}
 if room=rm_lava{floor_obj=obj_block_lava;}
 if room=rm_Infinite_beach{floor_obj=obj_block3D_infinite;}
-if room=rm_metroidvania{floor_obj=noone;}
 if room=rmCity {floor_obj=objSidewalk;}
 
 if room=rm_metroidvania {floor_obj=objGround_mv; ceil_obj=objCeil_mv;}
@@ -69,6 +68,7 @@ if room=rm_metroidvania {floor_obj=objGround_mv; ceil_obj=objCeil_mv;}
 if room=rm360 {player_init();} //360
 if room=r_level_infinite {floor_obj=noone;}
 if room=r_levelSide_infinite {floor_obj=noone;}
+if room=rm_skyline {floor_obj=objBuilding_sky;}
 
 wall_direction = 0;
 wall_jump_force = 0;
