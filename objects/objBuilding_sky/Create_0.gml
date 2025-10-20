@@ -30,5 +30,5 @@ spr_store_glass = sprBuilding_windows; frm_store_glass = window_front_style;
 // **key:** this tells the builder to flip vertical growth
 build_downward = false;
 
-image_xscale=TILE*building_width;
-image_yscale=TILE*building_height;
+image_xscale=building_width;
+image_yscale=building_height;

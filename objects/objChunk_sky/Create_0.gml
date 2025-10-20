@@ -38,3 +38,7 @@ build_now = function () {
 
 // Kick the build to an alarm so assignments can happen first.
 alarm[0] = 1;
+with (obj_cave_extractor_sky) {
+	//_rebuild_mesh_mv();
+	alarm[0]=10;
+}

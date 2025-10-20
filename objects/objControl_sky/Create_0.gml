@@ -36,3 +36,6 @@ cloudy=false; wind=true;
 
 fpsreal = fps_real;
 alarm[2] = 30;
+
+
+scr_timeofday_background_init();

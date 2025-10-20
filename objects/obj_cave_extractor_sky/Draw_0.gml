@@ -1,4 +1,5 @@
 /// obj_cave_extractor_sky.Draw (or End Step in your render order)
+
 gpu_set_zwriteenable(true);
 gpu_set_ztestenable(true);
 gpu_set_cullmode(cull_noculling);

@@ -1,1 +1,1 @@
-_rebuild_mesh_sky();
+//_rebuild_mesh_sky();
