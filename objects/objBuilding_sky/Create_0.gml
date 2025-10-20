@@ -5,13 +5,16 @@ randomize();
 TILE = 64;
 
 // default footprint (can be overridden by spawner)
-building_width  = irandom_range(5, 7);
-building_height = irandom_range(7, 11);
+
+//building_width  = irandom_range(5, 7);
+//building_height = irandom_range(7, 11);
+building_width  = irandom_range(6, 6);
+building_height = irandom_range(7, 7);
 building_depth  = irandom_range(3, 5);
 building_z      = -10;
 
 // choose façade set
-build_style = 3;//choose(1,2,3);
+build_style = 1;//choose(1,2,3);
 
 // frames/styles (replace with your atlases)
 building_style = irandom_range(0,13);
@@ -35,3 +38,4 @@ image_yscale=-(building_height);
 image_indx=irandom(13);
 
 
+show_debug_message($"xscale {image_xscale }, yscale { image_yscale}");

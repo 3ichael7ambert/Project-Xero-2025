@@ -1,3 +1,6 @@
+
+//image_xscale=((building_width*TILE)-TILE/2)/TILE;
+//image_yscale=-(building_height-1);
 draw_self();
 
 

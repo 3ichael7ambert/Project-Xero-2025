@@ -29,6 +29,8 @@ build_now = function () {
 		    building_width  = w_t;
 		    building_height = h_t;
 		    building_depth  = d_t;
+			image_xscale=((building_width*TILE)-TILE/2)/TILE;
+			image_yscale=-(building_height-1);
 
 		    // MAKE building_z PIXELS HERE (one-time conversion)
 		    building_z      = other.building_z * TILE;
