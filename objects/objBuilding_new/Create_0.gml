@@ -85,3 +85,6 @@ transform_index[9] = 12; //steet
 // draw_sprite_3d_pos(sprSidewalk,0,swMatrixCurb,0,0,64,0,64,8,0,8);
 position_update = array_create(10, -1);
 position_update[8] = [0,0,64,0,64,8,0,8];
+
+*/
+hsp=0;

@@ -17,3 +17,9 @@ with (objCeil_mv) {
 }
 	
 	*/
+	
+	if instance_exists(obj_Player1) {
+	target=obj_Player1;
+} else {
+	target=self;
+}

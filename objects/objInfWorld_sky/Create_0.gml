@@ -5,6 +5,9 @@ chunk_h    = 1;           // not used (buildings are vertical)
 keep_range = 3;           // chunks on each side
 layer_name = "Instances"; // where buildings/chunks live
 
+
+scene=objControl_sky.scene;
+
 // where rooftops sit in world Y (the “platform line”)
 roofline_y = 2048;        // tune for your camera
 
@@ -33,3 +36,22 @@ pick_style = function(cx) {
 };
 
 pick_front_z_tiles = function(cx) { return irandom_range(0, 1); }; // shallow parallax
+
+if instance_exists(obj_Player1) {
+	target=obj_Player1;
+} else {
+	target=self;
+}
+if (true) {
+//create_parallax_layer(sprDesert_Bike_1,target.x,target.y,0,0,100,c_white,1);
+var aa = instance_create(x,y,objParallaxLayer_sky);
+
+aa.spr_or_bg = sprDesert_Bike_1;
+aa.x_follow = 0.9;
+aa.y_follow = 0.9;
+aa.x_speed = -10;
+aa.y_speed = 0;
+aa.colour = c_white;
+aa.alpha = 1;
+
+}

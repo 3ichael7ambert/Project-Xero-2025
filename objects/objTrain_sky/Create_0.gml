@@ -2,8 +2,8 @@
 event_inherited();
 randomize();
 
-scene="";
-
+scene="train";
+/*
 TILE = 64;
 
 // default footprint (can be overridden by spawner)
@@ -24,20 +24,12 @@ roof_style     = irandom_range(0,13);
 window_style   = irandom_range(0,2);
 door_style     = irandom_range(0,16);
 window_front_style = irandom_range(0,2);
-
-spr_front   = sprBuilding_walls;   frm_front   = building_style;
-spr_side    = sprBuilding_walls;   frm_side    = building_style;
-spr_roof    = sprBuilding_roof;    frm_roof    = roof_style;
-spr_window  = sprBuilding_windows; frm_window  = window_style;
-spr_door    = sprBuilding_door;    frm_door    = door_style;
-spr_store_glass = sprBuilding_windows; frm_store_glass = window_front_style;
-
-// **key:** this tells the builder to flip vertical growth
-build_downward = false;
-
-image_xscale=building_width;
-image_yscale=-(building_height);
-image_indx=irandom(13);
+*/
+spr_front   = sprTrain;   frm_front   = 0;
+spr_side    = sprTrain;   frm_side    = 2;
+spr_roof    = sprTrain;    frm_roof    = 1;
 
 
-show_debug_message($"xscale {image_xscale }, yscale { image_yscale}");
+
+
+show_debug_message($"train xscale {image_xscale }, yscale { image_yscale}");

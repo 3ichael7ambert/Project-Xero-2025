@@ -5,7 +5,16 @@ if (camera_get_view_x(cam) > last_cam_x) {
 	last_cam_x=camera_get_view_x(cam);
 }
 
-global.CameraManager.setBounds(last_cam_x, 0, last_cam_x+10000, room_height+10000);
+if objControl_sky.scene=="rooftop" {
+global.CameraManager.setBounds(last_cam_x, 0, last_cam_x+10000, room_height+1000);
+}
+if objControl_sky.scene=="train" {
+global.CameraManager.setBounds(last_cam_x, 0, last_cam_x+10000, room_height+1000);
+}
+if objControl_sky.scene=="bus" {
+global.CameraManager.setBounds(last_cam_x, 0, last_cam_x+10000, room_height+1000);
+}
+
 
 if (instance_exists(obj_Player1)) {
 	if (obj_Player1.x <= last_cam_x) {
@@ -36,6 +45,16 @@ with (objBuilding_sky) {
 	if x 
 	//+ (objBuilding_sky.TILE*objBuilding_sky.building_width)) 
 	< objCamera_sky.last_cam_x 
+	{
+		instance_destroy();
+	}
+}
+
+
+with (objBuilding_new) {
+	if x 
+	//+ (objBuilding_sky.TILE*objBuilding_sky.building_width)) 
+	< objCamera_sky.last_cam_x -1000
 	{
 		instance_destroy();
 	}

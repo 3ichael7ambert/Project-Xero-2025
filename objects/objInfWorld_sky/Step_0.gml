@@ -5,6 +5,7 @@ var cx = world_to_chunk_x(player.x);
 if (cx == _last_cx) exit;
 _last_cx = cx;
 
+if scene=="rooftop" {
 // ensure needed chunks
 for (var dx = -keep_range; dx <= keep_range; dx++) {
     var need = cx + dx, key = string(need);
@@ -17,7 +18,7 @@ for (var dx = -keep_range; dx <= keep_range; dx++) {
             chunk_w     = other.chunk_w;
             layer_name  = other.layer_name;
             roofline_y  = other.roofline_y;
-
+			scene		= other.scene;
             // skyline flavor
             build_style = other.pick_style(need);
 			building_z  = other.pick_front_z_tiles(need); // <-- tiles count; conversion is done in chunk
@@ -26,7 +27,31 @@ for (var dx = -keep_range; dx <= keep_range; dx++) {
         ds_map_set(chunks, key, C);
     }
 }
+}
 
+if scene=="train" {
+// ensure needed chunks
+for (var dx = -keep_range; dx <= keep_range; dx++) {
+    var need = cx + dx, key = string(need);
+    if (!ds_map_exists(chunks, key)) {
+        var left_x = chunk_x_to_world(need);
+        var C = instance_create_layer(left_x, 0, layer_name, objChunk_sky);
+        with (C) {
+            chunk_x     = need;
+            tile_size   = other.tile_size;
+            chunk_w     = other.chunk_w;
+            layer_name  = other.layer_name;
+            roofline_y  = other.roofline_y;
+			scene		= other.scene;
+            // skyline flavor
+            build_style = other.pick_style(need);
+			building_z  = other.pick_front_z_tiles(need); // <-- tiles count; conversion is done in chunk
+
+	 }
+        ds_map_set(chunks, key, C);
+    }
+}
+}
 // unload far chunks
 var to_del = ds_list_create();
 var k = ds_map_find_first(chunks);

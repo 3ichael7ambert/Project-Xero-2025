@@ -22,7 +22,11 @@ cam_min=-300;
 cam_max=-3000;
 speed=3;
 
-global.CameraManager.target = obj_Player1;
+if !instance_exists(objCamera_Dummy_sky) {
+	instance_create(x,y,objCamera_Dummy_sky);
+}
+
+global.CameraManager.target = objCamera_Dummy_sky;
 
 
 
