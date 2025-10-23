@@ -5,6 +5,21 @@ depth = -10000;
 
 scene="train";
 
+scene_skin=choose(
+				"desert",
+				"forest",
+				"skyline",
+				"mountain",
+				"dillingham_inside",
+				"dillingham_outside",
+				"raiders_capital",
+				"raiders_rhs",
+				"raiders_den",
+				"raiders_lew",
+				"raiders_rmcad",
+				"raiders_towncenter"
+				);
+
 // "train", "bus", "rooftops"
 
 game_start = false;
@@ -44,6 +59,8 @@ alarm[2] = 30;
 
 scr_timeofday_background_init();
 
+/*
 create_parallax_layer(backStarsLayer1, 0.2, 0.2, 0.2, 0, -1000, c_white, 1);
 create_parallax_layer(backStarsLayer2, 0.4, 0.4, 0.1, 0, -1010, c_white, 1);
 create_parallax_layer(backStarsLayer3, 0.6, 0.6, 0.05, 0, -1020, c_white, 1);
+*/

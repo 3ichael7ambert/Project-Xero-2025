@@ -7,6 +7,8 @@ layer_name = "Instances"; // where buildings/chunks live
 
 
 scene=objControl_sky.scene;
+//scene_skin=objControl_sky.scene_skin;
+scene_skin="forest";
 
 // where rooftops sit in world Y (the “platform line”)
 roofline_y = 2048;        // tune for your camera
@@ -42,16 +44,114 @@ if instance_exists(obj_Player1) {
 } else {
 	target=self;
 }
+
+
+
+
+/// PARALLAX 
+/*
+scene_skin=choose(
+				"desert",
+				"forest",
+				"skyline",
+				"mountain",
+				"dillingham_inside",
+				"dillingham_outside",
+				"raiders_capital",
+				"raiders_rhs",
+				"raiders_den",
+				"raiders_lew",
+				"raiders_rmcad",
+				"raiders_towncenter"
+				);
+				*/
 if (true) {
 //create_parallax_layer(sprDesert_Bike_1,target.x,target.y,0,0,100,c_white,1);
-var aa = instance_create(x,y,objParallaxLayer_sky);
+if  (scene_skin=="desert") 
+{
+	var aa = instance_create(x,y,objParallaxLayer_sky);
+	aa.spr_or_bg = sprDesert_Bike_1;
+	aa.x_follow = 0.9;
+	aa.y_follow = 0.9;
+	aa.scroll_spd_x = .4;
+	aa.y_speed = 0;
+	aa.colour = c_white;
+	aa.alpha = 1;
+	
+	var aa = instance_create(x,y,objParallaxLayer_sky);
+	aa.spr_or_bg = sprDesert_Bike_2;
+	aa.x_follow = 0.5;
+	aa.y_follow = 0.5;
+	aa.scroll_spd_x = .3;
+	aa.y_speed = 0;
+	aa.colour = c_white;
+	aa.alpha = 1;
+	
+	
+	var aa = instance_create(x,y,objParallaxLayer_sky);
+	aa.spr_or_bg = sprDesert_Bike_3;
+	aa.x_follow = 0.3;
+	aa.y_follow = 0.3;
+	aa.scroll_spd_x = .2;
+	aa.y_speed = 0;
+	aa.colour = c_white;
+	aa.alpha = 1;
+	
+	
+	
+	var aa = instance_create(x,y,objParallaxLayer_sky);
+	aa.spr_or_bg = sprDesert_Bike_4;
+	aa.x_follow = 0.1;
+	aa.y_follow = 0.1;
+	aa.scroll_spd_x = .1;
+	aa.y_speed = 0;
+	aa.colour = c_white;
+	aa.alpha = 1;
+}
 
-aa.spr_or_bg = sprDesert_Bike_1;
-aa.x_follow = 0.9;
-aa.y_follow = 0.9;
-aa.x_speed = -10;
-aa.y_speed = 0;
-aa.colour = c_white;
-aa.alpha = 1;
+
+if  (scene_skin=="forest") 
+{
+	var aa = instance_create(x,y,objParallaxLayer_sky);
+	aa.spr_or_bg = sprForestLevel_3;
+	aa.x_follow = 0.9;
+	aa.y_follow = 0.9;
+	aa.scroll_spd_x = .3;
+	aa.y_speed = 0;
+	aa.colour = c_white;
+	aa.alpha = 1;
+	
+	var aa = instance_create(x,y,objParallaxLayer_sky);
+	aa.spr_or_bg = sprForestLevel_2;
+	aa.x_follow = 0.5;
+	aa.y_follow = 0.5;
+	aa.scroll_spd_x = .2;
+	aa.y_speed = 0;
+	aa.colour = c_white;
+	aa.alpha = 1;
+	
+	
+	var aa = instance_create(x,y,objParallaxLayer_sky);
+	aa.spr_or_bg = sprForestLevel_1;
+	aa.x_follow = 0.3;
+	aa.y_follow = 0.3;
+	aa.scroll_spd_x = .1;
+	aa.y_speed = 0;
+	aa.colour = c_white;
+	aa.alpha = 1;
+	
+	
+	
+	var aa = instance_create(x,y,objParallaxLayer_sky);
+	aa.spr_or_bg = sprForestLevel_3;
+	aa.x_follow = 0.1;
+	aa.y_follow = 0.1;
+	aa.scroll_spd_x = .5;
+	aa.y_speed = 0;
+	aa.colour = c_white;
+	aa.alpha = 1;
+	
+	aa.depth=-100;
+}
 
 }
